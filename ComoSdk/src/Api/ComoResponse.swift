@@ -12,12 +12,17 @@ public extension ComoApi {
         let cause:String?
     }
 
-    struct Response:Codable {
+    class Response:Codable, CustomStringConvertible {
         let status:ResponseStatus
         let errors:[ResponseError]?
+        
+        public var description: String {
+            errors?.map { $0.code + ": " + $0.message }.implode("\n") ?? "OK"
+        }
     }
     
     enum ResponseErrorCode:Error {
+        case invalidInputData
         case noData
         case errorStatus
         case invalidResponse

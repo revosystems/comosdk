@@ -18,6 +18,16 @@ class ComoSdkTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
+    func test_can_quick_register() throws {
+        let expectation = XCTestExpectation(description:"Como Api Call")
+        ComoApi().quickRegister(phoneNumber: "666777888", authCode: "1234") { result in
+            print(result)
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 5)
+    }
+    
     func test_can_submit_event() throws {
         let expectation = XCTestExpectation(description:"Como Api Call")
         ComoApi().submitEvent { result in
