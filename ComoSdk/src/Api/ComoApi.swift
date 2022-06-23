@@ -13,16 +13,6 @@ public class ComoApi {
     let sourceVersion:String = ""
     
     
-    //MARK: - Structs
-    public class MemberDetailsResponse : Response {
-        //let membership:String? = nil
-        let memberNotes:[MemberNote]
-    }
-    
-    public class MemberNote:Codable {
-        let content:String
-        let type:String
-    }
     
     //MARK: - Methods
     public func getMemberDetails(customer:ComoCustomer, purchase:ComoPurchase, then:@escaping(Result<MemberDetailsResponse, Error>) -> Void){

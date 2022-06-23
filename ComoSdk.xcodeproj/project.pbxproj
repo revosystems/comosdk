@@ -22,6 +22,7 @@
 		BB56B6B02864AA1100512A34 /* ComoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB56B6AF2864AA1100512A34 /* ComoResponse.swift */; };
 		BB56B6B32864B7F900512A34 /* Customer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB56B6B22864B7F900512A34 /* Customer.swift */; };
 		BB56B6B52864B85400512A34 /* Purchase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB56B6B42864B85400512A34 /* Purchase.swift */; };
+		BB56B6B82865010D00512A34 /* MemberDetailsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB56B6B72865010D00512A34 /* MemberDetailsResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 		BB56B6AF2864AA1100512A34 /* ComoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComoResponse.swift; sourceTree = "<group>"; };
 		BB56B6B22864B7F900512A34 /* Customer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Customer.swift; sourceTree = "<group>"; };
 		BB56B6B42864B85400512A34 /* Purchase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Purchase.swift; sourceTree = "<group>"; };
+		BB56B6B72865010D00512A34 /* MemberDetailsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberDetailsResponse.swift; sourceTree = "<group>"; };
 		D4C116E7F9DD307FEF191CE9 /* Pods_ComoSdkTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ComoSdkTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC54A26751F08023B31BE133 /* Pods-ComoSdk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ComoSdk.debug.xcconfig"; path = "Target Support Files/Pods-ComoSdk/Pods-ComoSdk.debug.xcconfig"; sourceTree = "<group>"; };
 		FE5D6F856AE5ABD6C637D0C5 /* Pods-ComoSdkTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ComoSdkTests.release.xcconfig"; path = "Target Support Files/Pods-ComoSdkTests/Pods-ComoSdkTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 		BB56B6AC2864A7BA00512A34 /* Api */ = {
 			isa = PBXGroup;
 			children = (
+				BB56B6B62865010200512A34 /* Responses */,
 				BB56B6B12864B7EB00512A34 /* Models */,
 				BB56B6AD2864A7C200512A34 /* ComoApi.swift */,
 				BB56B6AF2864AA1100512A34 /* ComoResponse.swift */,
@@ -192,6 +195,14 @@
 				BB56B6B42864B85400512A34 /* Purchase.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		BB56B6B62865010200512A34 /* Responses */ = {
+			isa = PBXGroup;
+			children = (
+				BB56B6B72865010D00512A34 /* MemberDetailsResponse.swift */,
+			);
+			path = Responses;
 			sourceTree = "<group>";
 		};
 		D35A8575E3C71FC50B29D327 /* Frameworks */ = {
@@ -404,6 +415,7 @@
 				BB56B6AE2864A7C200512A34 /* ComoApi.swift in Sources */,
 				BB56B67F2864A75100512A34 /* ViewController.swift in Sources */,
 				BB56B6B02864AA1100512A34 /* ComoResponse.swift in Sources */,
+				BB56B6B82865010D00512A34 /* MemberDetailsResponse.swift in Sources */,
 				BB56B6B32864B7F900512A34 /* Customer.swift in Sources */,
 				BB56B6B52864B85400512A34 /* Purchase.swift in Sources */,
 				BB56B67B2864A75100512A34 /* AppDelegate.swift in Sources */,
