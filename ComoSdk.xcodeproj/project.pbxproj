@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		367FAF2767E418B78FF40E32 /* Pods_ComoSdk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75D725388EEAE84FA4704559 /* Pods_ComoSdk.framework */; };
+		81BC33FB066556A043E0D284 /* Pods_ComoSdkTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4C116E7F9DD307FEF191CE9 /* Pods_ComoSdkTests.framework */; };
 		BB56B67B2864A75100512A34 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB56B67A2864A75100512A34 /* AppDelegate.swift */; };
 		BB56B67D2864A75100512A34 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB56B67C2864A75100512A34 /* SceneDelegate.swift */; };
 		BB56B67F2864A75100512A34 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB56B67E2864A75100512A34 /* ViewController.swift */; };
@@ -16,6 +18,8 @@
 		BB56B6922864A75300512A34 /* ComoSdkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB56B6912864A75300512A34 /* ComoSdkTests.swift */; };
 		BB56B69C2864A75300512A34 /* ComoSdkUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB56B69B2864A75300512A34 /* ComoSdkUITests.swift */; };
 		BB56B69E2864A75300512A34 /* ComoSdkUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB56B69D2864A75300512A34 /* ComoSdkUITestsLaunchTests.swift */; };
+		BB56B6AE2864A7C200512A34 /* ComoApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB56B6AD2864A7C200512A34 /* ComoApi.swift */; };
+		BB56B6B02864AA1100512A34 /* ComoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB56B6AF2864AA1100512A34 /* ComoResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +40,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5B7C1C409337C9FFB1C8DBBF /* Pods-ComoSdk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ComoSdk.release.xcconfig"; path = "Target Support Files/Pods-ComoSdk/Pods-ComoSdk.release.xcconfig"; sourceTree = "<group>"; };
+		75D725388EEAE84FA4704559 /* Pods_ComoSdk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ComoSdk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A2638F8D895C60C68326BFEB /* Pods-ComoSdkTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ComoSdkTests.debug.xcconfig"; path = "Target Support Files/Pods-ComoSdkTests/Pods-ComoSdkTests.debug.xcconfig"; sourceTree = "<group>"; };
 		BB56B6772864A75100512A34 /* ComoSdk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ComoSdk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB56B67A2864A75100512A34 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BB56B67C2864A75100512A34 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +56,11 @@
 		BB56B6972864A75300512A34 /* ComoSdkUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ComoSdkUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB56B69B2864A75300512A34 /* ComoSdkUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComoSdkUITests.swift; sourceTree = "<group>"; };
 		BB56B69D2864A75300512A34 /* ComoSdkUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComoSdkUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		BB56B6AD2864A7C200512A34 /* ComoApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComoApi.swift; sourceTree = "<group>"; };
+		BB56B6AF2864AA1100512A34 /* ComoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComoResponse.swift; sourceTree = "<group>"; };
+		D4C116E7F9DD307FEF191CE9 /* Pods_ComoSdkTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ComoSdkTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC54A26751F08023B31BE133 /* Pods-ComoSdk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ComoSdk.debug.xcconfig"; path = "Target Support Files/Pods-ComoSdk/Pods-ComoSdk.debug.xcconfig"; sourceTree = "<group>"; };
+		FE5D6F856AE5ABD6C637D0C5 /* Pods-ComoSdkTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ComoSdkTests.release.xcconfig"; path = "Target Support Files/Pods-ComoSdkTests/Pods-ComoSdkTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				367FAF2767E418B78FF40E32 /* Pods_ComoSdk.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81BC33FB066556A043E0D284 /* Pods_ComoSdkTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,6 +90,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0AE529602199F477A5C61F26 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				EC54A26751F08023B31BE133 /* Pods-ComoSdk.debug.xcconfig */,
+				5B7C1C409337C9FFB1C8DBBF /* Pods-ComoSdk.release.xcconfig */,
+				A2638F8D895C60C68326BFEB /* Pods-ComoSdkTests.debug.xcconfig */,
+				FE5D6F856AE5ABD6C637D0C5 /* Pods-ComoSdkTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		BB56B66E2864A75100512A34 = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +108,8 @@
 				BB56B6902864A75300512A34 /* ComoSdkTests */,
 				BB56B69A2864A75300512A34 /* ComoSdkUITests */,
 				BB56B6782864A75100512A34 /* Products */,
+				0AE529602199F477A5C61F26 /* Pods */,
+				D35A8575E3C71FC50B29D327 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,6 +126,8 @@
 		BB56B6792864A75100512A34 /* ComoSdk */ = {
 			isa = PBXGroup;
 			children = (
+				BB56B6AB2864A7B000512A34 /* resources */,
+				BB56B6AA2864A7AA00512A34 /* src */,
 				BB56B67A2864A75100512A34 /* AppDelegate.swift */,
 				BB56B67C2864A75100512A34 /* SceneDelegate.swift */,
 				BB56B67E2864A75100512A34 /* ViewController.swift */,
@@ -127,6 +156,39 @@
 			path = ComoSdkUITests;
 			sourceTree = "<group>";
 		};
+		BB56B6AA2864A7AA00512A34 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				BB56B6AC2864A7BA00512A34 /* Api */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		BB56B6AB2864A7B000512A34 /* resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = resources;
+			sourceTree = "<group>";
+		};
+		BB56B6AC2864A7BA00512A34 /* Api */ = {
+			isa = PBXGroup;
+			children = (
+				BB56B6AD2864A7C200512A34 /* ComoApi.swift */,
+				BB56B6AF2864AA1100512A34 /* ComoResponse.swift */,
+			);
+			path = Api;
+			sourceTree = "<group>";
+		};
+		D35A8575E3C71FC50B29D327 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				75D725388EEAE84FA4704559 /* Pods_ComoSdk.framework */,
+				D4C116E7F9DD307FEF191CE9 /* Pods_ComoSdkTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -134,9 +196,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BB56B6A12864A75300512A34 /* Build configuration list for PBXNativeTarget "ComoSdk" */;
 			buildPhases = (
+				4429893EF0B9DB309EE53104 /* [CP] Check Pods Manifest.lock */,
 				BB56B6732864A75100512A34 /* Sources */,
 				BB56B6742864A75100512A34 /* Frameworks */,
 				BB56B6752864A75100512A34 /* Resources */,
+				A62501073E10AC1D0F80C62D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -151,6 +215,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BB56B6A42864A75300512A34 /* Build configuration list for PBXNativeTarget "ComoSdkTests" */;
 			buildPhases = (
+				A7D6567553E09BF74844B39F /* [CP] Check Pods Manifest.lock */,
 				BB56B6892864A75300512A34 /* Sources */,
 				BB56B68A2864A75300512A34 /* Frameworks */,
 				BB56B68B2864A75300512A34 /* Resources */,
@@ -253,12 +318,78 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		4429893EF0B9DB309EE53104 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ComoSdk-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A62501073E10AC1D0F80C62D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ComoSdk/Pods-ComoSdk-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ComoSdk/Pods-ComoSdk-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ComoSdk/Pods-ComoSdk-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A7D6567553E09BF74844B39F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ComoSdkTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		BB56B6732864A75100512A34 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB56B6AE2864A7C200512A34 /* ComoApi.swift in Sources */,
 				BB56B67F2864A75100512A34 /* ViewController.swift in Sources */,
+				BB56B6B02864AA1100512A34 /* ComoResponse.swift in Sources */,
 				BB56B67B2864A75100512A34 /* AppDelegate.swift in Sources */,
 				BB56B67D2864A75100512A34 /* SceneDelegate.swift in Sources */,
 			);
@@ -432,6 +563,7 @@
 		};
 		BB56B6A22864A75300512A34 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EC54A26751F08023B31BE133 /* Pods-ComoSdk.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -460,6 +592,7 @@
 		};
 		BB56B6A32864A75300512A34 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5B7C1C409337C9FFB1C8DBBF /* Pods-ComoSdk.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -488,6 +621,7 @@
 		};
 		BB56B6A52864A75300512A34 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A2638F8D895C60C68326BFEB /* Pods-ComoSdkTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -508,6 +642,7 @@
 		};
 		BB56B6A62864A75300512A34 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FE5D6F856AE5ABD6C637D0C5 /* Pods-ComoSdkTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";

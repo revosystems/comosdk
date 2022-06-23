@@ -1,0 +1,21 @@
+PODS:
+  - RevoFoundation (0.2.0)
+  - RevoHttp (0.3.0):
+    - RevoFoundation (~> 0.2.0)
+
+DEPENDENCIES:
+  - RevoFoundation
+  - RevoHttp
+
+SPEC REPOS:
+  trunk:
+    - RevoFoundation
+    - RevoHttp
+
+SPEC CHECKSUMS:
+  RevoFoundation: f00513750bfbbb9a07476450728063e921bdf5db
+  RevoHttp: 184fc7cdf0d5399c26ae730e88db90d481f50f06
+
+PODFILE CHECKSUM: 8bcb73a615876d1ebd5d9aca2d26ac42f5f7993d
+
+COCOAPODS: 1.11.3
