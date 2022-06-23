@@ -12,17 +12,24 @@ public class ComoApi {
     let source:String        = ""
     let sourceVersion:String = ""
     
+    
+    //MARK: - Structs
+    public class MemberDetailsResponse : Response {
+        //let membership:String? = nil
+        let memberNotes:[MemberNote]
+    }
+    
+    public class MemberNote:Codable {
+        let content:String
+        let type:String
+    }
+    
     //MARK: - Methods
-    public func getMemberDetails(customer:ComoCustomer, purchase:ComoPurchase, then:@escaping(Result<ComoApi.Response, Error>) -> Void){
+    public func getMemberDetails(customer:ComoCustomer, purchase:ComoPurchase, then:@escaping(Result<MemberDetailsResponse, Error>) -> Void){
         
         struct MemberDetails : Codable {
             let customer:ComoCustomer
             let purchase:ComoPurchase
-        }
-        
-        class MemberDetailsResponse : Response {
-            let membership:String? = nil
-            let memberNotes:String? = nil
         }
         
         let object = MemberDetails(customer: customer, purchase: purchase)
@@ -48,7 +55,7 @@ public class ComoApi {
     
     
     //MARK: -
-    private func post(_ url:String, object:Codable? = nil, then:@escaping(Result<ComoApi.Response, Error>) -> Void){
+    private func post<T>(_ url:String, object:Codable? = nil, then:@escaping(Result<T, Error>) -> Void) where T: ComoApi.Response {
         
         guard let object = object else{
             return Http.post(self.url + url, headers: headers) { response in

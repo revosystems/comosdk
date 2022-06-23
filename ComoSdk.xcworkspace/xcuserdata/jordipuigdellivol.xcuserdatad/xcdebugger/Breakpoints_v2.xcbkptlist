@@ -3,4 +3,54 @@
    uuid = "9A67DF8E-57A9-4168-AB86-BB23B7170622"
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1EAD45B6-51E3-4710-ABBF-AB406CC8191C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ComoSdkTests/ComoSdkTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "test_can_get_member_details()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "1EAD45B6-51E3-4710-ABBF-AB406CC8191C - ac2dfdbfbe90b5cb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;ComoSdk.ComoApi.Response, Swift.Error&gt;) -&gt; () in ComoSdkTests.ComoSdkTests.test_can_get_member_details() throws -&gt; ()"
+                  moduleName = "ComoSdkTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jordipuigdellivol/git/ios/packages/ComoSdk/ComoSdkTests/ComoSdkTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "40"
+                  endingLineNumber = "40"
+                  offsetFromSymbolStart = "238">
+               </Location>
+               <Location
+                  uuid = "1EAD45B6-51E3-4710-ABBF-AB406CC8191C - c3a13162efa6fd7e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;ComoSdk.ComoApi.MemberDetailsResponse, Swift.Error&gt;) -&gt; () in ComoSdkTests.ComoSdkTests.test_can_get_member_details() throws -&gt; ()"
+                  moduleName = "ComoSdkTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jordipuigdellivol/git/ios/packages/ComoSdk/ComoSdkTests/ComoSdkTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "40"
+                  endingLineNumber = "40"
+                  offsetFromSymbolStart = "238">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>
