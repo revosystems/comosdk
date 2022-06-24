@@ -18,11 +18,12 @@
 		BB56B6922864A75300512A34 /* ComoSdkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB56B6912864A75300512A34 /* ComoSdkTests.swift */; };
 		BB56B69C2864A75300512A34 /* ComoSdkUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB56B69B2864A75300512A34 /* ComoSdkUITests.swift */; };
 		BB56B69E2864A75300512A34 /* ComoSdkUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB56B69D2864A75300512A34 /* ComoSdkUITestsLaunchTests.swift */; };
-		BB56B6AE2864A7C200512A34 /* ComoApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB56B6AD2864A7C200512A34 /* ComoApi.swift */; };
-		BB56B6B02864AA1100512A34 /* ComoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB56B6AF2864AA1100512A34 /* ComoResponse.swift */; };
+		BB56B6AE2864A7C200512A34 /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB56B6AD2864A7C200512A34 /* Api.swift */; };
+		BB56B6B02864AA1100512A34 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB56B6AF2864AA1100512A34 /* Response.swift */; };
 		BB56B6B32864B7F900512A34 /* Customer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB56B6B22864B7F900512A34 /* Customer.swift */; };
 		BB56B6B52864B85400512A34 /* Purchase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB56B6B42864B85400512A34 /* Purchase.swift */; };
 		BB56B6B82865010D00512A34 /* MemberDetailsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB56B6B72865010D00512A34 /* MemberDetailsResponse.swift */; };
+		BB56B6BA2865AC4600512A34 /* Como.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB56B6B92865AC4600512A34 /* Como.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,11 +60,12 @@
 		BB56B6972864A75300512A34 /* ComoSdkUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ComoSdkUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB56B69B2864A75300512A34 /* ComoSdkUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComoSdkUITests.swift; sourceTree = "<group>"; };
 		BB56B69D2864A75300512A34 /* ComoSdkUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComoSdkUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		BB56B6AD2864A7C200512A34 /* ComoApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComoApi.swift; sourceTree = "<group>"; };
-		BB56B6AF2864AA1100512A34 /* ComoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComoResponse.swift; sourceTree = "<group>"; };
+		BB56B6AD2864A7C200512A34 /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
+		BB56B6AF2864AA1100512A34 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		BB56B6B22864B7F900512A34 /* Customer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Customer.swift; sourceTree = "<group>"; };
 		BB56B6B42864B85400512A34 /* Purchase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Purchase.swift; sourceTree = "<group>"; };
 		BB56B6B72865010D00512A34 /* MemberDetailsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberDetailsResponse.swift; sourceTree = "<group>"; };
+		BB56B6B92865AC4600512A34 /* Como.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Como.swift; sourceTree = "<group>"; };
 		D4C116E7F9DD307FEF191CE9 /* Pods_ComoSdkTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ComoSdkTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC54A26751F08023B31BE133 /* Pods-ComoSdk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ComoSdk.debug.xcconfig"; path = "Target Support Files/Pods-ComoSdk/Pods-ComoSdk.debug.xcconfig"; sourceTree = "<group>"; };
 		FE5D6F856AE5ABD6C637D0C5 /* Pods-ComoSdkTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ComoSdkTests.release.xcconfig"; path = "Target Support Files/Pods-ComoSdkTests/Pods-ComoSdkTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 		BB56B6AA2864A7AA00512A34 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				BB56B6B92865AC4600512A34 /* Como.swift */,
 				BB56B6AC2864A7BA00512A34 /* Api */,
 			);
 			path = src;
@@ -180,10 +183,10 @@
 		BB56B6AC2864A7BA00512A34 /* Api */ = {
 			isa = PBXGroup;
 			children = (
+				BB56B6AD2864A7C200512A34 /* Api.swift */,
+				BB56B6AF2864AA1100512A34 /* Response.swift */,
 				BB56B6B62865010200512A34 /* Responses */,
 				BB56B6B12864B7EB00512A34 /* Models */,
-				BB56B6AD2864A7C200512A34 /* ComoApi.swift */,
-				BB56B6AF2864AA1100512A34 /* ComoResponse.swift */,
 			);
 			path = Api;
 			sourceTree = "<group>";
@@ -412,9 +415,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BB56B6AE2864A7C200512A34 /* ComoApi.swift in Sources */,
+				BB56B6BA2865AC4600512A34 /* Como.swift in Sources */,
+				BB56B6AE2864A7C200512A34 /* Api.swift in Sources */,
 				BB56B67F2864A75100512A34 /* ViewController.swift in Sources */,
-				BB56B6B02864AA1100512A34 /* ComoResponse.swift in Sources */,
+				BB56B6B02864AA1100512A34 /* Response.swift in Sources */,
 				BB56B6B82865010D00512A34 /* MemberDetailsResponse.swift in Sources */,
 				BB56B6B32864B7F900512A34 /* Customer.swift in Sources */,
 				BB56B6B52864B85400512A34 /* Purchase.swift in Sources */,

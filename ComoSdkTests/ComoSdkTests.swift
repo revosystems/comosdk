@@ -35,7 +35,7 @@ class ComoSdkTests: XCTestCase {
         HttpFake.addResponse(response)
         
         let expectation = XCTestExpectation(description:"Como Api Call")
-        ComoApi().getMemberDetails(customer: ComoCustomer(phoneNumber: "666777888", email: nil), purchase: ComoPurchase()) { result in
+        Como().getMemberDetails(customer: ComoCustomer(phoneNumber: "666777888", email: nil), purchase: ComoPurchase()) { result in
             print(result)
             expectation.fulfill()
         }
@@ -45,7 +45,7 @@ class ComoSdkTests: XCTestCase {
     
     func test_can_quick_register() throws {
         let expectation = XCTestExpectation(description:"Como Api Call")
-        ComoApi().quickRegister(phoneNumber: "666777888", authCode: "1234") { result in
+        Como().quickRegister(phoneNumber: "666777888", authCode: "1234") { result in
             print(result)
             expectation.fulfill()
         }
@@ -55,7 +55,7 @@ class ComoSdkTests: XCTestCase {
     
     func test_can_submit_event() throws {
         let expectation = XCTestExpectation(description:"Como Api Call")
-        ComoApi().submitEvent { result in
+        Como().submitEvent { result in
             print("done")
             expectation.fulfill()
         }

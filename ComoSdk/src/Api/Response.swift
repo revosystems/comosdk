@@ -1,18 +1,18 @@
 import Foundation
 
-public extension ComoApi {
+extension Como.Api {
 
-    enum ResponseStatus:String, Codable {
+    public enum ResponseStatus:String, Codable {
         case ok, error
     }
 
-    struct ResponseError:Codable {
-        let code:String
-        let message:String
-        let cause:String?
+    public struct ResponseError:Codable {
+        public let code:String
+        public let message:String
+        public let cause:String?
     }
 
-    class Response:Codable, CustomStringConvertible {
+    public class Response:Codable, CustomStringConvertible {
         let status:ResponseStatus
         let errors:[ResponseError]?
         
