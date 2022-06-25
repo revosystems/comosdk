@@ -101,10 +101,122 @@ class ComoSdkTests: XCTestCase {
         HttpFake.addResponse(response)
         
         let expectation = XCTestExpectation(description:"Como Api Call")
-        Como().getMemberDetails(customer: ComoCustomer(phoneNumber: "666777888", email: nil), purchase: ComoPurchase()) { result in
+        Como().getMemberDetails(customer: Como.Customer(phoneNumber: "666777888", email: nil), purchase: Como.Purchase()) { result in
             print(result)
             XCTAssertEqual("Jane", try! result.get().membership.firstName)
             XCTAssertEqual("Deal of the month: 20% off milkshakes", try! result.get().memberNotes.first!.content)
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 5)
+    }
+    
+    func test_can_get_benefits() throws {
+        let response = """
+        {
+            "status": "ok",
+            "deals": [
+                {
+                    "key": "4EGtHYXmIGHUR6wgf7PsH09CHt9C4gUYrA9BSVakMA8",
+                    "name": "5% off Deal",
+                    "benefits": [
+                        {
+                            "type": "discount",
+                            "sum": -60,
+                            "extendedData": [
+                                {
+                                    "item": {
+                                        "code": "1111",
+                                        "action": "sale",
+                                        "quantity": 5,
+                                        "netAmount": 1000,
+                                        "lineId": "1"
+                                    },
+                                    "discount": -50,
+                                    "discountedQuantity": 5,
+                                    "discountAllocation": [
+                                        {
+                                            "quantity": 5,
+                                            "unitDiscount": -10
+                                        }
+                                    ]
+                                },
+                                {
+                                    "item": {
+                                        "code": "5555",
+                                        "action": "sale",
+                                        "quantity": 1,
+                                        "netAmount": 200,
+                                        "lineId": "2"
+                                    },
+                                    "discount": -10,
+                                    "discountedQuantity": 1,
+                                    "discountAllocation": [
+                                        {
+                                            "quantity": 1,
+                                            "unitDiscount": -10
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "redeemAssets": [
+                {
+                    "key": "30yj439fK2zfUrcrir9D37n3kf8orXpPJADN8fnj56",
+                    "name": "Deal Code",
+                    "redeemable": true,
+                    "benefits": [
+                        {
+                            "type": "dealCode",
+                            "code": "65430"
+                        }
+                    ]
+                },
+                {
+                    "key": "2DmlFX3eGFnMP6QYd63dEUF2ptsMPm6i2hNHfrA8",
+                    "code": "27722",
+                    "name": "10% off - coffee only",
+                    "redeemable": true,
+                    "benefits": [
+                        {
+                            "type": "discount",
+                            "sum": -100,
+                            "extendedData": [
+                                {
+                                    "item": {
+                                        "code": "1111",
+                                        "action": "sale",
+                                        "quantity": 5,
+                                        "netAmount": 1000,
+                                        "lineId": "1"
+                                    },
+                                    "discount": -100,
+                                    "discountedQuantity": 5,
+                                    "discountAllocation": [
+                                        {
+                                            "quantity": 5,
+                                            "unitDiscount": -20
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "totalDiscountsSum": -160
+        }
+        """
+        
+        HttpFake.enable()
+        HttpFake.addResponse(response)
+        
+        let expectation = XCTestExpectation(description:"Como Api Call")
+        Como().getBenefits(customers: [Como.Customer(phoneNumber: "666777888", email: nil)], purchase: Como.Purchase(), redeemAssets: [Como.RedeemAsset(key:"124", code:nil)]) { result in
+            print(result)
             expectation.fulfill()
         }
         

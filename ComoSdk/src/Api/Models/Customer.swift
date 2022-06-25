@@ -1,6 +1,8 @@
 import Foundation
 
-public struct ComoCustomer : Codable {
-    let phoneNumber:String
-    let email:String?
+extension Como {
+    public struct Customer : Codable {
+        let phoneNumber:String
+        let email:String?
+    }
 }

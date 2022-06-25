@@ -1,5 +1,7 @@
 import Foundation
 
-public struct ComoPurchase : Codable {
-    
+extension Como {
+    public struct Purchase : Codable {
+        
+    }
 }
