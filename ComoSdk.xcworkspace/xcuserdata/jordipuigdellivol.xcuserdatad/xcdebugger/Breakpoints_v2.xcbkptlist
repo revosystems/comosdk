@@ -81,6 +81,53 @@
             endingLineNumber = "49"
             landmarkName = "test_can_quick_register()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "0C2C6CB5-E927-4EEA-91CD-BC73239398F2 - 8a293a4f63d49409"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;ComoSdk.Como.Api.BaseResponse, Swift.Error&gt;) -&gt; () in ComoSdkTests.ComoSdkTests.test_can_quick_register() throws -&gt; ()"
+                  moduleName = "ComoSdkTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jordipuigdellivol/git/ios/packages/ComoSdk/ComoSdkTests/ComoSdkTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "49"
+                  endingLineNumber = "49"
+                  offsetFromSymbolStart = "58">
+               </Location>
+               <Location
+                  uuid = "0C2C6CB5-E927-4EEA-91CD-BC73239398F2 - ff761a989fa07f32"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;ComoSdk.Como.Api.DefaultResponse, Swift.Error&gt;) -&gt; () in ComoSdkTests.ComoSdkTests.test_can_quick_register() throws -&gt; ()"
+                  moduleName = "ComoSdkTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jordipuigdellivol/git/ios/packages/ComoSdk/ComoSdkTests/ComoSdkTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "49"
+                  endingLineNumber = "49"
+                  offsetFromSymbolStart = "58">
+               </Location>
+               <Location
+                  uuid = "0C2C6CB5-E927-4EEA-91CD-BC73239398F2 - 53c45612a54008a8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;ComoSdk.Como.Api.Response, Swift.Error&gt;) -&gt; () in ComoSdkTests.ComoSdkTests.test_can_quick_register() throws -&gt; ()"
+                  moduleName = "ComoSdkTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jordipuigdellivol/git/ios/packages/ComoSdk/ComoSdkTests/ComoSdkTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "49"
+                  endingLineNumber = "49"
+                  offsetFromSymbolStart = "58">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
