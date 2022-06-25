@@ -39,20 +39,24 @@ extension Como {
             guard let data = response.data else {
                 return .failure(ResponseErrorCode.noData)
             }
-            
-            guard let apiResponse = try? T.decode(from: data) else {
+
+            do {
+                let apiResponse = try decoder.decode(T.self, from: data)
+                guard apiResponse.status == .ok else {
+                    return .failure(ResponseErrorCode.errorResponse(errors: apiResponse.errors))
+                }
+                
+                guard response.statusCode >= 200, response.statusCode < 300 else {
+                    return .failure(ResponseErrorCode.errorStatus)
+                }
+                
+                return .success(apiResponse)
+                
+            } catch {
+                print("[COMO - Decoding response error]" + error.localizedDescription)
+                print(error)
                 return .failure(ResponseErrorCode.invalidResponse)
             }
-            
-            guard apiResponse.status == .ok else {
-                return .failure(ResponseErrorCode.errorResponse(errors: apiResponse.errors))
-            }
-            
-            guard response.statusCode >= 200, response.statusCode < 300 else {
-                return .failure(ResponseErrorCode.errorStatus)
-            }
-            
-            return .success(apiResponse)
         }
         
         private var headers:[String:String] {
@@ -66,5 +70,11 @@ extension Como {
                 "X-Source-Version" : sourceVersion
             ]
         }
+        
+        lazy var decoder:JSONDecoder = {
+            let decoder = JSONDecoder()
+            decoder.dateDecodingStrategy = .iso8601
+            return decoder
+        }()
     }
 }

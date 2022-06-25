@@ -23,11 +23,77 @@ class ComoSdkTests: XCTestCase {
     func test_can_get_member_details() throws {
         let response = """
         {
-            "status": "ok",
-            "memberNotes": [{
-                "content": "Deal of the month: 20% off milkshakes",
-                "type": "text"
-            }]
+         "status": "ok",
+         "membership": {
+             "firstName": "Jane",
+             "lastName": "Smith",
+             "birthday": "1995-03-03",
+             "email": "jane@email.com",
+             "gender": "female",
+             "phoneNumber": "2128782328",
+             "status": "Active",
+             "createdOn": "2016-05-19T10:19:08Z",
+             "allowSMS": true,
+             "commonExtId": "1d722661-0a94-4a36-8dea-ae23e5e3f440",
+             "mobileAppUsed": true,
+             "mobileAppUsedLastDate": "2017-06-15T10:12:29Z",
+             "pointsBalance": {
+                 "usedByPayment": false,
+                 "balance": {
+                     "monetary": 2000,
+                     "nonMonetary": 2000
+                 }
+             },
+             "creditBalance": {
+                 "usedByPayment": true,
+                 "balance": {
+                     "monetary": 1000,
+                     "nonMonetary": 1000
+                 }
+             },
+             "tags": ["VIP", "Vegetarian"],
+             "assets": [
+                 {
+                     "key": "60y4KJDxK2zfUrcrir9D3K2OWyvorXpPJADNroNY8",
+                     "name": " 10% Off - Coffee Only!",
+                     "description": "10% Off for coffee products only",
+                     "status": "Active",
+                     "image": "https://storage-download.googleapis.com/server-prod/images/giftimg.jpg",
+                     "validFrom": "2017-01-05T20:59:59Z",
+                     "validUntil": "2017-08-05T20:59:59Z",
+                     "redeemable": true
+                 },
+                 {
+                     "key": "1zikFHzdF1jLPqMXdqrfEkJ2rOAXTX9Cw4BFIfq48",
+                     "name": "Sandwich Coupon",
+                     "description": "$5 Off Sandwich",
+                     "status": "Active",
+                     "image": "https://storage-download.googleapis.com/server-prod/images/giftimg.jpg",
+                     "validFrom": "2017-01-05T20:59:59Z",
+                     "validUntil": "2017-08-05T20:59:59Z",
+                     "redeemable": false,
+                     "nonRedeemableCause": {
+                         "code": "5523",
+                         "message": "Violation of asset conditions (no benefits)"
+                     }
+                 },
+                 {
+                     "key": "ps_6434757946179584_9f9fb0ddb9b278cbfb3d1f1bc95eaadffebb5ccc",
+                     "name": "Ice Cream for 60.0 points",
+                     "description": "Get free Ice Cream",
+                     "status": "Active",
+                     "image": "https://storage-download.googleapis.com/server-prod/images/giftimg.jpg",
+                     "validUntil": "2017-08-05T20:59:59Z",
+                     "redeemable": true
+                 }
+             ]
+         },
+         "memberNotes":[
+             {
+             "content": "Deal of the month: 20% off milkshakes",
+             "type": "text"
+             }
+         ]
         }
         """
         
@@ -37,6 +103,8 @@ class ComoSdkTests: XCTestCase {
         let expectation = XCTestExpectation(description:"Como Api Call")
         Como().getMemberDetails(customer: ComoCustomer(phoneNumber: "666777888", email: nil), purchase: ComoPurchase()) { result in
             print(result)
+            XCTAssertEqual("Jane", try! result.get().membership.firstName)
+            XCTAssertEqual("Deal of the month: 20% off milkshakes", try! result.get().memberNotes.first!.content)
             expectation.fulfill()
         }
         
