@@ -17,7 +17,7 @@ public class Como {
         api.post("getMemberDetails?returnAssets=active&expand=assets.redeemable", object:object, then:then)
     }
     
-    public func quickRegister(phoneNumber:String, email:String? = nil, authCode:String? = nil, then:@escaping(Result<Como.Api.Response, Error>) -> Void){
+    public func quickRegister(phoneNumber:String, email:String? = nil, authCode:String? = nil, then:@escaping(Result<Como.Api.DefaultResponse, Error>) -> Void){
                 
         struct QuickRegister : Codable {
             let customer:ComoCustomer
@@ -29,7 +29,7 @@ public class Como {
         api.post("registration/quick", object:object, then: then)
     }
     
-    public func submitEvent(then:@escaping(Result<Como.Api.Response, Error>) -> Void){
+    public func submitEvent(then:@escaping(Result<Como.Api.DefaultResponse, Error>) -> Void){
         api.post("submitEvent", then:then)
     }
 }

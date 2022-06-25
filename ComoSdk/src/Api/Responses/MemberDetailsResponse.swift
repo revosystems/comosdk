@@ -1,11 +1,11 @@
 import Foundation
 
 extension Como {
-    public class MemberDetailsResponse : Como.Api.Response  {
+    public class MemberDetailsResponse : Como.Api.Response, Codable  {
         //let membership:String? = nil
         let memberNotes:[MemberNote]
         
-        private enum CodingKeys: String, CodingKey {
+        /*private enum CodingKeys: String, CodingKey {
             case memberNotes
         }
         
@@ -13,7 +13,7 @@ extension Como {
             let container = try decoder.container(keyedBy: CodingKeys.self)
             self.memberNotes = try container.decode([MemberNote].self, forKey: .memberNotes)
             try super.init(from: decoder)
-        }
+        }*/
     }
 
     public class MemberNote:Codable {

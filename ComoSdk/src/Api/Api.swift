@@ -16,7 +16,7 @@ extension Como {
          
         
         //MARK: -
-        public func post<T>(_ url:String, object:Codable? = nil, then:@escaping(Result<T, Error>) -> Void) where T: Como.Api.Response {
+        public func post<T:Codable>(_ url:String, object:Codable? = nil, then:@escaping(Result<T, Error>) -> Void) where T: Como.Api.Response {
             
             guard let object = object else{
                 return Http.post(self.url + url, headers: headers) { response in
@@ -35,7 +35,7 @@ extension Como {
             }
         }
 
-        private func parse<T>(response:HttpResponse) -> Result<T, Error> where T:Como.Api.Response {
+        private func parse<T:Codable>(response:HttpResponse) -> Result<T, Error> where T:Como.Api.Response {
             guard let data = response.data else {
                 return .failure(ResponseErrorCode.noData)
             }
