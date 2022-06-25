@@ -217,6 +217,39 @@ class ComoSdkTests: XCTestCase {
         let expectation = XCTestExpectation(description:"Como Api Call")
         Como().getBenefits(customers: [Como.Customer(phoneNumber: "666777888", email: nil)], purchase: Como.Purchase(), redeemAssets: [Como.RedeemAsset(key:"124", code:nil)]) { result in
             print(result)
+            XCTAssertEqual(-160, try! result.get().totalDiscountsSum)
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 5)
+    }
+    
+    func test_can_pay(){
+        let response = """
+        {
+            "status": "ok",
+            "payments": [
+                {
+                    "paymentMethod": "meanOfPayment",
+                    "amount": -600
+                }
+            ],
+            "confirmation": "2b027fbd-d478-42d2-b7d9-9c7235ad6e5b",
+            "type": "memberCredit",
+            "updatedBalance": {
+                "monetary": 400,
+                "nonMonetary": 400
+            }
+        }
+        """
+        
+        HttpFake.enable()
+        HttpFake.addResponse(response)
+        
+        let expectation = XCTestExpectation(description:"Como Api Call")
+        Como().payment(customer: Como.Customer(phoneNumber: "666777888", email: nil), purchase: Como.Purchase(), amount:600) { result in
+            print(result)
+            XCTAssertEqual("2b027fbd-d478-42d2-b7d9-9c7235ad6e5b", try! result.get().confirmation)
             expectation.fulfill()
         }
         

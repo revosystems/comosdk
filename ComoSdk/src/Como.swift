@@ -30,6 +30,38 @@ public class Como {
         api.post("getBenefits?expand=discountByDiscount", object:object, then:then)
     }
     
+    public func payment(customer:Customer, purchase:Purchase, code:String? = nil, amount:Int, then:@escaping(Result<PaymentResponse, Error>) -> Void){
+        
+        struct Payment : Codable {
+            let customer:Customer
+            let purchase:Purchase
+            let code:String?
+            let amount:Int
+        }
+        
+        let object = Payment(customer: customer, purchase: purchase, code:code, amount:amount)
+                      
+        api.post("payment", object:object, then:then)
+    }
+    
+    public func cancelPayment(){
+        //TODO
+    }
+    
+    public func submitPurchase(){
+        //TODO
+    }
+    
+    public func voidPurchase(){
+        //TODO
+    }
+    
+    public func sendIdentificationCode(){
+        //TODO
+    }
+    
+    
+    
     public func quickRegister(phoneNumber:String, email:String? = nil, authCode:String? = nil, then:@escaping(Result<Como.Api.Response, Error>) -> Void){
                 
         struct QuickRegister : Codable {

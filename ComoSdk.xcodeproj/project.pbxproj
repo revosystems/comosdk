@@ -26,6 +26,7 @@
 		BB56B6BA2865AC4600512A34 /* Como.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB56B6B92865AC4600512A34 /* Como.swift */; };
 		BB56B6BC2867252600512A34 /* RedeemAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB56B6BB2867252600512A34 /* RedeemAsset.swift */; };
 		BB56B6BE2867255800512A34 /* GetBenefitsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB56B6BD2867255800512A34 /* GetBenefitsResponse.swift */; };
+		BB56B6C028673CC100512A34 /* PaymentResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB56B6BF28673CC100512A34 /* PaymentResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 		BB56B6B92865AC4600512A34 /* Como.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Como.swift; sourceTree = "<group>"; };
 		BB56B6BB2867252600512A34 /* RedeemAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedeemAsset.swift; sourceTree = "<group>"; };
 		BB56B6BD2867255800512A34 /* GetBenefitsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetBenefitsResponse.swift; sourceTree = "<group>"; };
+		BB56B6BF28673CC100512A34 /* PaymentResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentResponse.swift; sourceTree = "<group>"; };
 		D4C116E7F9DD307FEF191CE9 /* Pods_ComoSdkTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ComoSdkTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC54A26751F08023B31BE133 /* Pods-ComoSdk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ComoSdk.debug.xcconfig"; path = "Target Support Files/Pods-ComoSdk/Pods-ComoSdk.debug.xcconfig"; sourceTree = "<group>"; };
 		FE5D6F856AE5ABD6C637D0C5 /* Pods-ComoSdkTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ComoSdkTests.release.xcconfig"; path = "Target Support Files/Pods-ComoSdkTests/Pods-ComoSdkTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 			children = (
 				BB56B6B72865010D00512A34 /* MemberDetailsResponse.swift */,
 				BB56B6BD2867255800512A34 /* GetBenefitsResponse.swift */,
+				BB56B6BF28673CC100512A34 /* PaymentResponse.swift */,
 			);
 			path = Responses;
 			sourceTree = "<group>";
@@ -422,6 +425,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB56B6BA2865AC4600512A34 /* Como.swift in Sources */,
+				BB56B6C028673CC100512A34 /* PaymentResponse.swift in Sources */,
 				BB56B6BE2867255800512A34 /* GetBenefitsResponse.swift in Sources */,
 				BB56B6AE2864A7C200512A34 /* Api.swift in Sources */,
 				BB56B67F2864A75100512A34 /* ViewController.swift in Sources */,
