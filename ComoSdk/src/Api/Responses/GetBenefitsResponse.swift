@@ -10,10 +10,10 @@ extension Como {
         }
 
         required init(from decoder: Decoder) throws {
-            let container = try decoder.container(keyedBy: CodingKeys.self)
-            totalDiscountsSum = try container.decode(Int.self, forKey: .totalDiscountsSum)
-            deals = try container.decode([Deal].self, forKey: .deals)
-            redeemAssets = try container.decode([RedeemAssetResponse].self, forKey: .redeemAssets)
+            let container       = try decoder.container(keyedBy: CodingKeys.self)
+            totalDiscountsSum   = try container.decodeIfPresent(Int.self, forKey: .totalDiscountsSum)
+            deals               = try container.decodeIfPresent([Deal].self, forKey: .deals)
+            redeemAssets        = try container.decodeIfPresent([RedeemAssetResponse].self, forKey: .redeemAssets)
             try super.init(from: decoder)
         }
     }

@@ -31,7 +31,14 @@ class ComoMemberDetailsController : UIViewController, UITableViewDelegate {
     }
     
     @IBAction func onRedeemPressed(_ sender: Any) {
-        print(selectedBenefits.map { $0.name}.implode(", "))
+        let benefits = selectedBenefits.map { Como.RedeemAsset(key: $0.key, code:nil) }
+        
+        Como().getBenefits(customers: [details.membership.customer], purchase: Como.Purchase.fake(), redeemAssets: benefits) { result in
+            switch result {
+            case .failure(let error)    : print("Error")
+            case .success(let response) : print("OK")
+            }
+        }
     }
     
         

@@ -50,6 +50,10 @@ extension Como {
         public var fullName : String {
             firstName + " " + lastName
         }
+        
+        public var customer:Como.Customer {
+            Como.Customer(phoneNumber: phoneNumber, email: nil)
+        }
     }
 
     public struct Balance:Codable {

@@ -13,10 +13,10 @@ extension Como {
         
         required init(from decoder: Decoder) throws {
             let container   = try decoder.container(keyedBy: CodingKeys.self)
-            payments        = try container.decode([Payment].self, forKey: .payments)
-            confirmation    = try container.decode(String.self, forKey: .confirmation)
-            type            = try container.decode(String.self, forKey: .type)
-            updatedBalance  = try container.decode(Monetary.self, forKey: .updatedBalance)
+            payments        = try container.decodeIfPresent([Payment].self, forKey: .payments)
+            confirmation    = try container.decodeIfPresent(String.self, forKey: .confirmation)
+            type            = try container.decodeIfPresent(String.self, forKey: .type)
+            updatedBalance  = try container.decodeIfPresent(Monetary.self, forKey: .updatedBalance)
             try super.init(from: decoder)
         }
     }
