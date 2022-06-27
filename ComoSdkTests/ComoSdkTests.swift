@@ -34,7 +34,9 @@ class ComoSdkTests: XCTestCase {
              "status": "Active",
              "createdOn": "2016-05-19T10:19:08Z",
              "allowSMS": true,
+             "allowEmail" : true,
              "commonExtId": "1d722661-0a94-4a36-8dea-ae23e5e3f440",
+             "comoMemberId" : "1d722661-0a94-4a36-8dea-ae23e5e3f441",
              "mobileAppUsed": true,
              "mobileAppUsedLastDate": "2017-06-15T10:12:29Z",
              "pointsBalance": {
@@ -104,7 +106,7 @@ class ComoSdkTests: XCTestCase {
         Como().getMemberDetails(customer: Como.Customer(phoneNumber: "666777888", email: nil), purchase: Como.Purchase.fake()) { result in
             print(result)
             XCTAssertEqual("Jane", try! result.get().membership.firstName)
-            XCTAssertEqual("Deal of the month: 20% off milkshakes", try! result.get().memberNotes.first!.content)
+            XCTAssertEqual("Deal of the month: 20% off milkshakes", try! result.get().memberNotes!.first!.content)
             expectation.fulfill()
         }
         
