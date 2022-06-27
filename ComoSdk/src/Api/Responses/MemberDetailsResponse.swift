@@ -23,6 +23,10 @@ extension Como {
         let type:String
     }
     
+    public enum MemberShipStatus : String, Codable {
+        case active = "Active", inactive = "Inactive"
+    }
+    
     public struct Membership : Codable {
         let firstName:String
         let lastName:String
@@ -30,7 +34,7 @@ extension Como {
         let email:String?
         let gender:String?
         let phoneNumber:String
-        let status:String
+        let status:MemberShipStatus
         let createdOn:Date
         let allowSMS:Bool
         let commonExtId:String
@@ -41,6 +45,9 @@ extension Como {
         let tags:[String]
         let assets:[Asset]
         
+        public var fullName : String {
+            firstName + " " + lastName
+        }
     }
 
     public struct Balance:Codable {
