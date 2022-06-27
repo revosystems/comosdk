@@ -6,7 +6,8 @@ target 'ComoSdk' do
   use_frameworks!
   pod 'RevoFoundation'
 
-  pod 'RevoHttp' 
+  pod 'RevoHttp'
+  pod 'RevoUIComponents'
   # Pods for ComoSdk
 
   target 'ComoSdkTests' do

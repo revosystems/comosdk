@@ -2,10 +2,10 @@
 extension Como {
     
     public class PaymentResponse : Como.Api.Response  {
-        let payments:[Payment]
-        let confirmation:String
-        let type:String
-        let updatedBalance:Monetary
+        let payments:[Payment]!
+        let confirmation:String!
+        let type:String!
+        let updatedBalance:Monetary!
         
         private enum CodingKeys: String, CodingKey {
             case payments, confirmation, type, updatedBalance

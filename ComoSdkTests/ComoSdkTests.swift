@@ -128,7 +128,7 @@ class ComoSdkTests: XCTestCase {
         Como().getMemberDetails(customer: Como.Customer(phoneNumber: "666777888", email: nil), purchase: Como.Purchase.fake()) { result in
             print(result)
             do {
-                try result.get()
+                let _ = try result.get()
             }catch{
                 print(error)
                 expectation.fulfill()

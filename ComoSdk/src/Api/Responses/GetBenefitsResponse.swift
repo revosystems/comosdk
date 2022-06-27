@@ -1,9 +1,9 @@
 extension Como {
     
     public class GetBenefitsResponse : Como.Api.Response  {
-        let deals:[Deal]
-        let redeemAssets:[RedeemAssetResponse]
-        let totalDiscountsSum:Int
+        let deals:[Deal]!
+        let redeemAssets:[RedeemAssetResponse]!
+        let totalDiscountsSum:Int!
 
         private enum CodingKeys: String, CodingKey {
             case totalDiscountsSum, deals, redeemAssets

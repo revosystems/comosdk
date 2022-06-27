@@ -6,13 +6,13 @@ extension Como {
     public class Api {
     
         //let url:String = "https://api.prod.como.com/api/v4/advanced/"
-        let url:String = "https://api.prod.como.com/api/v4/advanced/"
+        let url:String = "https://api.prod.como.com/api/v4/"
         
         let apiKey:String        = "b1ad7faa"   //Dev api key
-        let branchId:String      = ""
-        let posId:String         = ""
-        let source:String        = ""
-        let sourceVersion:String = ""
+        let branchId:String      = "revo"
+        let posId:String         = "1"
+        let source:String        = "sdk"
+        let sourceVersion:String = "0.1.0"
          
         
         //MARK: -
@@ -24,7 +24,7 @@ extension Como {
                 }
             }
                     
-            guard let body = try? object.json() else {
+            guard let body = try? object.json(with:encoder) else {
                 return then(.failure(ResponseErrorCode.invalidInputData))
             }
             
@@ -53,12 +53,9 @@ extension Como {
                 }
                 return .success(apiResponse)
             } catch {
-                guard let apiResponse = try? Como.Api.Response.decode(from: data) else {
-                    print("[COMO - Decoding response error]" + error.localizedDescription)
-                    print(error)
-                    return .failure(ResponseErrorCode.invalidResponse)
-                }
-                return .failure(ResponseErrorCode.errorResponse(errors: apiResponse.errors))
+                print("[COMO - Decoding response error]" + error.localizedDescription)
+                print(error)
+                return .failure(ResponseErrorCode.invalidResponse)
             }
         }
         
@@ -78,6 +75,12 @@ extension Como {
             let decoder = JSONDecoder()
             decoder.dateDecodingStrategy = .iso8601
             return decoder
+        }()
+        
+        lazy var encoder:JSONEncoder = {
+            let encoder = JSONEncoder()
+            encoder.dateEncodingStrategy = .iso8601
+            return encoder
         }()
     }
 }

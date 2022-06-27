@@ -21,12 +21,23 @@ extension Como.Api {
         }
     }
     
-    enum ResponseErrorCode:Error {
+    enum ResponseErrorCode:Error, CustomStringConvertible {
         case invalidInputData
         case noData
         case errorStatus
         case invalidResponse
         case errorResponse(errors:[ResponseError]?)
+        
+        var description: String {
+            switch self {
+            case .invalidInputData : return  "Invalid Input data"
+            case .noData: return "Didn't receive response Data"
+            case .errorStatus: return "No 200 status received"
+            case .invalidResponse : return "Can't decode de response"
+            case .errorResponse(let errors) : return errors?.map { $0.message }.implode(", ") ?? "Unknown error"
+            }
+        }
+        
     }
 
 }

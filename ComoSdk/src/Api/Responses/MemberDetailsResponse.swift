@@ -3,17 +3,17 @@ import Foundation
 extension Como {
     
     public class MemberDetailsResponse : Como.Api.Response  {
-        let membership:Membership
-        let memberNotes:[MemberNote]
+        let membership:Membership!
+        let memberNotes:[MemberNote]?
         
         private enum CodingKeys: String, CodingKey {
             case membership, memberNotes
         }
         
         required init(from decoder: Decoder) throws {
-            let container = try decoder.container(keyedBy: CodingKeys.self)
-            membership = try container.decode(Membership.self, forKey: .membership)
-            memberNotes = try container.decode([MemberNote].self, forKey: .memberNotes)
+            let container   = try decoder.container(keyedBy: CodingKeys.self)
+            membership      = try container.decodeIfPresent(Membership.self, forKey: .membership)
+            memberNotes     = try container.decodeIfPresent([MemberNote].self, forKey: .memberNotes)
             try super.init(from: decoder)
         }
     }
@@ -37,12 +37,14 @@ extension Como {
         let status:MemberShipStatus
         let createdOn:Date
         let allowSMS:Bool
+        let allowEmail:Bool
         let commonExtId:String
-        let mobileAppUsed:Bool
-        let mobileAppUsedLastDate:Date
+        let comoMemberId:String
+        //let mobileAppUsed:Bool
+        //let mobileAppUsedLastDate:Date
         let pointsBalance:Balance
         let creditBalance:Balance
-        let tags:[String]
+        let tags:[String]?
         let assets:[Asset]
         
         public var fullName : String {
