@@ -111,6 +111,33 @@ class ComoSdkTests: XCTestCase {
         wait(for: [expectation], timeout: 5)
     }
     
+    func test_can_get_member_details_when_not_found() throws {
+        let response = """
+        {
+            "status":"error",
+            "errors":[
+                {"code":"4040000","message":"Not Found"}
+            ]
+        }
+        """
+        
+        HttpFake.enable()
+        HttpFake.addResponse(response)
+        
+        let expectation = XCTestExpectation(description:"Como Api Call")
+        Como().getMemberDetails(customer: Como.Customer(phoneNumber: "666777888", email: nil), purchase: Como.Purchase.fake()) { result in
+            print(result)
+            do {
+                try result.get()
+            }catch{
+                print(error)
+                expectation.fulfill()
+            }
+        }
+        
+        wait(for: [expectation], timeout: 5)
+    }
+    
     func test_can_get_benefits() throws {
         let response = """
         {

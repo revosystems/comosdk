@@ -6,9 +6,9 @@ extension Como {
     public class Api {
     
         //let url:String = "https://api.prod.como.com/api/v4/advanced/"
-        let url:String = "https://api.prod.bcomo.com/api/v4/advanced/"
+        let url:String = "https://api.prod.como.com/api/v4/advanced/"
         
-        let apiKey:String        = "TOKEN"
+        let apiKey:String        = "b1ad7faa"   //Dev api key
         let branchId:String      = ""
         let posId:String         = ""
         let source:String        = ""
@@ -40,6 +40,8 @@ extension Como {
                 return .failure(ResponseErrorCode.noData)
             }
 
+            print("[COMO] Response: " + response.toString)
+            
             do {
                 let apiResponse = try decoder.decode(T.self, from: data)
                 guard apiResponse.status == .ok else {
@@ -49,13 +51,14 @@ extension Como {
                 guard response.statusCode >= 200, response.statusCode < 300 else {
                     return .failure(ResponseErrorCode.errorStatus)
                 }
-                
                 return .success(apiResponse)
-                
             } catch {
-                print("[COMO - Decoding response error]" + error.localizedDescription)
-                print(error)
-                return .failure(ResponseErrorCode.invalidResponse)
+                guard let apiResponse = try? Como.Api.Response.decode(from: data) else {
+                    print("[COMO - Decoding response error]" + error.localizedDescription)
+                    print(error)
+                    return .failure(ResponseErrorCode.invalidResponse)
+                }
+                return .failure(ResponseErrorCode.errorResponse(errors: apiResponse.errors))
             }
         }
         
