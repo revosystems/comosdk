@@ -14,6 +14,7 @@ extension Como {
         let source:String        = "sdk"
         let sourceVersion:String = "0.1.0"
          
+        var debug:Bool = true
         
         //MARK: -
         public func post<T>(_ url:String, object:Codable? = nil, then:@escaping(Result<T, Error>) -> Void) where T: Como.Api.Response {
@@ -28,7 +29,9 @@ extension Como {
                 return then(.failure(ResponseErrorCode.invalidInputData))
             }
             
-            print("[COMO] Request: " + body)
+            if debug {
+                print("[COMO] Request: " + body)
+            }
             
             Http.post(self.url + url, body:body, headers: headers) { response in
                 then(self.parse(response: response))
@@ -40,7 +43,9 @@ extension Como {
                 return .failure(ResponseErrorCode.noData)
             }
 
-            print("[COMO] Response: " + response.toString)
+            if debug {
+                print("[COMO] Response: " + response.toString)
+            }
             
             do {
                 let apiResponse = try decoder.decode(T.self, from: data)
@@ -53,8 +58,10 @@ extension Como {
                 }
                 return .success(apiResponse)
             } catch {
-                print("[COMO - Decoding response error]" + error.localizedDescription)
-                print(error)
+                if debug {
+                    print("[COMO - Decoding response error]" + error.localizedDescription)
+                    print(error)
+                }
                 return .failure(ResponseErrorCode.invalidResponse)
             }
         }

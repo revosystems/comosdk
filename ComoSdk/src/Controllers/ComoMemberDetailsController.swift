@@ -3,7 +3,7 @@ import RevoUIComponents
 import RevoFoundation
 import RevoHttp
 
-class ComoMemberDetailsController : UIViewController {
+class ComoMemberDetailsController : UIViewController, UITableViewDelegate {
     
     @IBOutlet weak var nameLabel:UILabel!
     @IBOutlet weak var phoneLabel:UILabel!
@@ -19,13 +19,21 @@ class ComoMemberDetailsController : UIViewController {
     
     @IBOutlet weak var tableView:ContentStatusTableView!
     
+    @IBOutlet weak var redeemButton: UIButton!
+    
     var details:Como.MemberDetailsResponse!
     let dataSource = MembershipDataSource()
-    
+        
     
     override func viewDidLoad() {
         showMemberDetails()
+        redeemButton.isEnabled = false
     }
+    
+    @IBAction func onRedeemPressed(_ sender: Any) {
+        print(selectedBenefits.map { $0.name}.implode(", "))
+    }
+    
         
     func showMemberDetails(){
         tableView.state    = .content
@@ -43,4 +51,26 @@ class ComoMemberDetailsController : UIViewController {
         tableView.dataSource = dataSource.reload(membershipDetails: details)
         tableView.reloadData()
     }
+    
+    //MARK:- TableView Delegate
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        updateRedeemButton()
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        updateRedeemButton()
+    }
+    
+    func updateRedeemButton(){
+        let benefitsCount = tableView.indexPathsForSelectedRows?.count ?? 0
+        redeemButton.isEnabled = benefitsCount > 0
+        redeemButton.setTitle("Reedem (\(benefitsCount))", for: .normal)
+    }
+    
+    var selectedBenefits:[Como.Asset]{
+        tableView.indexPathsForSelectedRows?.map({ (indexPath:IndexPath) in
+            details.membership.assets[indexPath.row]
+        }) ?? []
+    }
+
 }
