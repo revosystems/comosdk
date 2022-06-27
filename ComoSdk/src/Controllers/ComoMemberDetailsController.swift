@@ -108,7 +108,7 @@ class ComoMemberDetailsController : UIViewController {
             guard let self = self else { return }
             self.loading.stop()
             switch result {
-            case .failure : self.showError(result: result)
+                case .failure : self.showError(result: result)
                 case .success : self.showMemberDetails(details: try! result.get())
             }
         }
