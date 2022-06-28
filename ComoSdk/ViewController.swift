@@ -16,11 +16,8 @@ class ViewController: UIViewController, ComoDelegate {
         showComoController(nil)
     }
 
-
     @IBAction func showComoController(_ sender: UIButton?) {
-        let nav = ComoController.make()
-        (nav.children.first as? ComoController)?.purchase = purchase
-        (nav.children.first as? ComoController)?.delegate = self
+        let nav = Como.controller(purchase: purchase, delegate: self)
         present(nav, animated: true)
     }
     

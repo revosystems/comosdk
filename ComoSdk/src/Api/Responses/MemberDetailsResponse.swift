@@ -66,11 +66,15 @@ extension Como {
         let nonMonetary:Int
     }
     
+    public enum AssetStatus : String, Codable {
+        case active = "Active", redeemed = "Reedemed", deactivated = "Deactivated", expired = "Expired", future = "Future", inProgress = "In Progress"
+    }
+    
     public struct Asset:Codable{
         let key:String
         let name:String
         let description: String?
-        let status:String
+        let status:AssetStatus
         let image: String?
         let validFrom:Date?
         let validUntil:Date?

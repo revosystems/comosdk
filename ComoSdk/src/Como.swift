@@ -1,4 +1,5 @@
 import Foundation
+import UIKit
 
 public class Como {
     
@@ -7,6 +8,15 @@ public class Como {
     }()
     
     let api:Api = Api()
+    
+    //MARK:Controllers
+    public static func controller(purchase:Como.Purchase, delegate:ComoDelegate) -> UINavigationController {
+        let nav = ComoController.make()
+        (nav.children.first as? ComoController)?.purchase = purchase
+        (nav.children.first as? ComoController)?.delegate = delegate
+        nav.modalPresentationStyle = .formSheet
+        return nav
+    }
     
     //MARK: - Methods
     public func getMemberDetails(customer:Customer, purchase:Purchase, then:@escaping(Result<MemberDetailsResponse, Error>) -> Void){
