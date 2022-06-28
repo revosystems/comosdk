@@ -16,8 +16,20 @@ extension Como {
          
         var debug:Bool = true
         
+        
+        public func post<T>(_ url:String, object:Codable? = nil) async throws -> T where T: Como.Api.Response {
+            return try await withCheckedThrowingContinuation { continuation in
+                post(url, object: object) { (result:Result<T,Error>) in
+                    switch result {
+                    case .success(let response) : continuation.resume(returning: response)
+                    case .failure(let error) : continuation.resume(throwing: error)
+                    }
+                }
+            }
+        }
+        
         //MARK: -
-        public func post<T>(_ url:String, object:Codable? = nil, then:@escaping(Result<T, Error>) -> Void) where T: Como.Api.Response {
+        private func post<T>(_ url:String, object:Codable? = nil, then:@escaping(Result<T, Error>) -> Void) where T: Como.Api.Response {
             
             guard let object = object else{
                 return Http.post(self.url + url, headers: headers) { response in

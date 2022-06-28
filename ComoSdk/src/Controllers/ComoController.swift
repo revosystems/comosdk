@@ -30,30 +30,34 @@ public class ComoController : UIViewController {
         findMemberButton.round(4)
     }
     
-    @IBAction func onFindMemberPressed(_ sender: Any?) {
+    @IBAction func onFindMemberPressed(_ sender: UIButton?) {
         guard let customer = customer() else {
             return inputField.shake()
         }
         loading.start(findMemberButton)
         
-        Como.shared.getMemberDetails(customer: customer, purchase: purchase) { [weak self] result in
-            guard let self = self else { return }
-            self.loading.stop(self.findMemberButton)
-            switch result {
-            case .failure(let error)   : self.onError(error)
-            case .success(let details) : self.onMemberFetched(details: details)
+        Task {
+            do {
+                let details = try await Como.shared.getMemberDetails(customer: customer, purchase: purchase)
+                loading.stop(self.findMemberButton)
+                onMemberFetched(details: details)
+            } catch {
+                loading.stop(sender)
+                onError(error)
             }
         }
     }
     
     @IBAction func onRegisterPressed(_ sender: UIButton?) {
         loading.start(sender)
-        Como.shared.quickRegister(phoneNumber: inputField.text!) { [weak self] result in
-            guard let self = self else { return }
-            self.loading.stop(sender)
-            switch result {
-            case .failure(let error)   : self.onError(error)
-            case .success : self.onFindMemberPressed(self.findMemberButton)
+        Task {
+            do {
+                try await Como.shared.quickRegister(phoneNumber: inputField.text!)
+                loading.stop(sender)
+                onFindMemberPressed(self.findMemberButton)
+            }catch{
+                loading.stop(sender)
+                onError(error)
             }
         }
     }
@@ -91,8 +95,13 @@ public class ComoController : UIViewController {
     }
     
     @IBAction func onVoidPurchasePressed(_ sender: Any) {
-        Como.shared.void(purchase: purchase) { result in
-            print("Voided")
+        Task {
+            do {
+                try await Como.shared.void(purchase: purchase)
+                print("Voided")
+            }catch{
+                print(error)
+            }
         }
     }
     

@@ -19,7 +19,7 @@ public class Como {
     }
     
     //MARK: - Methods
-    public func getMemberDetails(customer:Customer, purchase:Purchase, then:@escaping(Result<MemberDetailsResponse, Error>) -> Void){
+    public func getMemberDetails(customer:Customer, purchase:Purchase) async throws -> MemberDetailsResponse{
         
         struct MemberDetails : Codable {
             let customer:Customer
@@ -28,10 +28,10 @@ public class Como {
         
         let object = MemberDetails(customer: customer, purchase: purchase)
                       
-        api.post("getMemberDetails?returnAssets=active&expand=assets.redeemable", object:object, then:then)
+        return try await api.post("getMemberDetails?returnAssets=active&expand=assets.redeemable", object:object)
     }
     
-    public func getBenefits(customers:[Customer], purchase:Purchase, redeemAssets:[RedeemAsset], then:@escaping(Result<GetBenefitsResponse, Error>) -> Void){
+    public func getBenefits(customers:[Customer], purchase:Purchase, redeemAssets:[RedeemAsset]) async throws -> GetBenefitsResponse {
         
         struct GetBenefits : Codable {
             let customers:[Customer]
@@ -41,10 +41,10 @@ public class Como {
         
         let object = GetBenefits(customers: customers, purchase: purchase, redeemAssets:redeemAssets)
                       
-        api.post("getBenefits?expand=discountByDiscount", object:object, then:then)
+        return try await api.post("getBenefits?expand=discountByDiscount", object:object)
     }
     
-    public func payment(customer:Customer, purchase:Purchase, code:String? = nil, amount:Int, then:@escaping(Result<PaymentResponse, Error>) -> Void){
+    public func payment(customer:Customer, purchase:Purchase, code:String? = nil, amount:Int) async throws -> PaymentResponse {
         
         struct Payment : Codable {
             let customer:Customer
@@ -55,14 +55,14 @@ public class Como {
         
         let object = Payment(customer: customer, purchase: purchase, code:code, amount:amount)
                       
-        api.post("payment", object:object, then:then)
+        return try await api.post("payment", object:object)
     }
     
     public func cancelPayment(){
         //TODO
     }
     
-    public func submit(purchase:Como.Purchase, customer:Como.Customer? = nil, assets:[RedeemAsset]? = nil, deals:[RedeemAsset]? = nil, closed:Bool = false, then:@escaping(Result<Como.SubmitPurchaseResponse, Error>) -> Void){
+    public func submit(purchase:Como.Purchase, customer:Como.Customer? = nil, assets:[RedeemAsset]? = nil, deals:[RedeemAsset]? = nil, closed:Bool = false) async throws -> Como.SubmitPurchaseResponse {
         struct SubmitPurchase:Codable {
             let customer:Customer?
             let purchase:Purchase
@@ -70,19 +70,19 @@ public class Como {
             let deals:[RedeemAsset]?
         }
         let append = closed ? "" : "?status=open"
-        api.post("submitPurchase" + append, object:SubmitPurchase(customer:customer, purchase: purchase, redeemAssets: assets, deals: deals), then:then)
+        return try await api.post("submitPurchase" + append, object:SubmitPurchase(customer:customer, purchase: purchase, redeemAssets: assets, deals: deals))
     }
     
-    public func submit(purchase:Como.Purchase, customer:Como.Customer? = nil, assets:[RedeemAsset]? = nil, deals:[RedeemAsset]? = nil, then:@escaping(Result<Como.SubmitPurchaseResponse, Error>) -> Void){
-        submit(purchase: purchase, customer: customer, assets: assets, deals: deals, closed: true, then: then)
+    public func submit(purchase:Como.Purchase, customer:Como.Customer? = nil, assets:[RedeemAsset]? = nil, deals:[RedeemAsset]? = nil) async throws -> Como.SubmitPurchaseResponse {
+        return try await submit(purchase: purchase, customer: customer, assets: assets, deals: deals, closed: true)
     }
     
-    public func void(purchase:Como.Purchase, then:@escaping(Result<Como.Api.Response, Error>) -> Void){
+    public func void(purchase:Como.Purchase) async throws -> Como.Api.Response {
         struct VoidPurchase : Codable {
             let purchase:Purchase
         }
         
-        api.post("voidPurchase", object:VoidPurchase(purchase: purchase), then:then)
+        return try await api.post("voidPurchase", object:VoidPurchase(purchase: purchase))
     }
     
     public func sendIdentificationCode(){
@@ -91,7 +91,7 @@ public class Como {
     
     
     
-    public func quickRegister(phoneNumber:String, email:String? = nil, authCode:String? = nil, then:@escaping(Result<Como.Api.Response, Error>) -> Void){
+    public func quickRegister(phoneNumber:String, email:String? = nil, authCode:String? = nil) async throws -> Como.Api.Response {
                 
         struct QuickRegister : Codable {
             let customer:Customer
@@ -100,10 +100,10 @@ public class Como {
         
         let object = QuickRegister(customer: Customer(phoneNumber: phoneNumber, email: email), quickRegistrationCode: authCode)
         
-        api.post("registration/quick", object:object, then: then)
+        return try await api.post("registration/quick", object:object)
     }
     
-    public func submitEvent(then:@escaping(Result<Como.Api.Response, Error>) -> Void){
-        api.post("submitEvent", then:then)
+    public func submitEvent() async throws -> Como.Api.Response {
+        return try await api.post("submitEvent")
     }
 }

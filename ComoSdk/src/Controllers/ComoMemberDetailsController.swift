@@ -43,10 +43,12 @@ class ComoMemberDetailsController : UIViewController, UITableViewDelegate {
     }
     
     func getBenefits(redeem:[Como.RedeemAsset]){
-        Como.shared.getBenefits(customers: [details.membership.customer], purchase: purchase, redeemAssets: redeem) { [weak self] result in
-            switch result {
-            case .failure(let error)    : print("Error")
-            case .success(let response) : self?.redeem(response)
+        Task {
+            do{
+                let response = try await Como.shared.getBenefits(customers: [details.membership.customer], purchase: purchase, redeemAssets: redeem)
+                self.redeem(response)
+            } catch {
+                print(error)
             }
         }
     }

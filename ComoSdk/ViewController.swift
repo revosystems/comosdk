@@ -26,10 +26,12 @@ class ViewController: UIViewController, ComoDelegate {
         let assets = benefits?.redeemAssets?.map { Como.RedeemAsset(key: $0.key, appliedAmount: 0, code:nil)}
         let deals  = benefits?.deals?.map { Como.RedeemAsset(key: $0.key, appliedAmount: 0, code:nil) }
         
-        Como.shared.submit(purchase: Como.Purchase.fake(), customer:customer, assets: assets, deals: deals) { result in
-            switch result {
-            case .failure(let error) : print("Error")
-            case .success(let response) : print("OK")
+        Task {
+            do {
+                let response = try await Como.shared.submit(purchase: Como.Purchase.fake(), customer:customer, assets: assets, deals: deals)
+                print("OK")
+            }catch{
+                print("Error")
             }
         }
     }
