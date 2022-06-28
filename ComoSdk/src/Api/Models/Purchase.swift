@@ -10,9 +10,10 @@ extension Como {
         let items:[PurchaseLine]
         
         static func fake() -> Purchase {
-            return Purchase(openTime: Date(), transactionId: "1", totalAmount: 200, orderType: "dineIn", employee: "Jordi", items: [PurchaseLine.fake()])
+            return Purchase(openTime: Date(), transactionId: "\(Int.random(in: 0...9999))", totalAmount: 200, orderType: "dineIn", employee: "Jordi", items: [PurchaseLine.fake()])
         }
     }
+
     
     public struct PurchaseLine : Codable {
         let lineId:String

@@ -1,17 +1,45 @@
 import UIKit
 
-class ViewController: UIViewController {
-
+class ViewController: UIViewController, ComoDelegate {
+    
+    var benefits:Como.GetBenefitsResponse?
+    var customer:Como.Customer?
+    
+    let purchase = Como.Purchase.fake()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        let nav = ComoController.make()
-        present(nav, animated: true)
+        showComoController(nil)
     }
 
 
+    @IBAction func showComoController(_ sender: UIButton?) {
+        let nav = ComoController.make()
+        (nav.children.first as? ComoController)?.purchase = purchase
+        (nav.children.first as? ComoController)?.delegate = self
+        present(nav, animated: true)
+    }
+    
+    @IBAction func submitThePurchase(_ sender: UIButton?) {
+        
+        let assets = benefits?.redeemAssets?.map { Como.RedeemAsset(key: $0.key, appliedAmount: 0, code:nil)}
+        let deals  = benefits?.deals?.map { Como.RedeemAsset(key: $0.key, appliedAmount: 0, code:nil) }
+        
+        Como().submit(purchase: Como.Purchase.fake(), customer:customer, assets: assets, deals: deals) { result in
+            switch result {
+            case .failure(let error) : print("Error")
+            case .success(let response) : print("OK")
+            }
+        }
+    }
+    
+    func como(onBenefitsSelected benefits: Como.GetBenefitsResponse, customer:Como.Customer) {
+        self.benefits = benefits
+    }
+    
 }
 

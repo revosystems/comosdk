@@ -1,9 +1,9 @@
 extension Como {
     
     public class GetBenefitsResponse : Como.Api.Response  {
-        let deals:[Deal]!
-        let redeemAssets:[RedeemAssetResponse]!
-        let totalDiscountsSum:Int!
+        let deals:[Deal]?
+        let redeemAssets:[RedeemAssetResponse]?
+        let totalDiscountsSum:Int?
 
         private enum CodingKeys: String, CodingKey {
             case totalDiscountsSum, deals, redeemAssets
@@ -21,7 +21,7 @@ extension Como {
     public struct Deal : Codable {
         let key:String
         let name:String
-        let benefits:[Benefit]
+        let benefits:[Benefit]?
     }
     
     public struct Benefit : Codable {

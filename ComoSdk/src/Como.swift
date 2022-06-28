@@ -48,12 +48,27 @@ public class Como {
         //TODO
     }
     
-    public func submitPurchase(){
-        //TODO
+    public func submit(purchase:Como.Purchase, customer:Como.Customer? = nil, assets:[RedeemAsset]? = nil, deals:[RedeemAsset]? = nil, closed:Bool = false, then:@escaping(Result<Como.SubmitPurchaseResponse, Error>) -> Void){
+        struct SubmitPurchase:Codable {
+            let customer:Customer?
+            let purchase:Purchase
+            let redeemAssets:[RedeemAsset]?
+            let deals:[RedeemAsset]?
+        }
+        let append = closed ? "" : "?status=open"
+        api.post("submitPurchase" + append, object:SubmitPurchase(customer:customer, purchase: purchase, redeemAssets: assets, deals: deals), then:then)
     }
     
-    public func voidPurchase(){
-        //TODO
+    public func submit(purchase:Como.Purchase, customer:Como.Customer? = nil, assets:[RedeemAsset]? = nil, deals:[RedeemAsset]? = nil, then:@escaping(Result<Como.SubmitPurchaseResponse, Error>) -> Void){
+        submit(purchase: purchase, customer: customer, assets: assets, deals: deals, closed: true, then: then)
+    }
+    
+    public func void(purchase:Como.Purchase, then:@escaping(Result<Como.Api.Response, Error>) -> Void){
+        struct VoidPurchase : Codable {
+            let purchase:Purchase
+        }
+        
+        api.post("voidPurchase", object:VoidPurchase(purchase: purchase), then:then)
     }
     
     public func sendIdentificationCode(){

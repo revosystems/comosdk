@@ -24,6 +24,9 @@ class ComoMemberDetailsController : UIViewController, UITableViewDelegate {
     var details:Como.MemberDetailsResponse!
     let dataSource = MembershipDataSource()
         
+    var delegate:ComoDelegate?
+    var purchase:Como.Purchase!
+    
     
     override func viewDidLoad() {
         showMemberDetails()
@@ -31,16 +34,29 @@ class ComoMemberDetailsController : UIViewController, UITableViewDelegate {
     }
     
     @IBAction func onRedeemPressed(_ sender: Any) {
-        let benefits = selectedBenefits.map { Como.RedeemAsset(key: $0.key, code:nil) }
-        
-        Como().getBenefits(customers: [details.membership.customer], purchase: Como.Purchase.fake(), redeemAssets: benefits) { result in
+        let benefits = selectedBenefits.map { Como.RedeemAsset(key: $0.key, appliedAmount: nil, code:nil) }
+        getBenefits(redeem: benefits)
+    }
+    
+    @IBAction func onDonePressed(_ sender: Any) {
+        getBenefits(redeem: [])
+    }
+    
+    func getBenefits(redeem:[Como.RedeemAsset]){
+        Como().getBenefits(customers: [details.membership.customer], purchase: purchase, redeemAssets: redeem) { [weak self] result in
             switch result {
             case .failure(let error)    : print("Error")
-            case .success(let response) : print("OK")
+            case .success(let response) : self?.redeem(response)
             }
         }
     }
     
+    func redeem(_ response:Como.GetBenefitsResponse){
+        dismiss(animated: true) { [weak self] in
+            guard let self = self else { return }
+            self.delegate?.como(onBenefitsSelected: response, customer:self.details.membership.customer)
+        }
+    }
         
     func showMemberDetails(){
         tableView.state    = .content
