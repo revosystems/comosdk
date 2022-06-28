@@ -2,6 +2,10 @@ import Foundation
 
 public class Como {
     
+    static var shared:Como = {
+        Como()
+    }()
+    
     let api:Api = Api()
     
     //MARK: - Methods

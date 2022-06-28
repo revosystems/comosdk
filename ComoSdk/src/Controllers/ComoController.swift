@@ -36,7 +36,7 @@ public class ComoController : UIViewController {
         }
         loading.start(findMemberButton)
         
-        Como().getMemberDetails(customer: customer, purchase: purchase) { [weak self] result in
+        Como.shared.getMemberDetails(customer: customer, purchase: purchase) { [weak self] result in
             guard let self = self else { return }
             self.loading.stop(self.findMemberButton)
             switch result {
@@ -48,7 +48,7 @@ public class ComoController : UIViewController {
     
     @IBAction func onRegisterPressed(_ sender: UIButton?) {
         loading.start(sender)
-        Como().quickRegister(phoneNumber: inputField.text!) { [weak self] result in
+        Como.shared.quickRegister(phoneNumber: inputField.text!) { [weak self] result in
             guard let self = self else { return }
             self.loading.stop(sender)
             switch result {
@@ -91,7 +91,7 @@ public class ComoController : UIViewController {
     }
     
     @IBAction func onVoidPurchasePressed(_ sender: Any) {
-        Como().void(purchase: purchase) { result in
+        Como.shared.void(purchase: purchase) { result in
             print("Voided")
         }
     }
