@@ -24,7 +24,7 @@ class ViewController: UIViewController {
     @IBAction func submitThePurchase(_ sender: UIButton?) {
         Task {
             do {
-                let response = try await Como.shared.currentSale?.submit()
+                let response = try await Como.shared.currentSale?.submit(closed:true)
                 print("OK")
             }catch{
                 print("Error")
