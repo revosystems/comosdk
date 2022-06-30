@@ -27,9 +27,7 @@ public class Como {
     
     //MARK: - Methods
     public func getMemberDetails(customer:Customer, purchase:Purchase) async throws -> MemberDetailsResponse{
-        guard let api = api else {
-            throw Como.Api.ResponseErrorCode.sdkNotSettedUp
-        }
+        try validateInitialized()
         
         struct MemberDetails : Codable {
             let customer:Customer
@@ -38,14 +36,12 @@ public class Como {
         
         let object = MemberDetails(customer: customer, purchase: purchase)
                       
-        return try await api.post("getMemberDetails?returnAssets=active&expand=assets.redeemable", object:object)
+        return try await api!.post("getMemberDetails?returnAssets=active&expand=assets.redeemable", object:object)
     }
     
     public func getBenefits(customers:[Customer], purchase:Purchase, redeemAssets:[RedeemAsset]) async throws -> GetBenefitsResponse {
         
-        guard let api = api else {
-            throw Como.Api.ResponseErrorCode.sdkNotSettedUp
-        }
+        try validateInitialized()
         
         struct GetBenefits : Codable {
             let customers:[Customer]
@@ -55,14 +51,12 @@ public class Como {
         
         let object = GetBenefits(customers: customers, purchase: purchase, redeemAssets:redeemAssets)
                       
-        return try await api.post("getBenefits?expand=discountByDiscount", object:object)
+        return try await api!.post("getBenefits?expand=discountByDiscount", object:object)
     }
     
     public func payment(customer:Customer, purchase:Purchase, code:String? = nil, amount:Int) async throws -> PaymentResponse {
         
-        guard let api = api else {
-            throw Como.Api.ResponseErrorCode.sdkNotSettedUp
-        }
+        try validateInitialized()
         
         struct Payment : Codable {
             let customer:Customer
@@ -73,7 +67,7 @@ public class Como {
         
         let object = Payment(customer: customer, purchase: purchase, code:code, amount:amount)
                       
-        return try await api.post("payment", object:object)
+        return try await api!.post("payment", object:object)
     }
     
     public func cancelPayment(){
@@ -82,9 +76,7 @@ public class Como {
     
     public func submit(purchase:Como.Purchase, customer:Como.Customer? = nil, assets:[RedeemAsset]? = nil, deals:[RedeemAsset]? = nil, closed:Bool = false) async throws -> Como.SubmitPurchaseResponse {
         
-        guard let api = api else {
-            throw Como.Api.ResponseErrorCode.sdkNotSettedUp
-        }
+        try validateInitialized()
         
         struct SubmitPurchase:Codable {
             let customer:Customer?
@@ -93,29 +85,22 @@ public class Como {
             let deals:[RedeemAsset]?
         }
         let append = closed ? "" : "?status=open"
-        return try await api.post("submitPurchase" + append, object:SubmitPurchase(customer:customer, purchase: purchase, redeemAssets: assets, deals: deals))
+        return try await api!.post("submitPurchase" + append, object:SubmitPurchase(customer:customer, purchase: purchase, redeemAssets: assets, deals: deals))
     }
     
     public func submit(purchase:Como.Purchase, customer:Como.Customer? = nil, assets:[RedeemAsset]? = nil, deals:[RedeemAsset]? = nil) async throws -> Como.SubmitPurchaseResponse {
-        
-        guard let api = api else {
-            throw Como.Api.ResponseErrorCode.sdkNotSettedUp
-        }
-        
         return try await submit(purchase: purchase, customer: customer, assets: assets, deals: deals, closed: true)
     }
     
     public func void(purchase:Como.Purchase) async throws -> Como.Api.Response {
         
-        guard let api = api else {
-            throw Como.Api.ResponseErrorCode.sdkNotSettedUp
-        }
+        try validateInitialized()
         
         struct VoidPurchase : Codable {
             let purchase:Purchase
         }
         
-        return try await api.post("voidPurchase", object:VoidPurchase(purchase: purchase))
+        return try await api!.post("voidPurchase", object:VoidPurchase(purchase: purchase))
     }
     
     public func sendIdentificationCode(){
@@ -126,9 +111,7 @@ public class Como {
     
     public func quickRegister(phoneNumber:String, email:String? = nil, authCode:String? = nil) async throws -> Como.Api.Response {
                 
-        guard let api = api else {
-            throw Como.Api.ResponseErrorCode.sdkNotSettedUp
-        }
+        try validateInitialized()
         
         struct QuickRegister : Codable {
             let customer:Customer
@@ -137,14 +120,17 @@ public class Como {
         
         let object = QuickRegister(customer: Customer(phoneNumber: phoneNumber, email: email), quickRegistrationCode: authCode)
         
-        return try await api.post("registration/quick", object:object)
+        return try await api!.post("registration/quick", object:object)
     }
     
     public func submitEvent() async throws -> Como.Api.Response {
-        guard let api = api else {
+        try validateInitialized()
+        return try await api!.post("submitEvent")
+    }
+    
+    private func validateInitialized() throws{
+        guard api != nil else {
             throw Como.Api.ResponseErrorCode.sdkNotSettedUp
         }
-        
-        return try await api.post("submitEvent")
     }
 }

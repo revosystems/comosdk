@@ -88,7 +88,7 @@ public class ComoController : UIViewController {
     @IBAction func onVoidPurchasePressed(_ sender: Any) {
         Task {
             do {
-                try await Como.shared.void(purchase: Como.shared.currentSale!.purchase)
+                try await Como.shared.currentSale!.void()
                 print("Voided")
             }catch{
                 print(error)

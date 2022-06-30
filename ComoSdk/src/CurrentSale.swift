@@ -13,22 +13,24 @@ extension Como {
             self.purchase = purchase
         }
         
-        func getBenefits(assets:[Como.RedeemAsset]){
-            Task {
-                do{
-                    let response = try await Como.shared.getBenefits(customers: (customer != nil) ? [customer!] : [], purchase: purchase, redeemAssets: assets)
-                    benefits = response
-                } catch {
-                    print(error)
-                }
-            }
+        @discardableResult
+        func getBenefits() async throws -> Como.GetBenefitsResponse{
+            let response = try await Como.shared.getBenefits(customers: (customer != nil) ? [customer!] : [], purchase: purchase, redeemAssets: redeemAssets ?? [])
+            benefits = response
+            return response
         }
         
+        @discardableResult
         func submit(closed:Bool) async throws -> SubmitPurchaseResponse {
             let assets = benefits?.redeemAssets?.map { Como.RedeemAsset(key: $0.key, appliedAmount: 0, code:$0.code) }
             let deals  = benefits?.deals?.map        { Como.RedeemAsset(key: $0.key, appliedAmount: 0, code:nil) }
             
             return try await Como.shared.submit(purchase: purchase, customer:customer, assets: assets, deals: deals, closed: closed)
+        }
+        
+        @discardableResult
+        func void() async throws -> Como.Api.Response {
+            return try await Como.shared.void(purchase: purchase)
         }
     }
 }

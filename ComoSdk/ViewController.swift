@@ -24,16 +24,13 @@ class ViewController: UIViewController {
     @IBAction func submitThePurchase(_ sender: UIButton?) {
         Task {
             do {
+                try await Como.shared.currentSale?.getBenefits()
                 let response = try await Como.shared.currentSale?.submit(closed:true)
                 print("OK")
             }catch{
                 print("Error")
             }
         }
-    }
-    
-    func como(onRedeemAssetsSelected assets: [Como.RedeemAsset], customer:Como.Customer?) {
-        Como.shared.currentSale?.getBenefits(assets: assets)
     }
     
 }
