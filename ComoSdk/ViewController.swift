@@ -36,9 +36,21 @@ class ViewController: UIViewController, ComoDelegate {
         }
     }
     
-    func como(onBenefitsSelected benefits: Como.GetBenefitsResponse, customer:Como.Customer) {
-        self.benefits = benefits
+    func como(onBenefitsSelected benefits: [Como.RedeemAsset], customer:Como.Customer?) {
+        getBenefits(customer:customer, assets:benefits)
     }
     
+    
+    func getBenefits(customer:Como.Customer?, assets:[Como.RedeemAsset]){
+        Task {
+            do{
+                let response = try await Como.shared.getBenefits(customers: (customer != nil) ? [customer!] : [], purchase: purchase, redeemAssets: assets)
+                benefits = response
+            } catch {
+                print(error)
+            }
+        }
+
+    }
 }
 

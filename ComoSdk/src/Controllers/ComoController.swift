@@ -2,7 +2,7 @@ import UIKit
 import RevoFoundation
 
 public protocol ComoDelegate {
-    func como(onBenefitsSelected benefits:Como.GetBenefitsResponse, customer:Como.Customer)
+    func como(onBenefitsSelected benefits:[Como.RedeemAsset], customer:Como.Customer?)
 }
 
 public class ComoController : UIViewController {
@@ -102,6 +102,14 @@ public class ComoController : UIViewController {
             }catch{
                 print(error)
             }
+        }
+    }
+    
+    public override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "coupons" {
+            let vc = segue.destination as! ComoCouponsController
+            vc.purchase = purchase
+            vc.delegate = delegate
         }
     }
     

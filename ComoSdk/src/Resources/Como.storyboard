@@ -117,6 +117,7 @@ enjoy benefits and accumulate points?</string>
                                 <buttonConfiguration key="configuration" style="plain" title="Add Coupon Code"/>
                                 <connections>
                                     <action selector="onAddCouponCodePressed:" destination="zag-Q7-FfE" eventType="touchUpInside" id="TDc-Vb-ZMa"/>
+                                    <segue destination="5Qo-sF-hG0" kind="show" identifier="coupons" id="t1w-d6-7yc"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="714-jj-Ek1">
@@ -323,10 +324,24 @@ enjoy benefits and accumulate points?</string>
                                     <action selector="onRedeemPressed:" destination="jFq-eJ-UDV" eventType="touchUpInside" id="EHb-xk-r2M"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jZA-Gi-dUe">
+                                <rect key="frame" x="20" y="575" width="140" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31" id="ycw-9g-34q"/>
+                                    <constraint firstAttribute="width" constant="102" id="zBc-CC-krG"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Coupon Codes"/>
+                                <connections>
+                                    <action selector="onRedeemPressed:" destination="jFq-eJ-UDV" eventType="touchUpInside" id="WLQ-Sl-b7n"/>
+                                    <segue destination="5Qo-sF-hG0" kind="show" identifier="coupons" id="gEc-nq-9f4"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="tfx-Dz-sN7"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="jZA-Gi-dUe" firstAttribute="leading" secondItem="tfx-Dz-sN7" secondAttribute="leading" constant="20" id="BXI-SI-eAh"/>
                             <constraint firstItem="tpT-mC-9J5" firstAttribute="trailing" secondItem="tfx-Dz-sN7" secondAttribute="trailing" id="Che-d8-0H5"/>
                             <constraint firstItem="s8y-QH-MU7" firstAttribute="trailing" secondItem="tfx-Dz-sN7" secondAttribute="trailing" id="NOC-nd-OfI"/>
                             <constraint firstItem="tpT-mC-9J5" firstAttribute="leading" secondItem="tfx-Dz-sN7" secondAttribute="leading" id="PZq-mj-GoJ"/>
@@ -334,6 +349,7 @@ enjoy benefits and accumulate points?</string>
                             <constraint firstItem="tfx-Dz-sN7" firstAttribute="trailing" secondItem="49z-Uf-2tE" secondAttribute="trailing" constant="6" id="WuN-i4-enz"/>
                             <constraint firstItem="tfx-Dz-sN7" firstAttribute="bottom" secondItem="49z-Uf-2tE" secondAttribute="bottom" constant="14" id="Xjr-st-OGD"/>
                             <constraint firstItem="s8y-QH-MU7" firstAttribute="leading" secondItem="tfx-Dz-sN7" secondAttribute="leading" id="arI-PQ-UFJ"/>
+                            <constraint firstItem="tfx-Dz-sN7" firstAttribute="bottom" secondItem="jZA-Gi-dUe" secondAttribute="bottom" constant="14" id="mw8-yN-niV"/>
                             <constraint firstItem="s8y-QH-MU7" firstAttribute="top" secondItem="tpT-mC-9J5" secondAttribute="bottom" id="ric-ID-gs1"/>
                             <constraint firstItem="49z-Uf-2tE" firstAttribute="top" secondItem="s8y-QH-MU7" secondAttribute="bottom" constant="17" id="snZ-St-mg3"/>
                         </constraints>
@@ -366,7 +382,54 @@ enjoy benefits and accumulate points?</string>
             </objects>
             <point key="canvasLocation" x="882.73381294964031" y="98.561151079136692"/>
         </scene>
+        <!--Como Coupons Controller-->
+        <scene sceneID="0hC-Nz-sFl">
+            <objects>
+                <viewController id="5Qo-sF-hG0" customClass="ComoCouponsController" customModule="ComoSdk" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hDR-oM-HXW">
+                        <rect key="frame" x="0.0" y="0.0" width="540" height="620"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m3c-fX-Vs1">
+                                <rect key="frame" x="418" y="569" width="102" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="102" id="KqS-IT-7mw"/>
+                                    <constraint firstAttribute="height" constant="31" id="u7w-qx-RQl"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Redeem"/>
+                                <connections>
+                                    <action selector="onRedeemPressed:" destination="5Qo-sF-hG0" eventType="touchUpInside" id="0VT-vG-Ubz"/>
+                                    <action selector="onRedeemPressed:" destination="jFq-eJ-UDV" eventType="touchUpInside" id="jyT-UG-FMR"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ww5-xE-ZcB">
+                                <rect key="frame" x="170" y="114" width="196" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="85s-LU-a9x"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="85s-LU-a9x" firstAttribute="bottom" secondItem="m3c-fX-Vs1" secondAttribute="bottom" constant="20" id="PGY-oo-6H5"/>
+                            <constraint firstItem="85s-LU-a9x" firstAttribute="trailing" secondItem="m3c-fX-Vs1" secondAttribute="trailing" constant="20" id="zx4-Mb-iT3"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="6fL-cF-nsi"/>
+                    <connections>
+                        <outlet property="textField" destination="ww5-xE-ZcB" id="wmi-bu-fHc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="i51-f4-vn4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="602" y="883"/>
+        </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="gEc-nq-9f4"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="face.dashed" catalog="system" width="128" height="121"/>
         <image name="message.fill" catalog="system" width="128" height="113"/>

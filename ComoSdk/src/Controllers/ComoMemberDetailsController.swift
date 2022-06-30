@@ -35,30 +35,19 @@ class ComoMemberDetailsController : UIViewController, UITableViewDelegate {
     
     @IBAction func onRedeemPressed(_ sender: Any) {
         let benefits = selectedBenefits.map { Como.RedeemAsset(key: $0.key, appliedAmount: nil, code:nil) }
-        getBenefits(redeem: benefits)
+        dismiss(animated: true){ [weak self] in
+            guard let self = self else { return }
+            self.delegate?.como(onBenefitsSelected: benefits, customer:self.details.membership.customer)
+        }
     }
     
     @IBAction func onDonePressed(_ sender: Any) {
-        getBenefits(redeem: [])
-    }
-    
-    func getBenefits(redeem:[Como.RedeemAsset]){
-        Task {
-            do{
-                let response = try await Como.shared.getBenefits(customers: [details.membership.customer], purchase: purchase, redeemAssets: redeem)
-                self.redeem(response)
-            } catch {
-                print(error)
-            }
-        }
-    }
-    
-    func redeem(_ response:Como.GetBenefitsResponse){
-        dismiss(animated: true) { [weak self] in
+        dismiss(animated: true){ [weak self] in
             guard let self = self else { return }
-            self.delegate?.como(onBenefitsSelected: response, customer:self.details.membership.customer)
+            self.delegate?.como(onBenefitsSelected: [], customer:self.details.membership.customer)
         }
     }
+    
         
     func showMemberDetails(){
         tableView.state    = .content
@@ -98,4 +87,13 @@ class ComoMemberDetailsController : UIViewController, UITableViewDelegate {
         }) ?? []
     }
 
+    
+    public override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "coupons" {
+            let vc = segue.destination as! ComoCouponsController
+            vc.purchase = purchase
+            vc.delegate = delegate
+            vc.customer = details.membership.customer
+        }
+    }
 }

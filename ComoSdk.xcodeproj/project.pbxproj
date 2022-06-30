@@ -30,6 +30,7 @@
 		BB56B6C3286A042900512A34 /* AssetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB56B6C2286A042900512A34 /* AssetCell.swift */; };
 		BB56B6C5286B3AAF00512A34 /* MeanOfPayment.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB56B6C4286B3AAF00512A34 /* MeanOfPayment.swift */; };
 		BB56B6C7286B3B3400512A34 /* SubmitPurchaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB56B6C6286B3B3400512A34 /* SubmitPurchaseResponse.swift */; };
+		BB56B6C9286D772F00512A34 /* ComoCouponsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB56B6C8286D772F00512A34 /* ComoCouponsController.swift */; };
 		EAB991052869911A000C0CB5 /* ComoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB991042869911A000C0CB5 /* ComoController.swift */; };
 		EAB9910728699131000C0CB5 /* Como.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAB9910628699131000C0CB5 /* Como.storyboard */; };
 		EAB99109286991BA000C0CB5 /* ComoMemberDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB99108286991BA000C0CB5 /* ComoMemberDetailsController.swift */; };
@@ -82,6 +83,7 @@
 		BB56B6C2286A042900512A34 /* AssetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetCell.swift; sourceTree = "<group>"; };
 		BB56B6C4286B3AAF00512A34 /* MeanOfPayment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeanOfPayment.swift; sourceTree = "<group>"; };
 		BB56B6C6286B3B3400512A34 /* SubmitPurchaseResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitPurchaseResponse.swift; sourceTree = "<group>"; };
+		BB56B6C8286D772F00512A34 /* ComoCouponsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComoCouponsController.swift; sourceTree = "<group>"; };
 		D4C116E7F9DD307FEF191CE9 /* Pods_ComoSdkTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ComoSdkTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAB991042869911A000C0CB5 /* ComoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComoController.swift; sourceTree = "<group>"; };
 		EAB9910628699131000C0CB5 /* Como.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Como.storyboard; sourceTree = "<group>"; };
@@ -259,6 +261,7 @@
 				EAB991042869911A000C0CB5 /* ComoController.swift */,
 				EAB99108286991BA000C0CB5 /* ComoMemberDetailsController.swift */,
 				EAB9910A2869A00A000C0CB5 /* MembershipDataSource.swift */,
+				BB56B6C8286D772F00512A34 /* ComoCouponsController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -476,6 +479,7 @@
 				BB56B6BE2867255800512A34 /* GetBenefitsResponse.swift in Sources */,
 				BB56B6AE2864A7C200512A34 /* Api.swift in Sources */,
 				BB56B67F2864A75100512A34 /* ViewController.swift in Sources */,
+				BB56B6C9286D772F00512A34 /* ComoCouponsController.swift in Sources */,
 				BB56B6C5286B3AAF00512A34 /* MeanOfPayment.swift in Sources */,
 				BB56B6C7286B3B3400512A34 /* SubmitPurchaseResponse.swift in Sources */,
 				BB56B6B02864AA1100512A34 /* Response.swift in Sources */,
