@@ -13,14 +13,25 @@ import RevoHttp
 class ComoSdkTests: XCTestCase {
 
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        Como.shared.setup(key: "b1ad7faa", branchId: "comosdk-test", posId: "1", source: "ComoSwiftSDK", sourceVersion: "0.0.1", debug: true)
     }
 
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
+    
+    func test_como_needs_to_be_setup() async throws {
+     
+        do {
+            let _ = try await Como().quickRegister(phoneNumber: "123456")
+            XCTFail("Should throw exception")
+        } catch {
+            XCTAssertTrue(true)
+        }
+        
+    }
 
-    func test_can_get_member_details() throws {
+    func test_can_get_member_details() async throws {
         let response = """
         {
          "status": "ok",
@@ -102,18 +113,13 @@ class ComoSdkTests: XCTestCase {
         HttpFake.enable()
         HttpFake.addResponse(response)
         
-        let expectation = XCTestExpectation(description:"Como Api Call")
-        Como().getMemberDetails(customer: Como.Customer(phoneNumber: "666777888", email: nil), purchase: Como.Purchase.fake()) { result in
-            print(result)
-            XCTAssertEqual("Jane", try! result.get().membership.firstName)
-            XCTAssertEqual("Deal of the month: 20% off milkshakes", try! result.get().memberNotes!.first!.content)
-            expectation.fulfill()
-        }
-        
-        wait(for: [expectation], timeout: 5)
+        let apiResponse = try! await Como.shared.getMemberDetails(customer: Como.Customer(phoneNumber: "666777888", email: nil), purchase: Como.Purchase.fake())
+        print(response)
+        XCTAssertEqual("Jane", apiResponse.membership.firstName)
+        XCTAssertEqual("Deal of the month: 20% off milkshakes", apiResponse.memberNotes!.first!.content)
     }
     
-    func test_can_get_member_details_when_not_found() throws {
+    func test_can_get_member_details_when_not_found() async throws {
         let response = """
         {
             "status":"error",
@@ -126,21 +132,15 @@ class ComoSdkTests: XCTestCase {
         HttpFake.enable()
         HttpFake.addResponse(response)
         
-        let expectation = XCTestExpectation(description:"Como Api Call")
-        Como().getMemberDetails(customer: Como.Customer(phoneNumber: "666777888", email: nil), purchase: Como.Purchase.fake()) { result in
-            print(result)
-            do {
-                let _ = try result.get()
-            }catch{
-                print(error)
-                expectation.fulfill()
-            }
+        do {
+            let _ = try await Como.shared.getMemberDetails(customer: Como.Customer(phoneNumber: "666777888", email: nil), purchase: Como.Purchase.fake())
+            XCTFail("Didn't throw exception")
+        }catch{
+            XCTAssertTrue(true)
         }
-        
-        wait(for: [expectation], timeout: 5)
     }
     
-    func test_can_get_benefits() throws {
+    func test_can_get_benefits() async throws {
         let response = """
         {
             "status": "ok",
@@ -243,17 +243,12 @@ class ComoSdkTests: XCTestCase {
         HttpFake.enable()
         HttpFake.addResponse(response)
         
-        let expectation = XCTestExpectation(description:"Como Api Call")
-        Como().getBenefits(customers: [Como.Customer(phoneNumber: "666777888", email: nil)], purchase: Como.Purchase.fake(), redeemAssets: [Como.RedeemAsset(key:"124", code:nil)]) { result in
-            print(result)
-            XCTAssertEqual(-160, try! result.get().totalDiscountsSum)
-            expectation.fulfill()
-        }
-        
-        wait(for: [expectation], timeout: 5)
+        let apiResponse = try! await Como.shared.getBenefits(customers: [Como.Customer(phoneNumber: "666777888", email: nil)], purchase: Como.Purchase.fake(), redeemAssets: [Como.RedeemAsset(key:"124", appliedAmount: 0, code:nil)])
+        print(apiResponse)
+        XCTAssertEqual(-160, apiResponse.totalDiscountsSum)
     }
     
-    func test_can_pay(){
+    func test_can_pay() async throws {
         let response = """
         {
             "status": "ok",
@@ -275,34 +270,18 @@ class ComoSdkTests: XCTestCase {
         HttpFake.enable()
         HttpFake.addResponse(response)
         
-        let expectation = XCTestExpectation(description:"Como Api Call")
-        Como().payment(customer: Como.Customer(phoneNumber: "666777888", email: nil), purchase: Como.Purchase.fake(), amount:600) { result in
-            print(result)
-            XCTAssertEqual("2b027fbd-d478-42d2-b7d9-9c7235ad6e5b", try! result.get().confirmation)
-            expectation.fulfill()
-        }
         
-        wait(for: [expectation], timeout: 5)
+        let apiResponse = try! await Como.shared.payment(customer: Como.Customer(phoneNumber: "666777888", email: nil), purchase: Como.Purchase.fake(), amount:600)
+
+        XCTAssertEqual("2b027fbd-d478-42d2-b7d9-9c7235ad6e5b", apiResponse.confirmation)
     }
     
-    func test_can_quick_register() throws {
-        let expectation = XCTestExpectation(description:"Como Api Call")
-        Como().quickRegister(phoneNumber: "666777888", authCode: "1234") { result in
-            print(result)
-            expectation.fulfill()
-        }
-        
-        wait(for: [expectation], timeout: 5)
+    func test_can_quick_register() async throws {
+        let apiResponse = try! await Como.shared.quickRegister(phoneNumber: "666777888", authCode: "1234")
     }
     
-    func test_can_submit_event() throws {
-        let expectation = XCTestExpectation(description:"Como Api Call")
-        Como().submitEvent { result in
-            print("done")
-            expectation.fulfill()
-        }
-        
-        wait(for: [expectation], timeout: 5)
+    func test_can_submit_event() async throws {
+        let apiResponse = try! await Como.shared.submitEvent
     }
 
 }

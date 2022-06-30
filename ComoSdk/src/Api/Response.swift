@@ -21,7 +21,7 @@ extension Como.Api {
         }
     }
     
-    enum ResponseErrorCode:Error, CustomStringConvertible {
+    enum ResponseErrorCode:Error, CustomStringConvertible {       
         case sdkNotSettedUp
         case invalidInputData
         case noData
