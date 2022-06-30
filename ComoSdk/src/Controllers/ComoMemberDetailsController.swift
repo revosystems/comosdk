@@ -30,18 +30,13 @@ class ComoMemberDetailsController : UIViewController, UITableViewDelegate {
     }
     
     @IBAction func onRedeemPressed(_ sender: Any) {
-        let assets = selectedAssets.map { Como.RedeemAsset(key: $0.key, appliedAmount: nil, code:nil) }
-        dismiss(animated: true){ [weak self] in
-            guard let self = self else { return }
-            Como.shared.currentSale?.redeemAssets = assets
-        }
+        Como.shared.currentSale?.redeemAssets = selectedAssets.map { Como.RedeemAsset(key: $0.key, appliedAmount: nil, code:nil) }
+        dismiss(animated: true)
     }
     
     @IBAction func onDonePressed(_ sender: Any) {
-        dismiss(animated: true){ [weak self] in
-            guard let self = self else { return }
-            Como.shared.currentSale?.redeemAssets = []
-        }
+        Como.shared.currentSale?.redeemAssets = []
+        dismiss(animated: true)
     }
     
         
