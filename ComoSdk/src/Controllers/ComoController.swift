@@ -66,12 +66,21 @@ public class ComoController : UIViewController {
         navigationController?.pushViewController(vc, animated: true)
     }
     
-    @IBAction func onSendAuthCodePressed(_ sender: Any) {
-    
+    @IBAction func onSendAuthCodePressed(_ sender: UIButton) {
+        loading.start(sender)
+        Task {
+            do {
+                try await Como.shared.sendIdentificationCode(phoneNumber: inputField.text!)
+                loading.stop(sender)
+            } catch {
+                loading.stop(sender)
+                onError(error)
+            }
+        }
     }
     
-    @IBAction func onAddCouponCodePressed(_ sender: Any) {
-        
+    @IBAction func onScanCodePressed(_ sender: Any) {
+
     }
     
     func customer() -> Como.Customer? {

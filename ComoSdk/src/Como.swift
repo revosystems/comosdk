@@ -92,6 +92,7 @@ public class Como {
         return try await submit(purchase: purchase, customer: customer, assets: assets, deals: deals, closed: true)
     }
     
+    @discardableResult
     public func void(purchase:Como.Purchase) async throws -> Como.Api.Response {
         
         try validateInitialized()
@@ -103,12 +104,20 @@ public class Como {
         return try await api!.post("voidPurchase", object:VoidPurchase(purchase: purchase))
     }
     
-    public func sendIdentificationCode(){
-        //TODO
+    @discardableResult
+    public func sendIdentificationCode(phoneNumber:String) async throws -> Como.Api.Response {
+        try validateInitialized()
+        
+        struct SendAuthCode : Codable {
+            let customer:Customer
+        }
+        
+        let object = SendAuthCode(customer: Como.Customer(phoneNumber:phoneNumber, email:nil))
+        
+        return try await api!.post("sendIdentificationCode", object:object)
     }
     
-    
-    
+    @discardableResult
     public func quickRegister(phoneNumber:String, email:String? = nil, authCode:String? = nil) async throws -> Como.Api.Response {
                 
         try validateInitialized()
