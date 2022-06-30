@@ -1,6 +1,6 @@
 import UIKit
 
-class ViewController: UIViewController, ComoDelegate {
+class ViewController: UIViewController {
     
     var benefits:Como.GetBenefitsResponse?
     var customer:Como.Customer?
@@ -17,18 +17,14 @@ class ViewController: UIViewController, ComoDelegate {
     }
 
     @IBAction func showComoController(_ sender: UIButton?) {
-        let nav = Como.controller(purchase: purchase, delegate: self)
+        let nav = Como.controller(purchase: purchase)
         present(nav, animated: true)
     }
     
     @IBAction func submitThePurchase(_ sender: UIButton?) {
-        
-        let assets = benefits?.redeemAssets?.map { Como.RedeemAsset(key: $0.key, appliedAmount: 0, code:nil)}
-        let deals  = benefits?.deals?.map { Como.RedeemAsset(key: $0.key, appliedAmount: 0, code:nil) }
-        
         Task {
             do {
-                let response = try await Como.shared.submit(purchase: Como.Purchase.fake(), customer:customer, assets: assets, deals: deals)
+                let response = try await Como.shared.currentSale?.submit()
                 print("OK")
             }catch{
                 print("Error")
@@ -37,10 +33,8 @@ class ViewController: UIViewController, ComoDelegate {
     }
     
     func como(onRedeemAssetsSelected assets: [Como.RedeemAsset], customer:Como.Customer?) {
-        getBenefits(customer:customer, assets:assets)
+        Como.shared.currentSale?.getBenefits(assets: assets)
     }
-    
-    
     
 }
 

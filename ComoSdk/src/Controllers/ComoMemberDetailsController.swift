@@ -23,9 +23,6 @@ class ComoMemberDetailsController : UIViewController, UITableViewDelegate {
     
     var details:Como.MemberDetailsResponse!
     let dataSource = MembershipDataSource()
-        
-    var delegate:ComoDelegate?
-    
     
     override func viewDidLoad() {
         showMemberDetails()
@@ -36,14 +33,14 @@ class ComoMemberDetailsController : UIViewController, UITableViewDelegate {
         let assets = selectedAssets.map { Como.RedeemAsset(key: $0.key, appliedAmount: nil, code:nil) }
         dismiss(animated: true){ [weak self] in
             guard let self = self else { return }
-            self.delegate?.como(onRedeemAssetsSelected: assets, customer:self.details.membership.customer)
+            Como.shared.currentSale?.redeemAssets = assets
         }
     }
     
     @IBAction func onDonePressed(_ sender: Any) {
         dismiss(animated: true){ [weak self] in
             guard let self = self else { return }
-            self.delegate?.como(onRedeemAssetsSelected: [], customer:self.details.membership.customer)
+            Como.shared.currentSale?.redeemAssets = []
         }
     }
     
@@ -85,13 +82,5 @@ class ComoMemberDetailsController : UIViewController, UITableViewDelegate {
         tableView.indexPathsForSelectedRows?.map({ (indexPath:IndexPath) in
             details.membership.assets[indexPath.row]
         }) ?? []
-    }
-
-    
-    public override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "coupons" {
-            let vc = segue.destination as! ComoCouponsController
-            vc.delegate = delegate
-        }
     }
 }

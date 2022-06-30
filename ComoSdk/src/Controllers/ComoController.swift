@@ -1,10 +1,6 @@
 import UIKit
 import RevoFoundation
 
-public protocol ComoDelegate {
-    func como(onRedeemAssetsSelected assets:[Como.RedeemAsset], customer:Como.Customer?)
-}
-
 public class ComoController : UIViewController {
  
     @IBOutlet weak var inputField: UITextField!
@@ -14,8 +10,6 @@ public class ComoController : UIViewController {
     @IBOutlet weak var findMemberButton: UIButton!
     
     @IBOutlet weak var registerView: UIView!
-    
-    var delegate:ComoDelegate?
     
     public static func make() -> UINavigationController {
         let nav:UINavigationController = SBController("Como", "nav")
@@ -69,7 +63,6 @@ public class ComoController : UIViewController {
     func onMemberFetched(details:Como.MemberDetailsResponse){
         let vc:ComoMemberDetailsController = SBController("Como", "memberDetails")
         vc.details = details
-        vc.delegate = delegate
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -101,16 +94,5 @@ public class ComoController : UIViewController {
                 print(error)
             }
         }
-    }
-    
-    public override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "coupons" {
-            let vc = segue.destination as! ComoCouponsController
-            vc.delegate = delegate
-        }
-    }
-    
-    deinit {
-        delegate = nil
     }
 }

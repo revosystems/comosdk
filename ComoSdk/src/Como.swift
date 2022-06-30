@@ -17,10 +17,10 @@ public class Como {
     }
     
     //MARK:Controllers
-    public static func controller(purchase:Como.Purchase, delegate:ComoDelegate) -> UINavigationController {
+    public static func controller(purchase:Como.Purchase) -> UINavigationController {
         let nav = ComoController.make()
         Como.shared.currentSale = CurrentSale(purchase: purchase)
-        (nav.children.first as? ComoController)?.delegate = delegate
+        //(nav.children.first as? ComoController)?.delegate = delegate
         nav.modalPresentationStyle = .formSheet
         return nav
     }

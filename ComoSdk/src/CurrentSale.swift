@@ -23,5 +23,12 @@ extension Como {
                 }
             }
         }
+        
+        func submit() async throws -> SubmitPurchaseResponse {
+            let assets = benefits?.redeemAssets?.map { Como.RedeemAsset(key: $0.key, appliedAmount: 0, code:nil)}
+            let deals  = benefits?.deals?.map        { Como.RedeemAsset(key: $0.key, appliedAmount: 0, code:nil) }
+            
+            return try await Como.shared.submit(purchase: purchase, customer:customer, assets: assets, deals: deals)
+        }
     }
 }
