@@ -9,7 +9,7 @@ class ViewController: UIViewController, ComoDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        Como.shared.setup(key: "b1ad7faa", branchId: "comosdk-test", posId: "1", source: "ComoSwiftSDK", sourceVersion: "0.0.1", debug: true)
     }
     
     override func viewDidAppear(_ animated: Bool) {

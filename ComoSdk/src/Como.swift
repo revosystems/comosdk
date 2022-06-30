@@ -7,7 +7,13 @@ public class Como {
         Como()
     }()
     
-    let api:Api = Api()
+    var api:Api?
+    
+    @discardableResult
+    func setup(key:String, branchId:String, posId:String, source:String, sourceVersion:String, debug:Bool = false) -> Self {
+        api = Api(key:key, branchId: branchId, posId: posId, source: source, sourceVersion: sourceVersion, debug: debug)
+        return self
+    }
     
     //MARK:Controllers
     public static func controller(purchase:Como.Purchase, delegate:ComoDelegate) -> UINavigationController {
@@ -20,6 +26,9 @@ public class Como {
     
     //MARK: - Methods
     public func getMemberDetails(customer:Customer, purchase:Purchase) async throws -> MemberDetailsResponse{
+        guard let api = api else {
+            throw Como.Api.ResponseErrorCode.sdkNotSettedUp
+        }
         
         struct MemberDetails : Codable {
             let customer:Customer
@@ -33,6 +42,10 @@ public class Como {
     
     public func getBenefits(customers:[Customer], purchase:Purchase, redeemAssets:[RedeemAsset]) async throws -> GetBenefitsResponse {
         
+        guard let api = api else {
+            throw Como.Api.ResponseErrorCode.sdkNotSettedUp
+        }
+        
         struct GetBenefits : Codable {
             let customers:[Customer]
             let purchase:Purchase
@@ -45,6 +58,10 @@ public class Como {
     }
     
     public func payment(customer:Customer, purchase:Purchase, code:String? = nil, amount:Int) async throws -> PaymentResponse {
+        
+        guard let api = api else {
+            throw Como.Api.ResponseErrorCode.sdkNotSettedUp
+        }
         
         struct Payment : Codable {
             let customer:Customer
@@ -63,6 +80,11 @@ public class Como {
     }
     
     public func submit(purchase:Como.Purchase, customer:Como.Customer? = nil, assets:[RedeemAsset]? = nil, deals:[RedeemAsset]? = nil, closed:Bool = false) async throws -> Como.SubmitPurchaseResponse {
+        
+        guard let api = api else {
+            throw Como.Api.ResponseErrorCode.sdkNotSettedUp
+        }
+        
         struct SubmitPurchase:Codable {
             let customer:Customer?
             let purchase:Purchase
@@ -74,10 +96,20 @@ public class Como {
     }
     
     public func submit(purchase:Como.Purchase, customer:Como.Customer? = nil, assets:[RedeemAsset]? = nil, deals:[RedeemAsset]? = nil) async throws -> Como.SubmitPurchaseResponse {
+        
+        guard let api = api else {
+            throw Como.Api.ResponseErrorCode.sdkNotSettedUp
+        }
+        
         return try await submit(purchase: purchase, customer: customer, assets: assets, deals: deals, closed: true)
     }
     
     public func void(purchase:Como.Purchase) async throws -> Como.Api.Response {
+        
+        guard let api = api else {
+            throw Como.Api.ResponseErrorCode.sdkNotSettedUp
+        }
+        
         struct VoidPurchase : Codable {
             let purchase:Purchase
         }
@@ -93,6 +125,10 @@ public class Como {
     
     public func quickRegister(phoneNumber:String, email:String? = nil, authCode:String? = nil) async throws -> Como.Api.Response {
                 
+        guard let api = api else {
+            throw Como.Api.ResponseErrorCode.sdkNotSettedUp
+        }
+        
         struct QuickRegister : Codable {
             let customer:Customer
             let quickRegistrationCode:String?
@@ -104,6 +140,10 @@ public class Como {
     }
     
     public func submitEvent() async throws -> Como.Api.Response {
+        guard let api = api else {
+            throw Como.Api.ResponseErrorCode.sdkNotSettedUp
+        }
+        
         return try await api.post("submitEvent")
     }
 }

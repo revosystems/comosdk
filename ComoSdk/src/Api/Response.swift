@@ -22,6 +22,7 @@ extension Como.Api {
     }
     
     enum ResponseErrorCode:Error, CustomStringConvertible {
+        case sdkNotSettedUp
         case invalidInputData
         case noData
         case errorStatus
@@ -30,6 +31,7 @@ extension Como.Api {
         
         var description: String {
             switch self {
+            case .sdkNotSettedUp: return "Como SDK has not been set up, call Como.shared.setup() to fix it"
             case .invalidInputData : return  "Invalid Input data"
             case .noData: return "Didn't receive response Data"
             case .errorStatus: return "No 200 status received"

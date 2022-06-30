@@ -8,13 +8,23 @@ extension Como {
         //let url:String = "https://api.prod.como.com/api/v4/advanced/"
         let url:String = "https://api.prod.como.com/api/v4/"
         
-        let apiKey:String        = "b1ad7faa"   //Dev api key
-        let branchId:String      = "revo"
-        let posId:String         = "1"
-        let source:String        = "sdk"
-        let sourceVersion:String = "0.1.0"
+        let apiKey:String
+        let branchId:String
+        let posId:String
+        let source:String
+        let sourceVersion:String
          
-        var debug:Bool = true
+        var debug:Bool
+        
+        
+        init(key:String, branchId:String, posId:String, source:String, sourceVersion:String, debug:Bool = false) {
+            self.apiKey     = key
+            self.branchId   = branchId
+            self.posId      = posId
+            self.source     = source
+            self.sourceVersion = sourceVersion
+            self.debug      = debug
+        }
         
         
         public func post<T>(_ url:String, object:Codable? = nil) async throws -> T where T: Como.Api.Response {
