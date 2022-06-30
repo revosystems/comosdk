@@ -41,16 +41,6 @@ class ViewController: UIViewController, ComoDelegate {
     }
     
     
-    func getBenefits(customer:Como.Customer?, assets:[Como.RedeemAsset]){
-        Task {
-            do{
-                let response = try await Como.shared.getBenefits(customers: (customer != nil) ? [customer!] : [], purchase: purchase, redeemAssets: assets)
-                benefits = response
-            } catch {
-                print(error)
-            }
-        }
-
-    }
+    
 }
 

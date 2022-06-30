@@ -8,6 +8,7 @@ public class Como {
     }()
     
     var api:Api?
+    var currentSale:CurrentSale?
     
     @discardableResult
     func setup(key:String, branchId:String, posId:String, source:String, sourceVersion:String, debug:Bool = false) -> Self {
@@ -18,7 +19,7 @@ public class Como {
     //MARK:Controllers
     public static func controller(purchase:Como.Purchase, delegate:ComoDelegate) -> UINavigationController {
         let nav = ComoController.make()
-        (nav.children.first as? ComoController)?.purchase = purchase
+        Como.shared.currentSale = CurrentSale(purchase: purchase)
         (nav.children.first as? ComoController)?.delegate = delegate
         nav.modalPresentationStyle = .formSheet
         return nav

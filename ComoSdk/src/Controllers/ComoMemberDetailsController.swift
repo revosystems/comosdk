@@ -25,7 +25,6 @@ class ComoMemberDetailsController : UIViewController, UITableViewDelegate {
     let dataSource = MembershipDataSource()
         
     var delegate:ComoDelegate?
-    var purchase:Como.Purchase!
     
     
     override func viewDidLoad() {
@@ -50,6 +49,7 @@ class ComoMemberDetailsController : UIViewController, UITableViewDelegate {
     
         
     func showMemberDetails(){
+        Como.shared.currentSale?.customer = details.membership.customer
         tableView.state    = .content
         nameLabel.text     = details.membership.fullName
         phoneLabel.text    = details.membership.phoneNumber
@@ -91,9 +91,7 @@ class ComoMemberDetailsController : UIViewController, UITableViewDelegate {
     public override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "coupons" {
             let vc = segue.destination as! ComoCouponsController
-            vc.purchase = purchase
             vc.delegate = delegate
-            vc.customer = details.membership.customer
         }
     }
 }

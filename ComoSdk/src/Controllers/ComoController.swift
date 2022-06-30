@@ -16,7 +16,6 @@ public class ComoController : UIViewController {
     @IBOutlet weak var registerView: UIView!
     
     var delegate:ComoDelegate?
-    var purchase:Como.Purchase!
     
     public static func make() -> UINavigationController {
         let nav:UINavigationController = SBController("Como", "nav")
@@ -38,7 +37,7 @@ public class ComoController : UIViewController {
         
         Task {
             do {
-                let details = try await Como.shared.getMemberDetails(customer: customer, purchase: purchase)
+                let details = try await Como.shared.getMemberDetails(customer: customer, purchase: Como.shared.currentSale!.purchase)
                 loading.stop(self.findMemberButton)
                 onMemberFetched(details: details)
             } catch {
@@ -71,7 +70,6 @@ public class ComoController : UIViewController {
         let vc:ComoMemberDetailsController = SBController("Como", "memberDetails")
         vc.details = details
         vc.delegate = delegate
-        vc.purchase = purchase
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -97,7 +95,7 @@ public class ComoController : UIViewController {
     @IBAction func onVoidPurchasePressed(_ sender: Any) {
         Task {
             do {
-                try await Como.shared.void(purchase: purchase)
+                try await Como.shared.void(purchase: Como.shared.currentSale!.purchase)
                 print("Voided")
             }catch{
                 print(error)
@@ -108,7 +106,6 @@ public class ComoController : UIViewController {
     public override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "coupons" {
             let vc = segue.destination as! ComoCouponsController
-            vc.purchase = purchase
             vc.delegate = delegate
         }
     }
