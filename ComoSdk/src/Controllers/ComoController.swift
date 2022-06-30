@@ -2,7 +2,7 @@ import UIKit
 import RevoFoundation
 
 public protocol ComoDelegate {
-    func como(onBenefitsSelected benefits:[Como.RedeemAsset], customer:Como.Customer?)
+    func como(onRedeemAssetsSelected assets:[Como.RedeemAsset], customer:Como.Customer?)
 }
 
 public class ComoController : UIViewController {

@@ -36,8 +36,8 @@ class ViewController: UIViewController, ComoDelegate {
         }
     }
     
-    func como(onBenefitsSelected benefits: [Como.RedeemAsset], customer:Como.Customer?) {
-        getBenefits(customer:customer, assets:benefits)
+    func como(onRedeemAssetsSelected assets: [Como.RedeemAsset], customer:Como.Customer?) {
+        getBenefits(customer:customer, assets:assets)
     }
     
     

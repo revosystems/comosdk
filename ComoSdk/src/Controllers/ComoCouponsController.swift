@@ -9,10 +9,10 @@ class ComoCouponsController : UIViewController {
     var delegate:ComoDelegate?
     
     @IBAction func onRedeemPressed(_ sender: Any) {
-        let benefits = [Como.RedeemAsset(key: nil, appliedAmount: nil, code:textField.text!)]
+        let assets = [Como.RedeemAsset(key: nil, appliedAmount: nil, code:textField.text!)]
         dismiss(animated: true) { [weak self] in
-            guard let self = self else { return }
-            self.delegate?.como(onBenefitsSelected: benefits, customer:self.customer)
+            guard let self = self else { return }
+            self.delegate?.como(onRedeemAssetsSelected: assets, customer:self.customer)
         }
     }
 }

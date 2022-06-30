@@ -34,17 +34,17 @@ class ComoMemberDetailsController : UIViewController, UITableViewDelegate {
     }
     
     @IBAction func onRedeemPressed(_ sender: Any) {
-        let benefits = selectedBenefits.map { Como.RedeemAsset(key: $0.key, appliedAmount: nil, code:nil) }
+        let assets = selectedAssets.map { Como.RedeemAsset(key: $0.key, appliedAmount: nil, code:nil) }
         dismiss(animated: true){ [weak self] in
             guard let self = self else { return }
-            self.delegate?.como(onBenefitsSelected: benefits, customer:self.details.membership.customer)
+            self.delegate?.como(onRedeemAssetsSelected: assets, customer:self.details.membership.customer)
         }
     }
     
     @IBAction func onDonePressed(_ sender: Any) {
         dismiss(animated: true){ [weak self] in
             guard let self = self else { return }
-            self.delegate?.como(onBenefitsSelected: [], customer:self.details.membership.customer)
+            self.delegate?.como(onRedeemAssetsSelected: [], customer:self.details.membership.customer)
         }
     }
     
@@ -81,7 +81,7 @@ class ComoMemberDetailsController : UIViewController, UITableViewDelegate {
         redeemButton.setTitle("Reedem (\(benefitsCount))", for: .normal)
     }
     
-    var selectedBenefits:[Como.Asset]{
+    var selectedAssets:[Como.Asset]{
         tableView.indexPathsForSelectedRows?.map({ (indexPath:IndexPath) in
             details.membership.assets[indexPath.row]
         }) ?? []
