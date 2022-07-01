@@ -1,9 +1,9 @@
 extension Como {
     
     public class GetBenefitsResponse : Como.Api.Response  {
-        let deals:[Deal]?
-        let redeemAssets:[RedeemAssetResponse]?
-        let totalDiscountsSum:Int?
+        public let deals:[Deal]?
+        public let redeemAssets:[RedeemAssetResponse]?
+        public let totalDiscountsSum:Int?
 
         private enum CodingKeys: String, CodingKey {
             case totalDiscountsSum, deals, redeemAssets
@@ -19,43 +19,43 @@ extension Como {
     }
     
     public struct Deal : Codable {
-        let key:String
-        let name:String
-        let benefits:[Benefit]?
+        public let key:String
+        public let name:String
+        public let benefits:[Benefit]?
     }
     
     public struct Benefit : Codable {
-        let type:String
-        let code:String?
-        let sum:Int?
-        let extendedData:[ExtendedData]?
+        public let type:String
+        public let code:String?
+        public let sum:Int?
+        public let extendedData:[ExtendedData]?
     }
     
     public struct ExtendedData : Codable {
-        let item:Item
-        let discount:Int
-        let discountedQuantity:Int
-        let discountAllocation:[DiscountAllocation]
+        public let item:Item
+        public let discount:Int
+        public let discountedQuantity:Int
+        public let discountAllocation:[DiscountAllocation]
     }
     
     public struct Item : Codable {
-        let code:String
-        let action:String
-        let quantity:Int
-        let netAmount:Int
-        let lineId:String
+        public let code:String
+        public let action:String
+        public let quantity:Int
+        public let netAmount:Int
+        public let lineId:String
     }
     
     public struct DiscountAllocation : Codable {
-        let quantity:Int
-        let unitDiscount:Int
+        public let quantity:Int
+        public let unitDiscount:Int
     }
     
     public struct RedeemAssetResponse : Codable {
-        let key:String
-        let name:String
-        let code:String?
-        let redeemable:Bool
-        let benefits:[Benefit]
+        public let key:String
+        public let name:String
+        public let code:String?
+        public let redeemable:Bool
+        public let benefits:[Benefit]
     }        
 }

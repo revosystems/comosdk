@@ -1,6 +1,10 @@
 import UIKit
 import RevoFoundation
 
+public protocol ComoDelegate {
+    func como(onCustomerSelected currentSale:Como.CurrentSale)
+}
+
 public class ComoController : UIViewController {
  
     @IBOutlet weak var inputField: UITextField!
@@ -11,8 +15,11 @@ public class ComoController : UIViewController {
     
     @IBOutlet weak var registerView: UIView!
     
-    public static func make() -> UINavigationController {
+    var delegate:ComoDelegate?
+    
+    public static func make(delegate:ComoDelegate?) -> UINavigationController {
         let nav:UINavigationController = SBController("Como", "nav")
+        (nav.children.first as? ComoController)?.delegate = delegate
         return nav
     }
         
@@ -103,5 +110,10 @@ public class ComoController : UIViewController {
                 print(error)
             }
         }
+    }
+    
+    deinit {
+        delegate?.como(onCustomerSelected: Como.shared.currentSale!)
+        delegate = nil
     }
 }

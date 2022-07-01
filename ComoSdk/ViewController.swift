@@ -1,6 +1,6 @@
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, ComoDelegate {
     
     var benefits:Como.GetBenefitsResponse?
     var customer:Como.Customer?
@@ -17,7 +17,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func showComoController(_ sender: UIButton?) {
-        let nav = Como.controller(purchase: purchase)
+        let nav = Como.controller(purchase: purchase, delegate: self)
         present(nav, animated: true)
     }
     
@@ -31,6 +31,10 @@ class ViewController: UIViewController {
                 print("Error")
             }
         }
+    }
+    
+    func como(onCustomerSelected currentSale: Como.CurrentSale) {
+        
     }
     
 }

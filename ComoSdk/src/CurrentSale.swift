@@ -2,7 +2,7 @@ import Foundation
 
 extension Como {
     
-    class CurrentSale {
+    public class CurrentSale {
         var customer:Como.Customer?
         var purchase:Como.Purchase
         var redeemAssets:[Como.RedeemAsset]?
@@ -14,14 +14,14 @@ extension Como {
         }
         
         @discardableResult
-        func getBenefits() async throws -> Como.GetBenefitsResponse{
+        public func getBenefits() async throws -> Como.GetBenefitsResponse{
             let response = try await Como.shared.getBenefits(customers: (customer != nil) ? [customer!] : [], purchase: purchase, redeemAssets: redeemAssets ?? [])
             benefits = response
             return response
         }
         
         @discardableResult
-        func submit(closed:Bool) async throws -> SubmitPurchaseResponse {
+        public func submit(closed:Bool) async throws -> SubmitPurchaseResponse {
             let assets = benefits?.redeemAssets?.map { Como.RedeemAsset(key: $0.key, appliedAmount: 0, code:$0.code) }
             let deals  = benefits?.deals?.map        { Como.RedeemAsset(key: $0.key, appliedAmount: 0, code:nil) }
             
@@ -29,7 +29,7 @@ extension Como {
         }
         
         @discardableResult
-        func void() async throws -> Como.Api.Response {
+        public func void() async throws -> Como.Api.Response {
             return try await Como.shared.void(purchase: purchase)
         }
     }

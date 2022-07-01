@@ -17,8 +17,8 @@ public class Como {
     }
     
     //MARK:Controllers
-    public static func controller(purchase:Como.Purchase) -> UINavigationController {
-        let nav = ComoController.make()
+    public static func controller(purchase:Como.Purchase, delegate:ComoDelegate) -> UINavigationController {
+        let nav = ComoController.make(delegate:delegate)
         Como.shared.currentSale = CurrentSale(purchase: purchase)
         //(nav.children.first as? ComoController)?.delegate = delegate
         nav.modalPresentationStyle = .formSheet
