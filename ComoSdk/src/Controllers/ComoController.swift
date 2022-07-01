@@ -95,10 +95,14 @@ public class ComoController : UIViewController {
             return nil
         }
         
-        if inputField.text!.contains("@") {
-            return Como.Customer(phoneNumber:nil, email: inputField.text?.lowercased())
+        if inputField.text!.count == 4 {
+            return Como.Customer(appClientId: inputField.text!)
         }
-        return Como.Customer(phoneNumber: inputField.text!.lowercased(), email:nil)
+        
+        if inputField.text!.contains("@") {
+            return Como.Customer(email: inputField.text!.lowercased())
+        }
+        return Como.Customer(phoneNumber: inputField.text!.lowercased())
     }
     
     @IBAction func onVoidPurchasePressed(_ sender: Any) {

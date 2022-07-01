@@ -52,7 +52,7 @@ extension Como {
         }
         
         public var customer:Como.Customer {
-            Como.Customer(phoneNumber: phoneNumber, email: nil)
+            Como.Customer(phoneNumber: phoneNumber)
         }
     }
 

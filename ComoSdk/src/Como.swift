@@ -8,7 +8,7 @@ public class Como {
     }()
     
     var api:Api?
-    var currentSale:CurrentSale?
+    public var currentSale:CurrentSale?
     
     @discardableResult
     public func setup(key:String, branchId:String, posId:String, source:String, sourceVersion:String, debug:Bool = false) -> Self {
@@ -88,6 +88,7 @@ public class Como {
         return try await api!.post("submitPurchase" + append, object:SubmitPurchase(customer:customer, purchase: purchase, redeemAssets: assets, deals: deals))
     }
     
+    @discardableResult
     public func submit(purchase:Como.Purchase, customer:Como.Customer? = nil, assets:[RedeemAsset]? = nil, deals:[RedeemAsset]? = nil) async throws -> Como.SubmitPurchaseResponse {
         return try await submit(purchase: purchase, customer: customer, assets: assets, deals: deals, closed: true)
     }
@@ -112,7 +113,7 @@ public class Como {
             let customer:Customer
         }
         
-        let object = SendAuthCode(customer: Como.Customer(phoneNumber:phoneNumber, email:nil))
+        let object = SendAuthCode(customer: Como.Customer(phoneNumber:phoneNumber))
         
         return try await api!.post("sendIdentificationCode", object:object)
     }
@@ -127,7 +128,7 @@ public class Como {
             let quickRegistrationCode:String?
         }
         
-        let object = QuickRegister(customer: Customer(phoneNumber: phoneNumber, email: email), quickRegistrationCode: authCode)
+        let object = QuickRegister(customer: Customer(phoneNumber: phoneNumber), quickRegistrationCode: authCode)
         
         return try await api!.post("registration/quick", object:object)
     }
