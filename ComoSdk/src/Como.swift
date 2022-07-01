@@ -3,7 +3,7 @@ import UIKit
 
 public class Como {
     
-    static var shared:Como = {
+    public static var shared:Como = {
         Como()
     }()
     
@@ -11,7 +11,7 @@ public class Como {
     var currentSale:CurrentSale?
     
     @discardableResult
-    func setup(key:String, branchId:String, posId:String, source:String, sourceVersion:String, debug:Bool = false) -> Self {
+    public func setup(key:String, branchId:String, posId:String, source:String, sourceVersion:String, debug:Bool = false) -> Self {
         api = Api(key:key, branchId: branchId, posId: posId, source: source, sourceVersion: sourceVersion, debug: debug)
         return self
     }

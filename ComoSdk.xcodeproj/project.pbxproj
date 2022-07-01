@@ -194,7 +194,6 @@
 				BB56B6B92865AC4600512A34 /* Como.swift */,
 				BB56B6CA286D7B4A00512A34 /* CurrentSale.swift */,
 				BB56B6AC2864A7BA00512A34 /* Api */,
-				EAB9910328699109000C0CB5 /* Resources */,
 				EAB9910228699102000C0CB5 /* Controllers */,
 			);
 			path = src;
@@ -203,6 +202,7 @@
 		BB56B6AB2864A7B000512A34 /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				EAB9910628699131000C0CB5 /* Como.storyboard */,
 			);
 			path = resources;
 			sourceTree = "<group>";
@@ -267,14 +267,6 @@
 				BB56B6C8286D772F00512A34 /* ComoCouponsController.swift */,
 			);
 			path = Controllers;
-			sourceTree = "<group>";
-		};
-		EAB9910328699109000C0CB5 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				EAB9910628699131000C0CB5 /* Como.storyboard */,
-			);
-			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
