@@ -343,7 +343,6 @@ enjoy benefits and accumulate points?</string>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Coupon Codes"/>
                                 <connections>
-                                    <action selector="onRedeemPressed:" destination="jFq-eJ-UDV" eventType="touchUpInside" id="WLQ-Sl-b7n"/>
                                     <segue destination="5Qo-sF-hG0" kind="show" identifier="coupons" id="gEc-nq-9f4"/>
                                 </connections>
                             </button>
@@ -438,7 +437,7 @@ enjoy benefits and accumulate points?</string>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="t1w-d6-7yc"/>
+        <segue reference="gEc-nq-9f4"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="face.dashed" catalog="system" width="128" height="121"/>

@@ -78,4 +78,5 @@ class ComoMemberDetailsController : UIViewController, UITableViewDelegate {
             details.membership.assets[indexPath.row]
         }) ?? []
     }
+    
 }
