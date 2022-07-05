@@ -251,7 +251,7 @@ enjoy benefits and accumulate points?</string>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="separatorColor" systemColor="systemGray5Color"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="memberNote" id="OQ0-gQ-UQ7">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="memberNote" id="OQ0-gQ-UQ7" customClass="MemberNoteCell" customModule="ComoSdk" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="44.5" width="540" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="OQ0-gQ-UQ7" id="kOf-CI-QcX">
@@ -267,6 +267,9 @@ enjoy benefits and accumulate points?</string>
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="noteLabel" destination="BGa-yn-rEq" id="kcb-nC-fVQ"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="blue" indentationWidth="10" reuseIdentifier="asset" rowHeight="74" id="PSj-RO-AV2" customClass="AssetCell" customModule="ComoSdk" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="88" width="540" height="74"/>
@@ -323,10 +326,10 @@ enjoy benefits and accumulate points?</string>
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="49z-Uf-2tE">
-                                <rect key="frame" x="432" y="575" width="102" height="31"/>
+                                <rect key="frame" x="384" y="575" width="150" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="31" id="4LT-gd-XFw"/>
-                                    <constraint firstAttribute="width" constant="102" id="vYf-UO-KWw"/>
+                                    <constraint firstAttribute="width" constant="150" id="vYf-UO-KWw"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Redeem"/>
@@ -334,11 +337,11 @@ enjoy benefits and accumulate points?</string>
                                     <action selector="onRedeemPressed:" destination="jFq-eJ-UDV" eventType="touchUpInside" id="EHb-xk-r2M"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jZA-Gi-dUe">
-                                <rect key="frame" x="20" y="575" width="140" height="31"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jZA-Gi-dUe">
+                                <rect key="frame" x="20" y="575" width="150" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="31" id="ycw-9g-34q"/>
-                                    <constraint firstAttribute="width" constant="102" id="zBc-CC-krG"/>
+                                    <constraint firstAttribute="width" constant="150" id="zBc-CC-krG"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Coupon Codes"/>

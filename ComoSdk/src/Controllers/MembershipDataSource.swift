@@ -25,9 +25,8 @@ class MembershipDataSource : NSObject, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if indexPath.section == 0 {
-            let row = tableView.dequeueReusableCell(withIdentifier: indexPath.section == 0 ? "memberNote" : "asset", for: indexPath)
-            let note = membershipDetails!.memberNotes![indexPath.row]
-            (row.viewWithTag(100) as? UILabel)?.text = note.content
+            let row = tableView.dequeueReusableCell(withIdentifier: indexPath.section == 0 ? "memberNote" : "asset", for: indexPath) as! MemberNoteCell
+            return row.setup(note: membershipDetails!.memberNotes![indexPath.row])
         }
         
         let row = tableView.dequeueReusableCell(withIdentifier: indexPath.section == 0 ? "memberNote" : "asset", for: indexPath) as! AssetCell

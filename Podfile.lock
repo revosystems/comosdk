@@ -1,6 +1,6 @@
 PODS:
   - RevoFoundation (0.2.0)
-  - RevoHttp (0.3.0):
+  - RevoHttp (0.3.2):
     - RevoFoundation (~> 0.2.0)
   - RevoUIComponents (0.0.30):
     - RevoFoundation (~> 0.2.0)
@@ -18,7 +18,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   RevoFoundation: f00513750bfbbb9a07476450728063e921bdf5db
-  RevoHttp: 184fc7cdf0d5399c26ae730e88db90d481f50f06
+  RevoHttp: ae57d761d32d8de1d3188933cc639c3d8ae158b0
   RevoUIComponents: 61367d08fd9fac5bf3c234aa75e656bf654f5c1d
 
 PODFILE CHECKSUM: f2e61a3b7c60880046c09018cf322c5e43425e63

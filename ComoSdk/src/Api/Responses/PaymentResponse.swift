@@ -22,6 +22,7 @@ extension Como {
     }
     
     public struct Payment : Codable {
-        
+        public let paymentMethod:String
+        public let amount:Int
     }
 }

@@ -24,6 +24,7 @@ extension Como {
         public func submit(closed:Bool) async throws -> SubmitPurchaseResponse {
             let assets = benefits?.redeemAssets?.map { Como.RedeemAsset(key: $0.key, appliedAmount: 0, code:$0.code) }
             let deals  = benefits?.deals?.map        { Como.RedeemAsset(key: $0.key, appliedAmount: 0, code:nil) }
+        
             
             return try await Como.shared.submit(purchase: purchase, customer:customer, assets: assets, deals: deals, closed: closed)
         }
@@ -33,13 +34,14 @@ extension Como {
             return try await Como.shared.void(purchase: purchase)
         }
         
-        @discardableResult
-        public func pay(amount:Int, code:String? = nil) async throws -> Como.Api.Response {
+        func pay(amount:Int, code:String? = nil) async throws {
             guard let customer = customer else {
                 throw Como.Api.ResponseErrorCode.needCustomer
             }
-
-            return try await Como.shared.payment(customer: customer, purchase: purchase, amount: amount, code: code)
+            let response = try await Como.shared.payment(customer: customer, purchase: purchase, amount: amount, code: code)
+            purchase.add(payments:response.payments.map {
+                MeanOfPayment(type: response.type, amount: $0.amount)                
+            })
         }
     }
 }
