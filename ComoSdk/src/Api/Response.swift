@@ -28,6 +28,7 @@ extension Como.Api {
         case errorStatus
         case invalidResponse
         case errorResponse(errors:[ResponseError]?)
+        case needCustomer
         
         var description: String {
             switch self {
@@ -36,7 +37,8 @@ extension Como.Api {
             case .noData: return "Didn't receive response Data"
             case .errorStatus: return "No 200 status received"
             case .invalidResponse : return "Can't decode de response"
-            case .errorResponse(let errors) : return errors?.map { $0.message }.implode(", ") ?? "Unknown error"
+            case .errorResponse(let errors) : return errors?.map { $0.code + ":" + $0.message }.implode(", ") ?? "Unknown error"
+            case .needCustomer: return "Customer is required for this api call"
             }
         }
         

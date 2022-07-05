@@ -54,18 +54,18 @@ public class Como {
         return try await api!.post("getBenefits?expand=discountByDiscount", object:object)
     }
     
-    public func payment(customer:Customer, purchase:Purchase, code:String? = nil, amount:Int) async throws -> PaymentResponse {
+    public func payment(customer:Customer, purchase:Purchase, amount:Int, code:String? = nil) async throws -> PaymentResponse {
         
         try validateInitialized()
         
         struct Payment : Codable {
             let customer:Customer
             let purchase:Purchase
-            let code:String?
+            let verificationCode:String?
             let amount:Int
         }
         
-        let object = Payment(customer: customer, purchase: purchase, code:code, amount:amount)
+        let object = Payment(customer: customer, purchase: purchase, verificationCode:code, amount:amount)
                       
         return try await api!.post("payment", object:object)
     }

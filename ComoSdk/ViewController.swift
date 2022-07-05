@@ -5,6 +5,8 @@ class ViewController: UIViewController, ComoDelegate {
     var benefits:Como.GetBenefitsResponse?
     var customer:Como.Customer?
     
+    @IBOutlet weak var payCodeInput: UITextField!
+    
     let purchase = Como.Purchase.fake()
     
     override func viewDidLoad() {
@@ -31,6 +33,18 @@ class ViewController: UIViewController, ComoDelegate {
                 print("Error")
             }
         }
+    }
+    
+    @IBAction func onPayPressed(_ sender: Any) {
+        Task {
+            do {
+                try await Como.shared.currentSale?.pay(amount: 100, code: payCodeInput.text)
+            }
+            catch {
+                print(error)
+            }
+        }
+        
     }
     
     func como(onCustomerSelected currentSale: Como.CurrentSale) {
