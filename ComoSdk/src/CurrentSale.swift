@@ -33,10 +33,6 @@ extension Como {
             return try await Como.shared.void(purchase: purchase)
         }
         
-        /**
-         When sending the pay request without the code, it will send  a SMS
-         the we can call it again with the code to perform it
-         */
         @discardableResult
         public func pay(amount:Int, code:String? = nil) async throws -> Como.Api.Response {
             guard let customer = customer else {

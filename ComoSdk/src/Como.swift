@@ -54,6 +54,11 @@ public class Como {
         return try await api!.post("getBenefits?expand=discountByDiscount", object:object)
     }
     
+    /**
+     When sending the pay request without the code, it will send  a SMS
+     the we can call it again with the code to perform it
+        > If no enough balance it will return less amount 
+     */
     public func payment(customer:Customer, purchase:Purchase, amount:Int, code:String? = nil) async throws -> PaymentResponse {
         
         try validateInitialized()

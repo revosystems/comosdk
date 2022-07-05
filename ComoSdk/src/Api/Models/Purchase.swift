@@ -1,20 +1,25 @@
 import Foundation
 
 extension Como {
+    
+    public enum OrderType:String, Codable {
+        case dineIn, delivery, pickup
+    }
+    
     public struct Purchase : Codable {
         public let openTime:Date
         public let transactionId:String
         public let totalAmount:Int
-        public let orderType:String
+        public let orderType:OrderType
         public let employee:String
         public let items:[PurchaseLine]
         
-        public init(openTime:Date, transactionId:String, totalAmount:Int, orderType:String, employee:String, items:[PurchaseLine]){
+        public init(openTime:Date, transactionId:String, totalAmount:Int, orderType:OrderType, employee:String, items:[PurchaseLine]){
             self.openTime = openTime; self.transactionId = transactionId; self.totalAmount = totalAmount; self.orderType = orderType; self.employee = employee; self.items = items;
         }
         
         static func fake() -> Purchase {
-            return Purchase(openTime: Date(), transactionId: "\(Int.random(in: 0...9999))", totalAmount: 200, orderType: "dineIn", employee: "Jordi", items: [PurchaseLine.fake()])
+            return Purchase(openTime: Date(), transactionId: "\(Int.random(in: 0...9999))", totalAmount: 200, orderType: .pickup, employee: "Jordi", items: [PurchaseLine.fake()])
         }
     }
 
