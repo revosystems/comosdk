@@ -46,5 +46,9 @@ class ViewController: UIViewController, ComoDelegate {
        print("On paid")
     }
     
+    func comoActionCanceled() {
+        print("On action canceled")
+    }
+    
 }
 

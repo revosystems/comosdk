@@ -18,10 +18,6 @@ class MembershipDataSource : NSObject, UITableViewDataSource {
         return section == 0 ? details.memberNotes?.count ?? 0 : details.membership.assets.count
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        section == 0 ? "Member Notes".uppercased() : "Assets".uppercased()
-    }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if indexPath.section == 0 {

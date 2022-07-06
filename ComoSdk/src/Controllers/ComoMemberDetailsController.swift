@@ -68,6 +68,13 @@ class ComoMemberDetailsController : UIViewController, UITableViewDelegate {
         updateRedeemButton()
     }
     
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if section == 0 && details.memberNotes?.count == 0 { return nil }
+        let cell = tableView.dequeueReusableCell(withIdentifier: "header")!
+        (cell.viewWithTag(100) as! UILabel).text = (section == 0 ? "Member notes" : "Assets").uppercased()
+        return cell
+    }
+    
     func updateRedeemButton(){
         let benefitsCount = tableView.indexPathsForSelectedRows?.count ?? 0
         redeemButton.isEnabled = benefitsCount > 0
