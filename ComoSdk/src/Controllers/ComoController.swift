@@ -3,9 +3,15 @@ import RevoFoundation
 
 public protocol ComoDelegate {
     func como(onCustomerSelected currentSale:Como.CurrentSale)
+    func como(onPaid amount:Int)
 }
 
 public class ComoController : UIViewController {
+    
+    enum NextController {
+        case showDetails
+        case pay(amount:Int)
+    }
  
     @IBOutlet weak var inputField: UITextField!
     @IBOutlet weak var errorLabel: UILabel!
@@ -16,18 +22,24 @@ public class ComoController : UIViewController {
     @IBOutlet weak var registerView: UIView!
     
     var delegate:ComoDelegate?
+    var nextAction:NextController = .showDetails
     
     public static func make(delegate:ComoDelegate?) -> UINavigationController {
         let nav:UINavigationController = SBController("Como", "nav")
         (nav.children.first as? ComoController)?.delegate = delegate
         return nav
     }
-        
+            
     public override func viewDidLoad() {
         loading.isHidden = true
         errorLabel.text = ""
         registerView.isHidden = true
         findMemberButton.round(4)
+        isModalInPresentation = true
+    }
+    
+    @IBAction func onBackPressed(_ sender: Any) {
+        dismiss(animated: true)
     }
     
     @IBAction func onFindMemberPressed(_ sender: UIButton?) {
@@ -39,6 +51,7 @@ public class ComoController : UIViewController {
         Task {
             do {
                 let details = try await Como.shared.getMemberDetails(customer: customer, purchase: Como.shared.currentSale!.purchase)
+                Como.shared.currentSale?.customer = details.membership.customer
                 loading.stop(self.findMemberButton)
                 onMemberFetched(details: details)
             } catch {
@@ -68,11 +81,24 @@ public class ComoController : UIViewController {
     }
     
     func onMemberFetched(details:Como.MemberDetailsResponse){
+        switch nextAction {
+        case .showDetails: showAssets(details: details)
+        case .pay(let amount): showPay(amount: amount)
+        }
+    }
+    
+    private func showAssets(details:Como.MemberDetailsResponse){
         let vc:ComoMemberDetailsController = SBController("Como", "memberDetails")
         vc.details = details
         navigationController?.pushViewController(vc, animated: true)
     }
     
+    private func showPay(amount:Int){
+        let vc:ComoPayController = SBController("Como", "pay")
+        vc.amount = amount
+        vc.delegate = delegate
+        navigationController?.pushViewController(vc, animated: true)
+    }
     @IBAction func onSendAuthCodePressed(_ sender: UIButton) {
         loading.start(sender)
         Task {

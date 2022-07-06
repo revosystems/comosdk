@@ -34,7 +34,7 @@ extension Como {
             return try await Como.shared.void(purchase: purchase)
         }
         
-        func pay(amount:Int, code:String? = nil) async throws {
+        func pay(amount:Int, code:String? = nil) async throws -> Int {
             guard let customer = customer else {
                 throw Como.Api.ResponseErrorCode.needCustomer
             }
@@ -42,6 +42,7 @@ extension Como {
             purchase.add(payments:response.payments.map {
                 MeanOfPayment(type: response.type, amount: $0.amount)                
             })
+            return response.payments.first?.amount ?? 0
         }
     }
 }

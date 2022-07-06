@@ -38,10 +38,8 @@ class ComoMemberDetailsController : UIViewController, UITableViewDelegate {
         Como.shared.currentSale?.redeemAssets = []
         dismiss(animated: true)
     }
-    
-        
+            
     func showMemberDetails(){
-        Como.shared.currentSale?.customer = details.membership.customer
         tableView.state    = .content
         nameLabel.text     = details.membership.fullName
         phoneLabel.text    = details.membership.phoneNumber

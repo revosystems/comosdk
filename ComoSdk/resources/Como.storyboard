@@ -131,7 +131,7 @@ enjoy benefits and accumulate points?</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="714-jj-Ek1">
-                                <rect key="frame" x="0.0" y="49" width="115" height="31"/>
+                                <rect key="frame" x="213" y="568" width="115" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="void purchase"/>
@@ -149,7 +149,19 @@ enjoy benefits and accumulate points?</string>
                             <constraint firstItem="ume-iD-71U" firstAttribute="centerX" secondItem="8aT-zp-ak2" secondAttribute="centerX" id="tKz-wy-wUM"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="yoR-jC-f5Z"/>
+                    <navigationItem key="navigationItem" id="yoR-jC-f5Z">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="apf-Y7-7v7">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="gzo-fa-ril">
+                                <rect key="frame" x="20" y="11" width="120" height="34.5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Back"/>
+                                <connections>
+                                    <action selector="onBackPressed:" destination="zag-Q7-FfE" eventType="touchUpInside" id="Kok-zr-3en"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <modalFormSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="errorLabel" destination="o2S-Mq-fAB" id="6Dm-e4-PfA"/>
@@ -438,9 +450,66 @@ enjoy benefits and accumulate points?</string>
             </objects>
             <point key="canvasLocation" x="602" y="883"/>
         </scene>
+        <!--InTouch 2-->
+        <scene sceneID="aBV-C1-6mD">
+            <objects>
+                <viewController storyboardIdentifier="pay" id="lFA-c4-vCF" customClass="ComoPayController" customModule="ComoSdk" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="woy-7N-HzQ">
+                        <rect key="frame" x="0.0" y="0.0" width="540" height="620"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="SMS Validation Code" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hnV-uP-2Gc">
+                                <rect key="frame" x="172" y="136" width="196" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="haz-O3-u9p">
+                                <rect key="frame" x="145" y="178" width="250" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="PAY / Send Auth Code"/>
+                                <connections>
+                                    <action selector="onPayPressed:" destination="lFA-c4-vCF" eventType="touchUpInside" id="FFl-Ex-Aor"/>
+                                </connections>
+                            </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="7nu-fr-3Kt">
+                                <rect key="frame" x="172" y="183" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l30-QV-MmC">
+                                <rect key="frame" x="142" y="217" width="257" height="49"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="sxF-28-5wq"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="InTouch 2" id="aER-Ab-38M">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="w7A-Na-3ze">
+                            <connections>
+                                <action selector="onCancelPressed:" destination="lFA-c4-vCF" id="hFj-vo-36i"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <modalFormSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="errorLabel" destination="l30-QV-MmC" id="aly-hb-VxH"/>
+                        <outlet property="loading" destination="7nu-fr-3Kt" id="Lep-ES-ioc"/>
+                        <outlet property="payCodeInput" destination="hnV-uP-2Gc" id="DMA-TS-821"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qpN-OH-HGf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1238.8489208633093" y="882.73381294964031"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="gEc-nq-9f4"/>
+        <segue reference="t1w-d6-7yc"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="face.dashed" catalog="system" width="128" height="121"/>

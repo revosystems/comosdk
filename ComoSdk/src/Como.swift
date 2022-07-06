@@ -1,5 +1,6 @@
 import Foundation
 import UIKit
+import RevoFoundation
 
 public class Como {
     
@@ -20,7 +21,22 @@ public class Como {
     public static func controller(purchase:Como.Purchase, delegate:ComoDelegate) -> UINavigationController {
         let nav = ComoController.make(delegate:delegate)
         Como.shared.currentSale = CurrentSale(purchase: purchase)
-        //(nav.children.first as? ComoController)?.delegate = delegate
+        nav.modalPresentationStyle = .formSheet
+        return nav
+    }
+    
+    public static func payController(purchase:Como.Purchase, amount:Int, delegate:ComoDelegate) -> UINavigationController {
+        if Como.shared.currentSale?.customer == nil {            
+            let nav = ComoController.make(delegate:delegate)
+            (nav.children.first as? ComoController)?.nextAction = .pay(amount: amount)
+            Como.shared.currentSale = CurrentSale(purchase: purchase)
+            nav.modalPresentationStyle = .formSheet
+            return nav
+        }
+        let payVc:ComoPayController = SBController("Como", "pay")
+        payVc.amount = amount
+        payVc.delegate = delegate
+        let nav = UINavigationController(rootViewController: payVc)
         nav.modalPresentationStyle = .formSheet
         return nav
     }

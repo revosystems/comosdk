@@ -5,8 +5,6 @@ class ViewController: UIViewController, ComoDelegate {
     var benefits:Como.GetBenefitsResponse?
     var customer:Como.Customer?
     
-    @IBOutlet weak var payCodeInput: UITextField!
-    
     let purchase = Como.Purchase.fake()
     
     override func viewDidLoad() {
@@ -29,26 +27,23 @@ class ViewController: UIViewController, ComoDelegate {
                 try await Como.shared.currentSale?.getBenefits()
                 let response = try await Como.shared.currentSale?.submit(closed:true)
                 print("OK")
-            }catch{
+            } catch {
                 print("Error")
             }
         }
     }
     
     @IBAction func onPayPressed(_ sender: Any) {
-        Task {
-            do {
-                try await Como.shared.currentSale?.pay(amount: 100, code: payCodeInput.text)
-            }
-            catch {
-                print(error)
-            }
-        }
-        
+        let nav = Como.payController(purchase: purchase, amount:100, delegate: self)
+        present(nav, animated: true)
     }
     
     func como(onCustomerSelected currentSale: Como.CurrentSale) {
-        
+        print("On customer selected")
+    }
+    
+    func como(onPaid amount:Int){
+       print("On paid")
     }
     
 }
