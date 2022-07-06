@@ -46,9 +46,10 @@
                                         <rect key="frame" x="68" y="71" width="240" height="31"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Find Member"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Find Member"/>
                                         <connections>
                                             <action selector="onFindMemberPressed:" destination="zag-Q7-FfE" eventType="touchUpInside" id="HVI-8k-9he"/>
                                         </connections>
@@ -73,10 +74,10 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Erro Message" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o2S-Mq-fAB">
-                                        <rect key="frame" x="0.0" y="179" width="391" height="41"/>
+                                        <rect key="frame" x="0.0" y="182" width="391" height="41"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <color key="textColor" systemColor="systemRedColor"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QQX-Yf-S3B">
@@ -98,9 +99,10 @@
                                         <rect key="frame" x="68" y="259" width="240" height="31"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Add Coupon Code"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Add Coupon Code"/>
                                         <connections>
                                             <segue destination="5Qo-sF-hG0" kind="show" identifier="coupons" id="t1w-d6-7yc"/>
                                         </connections>
@@ -139,9 +141,10 @@ enjoy benefits and accumulate points?</string>
                                                 <rect key="frame" x="70" y="91" width="240" height="31"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="Register"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="Register"/>
                                                 <connections>
                                                     <action selector="onRegisterPressed:" destination="zag-Q7-FfE" eventType="touchUpInside" id="of5-Xk-hVe"/>
                                                 </connections>
@@ -176,8 +179,9 @@ enjoy benefits and accumulate points?</string>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="714-jj-Ek1">
                                 <rect key="frame" x="145" y="581" width="250" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="void purchase"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="void purchase"/>
                                 <connections>
                                     <action selector="onVoidPurchasePressed:" destination="zag-Q7-FfE" eventType="touchUpInside" id="RKB-nN-cui"/>
                                 </connections>
@@ -199,11 +203,15 @@ enjoy benefits and accumulate points?</string>
                     </navigationItem>
                     <modalFormSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
+                        <outlet property="addCouponButton" destination="ume-iD-71U" id="w9f-Mt-RZw"/>
                         <outlet property="errorLabel" destination="o2S-Mq-fAB" id="6Dm-e4-PfA"/>
                         <outlet property="findMemberButton" destination="JXG-Zg-gDY" id="uZU-Rw-Psx"/>
                         <outlet property="inputField" destination="En8-hN-OCd" id="Vzp-CL-tsP"/>
                         <outlet property="loading" destination="7IZ-i8-zNf" id="eCY-NE-YhF"/>
+                        <outlet property="registerButton" destination="UVa-Ar-kZq" id="vuE-D4-TMa"/>
                         <outlet property="registerView" destination="ioD-EI-kEA" id="zco-o1-NmR"/>
+                        <outlet property="scanCodeButton" destination="QQX-Yf-S3B" id="QdY-fl-nWl"/>
+                        <outlet property="sendAuthCodeButton" destination="3lQ-y8-TPm" id="uFL-2N-rAm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="prw-QR-DcY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -295,8 +303,8 @@ enjoy benefits and accumulate points?</string>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="s8y-QH-MU7" customClass="ContentStatusTableView" customModule="RevoUIComponents">
                                 <rect key="frame" x="12" y="188" width="516" height="370"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="separatorColor" systemColor="systemGray5Color"/>
+                                <color key="backgroundColor" red="0.16470588235294117" green="0.13725490196078433" blue="0.12941176470588234" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="separatorColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="memberNote" id="OQ0-gQ-UQ7" customClass="MemberNoteCell" customModule="ComoSdk" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="44.5" width="516" height="43.5"/>
@@ -309,7 +317,7 @@ enjoy benefits and accumulate points?</string>
                                                     <rect key="frame" x="16" y="11" width="428" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -330,7 +338,7 @@ enjoy benefits and accumulate points?</string>
                                                     <rect key="frame" x="92" y="5" width="237" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DFx-0W-mNX">
@@ -344,24 +352,25 @@ enjoy benefits and accumulate points?</string>
                                                     <rect key="frame" x="92" y="24" width="237" height="17"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <color key="textColor" systemColor="secondaryLabelColor"/>
+                                                    <color key="textColor" red="0.4392156862745098" green="0.43137254901960786" blue="0.43137254901960786" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Status" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KOj-06-pyU">
                                                     <rect key="frame" x="92" y="46" width="105" height="17"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <color key="textColor" systemColor="secondaryLabelColor"/>
+                                                    <color key="textColor" red="0.4392156862745098" green="0.43137254901960786" blue="0.43137254901960786" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <color key="backgroundColor" red="0.16470588235294117" green="0.13725490196078433" blue="0.12941176470588234" alpha="0.0" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstItem="DFx-0W-mNX" firstAttribute="top" secondItem="x3R-vo-a6O" secondAttribute="top" constant="6" id="2v2-3u-hcp"/>
                                                 <constraint firstItem="DFx-0W-mNX" firstAttribute="leading" secondItem="x3R-vo-a6O" secondAttribute="leading" constant="16" id="VxL-eA-nHI"/>
                                                 <constraint firstAttribute="bottom" secondItem="DFx-0W-mNX" secondAttribute="bottom" constant="6" id="pEx-Q0-0Qe"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" red="0.16470588235294117" green="0.13725490196078433" blue="0.12941176470588234" alpha="0.0" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <outlet property="assetImageView" destination="DFx-0W-mNX" id="4c8-02-YHs"/>
                                             <outlet property="descriptionLabel" destination="QfN-GV-kiu" id="bX4-0B-50j"/>
@@ -374,28 +383,34 @@ enjoy benefits and accumulate points?</string>
                                     <outlet property="delegate" destination="jFq-eJ-UDV" id="ssa-cp-7Aw"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="49z-Uf-2tE">
-                                <rect key="frame" x="384" y="575" width="150" height="31"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="31" id="4LT-gd-XFw"/>
-                                    <constraint firstAttribute="width" constant="150" id="vYf-UO-KWw"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Redeem"/>
-                                <connections>
-                                    <action selector="onRedeemPressed:" destination="jFq-eJ-UDV" eventType="touchUpInside" id="EHb-xk-r2M"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jZA-Gi-dUe">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jZA-Gi-dUe">
                                 <rect key="frame" x="20" y="575" width="150" height="31"/>
+                                <color key="backgroundColor" red="0.43921568630000002" green="0.43137254899999999" blue="0.43137254899999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="31" id="ycw-9g-34q"/>
                                     <constraint firstAttribute="width" constant="150" id="zBc-CC-krG"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Coupon Codes"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Coupon Codes"/>
                                 <connections>
                                     <segue destination="5Qo-sF-hG0" kind="show" identifier="coupons" id="gEc-nq-9f4"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="49z-Uf-2tE">
+                                <rect key="frame" x="378" y="575" width="150" height="31"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31" id="4LT-gd-XFw"/>
+                                    <constraint firstAttribute="width" constant="150" id="vYf-UO-KWw"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Redeem"/>
+                                <connections>
+                                    <action selector="onRedeemPressed:" destination="jFq-eJ-UDV" eventType="touchUpInside" id="EHb-xk-r2M"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -426,8 +441,10 @@ enjoy benefits and accumulate points?</string>
                     <modalFormSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="birthdayLabel" destination="uBe-oT-2Yu" id="B1m-r4-M0B"/>
+                        <outlet property="couponsButton" destination="jZA-Gi-dUe" id="BLn-6R-rlh"/>
                         <outlet property="creditLabel" destination="inO-bf-pGv" id="wzp-2Q-JAE"/>
                         <outlet property="creditLabelTitle" destination="hSe-N5-bD3" id="e2h-mq-bZv"/>
+                        <outlet property="headerView" destination="tpT-mC-9J5" id="78b-Gv-8IS"/>
                         <outlet property="image" destination="XkI-6k-oc9" id="oYa-lM-rq5"/>
                         <outlet property="nameLabel" destination="wjh-mK-aNS" id="naD-R3-cZI"/>
                         <outlet property="phoneLabel" destination="FeQ-IN-IAi" id="29k-8b-v2V"/>
@@ -451,14 +468,14 @@ enjoy benefits and accumulate points?</string>
                         <rect key="frame" x="0.0" y="0.0" width="540" height="620"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m3c-fX-Vs1">
-                                <rect key="frame" x="418" y="569" width="102" height="31"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="102" id="KqS-IT-7mw"/>
-                                    <constraint firstAttribute="height" constant="31" id="u7w-qx-RQl"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Redeem"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m3c-fX-Vs1">
+                                <rect key="frame" x="170" y="163" width="196" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Redeem"/>
                                 <connections>
                                     <action selector="onRedeemPressed:" destination="5Qo-sF-hG0" eventType="touchUpInside" id="0VT-vG-Ubz"/>
                                     <action selector="onRedeemPressed:" destination="jFq-eJ-UDV" eventType="touchUpInside" id="jyT-UG-FMR"/>
@@ -470,22 +487,31 @@ enjoy benefits and accumulate points?</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Errors go here" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tp7-ea-dQf">
+                                <rect key="frame" x="140" y="210" width="257" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="uS5-qB-TbF">
+                                <rect key="frame" x="374" y="168" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="85s-LU-a9x"/>
                         <color key="backgroundColor" red="0.2627450980392157" green="0.21568627450980393" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstItem="85s-LU-a9x" firstAttribute="bottom" secondItem="m3c-fX-Vs1" secondAttribute="bottom" constant="20" id="PGY-oo-6H5"/>
-                            <constraint firstItem="85s-LU-a9x" firstAttribute="trailing" secondItem="m3c-fX-Vs1" secondAttribute="trailing" constant="20" id="zx4-Mb-iT3"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="6fL-cF-nsi"/>
                     <connections>
+                        <outlet property="errorsLabel" destination="tp7-ea-dQf" id="IkR-nc-7PW"/>
+                        <outlet property="loading" destination="uS5-qB-TbF" id="8gV-r9-ShW"/>
                         <outlet property="textField" destination="ww5-xE-ZcB" id="wmi-bu-fHc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i51-f4-vn4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="598" y="838"/>
+            <point key="canvasLocation" x="593" y="847"/>
         </scene>
         <!--InTouch 2-->
         <scene sceneID="aBV-C1-6mD">
@@ -501,26 +527,29 @@ enjoy benefits and accumulate points?</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="haz-O3-u9p">
-                                <rect key="frame" x="145" y="178" width="250" height="31"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Errors go here" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l30-QV-MmC">
+                                <rect key="frame" x="142" y="230" width="257" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="PAY / Send Auth Code"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="haz-O3-u9p">
+                                <rect key="frame" x="172" y="183" width="196" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="PAY / Send Auth Code"/>
                                 <connections>
                                     <action selector="onPayPressed:" destination="lFA-c4-vCF" eventType="touchUpInside" id="FFl-Ex-Aor"/>
                                 </connections>
                             </button>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="7nu-fr-3Kt">
-                                <rect key="frame" x="172" y="183" width="20" height="20"/>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="7nu-fr-3Kt">
+                                <rect key="frame" x="376" y="188" width="20" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l30-QV-MmC">
-                                <rect key="frame" x="142" y="217" width="257" height="49"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="sxF-28-5wq"/>
                         <color key="backgroundColor" red="0.26274509800000001" green="0.2156862745" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -542,7 +571,7 @@ enjoy benefits and accumulate points?</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qpN-OH-HGf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1238.8489208633093" y="882.73381294964031"/>
+            <point key="canvasLocation" x="1233" y="847"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
@@ -553,20 +582,11 @@ enjoy benefits and accumulate points?</string>
         <image name="message.fill" catalog="system" width="128" height="113"/>
         <image name="qrcode" catalog="system" width="128" height="114"/>
         <image name="xmark.circle.fill" catalog="system" width="128" height="121"/>
-        <systemColor name="secondaryLabelColor">
-            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
-        <systemColor name="systemGray5Color">
-            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="systemGreenColor">
             <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -5,6 +5,7 @@ import RevoHttp
 
 class ComoMemberDetailsController : UIViewController, UITableViewDelegate {
     
+    @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var nameLabel:UILabel!
     @IBOutlet weak var phoneLabel:UILabel!
     @IBOutlet weak var birthdayLabel:UILabel!
@@ -20,6 +21,7 @@ class ComoMemberDetailsController : UIViewController, UITableViewDelegate {
     @IBOutlet weak var tableView:ContentStatusTableView!
     
     @IBOutlet weak var redeemButton: UIButton!
+    @IBOutlet weak var couponsButton: UIButton!
     
     var details:Como.MemberDetailsResponse!
     let dataSource = MembershipDataSource()
@@ -27,6 +29,7 @@ class ComoMemberDetailsController : UIViewController, UITableViewDelegate {
     override func viewDidLoad() {
         showMemberDetails()
         redeemButton.isEnabled = false
+        appearance()
     }
     
     @IBAction func onRedeemPressed(_ sender: Any) {
@@ -75,6 +78,13 @@ class ComoMemberDetailsController : UIViewController, UITableViewDelegate {
         tableView.indexPathsForSelectedRows?.map({ (indexPath:IndexPath) in
             details.membership.assets[indexPath.row]
         }) ?? []
+    }
+    
+    func appearance(){
+        headerView.round(12)
+        tableView.round(12)
+        redeemButton.round(4)
+        couponsButton.round(4)
     }
     
 }

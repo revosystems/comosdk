@@ -18,6 +18,10 @@ public class ComoController : UIViewController {
     @IBOutlet weak var loading: UIActivityIndicatorView!
     
     @IBOutlet weak var findMemberButton: UIButton!
+    @IBOutlet weak var sendAuthCodeButton: UIButton!
+    @IBOutlet weak var scanCodeButton: UIButton!
+    @IBOutlet weak var addCouponButton: UIButton!
+    @IBOutlet weak var registerButton: UIButton!
     
     @IBOutlet weak var registerView: UIView!
     
@@ -36,6 +40,7 @@ public class ComoController : UIViewController {
         registerView.isHidden = true
         findMemberButton.round(4)
         isModalInPresentation = true
+        appearance()
     }
     
     @IBAction func onBackPressed(_ sender: Any) {
@@ -140,6 +145,10 @@ public class ComoController : UIViewController {
                 print(error)
             }
         }
+    }
+    
+    func appearance(){
+        [findMemberButton, sendAuthCodeButton, scanCodeButton, addCouponButton, registerButton].each { $0.round(4)}
     }
     
     deinit {

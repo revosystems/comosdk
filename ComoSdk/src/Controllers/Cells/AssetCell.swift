@@ -13,6 +13,11 @@ class AssetCell : UITableViewCell {
         assetImageView.round(4)
     }
     
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+        selectedBackgroundView?.backgroundColor = selected ? .black : .clear        
+    }
+    
     func setup(asset:Como.Asset) -> Self {
         
         titleLabel.text         = asset.name
