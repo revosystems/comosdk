@@ -1,4 +1,5 @@
 import UIKit
+import RevoFoundation
 
 class ComoPayController : UIViewController {
     
@@ -7,6 +8,7 @@ class ComoPayController : UIViewController {
     @IBOutlet weak var payCodeInput:UITextField!
     @IBOutlet weak var errorLabel:UILabel!
     @IBOutlet weak var loading:UIActivityIndicatorView!
+    @IBOutlet weak var amountLabel: UILabel!
     
     var delegate:ComoDelegate?
     
@@ -14,6 +16,8 @@ class ComoPayController : UIViewController {
         isModalInPresentation = true
         errorLabel.text = ""
         loading.isHidden = true
+        
+        amountLabel.text = str("%.2f €", Double(amount) / 100.0)
     }
     
     @IBAction func onCancelPressed(_ sender:Any){
@@ -28,7 +32,7 @@ class ComoPayController : UIViewController {
                 errorLabel.text = ""
                 let paid = try await Como.shared.currentSale!.pay(amount: amount, code: payCodeInput.text)
                 dismiss(animated: true) { [unowned self] in
-                    self.delegate?.como(onPaid: paid)
+                    self.delegate?.como(onPaid: paid * -1)
                 }
             }
             catch {

@@ -4,6 +4,7 @@ import RevoFoundation
 public protocol ComoDelegate {
     func como(onCustomerSelected currentSale:Como.CurrentSale)
     func como(onPaid amount:Int)
+    func comoActionCanceled()
 }
 
 public class ComoController : UIViewController {
