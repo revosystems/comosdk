@@ -48,6 +48,7 @@ class ComoMemberDetailsController : UIViewController, UITableViewDelegate {
         phoneLabel.text    = details.membership.phoneNumber
         birthdayLabel.text = details.membership.birthday
         tagsLabel.text     = details.membership.tags?.implode(", ") ?? ""
+        image.circle().gravatar(email: details.membership.email, defaultImage:"https://thumbnailer.mixcloud.com/unsafe/600x600/defaults/users/2.png")
         
         creditLabel.text = str("%.2f €", (Double(details.membership.creditBalance.balance.monetary) / 100.0))
         pointsLabel.text = "\(details.membership.pointsBalance.balance.monetary / 100)"
