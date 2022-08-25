@@ -186,6 +186,19 @@ enjoy benefits and accumulate points?</string>
                                     <action selector="onVoidPurchasePressed:" destination="zag-Q7-FfE" eventType="touchUpInside" id="RKB-nN-cui"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="fsdf" borderStyle="roundedRect" placeholder="dfasdfasdf" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zu0-P3-7Ix">
+                                <rect key="frame" x="31" y="560" width="228" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="20"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ywf-sC-VbJ">
+                                <rect key="frame" x="438" y="563" width="67" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="gdK-Yo-pDd"/>
                         <color key="backgroundColor" red="0.2627450980392157" green="0.21568627450980393" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -609,7 +622,7 @@ enjoy benefits and accumulate points?</string>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="gEc-nq-9f4"/>
+        <segue reference="t1w-d6-7yc"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="face.dashed" catalog="system" width="128" height="121"/>
