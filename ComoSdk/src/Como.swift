@@ -151,7 +151,7 @@ public class Como {
         
         let object = QuickRegister(customer: Customer(phoneNumber: phoneNumber), quickRegistrationCode: authCode)
         
-        return try await api!.post("registration/quick", object:object)
+        return try await api!.post("advanced/registration/quick", object:object)
     }
     
     public func submitEvent() async throws -> Como.Api.Response {

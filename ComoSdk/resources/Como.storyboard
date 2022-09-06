@@ -387,8 +387,12 @@ enjoy benefits and accumulate points?</string>
                                                     <color key="textColor" red="0.4392156862745098" green="0.43137254901960786" blue="0.43137254901960786" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="checkmark.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="jgz-mI-h9g">
+                                                    <rect key="frame" x="91" y="45" width="18" height="19"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Status" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KOj-06-pyU">
-                                                    <rect key="frame" x="92" y="46" width="105" height="17"/>
+                                                    <rect key="frame" x="114" y="46" width="87" height="17"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="0.4392156862745098" green="0.43137254901960786" blue="0.43137254901960786" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -406,6 +410,7 @@ enjoy benefits and accumulate points?</string>
                                         <connections>
                                             <outlet property="assetImageView" destination="DFx-0W-mNX" id="4c8-02-YHs"/>
                                             <outlet property="descriptionLabel" destination="QfN-GV-kiu" id="bX4-0B-50j"/>
+                                            <outlet property="statusIcon" destination="jgz-mI-h9g" id="zzZ-kD-OMl"/>
                                             <outlet property="statusLabel" destination="KOj-06-pyU" id="nZp-KL-UOf"/>
                                             <outlet property="titleLabel" destination="5SK-88-Sr1" id="iyR-Y4-SKp"/>
                                         </connections>
@@ -615,9 +620,10 @@ enjoy benefits and accumulate points?</string>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="t1w-d6-7yc"/>
+        <segue reference="gEc-nq-9f4"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="checkmark.circle.fill" catalog="system" width="128" height="121"/>
         <image name="face.dashed" catalog="system" width="128" height="121"/>
         <image name="message.fill" catalog="system" width="128" height="113"/>
         <image name="qrcode" catalog="system" width="128" height="114"/>
