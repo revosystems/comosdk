@@ -1,8 +1,12 @@
 import Foundation
 
-extension Como {    
+extension Como {
     public struct MeanOfPayment : Codable {
-        let type:String
-        let amount:Int
+        public let type:String
+        public let amount:Int
+        
+        public init(type:String, amount:Int){
+            self.type = type; self.amount = amount
+        }
     }
 }
