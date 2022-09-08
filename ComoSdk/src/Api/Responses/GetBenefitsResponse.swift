@@ -16,6 +16,20 @@ extension Como {
             redeemAssets        = try container.decodeIfPresent([RedeemAssetResponse].self, forKey: .redeemAssets)
             try super.init(from: decoder)
         }
+        
+        public func fullName() -> String {
+            let benefitsNames = deals?.map { $0.name } ?? []
+            let assetsName = redeemAssets?.filter { $0.redeemable }.map {$0.name} ?? []
+            return (benefitsNames + assetsName).implode(", ")
+        }
+        
+        public func errors() -> String? {
+            let errors = redeemAssets?.filter { !$0.redeemable }.compactMap { $0.nonRedeemableCause?.message }
+            if let errors = errors, errors.count > 0 {
+                return errors.implode(", ")
+            }
+            return nil
+        }
     }
     
     public struct Deal : Codable {
@@ -56,6 +70,7 @@ extension Como {
         public let name:String
         public let code:String?
         public let redeemable:Bool
-        public let benefits:[Benefit]
+        public let nonRedeemableCause:Como.Api.ResponseError?
+        public let benefits:[Benefit]?
     }        
 }
