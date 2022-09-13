@@ -310,11 +310,11 @@ enjoy benefits and accumulate points?</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="xmark.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="UTv-c4-pSW">
-                                        <rect key="frame" x="216.5" y="16" width="28" height="28"/>
+                                        <rect key="frame" x="216.5" y="18.5" width="24" height="23"/>
                                         <color key="tintColor" systemColor="systemGreenColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="29" id="96c-3n-Ngn"/>
-                                            <constraint firstAttribute="width" constant="28" id="Stc-1B-1fI"/>
+                                            <constraint firstAttribute="height" constant="24" id="96c-3n-Ngn"/>
+                                            <constraint firstAttribute="width" constant="24" id="Stc-1B-1fI"/>
                                         </constraints>
                                     </imageView>
                                 </subviews>
@@ -457,7 +457,7 @@ enjoy benefits and accumulate points?</string>
                                     <segue destination="5Qo-sF-hG0" kind="show" identifier="coupons" id="gEc-nq-9f4"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="49z-Uf-2tE">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="49z-Uf-2tE">
                                 <rect key="frame" x="418" y="595" width="150" height="31"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -481,7 +481,7 @@ enjoy benefits and accumulate points?</string>
                             <constraint firstItem="s8y-QH-MU7" firstAttribute="trailing" secondItem="tfx-Dz-sN7" secondAttribute="trailing" constant="-12" id="NOC-nd-OfI"/>
                             <constraint firstItem="tpT-mC-9J5" firstAttribute="leading" secondItem="tfx-Dz-sN7" secondAttribute="leading" constant="12" id="PZq-mj-GoJ"/>
                             <constraint firstItem="tpT-mC-9J5" firstAttribute="top" secondItem="H5F-UK-gB6" secondAttribute="top" constant="56" id="VBe-sD-Q8h"/>
-                            <constraint firstItem="tfx-Dz-sN7" firstAttribute="trailing" secondItem="49z-Uf-2tE" secondAttribute="trailing" constant="6" id="WuN-i4-enz"/>
+                            <constraint firstItem="tfx-Dz-sN7" firstAttribute="trailing" secondItem="49z-Uf-2tE" secondAttribute="trailing" constant="12" id="WuN-i4-enz"/>
                             <constraint firstItem="tfx-Dz-sN7" firstAttribute="bottom" secondItem="49z-Uf-2tE" secondAttribute="bottom" constant="14" id="Xjr-st-OGD"/>
                             <constraint firstItem="s8y-QH-MU7" firstAttribute="leading" secondItem="tfx-Dz-sN7" secondAttribute="leading" constant="12" id="arI-PQ-UFJ"/>
                             <constraint firstItem="tfx-Dz-sN7" firstAttribute="bottom" secondItem="jZA-Gi-dUe" secondAttribute="bottom" constant="14" id="mw8-yN-niV"/>
