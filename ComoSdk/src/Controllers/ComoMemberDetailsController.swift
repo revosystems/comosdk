@@ -77,13 +77,15 @@ class ComoMemberDetailsController : UIViewController, UITableViewDelegate {
     }
     
     func updateRedeemButton(){
-        let benefitsCount = tableView.indexPathsForSelectedRows?.count ?? 0
+        let benefitsCount = tableView.indexPathsForSelectedRows?.filter { $0.section == 1 }.count ?? 0
         redeemButton.isEnabled = benefitsCount > 0
         redeemButton.setTitle("Reedem (\(benefitsCount))", for: .normal)
     }
     
     var selectedAssets:[Como.Asset]{
-        tableView.indexPathsForSelectedRows?.map({ (indexPath:IndexPath) in
+        tableView.indexPathsForSelectedRows?.filter {
+            $0.section == 1
+        }.map({ (indexPath:IndexPath) in
             details.membership.assets[indexPath.row]
         }) ?? []
     }
