@@ -16,7 +16,7 @@ class AssetCell : UITableViewCell {
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        selectedBackgroundView?.backgroundColor = selected ? .black : .clear        
+        selectedBackgroundView?.backgroundColor = selected ? UIColor(hex: "#eeeeee") : .clear
     }
     
     func setup(asset:Como.Asset) -> Self {

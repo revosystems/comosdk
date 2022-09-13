@@ -16,3 +16,6 @@ target 'ComoSdk' do
   end
 
 end
+
+
+#pod repo push RVPods ComoSdk.podspec

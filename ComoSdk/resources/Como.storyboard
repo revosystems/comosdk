@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="ipad10_5" orientation="landscape" layout="fullscreen" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="BentonGothic-Bold.ttf">
+            <string>BentonGothic-Bold</string>
+        </array>
+        <array key="BentonGothic-Regular.ttf">
+            <string>BentonGothic-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Navigation Controller-->
         <scene sceneID="3wa-i6-ShV">
@@ -30,11 +38,11 @@
             <objects>
                 <viewController id="zag-Q7-FfE" customClass="ComoController" customModule="ComoSdk" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ybH-td-Njw">
-                        <rect key="frame" x="0.0" y="0.0" width="540" height="620"/>
+                        <rect key="frame" x="0.0" y="0.0" width="580" height="640"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8aT-zp-ak2">
-                                <rect key="frame" x="74.5" y="86" width="391" height="480"/>
+                                <rect key="frame" x="94.5" y="86" width="391" height="480"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="jordi.p@revo.works" borderStyle="roundedRect" placeholder="Phone, Email or App Id" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="En8-hN-OCd">
                                         <rect key="frame" x="68" y="20" width="240" height="34"/>
@@ -229,107 +237,121 @@ enjoy benefits and accumulate points?</string>
             <objects>
                 <viewController storyboardIdentifier="memberDetails" id="jFq-eJ-UDV" customClass="ComoMemberDetailsController" customModule="ComoSdk" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="H5F-UK-gB6">
-                        <rect key="frame" x="0.0" y="0.0" width="540" height="620"/>
+                        <rect key="frame" x="0.0" y="0.0" width="580" height="640"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tpT-mC-9J5">
-                                <rect key="frame" x="12" y="56" width="516" height="120"/>
+                                <rect key="frame" x="12" y="56" width="556" height="100"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="face.dashed" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="XkI-6k-oc9">
-                                        <rect key="frame" x="20" y="31" width="60" height="60"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="face.dashed" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="XkI-6k-oc9">
+                                        <rect key="frame" x="20" y="18" width="60" height="60"/>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="61" id="Fc7-9a-qWK"/>
+                                            <constraint firstAttribute="width" constant="60" id="x56-Bl-o8P"/>
+                                        </constraints>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="xmark.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="UTv-c4-pSW">
-                                        <rect key="frame" x="7" y="20.5" width="28" height="28"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="tintColor" systemColor="systemGreenColor"/>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Jason Mamoa" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wjh-mK-aNS">
-                                        <rect key="frame" x="95" y="35" width="160" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jason Mamoa" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wjh-mK-aNS">
+                                        <rect key="frame" x="95" y="22" width="117.5" height="18"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="150" id="2eO-Jh-TtM"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="BentonGothic-Bold" family="BentonGothic" pointSize="18"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="123456" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FeQ-IN-IAi">
-                                        <rect key="frame" x="97" y="54" width="160" height="21"/>
+                                        <rect key="frame" x="97" y="44" width="160" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <color key="textColor" red="0.4392156862745098" green="0.43137254901960786" blue="0.43137254901960786" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="BentonGothic-Regular" family="BentonGothic" pointSize="14"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="17 July 1984" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uBe-oT-2Yu">
-                                        <rect key="frame" x="97" y="74" width="166" height="17"/>
+                                        <rect key="frame" x="97" y="67" width="160" height="17"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <color key="textColor" red="0.4392156862745098" green="0.43137254901960786" blue="0.43137254901960786" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="BentonGothic-Regular" family="BentonGothic" pointSize="14"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="vegetarian, VIP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U5W-l5-CRQ">
-                                        <rect key="frame" x="97" y="91" width="306" height="21"/>
+                                        <rect key="frame" x="97" y="84" width="447" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <color key="textColor" red="0.4392156862745098" green="0.43137254901960786" blue="0.43137254901960786" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="BentonGothic-Regular" family="BentonGothic" pointSize="14"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Credit" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hSe-N5-bD3">
-                                        <rect key="frame" x="265" y="65" width="127" height="17"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="CREDITS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hSe-N5-bD3">
+                                        <rect key="frame" x="301" y="23" width="127" height="17"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <color key="textColor" red="0.4392156862745098" green="0.43137254901960786" blue="0.43137254901960786" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="BentonGothic-Regular" family="BentonGothic" pointSize="14"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="200.30 €" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="inO-bf-pGv">
-                                        <rect key="frame" x="265" y="35" width="127" height="32"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="200.30 €" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="inO-bf-pGv">
+                                        <rect key="frame" x="301" y="47" width="127" height="32"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" name="BentonGothic-Regular" family="BentonGothic" pointSize="26"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Points" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gyv-cV-CF7">
-                                        <rect key="frame" x="432" y="65" width="88" height="17"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="POINTS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gyv-cV-CF7">
+                                        <rect key="frame" x="456" y="22" width="88" height="17"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <color key="textColor" red="0.4392156862745098" green="0.43137254901960786" blue="0.43137254901960786" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="BentonGothic-Regular" family="BentonGothic" pointSize="14"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="50" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NxB-pL-Uz7">
-                                        <rect key="frame" x="420" y="33" width="110" height="36"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="50" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NxB-pL-Uz7">
+                                        <rect key="frame" x="456" y="45" width="110" height="36"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" name="BentonGothic-Regular" family="BentonGothic" pointSize="26"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="xmark.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="UTv-c4-pSW">
+                                        <rect key="frame" x="216.5" y="16" width="28" height="28"/>
+                                        <color key="tintColor" systemColor="systemGreenColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="29" id="96c-3n-Ngn"/>
+                                            <constraint firstAttribute="width" constant="28" id="Stc-1B-1fI"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.16470588235294117" green="0.13725490196078433" blue="0.12941176470588234" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="120" id="nOk-by-0jK"/>
+                                    <constraint firstItem="XkI-6k-oc9" firstAttribute="leading" secondItem="tpT-mC-9J5" secondAttribute="leading" constant="20" symbolic="YES" id="95d-Xu-qdO"/>
+                                    <constraint firstItem="UTv-c4-pSW" firstAttribute="centerY" secondItem="wjh-mK-aNS" secondAttribute="centerY" constant="-1" id="fjb-hX-rFJ"/>
+                                    <constraint firstItem="wjh-mK-aNS" firstAttribute="top" secondItem="tpT-mC-9J5" secondAttribute="top" constant="22" id="kjK-u6-AFx"/>
+                                    <constraint firstAttribute="height" constant="100" id="nOk-by-0jK"/>
+                                    <constraint firstItem="UTv-c4-pSW" firstAttribute="leading" secondItem="wjh-mK-aNS" secondAttribute="trailing" constant="4" id="nTd-H6-Wln"/>
+                                    <constraint firstItem="wjh-mK-aNS" firstAttribute="leading" secondItem="XkI-6k-oc9" secondAttribute="trailing" constant="15" id="riW-5d-TgH"/>
+                                    <constraint firstItem="XkI-6k-oc9" firstAttribute="top" secondItem="tpT-mC-9J5" secondAttribute="top" constant="17.5" id="stz-cE-kSR"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="s8y-QH-MU7" customClass="ContentStatusTableView" customModule="RevoUIComponents">
-                                <rect key="frame" x="12" y="188" width="516" height="370"/>
-                                <color key="backgroundColor" red="0.16470588235294117" green="0.13725490196078433" blue="0.12941176470588234" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="separatorColor" red="0.19607843137254902" green="0.19607843137254902" blue="0.19607843137254902" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="12" y="168" width="556" height="410"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="separatorColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="header" id="icl-1f-4wy">
-                                        <rect key="frame" x="0.0" y="44.5" width="516" height="40.5"/>
+                                        <rect key="frame" x="0.0" y="50" width="556" height="40.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="icl-1f-4wy" id="ayq-An-ntG">
-                                            <rect key="frame" x="0.0" y="0.0" width="516" height="40.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="556" height="40.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="100" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Header" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vro-MV-32l">
-                                                    <rect key="frame" x="16" y="11" width="50.5" height="18.5"/>
+                                                    <rect key="frame" x="16" y="11" width="54" height="18.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="18" id="lMw-GX-qXD"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <fontDescription key="fontDescription" name="BentonGothic-Regular" family="BentonGothic" pointSize="16"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" red="0.16470588235294117" green="0.13725490196078433" blue="0.12941176470588234" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstItem="vro-MV-32l" firstAttribute="leading" secondItem="ayq-An-ntG" secondAttribute="leadingMargin" id="A6V-DY-pUc"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="vro-MV-32l" secondAttribute="bottom" id="f4B-k7-8JH"/>
@@ -339,17 +361,17 @@ enjoy benefits and accumulate points?</string>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="memberNote" id="OQ0-gQ-UQ7" customClass="MemberNoteCell" customModule="ComoSdk" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="85" width="516" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="90.5" width="556" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="OQ0-gQ-UQ7" id="kOf-CI-QcX">
-                                            <rect key="frame" x="0.0" y="0.0" width="516" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="556" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="100" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Member note" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BGa-yn-rEq">
                                                     <rect key="frame" x="16" y="11" width="428" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -359,51 +381,51 @@ enjoy benefits and accumulate points?</string>
                                             <outlet property="noteLabel" destination="BGa-yn-rEq" id="kcb-nC-fVQ"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="blue" indentationWidth="10" reuseIdentifier="asset" rowHeight="74" id="PSj-RO-AV2" customClass="AssetCell" customModule="ComoSdk" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="128.5" width="516" height="74"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="blue" indentationWidth="10" reuseIdentifier="asset" rowHeight="86" id="PSj-RO-AV2" customClass="AssetCell" customModule="ComoSdk" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="134" width="556" height="86"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PSj-RO-AV2" id="x3R-vo-a6O">
-                                            <rect key="frame" x="0.0" y="0.0" width="516" height="74"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="556" height="86"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Asset Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5SK-88-Sr1">
-                                                    <rect key="frame" x="92" y="5" width="237" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DFx-0W-mNX">
-                                                    <rect key="frame" x="16" y="6" width="62" height="62"/>
+                                                    <rect key="frame" x="16" y="10" width="68" height="66"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="62" id="Ano-2R-lJA"/>
-                                                        <constraint firstAttribute="width" constant="62" id="pWt-1S-gfq"/>
+                                                        <constraint firstAttribute="height" constant="68" id="Ano-2R-lJA"/>
+                                                        <constraint firstAttribute="width" constant="68" id="pWt-1S-gfq"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QfN-GV-kiu">
-                                                    <rect key="frame" x="92" y="24" width="237" height="17"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <color key="textColor" red="0.4392156862745098" green="0.43137254901960786" blue="0.43137254901960786" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="checkmark.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="jgz-mI-h9g">
-                                                    <rect key="frame" x="91" y="45" width="18" height="19"/>
+                                                    <rect key="frame" x="94" y="54" width="18" height="19"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Status" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KOj-06-pyU">
-                                                    <rect key="frame" x="114" y="46" width="87" height="17"/>
+                                                    <rect key="frame" x="117" y="56" width="87" height="17"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <color key="textColor" red="0.4392156862745098" green="0.43137254901960786" blue="0.43137254901960786" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <fontDescription key="fontDescription" name="BentonGothic-Bold" family="BentonGothic" pointSize="13"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Asset Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5SK-88-Sr1">
+                                                    <rect key="frame" x="95" y="11" width="237" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="BentonGothic-Bold" family="BentonGothic" pointSize="15"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QfN-GV-kiu">
+                                                    <rect key="frame" x="96" y="32" width="237" height="17"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="BentonGothic-Regular" family="BentonGothic" pointSize="13"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <color key="backgroundColor" red="0.16470588235294117" green="0.13725490196078433" blue="0.12941176470588234" alpha="0.0" colorSpace="calibratedRGB"/>
                                             <constraints>
-                                                <constraint firstItem="DFx-0W-mNX" firstAttribute="top" secondItem="x3R-vo-a6O" secondAttribute="top" constant="6" id="2v2-3u-hcp"/>
+                                                <constraint firstItem="DFx-0W-mNX" firstAttribute="top" secondItem="x3R-vo-a6O" secondAttribute="top" constant="10" id="2v2-3u-hcp"/>
                                                 <constraint firstItem="DFx-0W-mNX" firstAttribute="leading" secondItem="x3R-vo-a6O" secondAttribute="leading" constant="16" id="VxL-eA-nHI"/>
-                                                <constraint firstAttribute="bottom" secondItem="DFx-0W-mNX" secondAttribute="bottom" constant="6" id="pEx-Q0-0Qe"/>
+                                                <constraint firstAttribute="bottom" secondItem="DFx-0W-mNX" secondAttribute="bottom" constant="10" id="pEx-Q0-0Qe"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.16470588235294117" green="0.13725490196078433" blue="0.12941176470588234" alpha="0.0" colorSpace="calibratedRGB"/>
@@ -421,14 +443,14 @@ enjoy benefits and accumulate points?</string>
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jZA-Gi-dUe">
-                                <rect key="frame" x="20" y="575" width="150" height="31"/>
-                                <color key="backgroundColor" red="0.43921568630000002" green="0.43137254899999999" blue="0.43137254899999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="20" y="595" width="150" height="31"/>
+                                <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="31" id="ycw-9g-34q"/>
                                     <constraint firstAttribute="width" constant="150" id="zBc-CC-krG"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="BentonGothic-Regular" family="BentonGothic" pointSize="14"/>
+                                <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Coupon Codes"/>
                                 <connections>
@@ -436,13 +458,13 @@ enjoy benefits and accumulate points?</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="49z-Uf-2tE">
-                                <rect key="frame" x="378" y="575" width="150" height="31"/>
+                                <rect key="frame" x="418" y="595" width="150" height="31"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="31" id="4LT-gd-XFw"/>
                                     <constraint firstAttribute="width" constant="150" id="vYf-UO-KWw"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="BentonGothic-Regular" family="BentonGothic" pointSize="14"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Redeem"/>
@@ -452,7 +474,7 @@ enjoy benefits and accumulate points?</string>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="tfx-Dz-sN7"/>
-                        <color key="backgroundColor" red="0.2627450980392157" green="0.21568627450980393" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="jZA-Gi-dUe" firstAttribute="leading" secondItem="tfx-Dz-sN7" secondAttribute="leading" constant="20" id="BXI-SI-eAh"/>
                             <constraint firstItem="tpT-mC-9J5" firstAttribute="trailing" secondItem="tfx-Dz-sN7" secondAttribute="trailing" constant="-12" id="Che-d8-0H5"/>
@@ -502,7 +524,7 @@ enjoy benefits and accumulate points?</string>
             <objects>
                 <viewController id="5Qo-sF-hG0" customClass="ComoCouponsController" customModule="ComoSdk" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hDR-oM-HXW">
-                        <rect key="frame" x="0.0" y="0.0" width="540" height="620"/>
+                        <rect key="frame" x="0.0" y="0.0" width="580" height="640"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m3c-fX-Vs1">
@@ -555,7 +577,7 @@ enjoy benefits and accumulate points?</string>
             <objects>
                 <viewController storyboardIdentifier="pay" id="lFA-c4-vCF" customClass="ComoPayController" customModule="ComoSdk" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="woy-7N-HzQ">
-                        <rect key="frame" x="0.0" y="0.0" width="540" height="620"/>
+                        <rect key="frame" x="0.0" y="0.0" width="580" height="640"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="SMS Validation Code" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hnV-uP-2Gc">
@@ -623,11 +645,11 @@ enjoy benefits and accumulate points?</string>
         <segue reference="gEc-nq-9f4"/>
     </inferredMetricsTieBreakers>
     <resources>
-        <image name="checkmark.circle.fill" catalog="system" width="128" height="121"/>
-        <image name="face.dashed" catalog="system" width="128" height="121"/>
-        <image name="message.fill" catalog="system" width="128" height="113"/>
+        <image name="checkmark.circle.fill" catalog="system" width="128" height="123"/>
+        <image name="face.dashed" catalog="system" width="128" height="123"/>
+        <image name="message.fill" catalog="system" width="128" height="114"/>
         <image name="qrcode" catalog="system" width="128" height="114"/>
-        <image name="xmark.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="xmark.circle.fill" catalog="system" width="128" height="123"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
