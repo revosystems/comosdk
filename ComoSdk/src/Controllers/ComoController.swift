@@ -24,6 +24,8 @@ public class ComoController : UIViewController {
     @IBOutlet weak var addCouponButton: UIButton!
     @IBOutlet weak var registerButton: UIButton!
     
+    @IBOutlet var headerImageBackground: UIView!
+    
     @IBOutlet weak var registerView: UIView!
     
     var delegate:ComoDelegate?
@@ -39,9 +41,12 @@ public class ComoController : UIViewController {
         loading.isHidden = true
         errorLabel.text = ""
         registerView.isHidden = true
-        findMemberButton.round(4)
         isModalInPresentation = true
         appearance()
+        
+        if let customer = Como.shared.currentSale?.customer {
+            inputField.text = customer.phoneNumber
+        }
     }
     
     @IBAction func onBackPressed(_ sender: Any) {
@@ -117,11 +122,7 @@ public class ComoController : UIViewController {
             }
         }
     }
-    
-    @IBAction func onScanCodePressed(_ sender: Any) {
-
-    }
-    
+        
     func customer() -> Como.Customer? {
         guard inputField.text?.count ?? 0 > 0 else {
             return nil
@@ -137,19 +138,35 @@ public class ComoController : UIViewController {
         return Como.Customer(phoneNumber: inputField.text!.lowercased())
     }
     
+    //MARK: - Not used
     @IBAction func onVoidPurchasePressed(_ sender: Any) {
         Task {
             do {
                 try await Como.shared.currentSale!.void()
                 print("Voided")
-            }catch{
+            } catch {
                 print(error)
             }
         }
     }
     
+    @IBAction func onScanCodePressed(_ sender: Any) {
+
+    }
+    
+    
+    //MARK: - Appearance
     func appearance(){
-        [findMemberButton, sendAuthCodeButton, scanCodeButton, addCouponButton, registerButton].each { $0.round(4)}
+        headerImageBackground.circle()
+        
+        [findMemberButton, sendAuthCodeButton, /*scanCodeButton,*/ addCouponButton, registerButton].each {
+            $0.round(4)
+        }
+        
+        [sendAuthCodeButton, addCouponButton].each {
+            $0.border(.init(hex:"#EEEEEE"))
+        }
+        
     }
     
     deinit {

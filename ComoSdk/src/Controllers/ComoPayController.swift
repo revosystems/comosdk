@@ -9,6 +9,8 @@ class ComoPayController : UIViewController {
     @IBOutlet weak var errorLabel:UILabel!
     @IBOutlet weak var loading:UIActivityIndicatorView!
     @IBOutlet weak var amountLabel: UILabel!
+    @IBOutlet var headerImageView: UIView!
+    @IBOutlet var payButton: UIButton!
     
     var delegate:ComoDelegate?
     
@@ -17,6 +19,7 @@ class ComoPayController : UIViewController {
         errorLabel.text = ""
         loading.isHidden = true
         
+        appearance()
         amountLabel.text = str("%.2f €", Double(amount) / 100.0)
     }
     
@@ -41,6 +44,11 @@ class ComoPayController : UIViewController {
                 print(error)
             }
         }
+    }
+    
+    func appearance(){
+        headerImageView.circle()
+        payButton.round(4)
     }
 }
 
