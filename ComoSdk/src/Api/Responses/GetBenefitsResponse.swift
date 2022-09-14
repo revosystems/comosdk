@@ -17,12 +17,6 @@ extension Como {
             try super.init(from: decoder)
         }
         
-        public func fullName() -> String {
-            let benefitsNames = deals?.map { $0.name } ?? []
-            let assetsName = redeemAssets?.filter { $0.redeemable }.map {$0.name} ?? []
-            return (benefitsNames + assetsName).implode(", ")
-        }
-        
         public func itemCodeBenefits() -> [Benefit]? {
             redeemAssets?.filter {
                 $0.redeemable
@@ -31,7 +25,7 @@ extension Como {
             }.flatMap {
                 $0
             }.filter {
-                $0.type == "itemCode"
+                $0.type == .itemCode
             }
         }
         
@@ -44,6 +38,10 @@ extension Como {
         }
     }
     
+    public enum BenefitType : String, Codable {
+        case dealCode, itemCode, discount
+    }
+    
     public struct Deal : Codable {
         public let key:String
         public let name:String
@@ -51,7 +49,7 @@ extension Como {
     }
     
     public struct Benefit : Codable {
-        public let type:String
+        public let type:BenefitType
         public let code:String?
         public let sum:Int?
         public let extendedData:[ExtendedData]?
