@@ -9,6 +9,8 @@ public class Como {
     }()
     
     var api:Api?
+    var transactionUuid:String = UUID().uuidString
+    
     public var currentSale:CurrentSale?
     
     @discardableResult
@@ -39,6 +41,10 @@ public class Como {
         let nav = UINavigationController(rootViewController: payVc)
         nav.modalPresentationStyle = .formSheet
         return nav
+    }
+    
+    public func endTransaction(){
+        transactionUuid = UUID().uuidString
     }
     
     //MARK: - Methods
@@ -98,7 +104,9 @@ public class Como {
     public func submit(purchase:Como.Purchase, customer:Como.Customer? = nil, assets:[RedeemAsset]? = nil, deals:[RedeemAsset]? = nil, closed:Bool = false) async throws -> Como.SubmitPurchaseResponse {
         
         try validateInitialized()
-        
+
+        endTransaction()
+
         struct SubmitPurchase:Codable {
             let customer:Customer?
             let purchase:Purchase
