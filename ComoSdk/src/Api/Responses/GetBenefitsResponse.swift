@@ -23,6 +23,18 @@ extension Como {
             return (benefitsNames + assetsName).implode(", ")
         }
         
+        public func itemCodeBenefits() -> [Benefit]? {
+            redeemAssets?.filter {
+                $0.redeemable
+            }.compactMap {
+                $0.benefits
+            }.flatMap {
+                $0
+            }.filter {
+                $0.type == "itemCode"
+            }
+        }
+        
         public func errors() -> String? {
             let errors = redeemAssets?.filter { !$0.redeemable }.compactMap { $0.nonRedeemableCause?.message }
             if let errors = errors, errors.count > 0 {
