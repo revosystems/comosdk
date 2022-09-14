@@ -582,7 +582,7 @@ enjoy benefits and accumulate points?</string>
                     <navigationItem key="navigationItem" id="6fL-cF-nsi"/>
                     <connections>
                         <outlet property="errorsLabel" destination="tp7-ea-dQf" id="IkR-nc-7PW"/>
-                        <outlet property="headerImageView" destination="m3c-fX-Vs1" id="WJa-UC-boD"/>
+                        <outlet property="headerImageView" destination="v3T-lk-vBx" id="XEZ-lZ-sme"/>
                         <outlet property="loading" destination="uS5-qB-TbF" id="8gV-r9-ShW"/>
                         <outlet property="redeemButton" destination="m3c-fX-Vs1" id="4bJ-rf-tuP"/>
                         <outlet property="textField" destination="ww5-xE-ZcB" id="wmi-bu-fHc"/>
