@@ -44,7 +44,7 @@ class ComoMemberDetailsController : UIViewController, UITableViewDelegate {
             
     func showMemberDetails(){
         tableView.state    = .content
-        nameLabel.text     = details.membership.fullName
+        nameLabel.text     = details.membership.fullName ?? "--"
         phoneLabel.text    = details.membership.phoneNumber
         birthdayLabel.text = details.membership.birthday
         tagsLabel.text     = details.membership.tags?.implode(", ") ?? ""

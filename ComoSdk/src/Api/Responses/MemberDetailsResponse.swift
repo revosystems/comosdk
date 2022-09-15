@@ -28,16 +28,16 @@ extension Como {
     }
     
     public struct Membership : Codable {
-        let firstName:String
-        let lastName:String
+        let firstName:String?
+        let lastName:String?
         let birthday:String?
         let email:String?
         let gender:String?
         let phoneNumber:String
         let status:MemberShipStatus
         let createdOn:Date
-        let allowSMS:Bool
-        let allowEmail:Bool
+        let allowSMS:Bool?
+        let allowEmail:Bool?
         let commonExtId:String
         let comoMemberId:String
         //let mobileAppUsed:Bool
@@ -47,8 +47,11 @@ extension Como {
         let tags:[String]?
         let assets:[Asset]
         
-        public var fullName : String {
-            firstName + " " + lastName
+        public var fullName : String? {
+            guard let firstName = firstName else {
+                return nil
+            }
+            return firstName + " " + (lastName ?? "")
         }
         
         public var customer:Como.Customer {

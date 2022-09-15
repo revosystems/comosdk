@@ -11,17 +11,25 @@ extension Como {
         public var transactionId:String = UUID().uuidString
         public let relatedTransactionId:String?
         public let totalAmount:Int
+        public let totalGeneralDiscount:Int?
         public let orderType:OrderType
         public let employee:String
         public let items:[PurchaseLine]
         public var meansOfPayment:[Como.MeanOfPayment]?
         
-        public init(openTime:Date, relatedTransactionId:String? ,totalAmount:Int, orderType:OrderType, employee:String, items:[PurchaseLine], payments:[Como.MeanOfPayment]? = nil){
-            self.openTime = openTime; self.relatedTransactionId = relatedTransactionId; self.totalAmount = totalAmount; self.orderType = orderType; self.employee = employee; self.items = items; self.meansOfPayment = payments;
+        public init(openTime:Date, relatedTransactionId:String? ,totalAmount:Int, totalGeneralDiscount:Int? = nil, orderType:OrderType, employee:String, items:[PurchaseLine], payments:[Como.MeanOfPayment]? = nil){
+            self.openTime             = openTime
+            self.relatedTransactionId = relatedTransactionId
+            self.totalAmount          = totalAmount
+            self.totalGeneralDiscount = totalGeneralDiscount
+            self.orderType            = orderType
+            self.employee             = employee
+            self.items                = items
+            self.meansOfPayment       = payments
         }
         
         static func fake() -> Purchase {
-            return Purchase(openTime: Date(), relatedTransactionId:"\(Int.random(in: 0...9999))", totalAmount: 200, orderType: .pickup, employee: "Jordi", items: [PurchaseLine.fake()])
+            Purchase(openTime: Date(), relatedTransactionId:"\(Int.random(in: 0...9999))", totalAmount: 200, orderType: .pickup, employee: "Jordi", items: [PurchaseLine.fake()])
         }
         
         

@@ -43,6 +43,7 @@ public class ComoController : UIViewController {
         registerView.isHidden = true
         isModalInPresentation = true
         appearance()
+        preferredContentSize = CGSize(width: 548, height: 670)
         
         if let customer = Como.shared.currentSale?.customer {
             inputField.text = customer.phoneNumber
