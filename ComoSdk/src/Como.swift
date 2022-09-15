@@ -105,7 +105,9 @@ public class Como {
         
         try validateInitialized()
 
-        endTransaction()
+        defer {
+            endTransaction()
+        }
 
         struct SubmitPurchase:Codable {
             let customer:Customer?
