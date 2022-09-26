@@ -31,8 +31,8 @@ extension Como {
         
         @discardableResult
         public func submit(closed:Bool) async throws -> SubmitPurchaseResponse {
-            let assets = benefits?.redeemAssets?.map { Como.RedeemAsset(key: $0.key, appliedAmount: 0, code:$0.code) }
-            let deals  = benefits?.deals?.map        { Como.RedeemAsset(key: $0.key, appliedAmount: 0, code:nil) }
+            let assets = benefits?.redeemAssets?.map { Como.RedeemAsset(key: $0.key, appliedAmount: $0.benefits?.compactMap { $0.sum }.sum() ?? 0, code:$0.code) }
+            let deals  = benefits?.deals?.map        { Como.RedeemAsset(key: $0.key, appliedAmount: $0.benefits?.compactMap { $0.sum }.sum() ?? 0, code:nil) }
             
             return try await Como.shared.submit(purchase: purchase, customers:customer != nil ? [customer!] : nil, assets: assets, deals: deals, closed: closed)
         }
