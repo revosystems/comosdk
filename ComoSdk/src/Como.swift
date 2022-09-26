@@ -101,25 +101,25 @@ public class Como {
         //TODO
     }
     
-    public func submit(purchase:Como.Purchase, customer:Como.Customer? = nil, assets:[RedeemAsset]? = nil, deals:[RedeemAsset]? = nil, closed:Bool = false) async throws -> Como.SubmitPurchaseResponse {
+    public func submit(purchase:Como.Purchase, customers:[Como.Customer]? = nil, assets:[RedeemAsset]? = nil, deals:[RedeemAsset]? = nil, closed:Bool = false) async throws -> Como.SubmitPurchaseResponse {
         
         try validateInitialized()
 
         endTransaction()
 
         struct SubmitPurchase:Codable {
-            let customer:Customer?
+            let customers:[Customer]?
             let purchase:Purchase
             let redeemAssets:[RedeemAsset]?
             let deals:[RedeemAsset]?
         }
         let append = closed ? "" : "?status=open"
-        return try await api!.post("submitPurchase" + append, object:SubmitPurchase(customer:customer, purchase: purchase, redeemAssets: assets, deals: deals))
+        return try await api!.post("submitPurchase" + append, object:SubmitPurchase(customers:customers, purchase: purchase, redeemAssets: assets, deals: deals))
     }
     
     @discardableResult
-    public func submit(purchase:Como.Purchase, customer:Como.Customer? = nil, assets:[RedeemAsset]? = nil, deals:[RedeemAsset]? = nil) async throws -> Como.SubmitPurchaseResponse {
-        return try await submit(purchase: purchase, customer: customer, assets: assets, deals: deals, closed: true)
+    public func submit(purchase:Como.Purchase, customers:[Como.Customer]? = nil, assets:[RedeemAsset]? = nil, deals:[RedeemAsset]? = nil) async throws -> Como.SubmitPurchaseResponse {
+        return try await submit(purchase: purchase, customers: customers, assets: assets, deals: deals, closed: true)
     }
     
     @discardableResult

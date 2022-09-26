@@ -27,12 +27,12 @@ extension Como {
             let assets = benefits?.redeemAssets?.map { Como.RedeemAsset(key: $0.key, appliedAmount: 0, code:$0.code) }
             let deals  = benefits?.deals?.map        { Como.RedeemAsset(key: $0.key, appliedAmount: 0, code:nil) }
             
-            return try await Como.shared.submit(purchase: purchase, customer:customer, assets: assets, deals: deals, closed: closed)
+            return try await Como.shared.submit(purchase: purchase, customers:customer != nil ? [customer!] : nil, assets: assets, deals: deals, closed: closed)
         }
         
         @discardableResult
         public func void() async throws -> Como.Api.Response {
-            return try await Como.shared.void(purchase: purchase)
+            try await Como.shared.void(purchase: purchase)
         }
         
         func pay(amount:Int, code:String? = nil) async throws -> Int {
