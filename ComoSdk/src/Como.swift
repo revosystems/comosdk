@@ -105,7 +105,9 @@ public class Como {
         
         try validateInitialized()
 
-        endTransaction()
+        defer {
+            endTransaction()
+        }
 
         struct SubmitPurchase:Codable {
             let customers:[Customer]?
@@ -168,8 +170,12 @@ public class Como {
     }
     
     private func validateInitialized() throws{
-        guard api != nil else {
+        guard isInitialized else {
             throw Como.Api.ResponseErrorCode.sdkNotSettedUp
         }
+    }
+    
+    public var isInitialized: Bool {
+        api != nil
     }
 }

@@ -16,6 +16,13 @@ extension Como {
         }
         
         @discardableResult
+        public func update(purchase:Como.Purchase) -> Self {
+            self.purchase = purchase
+            self.purchase.transactionId = Como.shared.transactionUuid
+            return self
+        }
+        
+        @discardableResult
         public func getBenefits() async throws -> Como.GetBenefitsResponse{
             let response = try await Como.shared.getBenefits(customers: (customer != nil) ? [customer!] : [], purchase: purchase, redeemAssets: redeemAssets ?? [])
             benefits = response
