@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "ComoSdk"
-  spec.version      = "0.1.8"
+  spec.version      = "0.1.9"
   spec.summary      = "Library to connect to como loyalty."
 
   spec.description  = "A library that handles the connection and flow to como loyalty"
@@ -25,7 +25,7 @@ Pod::Spec.new do |spec|
    spec.ios.deployment_target = "13.0"
 
 
-  spec.source       = { :git => "https://github.com/revosystems/comosdk.git", :tag => "0.1.8" }
+  spec.source       = { :git => "https://github.com/revosystems/comosdk.git", :tag => "0.1.9" }
 
 
 
