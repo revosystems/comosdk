@@ -33,9 +33,9 @@ class ComoPayController : UIViewController {
             do {
                 loading.start(sender)
                 errorLabel.text = ""
-                let paid = try await Como.shared.currentSale!.pay(amount: amount, code: payCodeInput.text)
+                let (paid, confirmation) = try await Como.shared.currentSale!.pay(amount: amount, code: payCodeInput.text)
                 dismiss(animated: true) { [unowned self] in
-                    self.delegate?.como(onPaid: paid * -1)
+                    self.delegate?.como(onPaid: paid * -1, confirmation: confirmation)
                 }
             }
             catch {

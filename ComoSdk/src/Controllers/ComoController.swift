@@ -3,7 +3,7 @@ import RevoFoundation
 
 public protocol ComoDelegate {
     func como(onCustomerSelected currentSale:Como.CurrentSale)
-    func como(onPaid amount:Int)
+    func como(onPaid amount:Int, confirmation:String)
     func comoActionCanceled()
 }
 

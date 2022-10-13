@@ -97,8 +97,16 @@ public class Como {
         return try await api!.post("payment", object:object)
     }
     
-    public func cancelPayment(){
-        //TODO
+    public func cancelPayment(confirmation:String) async throws -> CancelPaymentResponse {
+        try validateInitialized()
+        
+        struct CancelPayment : Codable {
+            let confirmation:String
+        }
+        
+        let object = CancelPayment(confirmation: confirmation)
+                      
+        return try await api!.post("cancelPayment", object:object)        
     }
     
     public func submit(purchase:Como.Purchase, customers:[Como.Customer]? = nil, assets:[RedeemAsset]? = nil, deals:[RedeemAsset]? = nil, closed:Bool = false) async throws -> Como.SubmitPurchaseResponse {
