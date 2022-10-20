@@ -42,7 +42,7 @@ class ViewController: UIViewController, ComoDelegate {
         print("On customer selected")
     }
     
-    func como(onPaid amount:Int){
+    func como(onPaid response: Como.PaymentResponse) {        
        print("On paid")
     }
     
