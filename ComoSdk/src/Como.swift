@@ -4,6 +4,8 @@ import RevoFoundation
 
 public class Como {
     
+    public static var language:String = "es"
+    
     public static var shared:Como = {
         Como()
     }()
@@ -14,8 +16,9 @@ public class Como {
     public var currentSale:CurrentSale?
     
     @discardableResult
-    public func setup(key:String, branchId:String, posId:String, source:String, sourceVersion:String, debug:Bool = false) -> Self {
+    public func setup(key:String, branchId:String, posId:String, source:String, sourceVersion:String, language:String = "es", debug:Bool = false) -> Self {
         api = Api(key:key, branchId: branchId, posId: posId, source: source, sourceVersion: sourceVersion, debug: debug)
+        Self.language = language
         return self
     }
     
@@ -197,5 +200,9 @@ public class Como {
     
     public var isInitialized: Bool {
         api != nil
+    }
+    
+    static func trans(_ key:String) -> String{
+        NSLocalizedString(key, tableName: Self.language, comment: "")
     }
 }

@@ -10,10 +10,14 @@ class ComoCouponsController : UIViewController {
     @IBOutlet var headerImageView: UIView!
     @IBOutlet var redeemButton: UIButton!
     
+    @IBOutlet private weak var couponCodeTitle:UILabel!
+    @IBOutlet private weak var couponCodeDescLabel:UILabel!
+    
     override func viewDidLoad() {
         loading.isHidden = true
         errorsLabel.text = nil
         appearance()
+        translate()
     }
     
     @IBAction func onRedeemPressed(_ sender: Any) {
@@ -24,6 +28,12 @@ class ComoCouponsController : UIViewController {
     func appearance(){
         headerImageView.circle()
         redeemButton.round(4)
+    }
+    
+    func translate(){
+        couponCodeTitle.text = Como.trans("como_couponCodes")
+        couponCodeDescLabel.text = Como.trans("como_couponCodesDesc")
+        redeemButton.setTitle(Como.trans("como_redeem"), for: .normal)
     }
 }
 

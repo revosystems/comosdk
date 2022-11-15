@@ -12,12 +12,16 @@ class ComoPayController : UIViewController {
     @IBOutlet var headerImageView: UIView!
     @IBOutlet var payButton: UIButton!
     
+    @IBOutlet private var payTitle: UILabel!
+    @IBOutlet private var payDesc: UILabel!
+    
     var delegate:ComoDelegate?
     
     override func viewDidLoad() {
         isModalInPresentation = true
         errorLabel.text = ""
         loading.isHidden = true
+        translate()
         
         appearance()
         amountLabel.text = str("%.2f €", Double(amount) / 100.0)
@@ -40,7 +44,7 @@ class ComoPayController : UIViewController {
             }
             catch {
                 loading.stop(sender)
-                errorLabel.text = "\(error)"
+                errorLabel.text = Como.trans("como_\(error)")
                 print(error)
             }
         }
@@ -49,6 +53,13 @@ class ComoPayController : UIViewController {
     func appearance(){
         headerImageView.circle()
         payButton.round(4)
+    }
+    
+    func translate(){
+        payTitle.text = Como.trans("como_payTitle")
+        payDesc.text = Como.trans("como_payDesc")
+        payCodeInput.placeholder = Como.trans("como_SMSValidationCode")
+        payButton.setTitle(Como.trans("como_paySendAuthCode"), for: .normal)
     }
 }
 

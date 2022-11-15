@@ -23,10 +23,15 @@ public class ComoController : UIViewController {
     @IBOutlet weak var scanCodeButton: UIButton!
     @IBOutlet weak var addCouponButton: UIButton!
     @IBOutlet weak var registerButton: UIButton!
+    @IBOutlet weak var backButton: UIBarButtonItem!
     
     @IBOutlet var headerImageBackground: UIView!
     
     @IBOutlet weak var registerView: UIView!
+    
+    @IBOutlet weak var welcomeLabel: UILabel!
+    @IBOutlet weak var welcomeDescLabel: UILabel!
+    
     
     var delegate:ComoDelegate?
     var nextAction:NextController = .showDetails
@@ -43,6 +48,7 @@ public class ComoController : UIViewController {
         registerView.isHidden = true
         isModalInPresentation = true
         appearance()
+        translate()
         preferredContentSize = CGSize(width: 574, height: 670)
         
         if let customer = Como.shared.currentSale?.customer {
@@ -89,7 +95,7 @@ public class ComoController : UIViewController {
     
     func onError(_ error:Error){
         registerView.isHidden = false
-        errorLabel.text = "\(error)"
+        errorLabel.text = Como.trans("como_\(error)")
     }
     
     func onMemberFetched(details:Como.MemberDetailsResponse){
@@ -168,7 +174,17 @@ public class ComoController : UIViewController {
         [sendAuthCodeButton, addCouponButton].each {
             $0.border(.init(hex:"#EEEEEE"))
         }
-        
+    }
+    
+    func translate(){
+        welcomeLabel.text     = Como.trans("como_welcome")
+        welcomeDescLabel.text = Como.trans("como_welcomeDesc")
+        backButton.title      = Como.trans("como_cancel")
+        findMemberButton    .setTitle(Como.trans("como_findMember"),    for:.normal)
+        sendAuthCodeButton  .setTitle(Como.trans("como_sendAuthCode"),  for:.normal)
+        addCouponButton     .setTitle(Como.trans("como_addCouponCode"), for:.normal)
+        registerButton      .setTitle(Como.trans("como_register"),      for:.normal)
+        //scanCodeButton    .setTitle(Como.trans("como_"), for:.normal)
     }
     
     deinit {

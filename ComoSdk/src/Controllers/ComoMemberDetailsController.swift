@@ -23,6 +23,8 @@ class ComoMemberDetailsController : UIViewController, UITableViewDelegate {
     @IBOutlet weak var redeemButton: UIButton!
     @IBOutlet weak var couponsButton: UIButton!
     
+    @IBOutlet weak var doneButton: UIBarButtonItem!
+    
     var details:Como.MemberDetailsResponse!
     let dataSource = MembershipDataSource()
     
@@ -30,6 +32,7 @@ class ComoMemberDetailsController : UIViewController, UITableViewDelegate {
         showMemberDetails()
         redeemButton.isEnabled = false
         appearance()
+        translate()
     }
     
     @IBAction func onRedeemPressed(_ sender: Any) {
@@ -72,14 +75,14 @@ class ComoMemberDetailsController : UIViewController, UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == 0 && details.memberNotes?.count == 0 { return nil }
         let cell = tableView.dequeueReusableCell(withIdentifier: "header")!
-        (cell.viewWithTag(100) as! UILabel).text = (section == 0 ? "Member notes" : "Assets").uppercased()
+        (cell.viewWithTag(100) as! UILabel).text = (section == 0 ? Como.trans("como_memberNotes") : Como.trans("como_assets")).uppercased()
         return cell
     }
     
     func updateRedeemButton(){
         let benefitsCount = tableView.indexPathsForSelectedRows?.filter { $0.section == 1 }.count ?? 0
         redeemButton.isEnabled = benefitsCount > 0
-        redeemButton.setTitle("Reedem (\(benefitsCount))", for: .normal)
+        redeemButton.setTitle(Como.trans("como_reedem") + " (\(benefitsCount))", for: .normal)
     }
     
     var selectedAssets:[Como.Asset]{
@@ -95,6 +98,14 @@ class ComoMemberDetailsController : UIViewController, UITableViewDelegate {
         tableView.round(12)
         redeemButton.round(4)
         couponsButton.round(4)
+    }
+    
+    func translate(){
+        doneButton.title = Como.trans("como_done")
+        couponsButton.setTitle(Como.trans("como_couponCodes"),  for: .normal)
+        redeemButton.setTitle(Como.trans("como_redeem"),        for: .normal)
+        creditLabelTitle.text = Como.trans("como_credits")
+        pointsLabelTitle.text = Como.trans("como_points")
     }
     
 }
