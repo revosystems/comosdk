@@ -3,7 +3,7 @@ import Foundation
 extension Como {
     
     public class SubmitPurchaseResponse : Como.Api.Response  {
-        let confirmation:String?
+        public let confirmation:String?
         
         private enum CodingKeys: String, CodingKey {
             case confirmation
@@ -15,5 +15,9 @@ extension Como {
             confirmation        = try container.decodeIfPresent(String.self, forKey: .confirmation)            
             try super.init(from: decoder)
         }
+    }
+    
+    public class CancelPurchaseResponse : Como.Api.Response{
+        
     }
 }
