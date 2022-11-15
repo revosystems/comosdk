@@ -19,7 +19,7 @@ extension Como {
         
         public func itemCodeBenefits() -> [Benefit]? {
             redeemAssets?.filter {
-                $0.redeemable
+                $0.redeemable ?? false
             }.compactMap {
                 $0.benefits
             }.flatMap {
@@ -30,9 +30,9 @@ extension Como {
         }
         
         public func errors() -> String? {
-            let errors = redeemAssets?.filter { !$0.redeemable }.compactMap { $0.nonRedeemableCause?.message }
+            let errors = redeemAssets?.filter { !($0.redeemable ?? false) }.compactMap { $0.nonRedeemableCause?.message }
             if let errors = errors, errors.count > 0 {
-                return errors.implode(", ")
+                return errors.map { Como.trans("como_\($0)") }.implode(", ")
             }
             return nil
         }
@@ -76,11 +76,11 @@ extension Como {
     }
     
     public struct RedeemAssetResponse : Codable {
-        public let key:String
-        public let name:String
+        public let key:String?
+        public let name:String?
         public let code:String?
-        public let redeemable:Bool
+        public let redeemable:Bool?
         public let nonRedeemableCause:Como.Api.ResponseError?
         public let benefits:[Benefit]?
-    }        
+    }
 }

@@ -34,6 +34,10 @@ class ComoCouponsController : UIViewController {
         couponCodeTitle.text = Como.trans("como_couponCodes")
         couponCodeDescLabel.text = Como.trans("como_couponCodesDesc")
         redeemButton.setTitle(Como.trans("como_redeem"), for: .normal)
+        textField.placeholder = Como.trans("como_coupon_placeholder")
+        #if DEBUG
+        textField.text = "682105"
+        #endif
     }
 }
 

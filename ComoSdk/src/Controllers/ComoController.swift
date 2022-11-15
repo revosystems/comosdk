@@ -185,10 +185,16 @@ public class ComoController : UIViewController {
         addCouponButton     .setTitle(Como.trans("como_addCouponCode"), for:.normal)
         registerButton      .setTitle(Como.trans("como_register"),      for:.normal)
         //scanCodeButton    .setTitle(Como.trans("como_"), for:.normal)
+        inputField.placeholder = Como.trans("como_user_placeholder")
+        #if DEBUG
+            inputField.text = "jordi.p@revo.works"
+        #endif
     }
     
     deinit {
-        delegate?.como(onCustomerSelected: Como.shared.currentSale!)
+        if let sale = Como.shared.currentSale {
+            delegate?.como(onCustomerSelected: sale)
+        }
         delegate = nil
     }
 }

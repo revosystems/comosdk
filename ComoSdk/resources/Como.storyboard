@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="ipad10_5" orientation="landscape" layout="fullscreen" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -46,7 +47,7 @@
                                 <rect key="frame" x="95" y="277" width="391" height="359"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="jordi.p@revo.works" borderStyle="roundedRect" placeholder="Phone, Email or App Id" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="En8-hN-OCd">
+                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone, Email or App Id" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="En8-hN-OCd">
                                         <rect key="frame" x="76" y="8" width="240" height="34"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -247,7 +248,7 @@ enjoy benefits and accumulate points?</string>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jason Mamoa" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wjh-mK-aNS">
-                                        <rect key="frame" x="95" y="22" width="117.5" height="18"/>
+                                        <rect key="frame" x="95" y="22" width="114.5" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="lessThanOrEqual" constant="150" id="2eO-Jh-TtM"/>
                                         </constraints>
@@ -277,7 +278,7 @@ enjoy benefits and accumulate points?</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="xmark.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="UTv-c4-pSW">
-                                        <rect key="frame" x="216.5" y="18.5" width="24" height="23"/>
+                                        <rect key="frame" x="213.5" y="20" width="24" height="23"/>
                                         <color key="tintColor" systemColor="systemGreenColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="24" id="96c-3n-Ngn"/>
@@ -337,7 +338,7 @@ enjoy benefits and accumulate points?</string>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="100" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Header" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vro-MV-32l">
-                                                    <rect key="frame" x="16" y="11" width="54" height="18.5"/>
+                                                    <rect key="frame" x="16" y="11" width="52.5" height="18.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="18" id="lMw-GX-qXD"/>
                                                     </constraints>
@@ -536,7 +537,7 @@ enjoy benefits and accumulate points?</string>
                                     <action selector="onRedeemPressed:" destination="jFq-eJ-UDV" eventType="touchUpInside" id="jyT-UG-FMR"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="682105" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ww5-xE-ZcB">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ww5-xE-ZcB">
                                 <rect key="frame" x="192" y="307" width="196" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
