@@ -5,8 +5,8 @@ extension Como {
     
     public class Api {
     
-        //let url:String = "https://api.prod.como.com/api/v4/advanced/"
-        let url:String = "https://api.prod.como.com/api/v4/"
+        //let url:String = "https://api.prod.bcomo.com/api/v4/advanced/"
+        let url:String = "https://api.prod.bcomo.com/api/v4/"
         
         let apiKey:String
         let branchId:String
