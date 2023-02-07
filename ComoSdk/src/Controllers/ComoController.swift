@@ -143,7 +143,12 @@ public class ComoController : UIViewController {
         if inputField.text!.contains("@") {
             return Como.Customer(email: inputField.text!.lowercased())
         }
-        return Como.Customer(phoneNumber: inputField.text!.lowercased())
+        
+        if inputField.text!.isPhoneNumber {
+            return Como.Customer(phoneNumber: inputField.text!.lowercased())
+        }
+        
+        return Como.Customer(customIdentifier: inputField.text!)
     }
     
     //MARK: - Not used
@@ -196,5 +201,14 @@ public class ComoController : UIViewController {
             delegate?.como(onCustomerSelected: sale)
         }
         delegate = nil
+    }
+}
+
+extension String {
+    var isPhoneNumber: Bool {
+        let detector = try? NSDataDetector(types: NSTextCheckingResult.CheckingType.phoneNumber.rawValue)
+        let matches = detector?.matches(in: self, range: NSRange(location: 0, length: utf16.count))
+
+        return (matches?.count ?? 0) > 0
     }
 }
