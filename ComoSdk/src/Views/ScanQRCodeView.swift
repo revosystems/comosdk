@@ -13,13 +13,17 @@ protocol ScanQRCodeViewDelegate{
     
     func start(){
         if (captureSession?.isRunning == false) {
-            captureSession.startRunning()
+            DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+                self?.captureSession.startRunning()
+            }
         }
     }
         
     func stop(){
         if (captureSession?.isRunning == true) {
-            captureSession.stopRunning()
+            DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+                self?.captureSession.stopRunning()
+            }
         }
     }   
 
