@@ -35,6 +35,39 @@
             </objects>
             <point key="canvasLocation" x="-375" y="99"/>
         </scene>
+        <!--Scan Code Controller-->
+        <scene sceneID="Vwd-vK-VSx">
+            <objects>
+                <viewController id="TAT-h1-8xH" customClass="ScanCodeController" customModule="ComoSdk" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ey7-oe-60F">
+                        <rect key="frame" x="0.0" y="0.0" width="580" height="640"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Scan your code" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HlA-YD-w06">
+                                <rect key="frame" x="183" y="108" width="216" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yuJ-vI-bUQ" customClass="ScanQRCodeView" customModule="ComoSdk" customModuleProvider="target">
+                                <rect key="frame" x="37" y="188" width="474" height="196"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemGray2Color"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="fSa-zZ-vEO"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="iIx-p7-cBi"/>
+                    <connections>
+                        <outlet property="scanView" destination="yuJ-vI-bUQ" id="LJb-rY-ke3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RcC-qV-0Xc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="253.59712230215828" y="-559.71223021582739"/>
+        </scene>
         <!--Como Controller-->
         <scene sceneID="dXq-b9-1SW">
             <objects>
@@ -168,6 +201,15 @@ enjoy benefits and accumulate points?</string>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </activityIndicatorView>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nii-a3-DiQ">
+                                        <rect key="frame" x="324" y="9" width="27" height="35"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="qrcode.viewfinder" catalog="system"/>
+                                        <connections>
+                                            <segue destination="TAT-h1-8xH" kind="show" id="PaQ-OO-cyy"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
@@ -707,8 +749,15 @@ enjoy benefits and accumulate points?</string>
         <image name="face.dashed" catalog="system" width="128" height="123"/>
         <image name="giftcard" catalog="system" width="128" height="88"/>
         <image name="paperplane" catalog="system" width="128" height="119"/>
+        <image name="qrcode.viewfinder" catalog="system" width="128" height="115"/>
         <image name="ticket" catalog="system" width="128" height="86"/>
         <image name="xmark.circle.fill" catalog="system" width="128" height="123"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemGreenColor">
             <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

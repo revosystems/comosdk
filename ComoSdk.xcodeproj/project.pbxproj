@@ -33,6 +33,8 @@
 		BB56B6C9286D772F00512A34 /* ComoCouponsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB56B6C8286D772F00512A34 /* ComoCouponsController.swift */; };
 		BB56B6CB286D7B4A00512A34 /* CurrentSale.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB56B6CA286D7B4A00512A34 /* CurrentSale.swift */; };
 		BBF700A828747CF400313A32 /* MemberNoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF700A728747CF400313A32 /* MemberNoteCell.swift */; };
+		EA22FDD029E5483C00A2E013 /* ScanCodeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA22FDCF29E5483C00A2E013 /* ScanCodeController.swift */; };
+		EA22FDD329E54C7E00A2E013 /* ScanQRCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA22FDD229E54C7E00A2E013 /* ScanQRCodeView.swift */; };
 		EAAD589C28756F170040E9F3 /* ComoPayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAD589B28756F170040E9F3 /* ComoPayController.swift */; };
 		EAB991052869911A000C0CB5 /* ComoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB991042869911A000C0CB5 /* ComoController.swift */; };
 		EAB9910728699131000C0CB5 /* Como.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAB9910628699131000C0CB5 /* Como.storyboard */; };
@@ -90,6 +92,8 @@
 		BB56B6CA286D7B4A00512A34 /* CurrentSale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentSale.swift; sourceTree = "<group>"; };
 		BBF700A728747CF400313A32 /* MemberNoteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberNoteCell.swift; sourceTree = "<group>"; };
 		D4C116E7F9DD307FEF191CE9 /* Pods_ComoSdkTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ComoSdkTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA22FDCF29E5483C00A2E013 /* ScanCodeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanCodeController.swift; sourceTree = "<group>"; };
+		EA22FDD229E54C7E00A2E013 /* ScanQRCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanQRCodeView.swift; sourceTree = "<group>"; };
 		EAAD589B28756F170040E9F3 /* ComoPayController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComoPayController.swift; sourceTree = "<group>"; };
 		EAB991042869911A000C0CB5 /* ComoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComoController.swift; sourceTree = "<group>"; };
 		EAB9910628699131000C0CB5 /* Como.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Como.storyboard; sourceTree = "<group>"; };
@@ -195,6 +199,7 @@
 		BB56B6AA2864A7AA00512A34 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				EA22FDD129E54C7200A2E013 /* Views */,
 				BB56B6B92865AC4600512A34 /* Como.swift */,
 				BB56B6CA286D7B4A00512A34 /* CurrentSale.swift */,
 				BB56B6AC2864A7BA00512A34 /* Api */,
@@ -262,6 +267,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		EA22FDD129E54C7200A2E013 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				EA22FDD229E54C7E00A2E013 /* ScanQRCodeView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		EAB9910228699102000C0CB5 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -271,6 +284,7 @@
 				EAB9910A2869A00A000C0CB5 /* MembershipDataSource.swift */,
 				BB56B6C8286D772F00512A34 /* ComoCouponsController.swift */,
 				EAAD589B28756F170040E9F3 /* ComoPayController.swift */,
+				EA22FDCF29E5483C00A2E013 /* ScanCodeController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -479,7 +493,9 @@
 				EAB9910B2869A00A000C0CB5 /* MembershipDataSource.swift in Sources */,
 				BB56B6BE2867255800512A34 /* GetBenefitsResponse.swift in Sources */,
 				BB56B6CB286D7B4A00512A34 /* CurrentSale.swift in Sources */,
+				EA22FDD329E54C7E00A2E013 /* ScanQRCodeView.swift in Sources */,
 				BB56B6AE2864A7C200512A34 /* Api.swift in Sources */,
+				EA22FDD029E5483C00A2E013 /* ScanCodeController.swift in Sources */,
 				BBF700A828747CF400313A32 /* MemberNoteCell.swift in Sources */,
 				BB56B67F2864A75100512A34 /* ViewController.swift in Sources */,
 				BB56B6C9286D772F00512A34 /* ComoCouponsController.swift in Sources */,
