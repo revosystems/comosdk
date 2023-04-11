@@ -1,10 +1,14 @@
 import UIKit
 import AVFoundation
 
+protocol ScanCodeControllerDelegate : AnyObject {
+    func scanController(onScanned code:String)
+}
+
 class ScanCodeController : UIViewController, ScanQRCodeViewDelegate {
     
     @IBOutlet weak private var scanView:ScanQRCodeView!
-    
+    weak var delegate:ScanCodeControllerDelegate?
 
     
     override func viewDidLoad() {
@@ -25,6 +29,9 @@ class ScanCodeController : UIViewController, ScanQRCodeViewDelegate {
     
     func scanQrCode(found code:String){
         print(code)
+        dismiss(animated: true){ [weak self] in
+            self?.delegate?.scanController(onScanned: code)
+        }
     }
     
 }

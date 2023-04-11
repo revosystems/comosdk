@@ -207,7 +207,7 @@ enjoy benefits and accumulate points?</string>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" image="qrcode.viewfinder" catalog="system"/>
                                         <connections>
-                                            <segue destination="TAT-h1-8xH" kind="show" id="PaQ-OO-cyy"/>
+                                            <segue destination="TAT-h1-8xH" kind="show" identifier="scanCode" id="PaQ-OO-cyy"/>
                                         </connections>
                                     </button>
                                 </subviews>

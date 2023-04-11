@@ -7,7 +7,7 @@ public protocol ComoDelegate {
     func comoActionCanceled()
 }
 
-public class ComoController : UIViewController {
+public class ComoController : UIViewController, ScanCodeControllerDelegate {
     
     enum NextController {
         case showDetails
@@ -161,10 +161,15 @@ public class ComoController : UIViewController {
                 print(error)
             }
         }
+    }    
+
+    override public func prepare(for segue: UIStoryboardSegue, sender: Any?){
+        (segue.destination as? ScanCodeController)?.delegate = self
     }
     
-    @IBAction func onScanCodePressed(_ sender: Any) {
-
+    func scanController(onScanned code:String){
+        inputField.text = code
+        onFindMemberPressed(findMemberButton)
     }
     
     

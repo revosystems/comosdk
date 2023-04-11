@@ -16,8 +16,7 @@ protocol ScanQRCodeViewDelegate{
             captureSession.startRunning()
         }
     }
-    
-    
+        
     func stop(){
         if (captureSession?.isRunning == true) {
             captureSession.stopRunning()
