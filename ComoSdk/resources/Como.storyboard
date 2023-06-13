@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="ipad10_5" orientation="landscape" layout="fullscreen" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -43,25 +43,36 @@
                         <rect key="frame" x="0.0" y="0.0" width="580" height="640"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Scan your code" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HlA-YD-w06">
-                                <rect key="frame" x="183" y="108" width="216" height="36"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scan your code" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HlA-YD-w06">
+                                <rect key="frame" x="34" y="47" width="512" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="KcT-ib-Elx"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yuJ-vI-bUQ" customClass="ScanQRCodeView" customModule="ComoSdk" customModuleProvider="target">
-                                <rect key="frame" x="37" y="188" width="474" height="196"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yuJ-vI-bUQ" customClass="ScanQRCodeView" customModule="ComoSdk" customModuleProvider="target">
+                                <rect key="frame" x="34" y="117" width="512" height="489"/>
                                 <color key="backgroundColor" systemColor="systemGray2Color"/>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="fSa-zZ-vEO"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="fSa-zZ-vEO" firstAttribute="bottom" secondItem="yuJ-vI-bUQ" secondAttribute="bottom" constant="34" id="Bc5-D9-FhJ"/>
+                            <constraint firstItem="yuJ-vI-bUQ" firstAttribute="leading" secondItem="fSa-zZ-vEO" secondAttribute="leading" constant="34" id="LeD-zi-Bcz"/>
+                            <constraint firstItem="fSa-zZ-vEO" firstAttribute="trailing" secondItem="yuJ-vI-bUQ" secondAttribute="trailing" constant="34" id="Wqu-xK-ftx"/>
+                            <constraint firstItem="fSa-zZ-vEO" firstAttribute="trailing" secondItem="HlA-YD-w06" secondAttribute="trailing" constant="34" id="c68-rj-hBm"/>
+                            <constraint firstItem="HlA-YD-w06" firstAttribute="leading" secondItem="fSa-zZ-vEO" secondAttribute="leading" constant="34" id="s7c-rU-5kF"/>
+                            <constraint firstItem="HlA-YD-w06" firstAttribute="top" secondItem="Ey7-oe-60F" secondAttribute="top" constant="47" id="tXF-7y-T6M"/>
+                            <constraint firstItem="yuJ-vI-bUQ" firstAttribute="top" secondItem="HlA-YD-w06" secondAttribute="bottom" constant="34" id="xSD-2u-QXk"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="iIx-p7-cBi"/>
                     <connections>
                         <outlet property="scanView" destination="yuJ-vI-bUQ" id="LJb-rY-ke3"/>
+                        <outlet property="titleLabel" destination="HlA-YD-w06" id="dAA-u2-gnm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RcC-qV-0Xc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -202,7 +213,7 @@ enjoy benefits and accumulate points?</string>
                                         <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </activityIndicatorView>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nii-a3-DiQ">
-                                        <rect key="frame" x="324" y="9" width="27" height="35"/>
+                                        <rect key="frame" x="324" y="8" width="27" height="35"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" image="qrcode.viewfinder" catalog="system"/>

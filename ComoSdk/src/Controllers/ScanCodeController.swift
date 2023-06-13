@@ -8,12 +8,14 @@ protocol ScanCodeControllerDelegate : AnyObject {
 class ScanCodeController : UIViewController, ScanQRCodeViewDelegate {
     
     @IBOutlet weak private var scanView:ScanQRCodeView!
+    @IBOutlet weak var titleLabel: UILabel!
     weak var delegate:ScanCodeControllerDelegate?
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         scanView.setupCaptureSession(delegate:self)
+        Como.trans("como_scanYourCode")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -28,10 +30,7 @@ class ScanCodeController : UIViewController, ScanQRCodeViewDelegate {
     
     
     func scanQrCode(found code:String){
-        print(code)
-        dismiss(animated: true){ [weak self] in
-            self?.delegate?.scanController(onScanned: code)
-        }
+        navigationController?.popToRootViewController(animated: true)
+        delegate?.scanController(onScanned: code)
     }
-    
 }
