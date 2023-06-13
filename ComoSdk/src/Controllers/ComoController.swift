@@ -25,6 +25,7 @@ public class ComoController : UIViewController, ScanCodeControllerDelegate {
     @IBOutlet weak var registerButton: UIButton!
     @IBOutlet weak var backButton: UIBarButtonItem!
     
+    @IBOutlet weak var registerDesc: UILabel!
     @IBOutlet var headerImageBackground: UIView!
     
     @IBOutlet weak var registerView: UIView!
@@ -190,6 +191,7 @@ public class ComoController : UIViewController, ScanCodeControllerDelegate {
         welcomeLabel.text     = Como.trans("como_welcome")
         welcomeDescLabel.text = Como.trans("como_welcomeDesc")
         backButton.title      = Como.trans("como_cancel")
+        registerDesc.text     = Como.trans("como_registerDesc")
         findMemberButton    .setTitle(Como.trans("como_findMember"),    for:.normal)
         sendAuthCodeButton  .setTitle(Como.trans("como_sendAuthCode"),  for:.normal)
         addCouponButton     .setTitle(Como.trans("como_addCouponCode"), for:.normal)
