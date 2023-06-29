@@ -269,6 +269,8 @@ enjoy benefits and accumulate points?</string>
                         <outlet property="findMemberButton" destination="JXG-Zg-gDY" id="uZU-Rw-Psx"/>
                         <outlet property="headerImageBackground" destination="znM-lr-3Vs" id="w2A-1R-Lq7"/>
                         <outlet property="inputField" destination="En8-hN-OCd" id="Vzp-CL-tsP"/>
+                        <outlet property="labelOr1" destination="CU6-9Q-ML3" id="Yjh-VP-Xmu"/>
+                        <outlet property="labelOr2" destination="c6J-f6-5ym" id="7th-mS-MeR"/>
                         <outlet property="loading" destination="7IZ-i8-zNf" id="eCY-NE-YhF"/>
                         <outlet property="registerButton" destination="UVa-Ar-kZq" id="vuE-D4-TMa"/>
                         <outlet property="registerDesc" destination="WeB-bY-JEN" id="pd8-3l-G5E"/>

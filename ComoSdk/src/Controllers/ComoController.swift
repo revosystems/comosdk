@@ -33,6 +33,8 @@ public class ComoController : UIViewController, ScanCodeControllerDelegate {
     @IBOutlet weak var welcomeLabel: UILabel!
     @IBOutlet weak var welcomeDescLabel: UILabel!
     
+    @IBOutlet weak var labelOr1: UILabel!
+    @IBOutlet weak var labelOr2: UILabel!
     
     var delegate:ComoDelegate?
     var nextAction:NextController = .showDetails
@@ -198,6 +200,8 @@ public class ComoController : UIViewController, ScanCodeControllerDelegate {
         registerButton      .setTitle(Como.trans("como_register"),      for:.normal)
         //scanCodeButton    .setTitle(Como.trans("como_"), for:.normal)
         inputField.placeholder = Como.trans("como_user_placeholder")
+        labelOr1.text          = Como.trans("como_or")
+        labelOr2.text          = Como.trans("como_or")
         #if DEBUG
             inputField.text = "jordi.p@revo.works"
         #endif
