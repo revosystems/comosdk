@@ -15,7 +15,7 @@ class ScanCodeController : UIViewController, ScanQRCodeViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         scanView.setupCaptureSession(delegate:self)
-        Como.trans("como_scanYourCode")
+        titleLabel.text = Como.trans("como_scanYourCode")
     }
     
     override func viewWillAppear(_ animated: Bool) {

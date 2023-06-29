@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "ComoSdk"
-  spec.version      = "0.1.17"
+  spec.version      = "0.1.18"
   spec.summary      = "Library to connect to como loyalty."
 
   spec.description  = "A library that handles the connection and flow to como loyalty"
