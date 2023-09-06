@@ -23,9 +23,8 @@ class AssetCell : UITableViewCell {
         
         titleLabel.text         = asset.name
         descriptionLabel.text   = asset.description
-        statusLabel.text        = "\(asset.status)".ucFirst()
-        statusIcon.image = UIImage(systemName: asset.status == .active ? "checkmark.circle.fill" : "xmark.circle.fill")
-        statusIcon.tintColor = asset.status == .active ? .systemGreen : .systemRed
+        setupStatusIcon(asset)
+        
         if let image = asset.image {
             assetImageView.downloaded(from: image)
         }else{
@@ -33,5 +32,18 @@ class AssetCell : UITableViewCell {
         }
         
         return self
+    }
+    
+    fileprivate func setupStatusIcon(_ asset: Como.Asset) {
+        guard asset.redeemable else {
+            statusLabel.text      = Como.trans("como_non_reedemable")
+            statusIcon.image      = UIImage(systemName: "lock.fill")
+            statusIcon.tintColor  = .systemOrange
+            return
+        }
+        
+        statusLabel.text        = Como.trans("como_\(asset.status)")
+        statusIcon.image        = UIImage(systemName: asset.status == .active ? "checkmark.circle.fill" : "xmark.circle.fill")
+        statusIcon.tintColor    = asset.status == .active ? .systemGreen : .systemRed
     }
 }
