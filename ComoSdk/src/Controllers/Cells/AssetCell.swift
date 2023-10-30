@@ -9,17 +9,14 @@ class AssetCell : UITableViewCell {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var statusIcon: UIImageView!
-    var redeemable: Bool! = true
     
     override  func awakeFromNib() {
         assetImageView.round(4)
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
-        if redeemable {
             super.setSelected(selected, animated: animated)
             selectedBackgroundView?.backgroundColor = selected ? UIColor(hex: "#eeeeee") : .clear
-        }
     }
     
     func setup(asset:Como.Asset) -> Self {
@@ -35,7 +32,7 @@ class AssetCell : UITableViewCell {
         }
         
         if !asset.redeemable {
-            redeemable = false
+            self.isUserInteractionEnabled = false
             self.contentView.alpha = 0.5
         }
         
