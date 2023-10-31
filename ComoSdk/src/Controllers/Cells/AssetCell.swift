@@ -31,10 +31,8 @@ class AssetCell : UITableViewCell {
             assetImageView.image = nil
         }
         
-        if !asset.redeemable {
-            self.isUserInteractionEnabled = false
-            self.contentView.alpha = 0.5
-        }
+        self.isUserInteractionEnabled = asset.redeemable
+        self.contentView.alpha = asset.redeemable ? 1 : 0.5
         
         return self
     }
