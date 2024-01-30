@@ -57,6 +57,7 @@ public class ComoController : UIViewController, ScanCodeControllerDelegate {
     }
     
     @IBAction func onBackPressed(_ sender: Any) {
+        delegate = nil
         dismiss(animated: true)
     }
     
