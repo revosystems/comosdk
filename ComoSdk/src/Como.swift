@@ -16,8 +16,8 @@ public class Como {
     public var currentSale:CurrentSale?
     
     @discardableResult
-    public func setup(key:String, branchId:String, posId:String, source:String, sourceVersion:String, language:String = "es", debug:Bool = false) -> Self {
-        api = Api(key:key, branchId: branchId, posId: posId, source: source, sourceVersion: sourceVersion, debug: debug)
+    public func setup(key:String, branchId:String, posId:String, source:String, sourceVersion:String, language:String = "es", debug:Bool = false, url:String = "https://api.prod.bcomo.com/api/v4/") -> Self {
+        api = Api(key:key, branchId: branchId, posId: posId, source: source, sourceVersion: sourceVersion, debug: debug, url: url)
         Self.language = language
         return self
     }
