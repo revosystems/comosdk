@@ -5,9 +5,7 @@ extension Como {
     
     public class Api {
     
-        //let url:String = "https://api.prod.bcomo.com/api/v4/advanced/"
-        let url:String = "https://api.prod.bcomo.com/api/v4/"
-        
+        let url:String
         let apiKey:String
         let branchId:String
         let posId:String
@@ -17,13 +15,14 @@ extension Como {
         var debug:Bool
         
         
-        init(key:String, branchId:String, posId:String, source:String, sourceVersion:String, debug:Bool = false) {
+        init(key:String, branchId:String, posId:String, source:String, sourceVersion:String, debug:Bool = false, url:String = "https://api.prod.bcomo.com/api/v4/") {
             self.apiKey     = key
             self.branchId   = branchId
             self.posId      = posId
             self.source     = source
             self.sourceVersion = sourceVersion
             self.debug      = debug
+            self.url        = url
         }
         
         
