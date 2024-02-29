@@ -39,9 +39,6 @@ extension Como {
         let allowSMS:Bool?
         let allowEmail:Bool?
         let commonExtId:String
-        let comoMemberId:String
-        //let mobileAppUsed:Bool
-        //let mobileAppUsedLastDate:Date
         let pointsBalance:Balance
         let creditBalance:Balance
         let tags:[String]?
