@@ -28,6 +28,12 @@ class ComoMemberDetailsController : UIViewController, UITableViewDelegate {
     var details:Como.MemberDetailsResponse!
     let dataSource = MembershipDataSource()
     
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        preferredContentSize = CGSize(width: 768, height: 700)
+    }
+    
     override func viewDidLoad() {
         showMemberDetails()
         redeemButton.isEnabled = false
