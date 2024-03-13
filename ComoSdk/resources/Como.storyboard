@@ -695,9 +695,6 @@ enjoy benefits and accumulate points?</string>
                                         <color key="textColor" name="text-primary"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                         <textInputTraits key="textInputTraits"/>
-                                        <connections>
-                                            <action selector="onLastPinTextFieldChanged:" destination="lFA-c4-vCF" eventType="editingChanged" id="zfH-XK-2ap"/>
-                                        </connections>
                                     </textField>
                                 </subviews>
                                 <constraints>
@@ -731,7 +728,7 @@ enjoy benefits and accumulate points?</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lock.shield.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="pFd-i9-Idh">
-                                <rect key="frame" x="233" y="138.5" width="114" height="95"/>
+                                <rect key="frame" x="233" y="138" width="114" height="96"/>
                                 <color key="tintColor" red="0.87058823529411766" green="0.34509803921568627" blue="0.074509803921568626" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="96" id="aI4-Dx-Yhv"/>

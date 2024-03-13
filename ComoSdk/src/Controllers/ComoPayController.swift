@@ -54,6 +54,7 @@ class ComoPayController : UIViewController {
                     return askVerificationCode()
                 }
                 errorLabel.text = Como.trans("como_\(error)")
+                showPaymentFailed(response: response)
                 print(error)
             }
         }
@@ -79,7 +80,7 @@ class ComoPayController : UIViewController {
         titleLabel.text             = Como.trans("como_paymentCompleted")
         
         descriptionLabel.isHidden   = false
-        descriptionLabel.text       = Como.trans("como_paymentOk")
+        descriptionLabel.text       = Como.trans("como_paymentCompletedDesc")
         
         statusIcon.isHidden         = false
         statusIcon.image = UIImage(systemName: "checkmark.circle.fill")
@@ -89,6 +90,24 @@ class ComoPayController : UIViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [unowned self] in
             dismiss(animated: true) { [unowned self] in
                 self.delegate?.como(onPaid: response)
+            }
+        }
+    }
+    
+    private func showPaymentFailed(response:Como.PaymentResponse){
+        titleLabel.isHidden         = false
+        titleLabel.text             = Como.trans("como_paymentFailed")
+        
+        descriptionLabel.isHidden   = false
+        descriptionLabel.text       = Como.trans("como_paymentFailedDesc")
+        
+        statusIcon.isHidden         = false
+        statusIcon.image            = UIImage(systemName: "xmark.circle.fill")
+        statusIcon.tintColor        = UIColor(hex: "#E44848")
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [unowned self] in
+            dismiss(animated: true) { [unowned self] in
+                self.delegate?.comoActionCanceled()
             }
         }
     }
