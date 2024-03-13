@@ -31,6 +31,7 @@ class ComoPayController : UIViewController {
         
         loading.set(size: CGSize(width: 50, height: 20), color: .darkGray)
         startPaymentProcess()
+        preferredContentSize = CGSize(width: 580, height: 460)
     }
     
     @IBAction func onCancelPressed(_ sender:Any){

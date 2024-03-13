@@ -20,17 +20,14 @@ public class ComoController : UIViewController, ScanCodeControllerDelegate {
     
     @IBOutlet weak var findMemberButton: UIButton!
     @IBOutlet weak var sendAuthCodeButton: UIButton!
-    @IBOutlet weak var scanCodeButton: UIButton!
     @IBOutlet weak var addCouponButton: UIButton!
     @IBOutlet weak var registerButton: UIButton!
     @IBOutlet weak var backButton: UIBarButtonItem!
     
-    @IBOutlet var headerImageBackground: UIView!
     
     @IBOutlet weak var registerView: UIView!
     
     @IBOutlet weak var welcomeLabel: UILabel!
-    @IBOutlet weak var welcomeDescLabel: UILabel!
     
     
     var delegate:ComoDelegate?
@@ -176,7 +173,7 @@ public class ComoController : UIViewController, ScanCodeControllerDelegate {
     
     //MARK: - Appearance
     func appearance(){
-        headerImageBackground.circle()
+        //headerImageBackground.circle()
         
         [findMemberButton, sendAuthCodeButton, /*scanCodeButton,*/ addCouponButton, registerButton].each {
             $0.round(4)
@@ -189,7 +186,6 @@ public class ComoController : UIViewController, ScanCodeControllerDelegate {
     
     func translate(){
         welcomeLabel.text     = Como.trans("como_welcome")
-        welcomeDescLabel.text = Como.trans("como_welcomeDesc")
         backButton.title      = Como.trans("como_cancel")
         findMemberButton    .setTitle(Como.trans("como_findMember"),    for:.normal)
         sendAuthCodeButton  .setTitle(Como.trans("como_sendAuthCode"),  for:.normal)
