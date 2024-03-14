@@ -13,22 +13,13 @@ public class ComoController : UIViewController, ScanCodeControllerDelegate {
         case showDetails
         case pay(amount:Int)
     }
- 
-    @IBOutlet weak var inputField: UITextField!
-    @IBOutlet weak var errorLabel: UILabel!
-    @IBOutlet weak var loading: UIActivityIndicatorView!
-    
-    @IBOutlet weak var findMemberButton: UIButton!
-    @IBOutlet weak var sendAuthCodeButton: UIButton!
-    @IBOutlet weak var addCouponButton: UIButton!
+     
     @IBOutlet weak var registerButton: UIButton!
     @IBOutlet weak var backButton: UIBarButtonItem!
-    
-    
-    @IBOutlet weak var registerView: UIView!
-    
     @IBOutlet weak var welcomeLabel: UILabel!
-    
+        
+    @IBOutlet var loginByPhoneView: UIView!
+    @IBOutlet var loginByEmailView: UIView!
     
     var delegate:ComoDelegate?
     var nextAction:NextController = .showDetails
@@ -40,17 +31,12 @@ public class ComoController : UIViewController, ScanCodeControllerDelegate {
     }
             
     public override func viewDidLoad() {
-        loading.isHidden = true
-        errorLabel.text = ""
-        registerView.isHidden = true
         isModalInPresentation = true
-        appearance()
-        translate()
-        preferredContentSize = CGSize(width: 574, height: 670)
+        //appearance()
+        //translate()
+        preferredContentSize = CGSize(width: 700, height: 670)
         
-        if let customer = Como.shared.currentSale?.customer {
-            inputField.text = customer.phoneNumber
-        }
+        loginByEmailView.isHidden = true
     }
     
     @IBAction func onBackPressed(_ sender: Any) {
@@ -58,27 +44,17 @@ public class ComoController : UIViewController, ScanCodeControllerDelegate {
         dismiss(animated: true)
     }
     
-    @IBAction func onFindMemberPressed(_ sender: UIButton?) {
-        guard let customer = customer() else {
-            return inputField.shake()
-        }
-        loading.start(findMemberButton)
-        
-        Task {
-            do {
-                let details = try await Como.shared.getMemberDetails(customer: customer, purchase: Como.shared.currentSale!.purchase)
-                Como.shared.currentSale?.customer = details.membership.customer
-                loading.stop(self.findMemberButton)
-                onMemberFetched(details: details)
-            } catch {
-                loading.stop(sender)
-                onError(error)
-            }
+    @IBAction func onSegmentedChanged(_ sender: UISegmentedControl) {
+        if sender.selectedSegmentIndex == 1 {
+            loginByEmailView.isHidden = false
+            loginByPhoneView.isHidden = true
+        }else{
+            loginByEmailView.isHidden = true
+            loginByPhoneView.isHidden = false
         }
     }
     
-    @IBAction func onRegisterPressed(_ sender: UIButton?) {
-        loading.start(sender)
+    /*@IBAction func onRegisterPressed(_ sender: UIButton?) {
         Task {
             do {
                 try await Como.shared.quickRegister(phoneNumber: inputField.text!)
@@ -89,12 +65,8 @@ public class ComoController : UIViewController, ScanCodeControllerDelegate {
                 onError(error)
             }
         }
-    }
+    }*/
     
-    func onError(_ error:Error){
-        registerView.isHidden = false
-        errorLabel.text = Como.trans("como_\(error)")
-    }
     
     func onMemberFetched(details:Como.MemberDetailsResponse){
         switch nextAction {
@@ -116,38 +88,7 @@ public class ComoController : UIViewController, ScanCodeControllerDelegate {
         navigationController?.pushViewController(vc, animated: true)
     }
     
-    @IBAction func onSendAuthCodePressed(_ sender: UIButton) {
-        loading.start(sender)
-        Task {
-            do {
-                try await Como.shared.sendIdentificationCode(phoneNumber: inputField.text!)
-                loading.stop(sender)
-            } catch {
-                loading.stop(sender)
-                onError(error)
-            }
-        }
-    }
         
-    func customer() -> Como.Customer? {
-        guard inputField.text?.count ?? 0 > 0 else {
-            return nil
-        }
-        
-        if inputField.text!.count == 4 {
-            return Como.Customer(appClientId: inputField.text!)
-        }
-        
-        if inputField.text!.contains("@") {
-            return Como.Customer(email: inputField.text!.lowercased())
-        }
-        
-        if inputField.text!.isPhoneNumber {
-            return Como.Customer(phoneNumber: inputField.text!.lowercased())
-        }
-        
-        return Como.Customer(customIdentifier: inputField.text!)
-    }
     
     //MARK: - Not used
     @IBAction func onVoidPurchasePressed(_ sender: Any) {
@@ -166,13 +107,13 @@ public class ComoController : UIViewController, ScanCodeControllerDelegate {
     }
     
     func scanController(onScanned code:String){
-        inputField.text = code
-        onFindMemberPressed(findMemberButton)
+        //inputField.text = code
+        //onFindMemberPressed(findMemberButton)
     }
     
     
     //MARK: - Appearance
-    func appearance(){
+    /*func appearance(){
         //headerImageBackground.circle()
         
         [findMemberButton, sendAuthCodeButton, /*scanCodeButton,*/ addCouponButton, registerButton].each {
@@ -196,7 +137,7 @@ public class ComoController : UIViewController, ScanCodeControllerDelegate {
         #if DEBUG
             inputField.text = "jordi.p@revo.works"
         #endif
-    }
+    }*/
     
     deinit {
         if let sale = Como.shared.currentSale {

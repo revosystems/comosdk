@@ -29,9 +29,12 @@ class ComoMemberDetailsController : UIViewController, UITableViewDelegate {
     let dataSource = MembershipDataSource()
     
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        preferredContentSize = CGSize(width: 768, height: 700)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        UIView.animate(withDuration: 0.3) { [weak self] in
+            self?.view.layoutIfNeeded()
+            self?.preferredContentSize = CGSize(width: 700, height: 670)
+        }
     }
     
     override func viewDidLoad() {
@@ -39,7 +42,9 @@ class ComoMemberDetailsController : UIViewController, UITableViewDelegate {
         redeemButton.isEnabled = false
         appearance()
         translate()
+
     }
+    
     
     @IBAction func onRedeemPressed(_ sender: Any) {
         Como.shared.currentSale?.redeemAssets = selectedAssets.map { Como.RedeemAsset(key: $0.key, appliedAmount: nil, code:nil) }
