@@ -10,4 +10,10 @@ class ComoLoginAddCouponController : UIViewController {
     override func viewDidLoad() {
         errorLabel.text = ""
     }
+    
+    @IBAction func onRedeemPressed(_ sender: Any) {
+        Como.shared.currentSale?.redeemAssets = [Como.RedeemAsset(key: nil, appliedAmount: nil, code:textField.text!)]
+        dismiss(animated: true)
+    }
 }
+

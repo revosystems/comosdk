@@ -52,17 +52,17 @@ public class ComoController : UIViewController, ScanCodeControllerDelegate, Como
     }
     
     @IBAction func onSegmentedChanged(_ sender: UISegmentedControl) {
-        if sender.selectedSegmentIndex == 1 {
+        if sender.selectedSegmentIndex == 0 {
             loginByPhoneView.isHidden = false
             loginByEmailView.isHidden = true
             loginByQRCode.isHidden    = true
             addCoupon.isHidden        = true
-        } else if sender.selectedSegmentIndex == 2 {
+        } else if sender.selectedSegmentIndex == 1 {
             loginByPhoneView.isHidden = true
             loginByEmailView.isHidden = false
             loginByQRCode.isHidden    = true
             addCoupon.isHidden        = true
-        } else if sender.selectedSegmentIndex == 3 {
+        } else if sender.selectedSegmentIndex == 2 {
             loginByPhoneView.isHidden = true
             loginByEmailView.isHidden = true
             loginByQRCode.isHidden    = false
