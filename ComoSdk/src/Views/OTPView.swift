@@ -22,7 +22,7 @@ class OTPView : UIStackView {
     @objc func onPinTextFieldChanged(_ textField:UITextField){
         let index = arrangedSubviews.firstIndex(of: textField) ?? 0
         
-        if index == arrangedSubviews.count {
+        if index == arrangedSubviews.count - 1 {
             delegate?.otp(codeEntered: code)
             return
         }

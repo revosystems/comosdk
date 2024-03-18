@@ -61,7 +61,10 @@ class ComoLoginByPhoneController : UIViewController, PhoneCountryControllerDeleg
     func sendAuthCode(){
         Task {
             do {
-                try await Como.shared.sendIdentificationCode(phoneNumber: phoneCountry.prefix + inputField.text!)
+                searchButton.animateProgress()
+                try await Como.shared.sendIdentificationCode(phoneNumber:
+                    (phoneCountry.prefix + inputField.text!).replace("+", "")
+                )
                 await MainActor.run {
                     searchButton.animateSuccess()
                     onCodeSent()

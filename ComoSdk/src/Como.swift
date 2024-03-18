@@ -169,11 +169,11 @@ public class Como {
         
         let object = SendAuthCode(customer: Como.Customer(phoneNumber:phoneNumber))
         
-        return try await api!.post("sendIdentificationCode", object:object)
+        return try await api!.post("advanced/sendIdentificationCode", object:object)
     }
     
     @discardableResult
-    public func quickRegister(phoneNumber:String, email:String? = nil, authCode:String? = nil) async throws -> Como.Api.Response {
+    public func quickRegister(customer:Como.Customer, authCode:String? = nil) async throws -> MemberDetailsResponse {
                 
         try validateInitialized()
         
@@ -182,7 +182,7 @@ public class Como {
             let quickRegistrationCode:String?
         }
         
-        let object = QuickRegister(customer: Customer(phoneNumber: phoneNumber), quickRegistrationCode: authCode)
+        let object = QuickRegister(customer: customer, quickRegistrationCode: authCode)
         
         return try await api!.post("advanced/registration/quick", object:object)
     }

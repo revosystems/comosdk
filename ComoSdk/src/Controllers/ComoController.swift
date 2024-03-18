@@ -11,7 +11,7 @@ protocol ComoLoginDelegate : AnyObject {
     func como(onLoggedIn details:Como.MemberDetailsResponse)
 }
 
-public class ComoController : UIViewController, ScanCodeControllerDelegate, ComoLoginDelegate {
+public class ComoController : UIViewController, ComoLoginDelegate {
     
     enum NextController {
         case showDetails
@@ -39,7 +39,6 @@ public class ComoController : UIViewController, ScanCodeControllerDelegate, Como
             
     public override func viewDidLoad() {
         isModalInPresentation = true
-        //appearance()
         //translate()
         preferredContentSize = CGSize(width: 700, height: 670)
         
@@ -78,20 +77,7 @@ public class ComoController : UIViewController, ScanCodeControllerDelegate, Como
     func como(onLoggedIn details:Como.MemberDetailsResponse) {
         onMemberFetched(details: details)
     }
-    
-    /*@IBAction func onRegisterPressed(_ sender: UIButton?) {
-        Task {
-            do {
-                try await Como.shared.quickRegister(phoneNumber: inputField.text!)
-                loading.stop(sender)
-                onFindMemberPressed(self.findMemberButton)
-            }catch{
-                loading.stop(sender)
-                onError(error)
-            }
-        }
-    }*/
-    
+
     
     func onMemberFetched(details:Como.MemberDetailsResponse){
         switch nextAction {
@@ -131,28 +117,11 @@ public class ComoController : UIViewController, ScanCodeControllerDelegate, Como
         (segue.destination as? ComoLoginByEmailController)?.delegate = self
         (segue.destination as? ComoLoginByPhoneController)?.delegate = self
         (segue.destination as? ComoLoginByQrCodeController)?.delegate = self
-        (segue.destination as? ScanCodeController)?.delegate = self
-    }
-    
-    func scanController(onScanned code:String){
-        //inputField.text = code
-        //onFindMemberPressed(findMemberButton)
     }
     
     
     //MARK: - Appearance
-    /*func appearance(){
-        //headerImageBackground.circle()
-        
-        [findMemberButton, sendAuthCodeButton, /*scanCodeButton,*/ addCouponButton, registerButton].each {
-            $0.round(4)
-        }
-        
-        [sendAuthCodeButton, addCouponButton].each {
-            $0.border(.init(hex:"#EEEEEE"))
-        }
-    }
-    
+    /*
     func translate(){
         welcomeLabel.text     = Como.trans("como_welcome")
         backButton.title      = Como.trans("como_cancel")
