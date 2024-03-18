@@ -20,6 +20,7 @@ class ComoLoginByPhoneController : UIViewController, PhoneCountryControllerDeleg
         searchButton.round(4)
         errorLabel.text = ""
         loginOtpView.isHidden = true
+        phoneCountrySelector(countrySelected: phoneCountry)
     }
     
     @IBAction func onSearchPressed(_ sender:Any){

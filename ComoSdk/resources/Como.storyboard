@@ -777,7 +777,7 @@
                                 <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </activityIndicatorView>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Intruduce un teléfono" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gcy-Jf-hiJ">
-                                <rect key="frame" x="135" y="20" width="160" height="34"/>
+                                <rect key="frame" x="124" y="20" width="171" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="textColor" name="text-primary"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -809,16 +809,22 @@
                                     <segue destination="WLp-Lh-cge" kind="embed" id="Zt1-hX-Q7k"/>
                                 </connections>
                             </containerView>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="🇪🇸+34" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LyC-Yt-YeJ">
-                                <rect key="frame" x="35" y="20" width="92" height="34"/>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="🇪🇸 +34" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LyC-Yt-YeJ">
+                                <rect key="frame" x="35" y="20" width="81" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" name="TableSeparator"/>
                                 <color key="textColor" name="text-primary"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="Rsb-cV-Tv4" id="shq-G0-nbt"/>
                                 </connections>
                             </textField>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="chevron.up.chevron.down" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="efR-aH-Yv4">
+                                <rect key="frame" x="98" y="32" width="13" height="13"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" name="text-primary"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -970,20 +976,20 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="100" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🇯🇵 Country" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yYT-MN-iad">
-                                            <rect key="frame" x="23" y="13.5" width="75.5" height="17"/>
+                                            <rect key="frame" x="23" y="13.5" width="85.5" height="17"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="17" id="BJX-tU-oO9"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" name="text-primary"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+34" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="01b-op-weM">
-                                            <rect key="frame" x="229.5" y="13.5" width="26.5" height="17"/>
+                                            <rect key="frame" x="222.5" y="13.5" width="29.5" height="17"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="17" id="WGH-CP-Dpl"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" systemColor="secondaryLabelColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -995,7 +1001,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="01b-op-weM" secondAttribute="trailing" constant="44" id="Eub-vA-5h0"/>
+                                    <constraint firstAttribute="trailing" secondItem="01b-op-weM" secondAttribute="trailing" constant="48" id="Eub-vA-5h0"/>
                                 </constraints>
                             </tableViewCell>
                         </prototypes>
@@ -1117,6 +1123,7 @@
     <resources>
         <image name="bolt.circle.fill" catalog="system" width="128" height="123"/>
         <image name="checkmark.circle.fill" catalog="system" width="128" height="123"/>
+        <image name="chevron.up.chevron.down" catalog="system" width="109" height="128"/>
         <image name="face.dashed" catalog="system" width="128" height="123"/>
         <image name="lock.shield.fill" catalog="system" width="128" height="119"/>
         <image name="ticket" catalog="system" width="128" height="86"/>
@@ -1124,6 +1131,9 @@
         <image name="xmark.circle.fill" catalog="system" width="128" height="123"/>
         <namedColor name="Brand">
             <color red="0.87058823529411766" green="0.34509803921568627" blue="0.074509803921568626" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="TableSeparator">
+            <color red="0.92941176470588238" green="0.92156862745098034" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="light-blue">
             <color red="0.43900001049041748" green="0.65499997138977051" blue="0.90600001811981201" alpha="0.64999997615814209" colorSpace="custom" customColorSpace="sRGB"/>
