@@ -9,6 +9,8 @@ class ComoLoginByPhoneController : UIViewController {
     
     @IBOutlet var errorLabel: UILabel!
     
+    weak var delegate:ComoLoginDelegate!
+    
     
     override func viewDidLoad() {
         searchButton.round(4)
@@ -26,7 +28,6 @@ class ComoLoginByPhoneController : UIViewController {
                 
         sendAuthCode()
     }
-    
     
     func sendAuthCode(){
         Task {

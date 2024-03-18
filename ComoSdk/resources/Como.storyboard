@@ -93,11 +93,25 @@
                                             <segue destination="Rsb-cV-Tv4" kind="embed" id="BGm-Md-GPC"/>
                                         </connections>
                                     </containerView>
-                                    <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dbj-su-MoU">
+                                    <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dbj-su-MoU">
                                         <rect key="frame" x="31" y="0.0" width="331" height="306"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                         <connections>
                                             <segue destination="B59-vr-848" kind="embed" id="zc2-TO-Eus"/>
+                                        </connections>
+                                    </containerView>
+                                    <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JcV-qn-AnU">
+                                        <rect key="frame" x="31" y="0.0" width="331" height="306"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                        <connections>
+                                            <segue destination="sYN-pN-cTJ" kind="embed" id="KRt-WB-fA6"/>
+                                        </connections>
+                                    </containerView>
+                                    <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MMd-aD-ztg">
+                                        <rect key="frame" x="31" y="0.0" width="331" height="306"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                        <connections>
+                                            <segue destination="1n8-Fk-V1i" kind="embed" id="Kgz-XJ-WPh"/>
                                         </connections>
                                     </containerView>
                                 </subviews>
@@ -114,7 +128,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UVa-Ar-kZq">
-                                <rect key="frame" x="263" y="600" width="54" height="29"/>
+                                <rect key="frame" x="263" y="587" width="54" height="29"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -124,7 +138,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jEq-Cc-Xnp">
-                                <rect key="frame" x="170" y="549" width="240" height="2"/>
+                                <rect key="frame" x="170" y="536" width="240" height="2"/>
                                 <color key="backgroundColor" red="0.92941176470588238" green="0.92156862745098034" blue="0.91764705882352937" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="2" id="XjJ-9c-omI"/>
@@ -132,7 +146,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¿Tu cliente no tiene cuenta?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3SP-AY-6oU">
-                                <rect key="frame" x="194.5" y="572" width="191" height="18"/>
+                                <rect key="frame" x="194.5" y="559" width="191" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" name="text-secondary"/>
                                 <nil key="highlightedColor"/>
@@ -154,7 +168,7 @@
                         <color key="backgroundColor" red="0.96470588235294119" green="0.95686274509803915" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="8aT-zp-ak2" firstAttribute="top" secondItem="td8-tO-6wd" secondAttribute="bottom" constant="23" id="B2l-Bb-oBy"/>
-                            <constraint firstItem="gdK-Yo-pDd" firstAttribute="bottom" secondItem="UVa-Ar-kZq" secondAttribute="bottom" constant="11" id="GCg-nx-fKi"/>
+                            <constraint firstItem="gdK-Yo-pDd" firstAttribute="bottom" secondItem="UVa-Ar-kZq" secondAttribute="bottom" constant="24" id="GCg-nx-fKi"/>
                             <constraint firstItem="UVa-Ar-kZq" firstAttribute="centerX" secondItem="gdK-Yo-pDd" secondAttribute="centerX" id="IX4-EJ-awH"/>
                             <constraint firstItem="3SP-AY-6oU" firstAttribute="top" secondItem="jEq-Cc-Xnp" secondAttribute="bottom" constant="21" id="JG1-o0-etr"/>
                             <constraint firstItem="jEq-Cc-Xnp" firstAttribute="centerX" secondItem="gdK-Yo-pDd" secondAttribute="centerX" id="N7Q-zh-AxP"/>
@@ -176,11 +190,14 @@
                     </navigationItem>
                     <modalFormSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
+                        <outlet property="addCoupon" destination="MMd-aD-ztg" id="MRP-No-ytR"/>
                         <outlet property="backButton" destination="K7x-Ku-ZUS" id="fXd-Mm-2Zh"/>
                         <outlet property="loginByEmailView" destination="dbj-su-MoU" id="STZ-d6-sCI"/>
                         <outlet property="loginByPhoneView" destination="KdF-85-iWg" id="qd4-ks-SUR"/>
+                        <outlet property="loginByQRCode" destination="JcV-qn-AnU" id="ZxI-eG-C0w"/>
                         <outlet property="loginOtpView" destination="qWT-nW-lGe" id="qZS-Fx-75A"/>
                         <outlet property="registerButton" destination="UVa-Ar-kZq" id="vuE-D4-TMa"/>
+                        <outlet property="segmented" destination="td8-tO-6wd" id="eHN-gi-40x"/>
                         <outlet property="welcomeLabel" destination="Qog-5E-jRM" id="Xz9-CY-d2B"/>
                     </connections>
                 </viewController>
@@ -923,6 +940,105 @@
             </objects>
             <point key="canvasLocation" x="254" y="990"/>
         </scene>
+        <!--Como Login By Qr Code Controller-->
+        <scene sceneID="mPR-hJ-mHo">
+            <objects>
+                <viewController id="sYN-pN-cTJ" customClass="ComoLoginByQrCodeController" customModule="ComoSdk" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="98A-qT-o3F">
+                        <rect key="frame" x="0.0" y="0.0" width="331" height="306"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QeV-7l-4TW" customClass="ScanQRCodeView" customModule="ComoSdk">
+                                <rect key="frame" x="16" y="8" width="299" height="169"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" name="light-blue"/>
+                            </view>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Intruduce el código" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="g29-uU-eRL">
+                                <rect key="frame" x="35" y="185" width="260" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="haM-nz-gOE" customClass="AsyncButton" customModule="RevoUIComponents">
+                                <rect key="frame" x="35" y="227" width="260" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" name="Brand"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Buscar cliente"/>
+                                <connections>
+                                    <action selector="onSearchCustomerPressed:" destination="sYN-pN-cTJ" eventType="touchUpInside" id="xBR-mC-K7Q"/>
+                                    <action selector="onSearchPressed:" destination="B59-vr-848" eventType="touchUpInside" id="Emg-pe-DHO"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0b4-Qj-Yyn">
+                                <rect key="frame" x="35" y="260" width="260" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <connections>
+                        <outlet property="button" destination="haM-nz-gOE" id="rl8-uZ-yKb"/>
+                        <outlet property="errorLabel" destination="0b4-Qj-Yyn" id="eBN-zE-K2f"/>
+                        <outlet property="inputField" destination="g29-uU-eRL" id="EKs-5v-aJe"/>
+                        <outlet property="scanQrCodeView" destination="QeV-7l-4TW" id="Weg-TS-jZA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TT1-Vp-L9P" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-131.38489208633095" y="654.67625899280586"/>
+        </scene>
+        <!--Como Login Add Coupon Controller-->
+        <scene sceneID="NR9-jM-vdc">
+            <objects>
+                <viewController id="1n8-Fk-V1i" customClass="ComoLoginAddCouponController" customModule="ComoSdk" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tPU-px-ySd">
+                        <rect key="frame" x="0.0" y="0.0" width="331" height="306"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Intruduce tu cupón" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bXv-1l-21V">
+                                <rect key="frame" x="35" y="42" width="260" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C6D-Jd-krW" customClass="AsyncButton" customModule="RevoUIComponents">
+                                <rect key="frame" x="35" y="91" width="260" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" name="Brand"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Aplicar cupon"/>
+                                <connections>
+                                    <action selector="onSearchPressed:" destination="B59-vr-848" eventType="touchUpInside" id="CXu-LY-TZK"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pA9-NW-jxa">
+                                <rect key="frame" x="35" y="144" width="260" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <connections>
+                        <outlet property="button" destination="C6D-Jd-krW" id="1da-Ez-peB"/>
+                        <outlet property="errorLabel" destination="pA9-NW-jxa" id="Nzb-8v-Z7T"/>
+                        <outlet property="textField" destination="bXv-1l-21V" id="WyR-5G-qlh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8Ds-bs-xnE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-326" y="655"/>
+        </scene>
     </scenes>
     <resources>
         <image name="bolt.circle.fill" catalog="system" width="128" height="123"/>
@@ -934,6 +1050,9 @@
         <image name="xmark.circle.fill" catalog="system" width="128" height="123"/>
         <namedColor name="Brand">
             <color red="0.87058823529411766" green="0.34509803921568627" blue="0.074509803921568626" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="light-blue">
+            <color red="0.43900001049041748" green="0.65499997138977051" blue="0.90600001811981201" alpha="0.64999997615814209" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="text-primary">
             <color red="0.14117647058823529" green="0.14117647058823529" blue="0.14117647058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

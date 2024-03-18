@@ -23,14 +23,11 @@ class OTPView : UIStackView {
         let index = arrangedSubviews.firstIndex(of: textField) ?? 0
         
         if index == arrangedSubviews.count {
-            return onLastPinTextFieldChanged(textField)
+            delegate?.otp(codeEntered: code)
+            return
         }
         
         (arrangedSubviews[index + 1] as? UITextField)?.text = ""
         (arrangedSubviews[index + 1] as? UITextField)?.becomeFirstResponder()
-    }
-    
-    private func onLastPinTextFieldChanged(_ textField:UITextField){
-        delegate?.otp(codeEntered: code)
     }
 }

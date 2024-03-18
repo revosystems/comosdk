@@ -7,7 +7,11 @@ public protocol ComoDelegate {
     func comoActionCanceled()
 }
 
-public class ComoController : UIViewController, ScanCodeControllerDelegate {
+protocol ComoLoginDelegate : AnyObject {
+    func como(onLoggedIn details:Como.MemberDetailsResponse)
+}
+
+public class ComoController : UIViewController, ScanCodeControllerDelegate, ComoLoginDelegate {
     
     enum NextController {
         case showDetails
@@ -20,6 +24,9 @@ public class ComoController : UIViewController, ScanCodeControllerDelegate {
         
     @IBOutlet var loginByPhoneView: UIView!
     @IBOutlet var loginByEmailView: UIView!
+    @IBOutlet var loginByQRCode: UIView!
+    @IBOutlet var addCoupon: UIView!
+    @IBOutlet var segmented: UISegmentedControl!
     
     var delegate:ComoDelegate?
     var nextAction:NextController = .showDetails
@@ -36,7 +43,7 @@ public class ComoController : UIViewController, ScanCodeControllerDelegate {
         //translate()
         preferredContentSize = CGSize(width: 700, height: 670)
         
-        loginByEmailView.isHidden = true
+        onSegmentedChanged(segmented)
     }
     
     @IBAction func onBackPressed(_ sender: Any) {
@@ -46,12 +53,30 @@ public class ComoController : UIViewController, ScanCodeControllerDelegate {
     
     @IBAction func onSegmentedChanged(_ sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 1 {
-            loginByEmailView.isHidden = false
-            loginByPhoneView.isHidden = true
-        } else {
-            loginByEmailView.isHidden = true
             loginByPhoneView.isHidden = false
+            loginByEmailView.isHidden = true
+            loginByQRCode.isHidden    = true
+            addCoupon.isHidden        = true
+        } else if sender.selectedSegmentIndex == 2 {
+            loginByPhoneView.isHidden = true
+            loginByEmailView.isHidden = false
+            loginByQRCode.isHidden    = true
+            addCoupon.isHidden        = true
+        } else if sender.selectedSegmentIndex == 3 {
+            loginByPhoneView.isHidden = true
+            loginByEmailView.isHidden = true
+            loginByQRCode.isHidden    = false
+            addCoupon.isHidden        = true
+        } else {
+            loginByPhoneView.isHidden = true
+            loginByEmailView.isHidden = true
+            loginByQRCode.isHidden    = true
+            addCoupon.isHidden        = false
         }
+    }
+    
+    func como(onLoggedIn details:Como.MemberDetailsResponse) {
+        onMemberFetched(details: details)
     }
     
     /*@IBAction func onRegisterPressed(_ sender: UIButton?) {
@@ -103,6 +128,9 @@ public class ComoController : UIViewController, ScanCodeControllerDelegate {
     }    
 
     override public func prepare(for segue: UIStoryboardSegue, sender: Any?){
+        (segue.destination as? ComoLoginByEmailController)?.delegate = self
+        (segue.destination as? ComoLoginByPhoneController)?.delegate = self
+        (segue.destination as? ComoLoginByQrCodeController)?.delegate = self
         (segue.destination as? ScanCodeController)?.delegate = self
     }
     

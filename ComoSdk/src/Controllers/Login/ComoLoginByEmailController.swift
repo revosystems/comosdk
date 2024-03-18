@@ -8,6 +8,8 @@ class ComoLoginByEmailController : UIViewController {
     
     @IBOutlet var errorLabel: UILabel!
     
+    weak var delegate:ComoLoginDelegate!
+    
     override func viewDidLoad() {
         searchButton.round(4)
         errorLabel.text = ""
@@ -34,6 +36,7 @@ class ComoLoginByEmailController : UIViewController {
                 Como.shared.currentSale?.customer = details.membership.customer
                 await MainActor.run {
                     searchButton.animateSuccess()
+                    delegate?.como(onLoggedIn: details)
                     //onMemberFetched(details: details)
                 }
             } catch {
