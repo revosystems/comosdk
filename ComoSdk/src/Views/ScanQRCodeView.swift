@@ -65,7 +65,9 @@ protocol ScanQRCodeViewDelegate{
         previewLayer.videoGravity = .resizeAspectFill
         layer.addSublayer(previewLayer)
 
-        captureSession.startRunning()
+        DispatchQueue.global(qos: .default).async { [weak self] in
+            self?.captureSession.startRunning()
+        }
     }
     
 
@@ -90,7 +92,9 @@ protocol ScanQRCodeViewDelegate{
 
     
     func found(code: String) {
-        delegate?.scanQrCode(found: code)
+        DispatchQueue.main.async { [weak self] in
+            self?.delegate?.scanQrCode(found: code)
+        }
     }
 
     
