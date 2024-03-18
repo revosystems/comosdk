@@ -37,7 +37,6 @@ class ComoLoginByEmailController : UIViewController {
                 await MainActor.run {
                     searchButton.animateSuccess()
                     delegate?.como(onLoggedIn: details)
-                    //onMemberFetched(details: details)
                 }
             } catch {
                 await MainActor.run {

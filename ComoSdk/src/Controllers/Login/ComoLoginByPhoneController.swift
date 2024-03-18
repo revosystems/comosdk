@@ -2,12 +2,14 @@ import UIKit
 import RevoUIComponents
 import RevoFoundation
 
-class ComoLoginByPhoneController : UIViewController, PhoneCountryControllerDelegate, UITextFieldDelegate {
+class ComoLoginByPhoneController : UIViewController, PhoneCountryControllerDelegate, UITextFieldDelegate, OTPViewDelegate {
+    
 
     @IBOutlet var loginOtpView: UIView!
     @IBOutlet var searchButton: AsyncButton!
     @IBOutlet var inputField: UITextField!
     @IBOutlet var phoneCountryTextInput: UITextField!
+    @IBOutlet var phoneCountryIcon: UIImageView!
     
     @IBOutlet var errorLabel: UILabel!
     
@@ -58,13 +60,15 @@ class ComoLoginByPhoneController : UIViewController, PhoneCountryControllerDeleg
         phoneCountryTextInput.text = "\(phoneCountry.flag) \(phoneCountry.prefix)"
     }
     
+    var phone:String {
+        (phoneCountry.prefix + inputField.text!).replace("+", "")
+    }
+    
     func sendAuthCode(){
         Task {
             do {
                 searchButton.animateProgress()
-                try await Como.shared.sendIdentificationCode(phoneNumber:
-                    (phoneCountry.prefix + inputField.text!).replace("+", "")
-                )
+                try await Como.shared.sendIdentificationCode(phoneNumber: phone)
                 await MainActor.run {
                     searchButton.animateSuccess()
                     onCodeSent()
@@ -80,30 +84,37 @@ class ComoLoginByPhoneController : UIViewController, PhoneCountryControllerDeleg
     
     private func onCodeSent(){
         loginOtpView.isHidden = false
+        searchButton.isHidden = true
+        phoneCountryTextInput.isHidden = true
+        inputField.isHidden = true
+        phoneCountryIcon.isHidden = true
+    }
+    
+    func otp(codeEntered code: String) {
+        Task {
+            do {
+                let customer = Como.Customer(phoneNumber: phone)
+                let details = try await Como.shared.getMemberDetails(customer: customer, purchase: Como.shared.currentSale!.purchase)
+                Como.shared.currentSale?.customer = details.membership.customer
+                await MainActor.run {
+                    searchButton.animateSuccess()
+                    delegate?.como(onLoggedIn: details)
+                }
+            } catch {
+                await MainActor.run {
+                    searchButton.animateFailed()
+                    onError(error)
+                }
+            }
+        }
     }
     
     private func onError(_ error:Error){
         errorLabel.text = Como.trans("como_\(error)")
     }
     
-    /*
-    func customer() -> Como.Customer? {
-        guard inputField.text?.count ?? 0 > 0 else {
-            return nil
-        }
-        
-        if inputField.text!.count == 4 {
-            return Como.Customer(appClientId: inputField.text!)
-        }
-        
-        if inputField.text!.contains("@") {
-            return Como.Customer(email: inputField.text!.lowercased())
-        }
-        
-        if inputField.text!.isPhoneNumber {
-            return Como.Customer(phoneNumber: inputField.text!.lowercased())
-        }
-        
-        return Como.Customer(customIdentifier: inputField.text!)
-    }*/
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        (segue.destination as? ComoControllerLoginOTPController)?.delegate = self
+    }
 }

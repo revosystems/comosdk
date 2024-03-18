@@ -2,12 +2,13 @@ import UIKit
 import RevoUIComponents
 import RevoFoundation
 
-class ComoRegisterByPhoneController : UIViewController, PhoneCountryControllerDelegate, UITextFieldDelegate {
-    
+class ComoRegisterByPhoneController : UIViewController, PhoneCountryControllerDelegate, UITextFieldDelegate, OTPViewDelegate {
+        
     @IBOutlet var errorLabel: UILabel!
     @IBOutlet var button: AsyncButton!
     @IBOutlet var textField: UITextField!
     @IBOutlet var phoneCountryInput: UITextField!
+    @IBOutlet var phoneCountryIcon: UIImageView!
     
     weak var delegate:ComoRegisterDelegate?
  
@@ -68,6 +69,13 @@ class ComoRegisterByPhoneController : UIViewController, PhoneCountryControllerDe
                 }
             }
         }
-                
+    }
+    
+    func otp(codeEntered code: String) {
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        (segue.destination as? ComoControllerLoginOTPController)?.delegate = self
     }
 }

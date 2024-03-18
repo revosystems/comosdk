@@ -856,7 +856,7 @@
                                 </connections>
                             </textField>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="chevron.up.chevron.down" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="efR-aH-Yv4">
-                                <rect key="frame" x="98" y="32" width="13" height="13"/>
+                                <rect key="frame" x="98" y="31" width="13" height="13"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" name="text-primary"/>
                             </imageView>
@@ -874,6 +874,7 @@
                         <outlet property="errorLabel" destination="cxD-ae-KWp" id="osf-t6-bP4"/>
                         <outlet property="inputField" destination="gcy-Jf-hiJ" id="Osn-sb-kc8"/>
                         <outlet property="loginOtpView" destination="qWT-nW-lGe" id="5Za-pO-CH2"/>
+                        <outlet property="phoneCountryIcon" destination="efR-aH-Yv4" id="RHM-Kp-l3z"/>
                         <outlet property="phoneCountryTextInput" destination="LyC-Yt-YeJ" id="28E-MO-qru"/>
                         <outlet property="searchButton" destination="hFf-sm-fFO" id="c1a-ZK-Bxt"/>
                     </connections>
@@ -1254,12 +1255,18 @@
                                     <outlet property="delegate" destination="Rsb-cV-Tv4" id="9ck-kT-VDh"/>
                                 </connections>
                             </textField>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="chevron.up.chevron.down" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="q7B-ty-o53">
+                                <rect key="frame" x="74" y="31" width="13" height="13"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" name="text-primary"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <connections>
                         <outlet property="button" destination="jef-gf-004" id="GFQ-ej-0ZC"/>
                         <outlet property="errorLabel" destination="GY5-sL-mo6" id="LsM-fw-jZm"/>
+                        <outlet property="phoneCountryIcon" destination="q7B-ty-o53" id="c2b-aa-se6"/>
                         <outlet property="phoneCountryInput" destination="Thx-se-YcM" id="sWU-Tm-Cn8"/>
                         <outlet property="textField" destination="Ar2-K1-CrA" id="j6j-b7-UtM"/>
                     </connections>
