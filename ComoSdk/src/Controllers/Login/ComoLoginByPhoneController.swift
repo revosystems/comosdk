@@ -1,56 +1,59 @@
 import UIKit
+import RevoUIComponents
 
 class ComoLoginByPhoneController : UIViewController {
-    @IBOutlet weak var inputField: UITextField!
-    @IBOutlet weak var errorLabel: UILabel!
-    @IBOutlet weak var loading: UIActivityIndicatorView!
+
+    @IBOutlet var loginOtpView: UIView!
+    @IBOutlet var searchButton: AsyncButton!
+    @IBOutlet var inputField: UITextField!
     
-    @IBOutlet weak var findMemberButton: UIButton!
-    @IBOutlet weak var sendAuthCodeButton: UIButton!
+    @IBOutlet var errorLabel: UILabel!
+    
     
     override func viewDidLoad() {
-        
-        /*if let customer = Como.shared.currentSale?.customer {
-            inputField.text = customer.phoneNumber
-        }*/
+        searchButton.round(4)
+        errorLabel.text = ""
+        loginOtpView.isHidden = true
     }
     
-    /*@IBAction func onFindMemberPressed(_ sender: UIButton?) {
-        guard let customer = customer() else {
+    @IBAction func onSearchPressed(_ sender:Any){
+        
+        errorLabel.text = ""
+        
+        guard (inputField.text?.count ?? 0) > 0 else {
             return inputField.shake()
         }
-        loading.start(findMemberButton)
-        
-        Task {
-            do {
-                let details = try await Como.shared.getMemberDetails(customer: customer, purchase: Como.shared.currentSale!.purchase)
-                Como.shared.currentSale?.customer = details.membership.customer
-                loading.stop(self.findMemberButton)
-                onMemberFetched(details: details)
-            } catch {
-                loading.stop(sender)
-                onError(error)
-            }
-        }
+                
+        sendAuthCode()
     }
     
-    func onError(_ error:Error){
-        errorLabel.text = Como.trans("como_\(error)")
-    }
     
-    @IBAction func onSendAuthCodePressed(_ sender: UIButton) {
-        loading.start(sender)
+    func sendAuthCode(){
         Task {
             do {
                 try await Como.shared.sendIdentificationCode(phoneNumber: inputField.text!)
-                loading.stop(sender)
+                await MainActor.run {
+                    searchButton.animateSuccess()
+                    onCodeSent()
+                }
             } catch {
-                loading.stop(sender)
-                onError(error)
+                await MainActor.run {
+                    searchButton.animateFailed()
+                    onError(error)
+                }
             }
         }
     }
     
+    private func onCodeSent(){
+        loginOtpView.isHidden = false
+    }
+    
+    private func onError(_ error:Error){
+        errorLabel.text = Como.trans("como_\(error)")
+    }
+    
+    /*
     func customer() -> Como.Customer? {
         guard inputField.text?.count ?? 0 > 0 else {
             return nil

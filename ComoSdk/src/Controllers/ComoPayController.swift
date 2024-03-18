@@ -2,7 +2,7 @@ import UIKit
 import RevoFoundation
 import RevoUIComponents
 
-class ComoPayController : UIViewController {
+class ComoPayController : UIViewController, OTPViewDelegate {
     
     var amount:Int!
     
@@ -11,7 +11,7 @@ class ComoPayController : UIViewController {
     @IBOutlet weak var loading:LoadingAnimation!
     @IBOutlet weak var amountLabel: UILabel!
     @IBOutlet weak var statusIcon:UIImageView!
-    @IBOutlet weak var pinCode:UIStackView!
+    @IBOutlet weak var pinCode:OTPView!
     @IBOutlet weak var titleLabel:UILabel!
     @IBOutlet weak var descriptionLabel:UILabel!
     @IBOutlet weak var resendCodeButton:UIButton!
@@ -32,6 +32,8 @@ class ComoPayController : UIViewController {
         loading.set(size: CGSize(width: 50, height: 20), color: .darkGray)
         startPaymentProcess()
         preferredContentSize = CGSize(width: 580, height: 460)
+        
+        pinCode.delegate = self
     }
     
     @IBAction func onCancelPressed(_ sender:Any){
@@ -71,8 +73,7 @@ class ComoPayController : UIViewController {
     
     
     @IBAction func onResendCodePressed(_ sender:UIButton?){
-        let code = pinCode.arrangedSubviews.compactMap { ($0 as? UITextField)?.text }.implode("")
-        startPaymentProcess(code: code)
+        startPaymentProcess(code: pinCode.code)
     }
     
     private func showPaymentOk(response:Como.PaymentResponse){
@@ -132,16 +133,10 @@ class ComoPayController : UIViewController {
         //payCodeInput.placeholder = Como.trans("como_SMSValidationCode")
         //payButton.setTitle(Como.trans("como_paySendAuthCode"), for: .normal)
     }
-    
-    //OTP
-    @IBAction func onPinTextFieldChanged(_ textField:UITextField){
-        let index = pinCode.arrangedSubviews.firstIndex(of: textField) ?? 0
-        (pinCode.arrangedSubviews[index + 1] as? UITextField)?.text = ""
-        (pinCode.arrangedSubviews[index + 1] as? UITextField)?.becomeFirstResponder()
-    }
-    
-    @IBAction func onLastPinTextFieldChanged(_ textField:UITextField){
+ 
+    func otp(codeEntered code: String) {
         onResendCodePressed(nil)
     }
+
 }
 

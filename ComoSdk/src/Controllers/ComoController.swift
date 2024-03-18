@@ -48,7 +48,7 @@ public class ComoController : UIViewController, ScanCodeControllerDelegate {
         if sender.selectedSegmentIndex == 1 {
             loginByEmailView.isHidden = false
             loginByPhoneView.isHidden = true
-        }else{
+        } else {
             loginByEmailView.isHidden = true
             loginByPhoneView.isHidden = false
         }

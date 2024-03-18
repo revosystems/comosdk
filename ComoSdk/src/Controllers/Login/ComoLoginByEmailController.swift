@@ -6,12 +6,9 @@ class ComoLoginByEmailController : UIViewController {
     @IBOutlet var searchButton: AsyncButton!
     @IBOutlet var inputField: UITextField!
     
-    @IBOutlet var sendVerifyCodeButton: AsyncButton!
-    
     @IBOutlet var errorLabel: UILabel!
     
     override func viewDidLoad() {
-        sendVerifyCodeButton.border(UIColor(hex:"#EDEBEA"), size: 1).round(4)
         searchButton.round(4)
         errorLabel.text = ""
     }
