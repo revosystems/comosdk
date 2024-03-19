@@ -51,16 +51,16 @@ public class Como {
     }
     
     //MARK: - Methods
-    public func getMemberDetails(customer:Customer, purchase:Purchase, code:String? = nil) async throws -> MemberDetailsResponse{
+    public func getMemberDetails(customer:Customer, purchase:Purchase) async throws -> MemberDetailsResponse{
         try validateInitialized()
+
         
         struct MemberDetails : Codable {
             let customer:Customer
             let purchase:Purchase
-            let verificationCode:String?
         }
         
-        let object = MemberDetails(customer: customer, purchase: purchase, verificationCode: code)
+        let object = MemberDetails(customer: customer, purchase: purchase)
                       
         return try await api!.post("getMemberDetails?returnAssets=active&expand=assets.redeemable", object:object)
     }

@@ -95,11 +95,10 @@ class ComoLoginByPhoneController : UIViewController, PhoneCountryControllerDeleg
     func otp(codeEntered code: String) {
         Task {
             do {
-                let customer = Como.Customer(phoneNumber: phone)
+                let customer = Como.Customer(appClientId: code)
                 let details = try await Como.shared.getMemberDetails(
                     customer: customer,
-                    purchase: Como.shared.currentSale!.purchase,
-                    code: code
+                    purchase: Como.shared.currentSale!.purchase
                 )
                 Como.shared.currentSale?.customer = details.membership.customer
                 await MainActor.run {
@@ -108,6 +107,7 @@ class ComoLoginByPhoneController : UIViewController, PhoneCountryControllerDeleg
                 }
             } catch {
                 await MainActor.run {
+                    loginOtpView.shake()
                     searchButton.animateFailed()
                     onError(error)
                 }

@@ -14,6 +14,7 @@ class ComoLoginByEmailController : UIViewController, OTPViewDelegate {
     override func viewDidLoad() {
         searchButton.round(4)
         errorLabel.text = ""
+        loginOtpView.isHidden = true
     }
     
     @IBAction func onSearchPressed(_ sender: Any) {
@@ -62,15 +63,14 @@ class ComoLoginByEmailController : UIViewController, OTPViewDelegate {
     }
     
     func getMemberDetails(_ code:String){
-        let customer = Como.Customer(email: inputField.text!.lowercased())
+        let customer = Como.Customer(appClientId: code)
         
         searchButton.animateProgress()
         Task {
             do {
                 let details = try await Como.shared.getMemberDetails(
                     customer: customer, 
-                    purchase: Como.shared.currentSale!.purchase,
-                    code: code
+                    purchase: Como.shared.currentSale!.purchase
                 )
                 Como.shared.currentSale?.customer = details.membership.customer
                 await MainActor.run {
@@ -79,6 +79,7 @@ class ComoLoginByEmailController : UIViewController, OTPViewDelegate {
                 }
             } catch {
                 await MainActor.run {
+                    loginOtpView.shake()
                     searchButton.animateFailed()
                     onError(error)
                 }
