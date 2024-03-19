@@ -25,10 +25,6 @@ class ComoMemberDetailsController : UIViewController, UITableViewDelegate {
     @IBOutlet weak var doneButton: UIBarButtonItem!
     
     
-    @IBOutlet weak var couponsButton: UIButton!
-    @IBOutlet var couponsView: UIView!
-    
-    
     var details:Como.MemberDetailsResponse!
     let dataSource = MembershipDataSource()
     
@@ -43,7 +39,6 @@ class ComoMemberDetailsController : UIViewController, UITableViewDelegate {
     override func viewDidLoad() {
         showMemberDetails()
         redeemButton.isEnabled = false
-        couponsView.isHidden = true
         appearance()
         translate()
     }
@@ -53,11 +48,6 @@ class ComoMemberDetailsController : UIViewController, UITableViewDelegate {
             Como.RedeemAsset(key: $0.key, appliedAmount: nil, code:nil)
         }
         dismiss(animated: true)
-    }
-    
-    @IBAction func onCouponsButtonPressed(_ sender: Any) {
-        couponsView.isHidden = false
-        couponsButton.isHidden = true
     }
     
     @IBAction func onDonePressed(_ sender: Any) {
@@ -114,12 +104,10 @@ class ComoMemberDetailsController : UIViewController, UITableViewDelegate {
         headerView.round(12)
         tableView.round(12)
         redeemButton.round(4)
-        couponsButton.round(4)
     }
     
     func translate(){
         doneButton.title = Como.trans("como_done")
-        couponsButton.setTitle(Como.trans("como_couponCodes"),  for: .normal)
         redeemButton.setTitle(Como.trans("como_redeem"),        for: .normal)
         creditLabelTitle.text = Como.trans("como_credits")
         pointsLabelTitle.text = Como.trans("como_points")

@@ -3,7 +3,6 @@
     <device id="ipad10_5" orientation="landscape" layout="fullscreen" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
-        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -499,35 +498,6 @@
                                     <action selector="onRedeemPressed:" destination="jFq-eJ-UDV" eventType="touchUpInside" id="EHb-xk-r2M"/>
                                 </connections>
                             </button>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SPT-GV-Mx8">
-                                <rect key="frame" x="181" y="597" width="220" height="31"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="31" id="2pP-08-WQG"/>
-                                    <constraint firstAttribute="width" constant="220" id="KEy-Y6-tYV"/>
-                                </constraints>
-                                <connections>
-                                    <segue destination="AFg-km-EIr" kind="embed" id="j72-cd-RMG"/>
-                                </connections>
-                            </containerView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gcn-eH-xkz">
-                                <rect key="frame" x="181" y="597" width="220" height="31"/>
-                                <color key="backgroundColor" red="0.2627450980392157" green="0.21568627450980393" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="31" id="Bct-0B-vKz"/>
-                                    <constraint firstAttribute="width" constant="220" id="xOA-YN-2m0"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <inset key="contentEdgeInsets" minX="2" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <inset key="titleEdgeInsets" minX="4" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="Apply coupon">
-                                    <imageReference key="image" image="ticket" catalog="system" symbolScale="small"/>
-                                </state>
-                                <connections>
-                                    <action selector="onCouponsButtonPressed:" destination="jFq-eJ-UDV" eventType="touchUpInside" id="5Y7-mX-x7O"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="tfx-Dz-sN7"/>
                         <color key="backgroundColor" red="0.12549019607843137" green="0.10980392156862745" blue="0.10588235294117647" alpha="1" colorSpace="calibratedRGB"/>
@@ -538,14 +508,10 @@
                             <constraint firstItem="o7I-nR-bka" firstAttribute="leading" secondItem="tfx-Dz-sN7" secondAttribute="leading" constant="12" id="MVD-qw-FWB"/>
                             <constraint firstItem="s8y-QH-MU7" firstAttribute="trailing" secondItem="tfx-Dz-sN7" secondAttribute="trailing" constant="-12" id="NOC-nd-OfI"/>
                             <constraint firstItem="tpT-mC-9J5" firstAttribute="leading" secondItem="tfx-Dz-sN7" secondAttribute="leading" constant="12" id="PZq-mj-GoJ"/>
-                            <constraint firstItem="SPT-GV-Mx8" firstAttribute="centerY" secondItem="49z-Uf-2tE" secondAttribute="centerY" id="RtR-vY-g72"/>
                             <constraint firstItem="tpT-mC-9J5" firstAttribute="top" secondItem="H5F-UK-gB6" secondAttribute="top" constant="24" id="VBe-sD-Q8h"/>
                             <constraint firstItem="tfx-Dz-sN7" firstAttribute="trailing" secondItem="49z-Uf-2tE" secondAttribute="trailing" constant="12" id="WuN-i4-enz"/>
                             <constraint firstItem="s8y-QH-MU7" firstAttribute="leading" secondItem="tfx-Dz-sN7" secondAttribute="leading" constant="12" id="arI-PQ-UFJ"/>
                             <constraint firstItem="tfx-Dz-sN7" firstAttribute="trailing" secondItem="o7I-nR-bka" secondAttribute="trailing" constant="12" id="ba3-1J-DCd"/>
-                            <constraint firstItem="gcn-eH-xkz" firstAttribute="centerY" secondItem="49z-Uf-2tE" secondAttribute="centerY" id="e3r-zZ-tmF"/>
-                            <constraint firstItem="49z-Uf-2tE" firstAttribute="leading" secondItem="gcn-eH-xkz" secondAttribute="trailing" constant="17" id="kTM-zr-NHh"/>
-                            <constraint firstItem="49z-Uf-2tE" firstAttribute="leading" secondItem="SPT-GV-Mx8" secondAttribute="trailing" constant="17" id="pGa-rA-uT7"/>
                             <constraint firstItem="tfx-Dz-sN7" firstAttribute="bottom" secondItem="49z-Uf-2tE" secondAttribute="bottom" constant="12" id="raN-Gi-tqs"/>
                             <constraint firstItem="49z-Uf-2tE" firstAttribute="top" secondItem="s8y-QH-MU7" secondAttribute="bottom" constant="17" id="snZ-St-mg3"/>
                             <constraint firstItem="o7I-nR-bka" firstAttribute="centerX" secondItem="tfx-Dz-sN7" secondAttribute="centerX" id="xXy-az-yaN"/>
@@ -562,8 +528,6 @@
                     <modalFormSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="birthdayLabel" destination="uBe-oT-2Yu" id="B1m-r4-M0B"/>
-                        <outlet property="couponsButton" destination="gcn-eH-xkz" id="Wep-jV-w6L"/>
-                        <outlet property="couponsView" destination="SPT-GV-Mx8" id="E1f-fa-JOf"/>
                         <outlet property="creditLabel" destination="inO-bf-pGv" id="wzp-2Q-JAE"/>
                         <outlet property="creditLabelTitle" destination="ChT-Dk-17s" id="Acg-Rc-DhR"/>
                         <outlet property="doneButton" destination="sBP-n4-VOW" id="DRD-bN-V5g"/>
@@ -1384,56 +1348,6 @@
             </objects>
             <point key="canvasLocation" x="62" y="976"/>
         </scene>
-        <!--Como Member Coupon Controller-->
-        <scene sceneID="kxA-fE-HXo">
-            <objects>
-                <viewController id="AFg-km-EIr" customClass="ComoMemberCouponController" customModule="ComoSdk" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="TDh-oV-6Qs">
-                        <rect key="frame" x="0.0" y="0.0" width="220" height="31"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Coupon code" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mMU-Cp-cwj">
-                                <rect key="frame" x="0.0" y="0.0" width="220" height="31"/>
-                                <color key="backgroundColor" red="0.2627450980392157" green="0.21568627450980393" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NG3-UA-NdO" customClass="AsyncButton" customModule="RevoUIComponents">
-                                <rect key="frame" x="156" y="3.5" width="60" height="24"/>
-                                <color key="backgroundColor" red="0.53725490196078429" green="0.49411764705882355" blue="0.47843137254901957" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="24" id="EcM-Q0-C1b"/>
-                                    <constraint firstAttribute="width" constant="60" id="u2P-ux-9R9"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="Apply"/>
-                                <connections>
-                                    <action selector="onButtonPressed:" destination="AFg-km-EIr" eventType="touchUpInside" id="kld-ch-rtm"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="NG3-UA-NdO" secondAttribute="trailing" constant="4" id="L55-ax-tU9"/>
-                            <constraint firstItem="mMU-Cp-cwj" firstAttribute="top" secondItem="TDh-oV-6Qs" secondAttribute="top" id="ams-bI-VBJ"/>
-                            <constraint firstItem="mMU-Cp-cwj" firstAttribute="leading" secondItem="TDh-oV-6Qs" secondAttribute="leading" id="pXz-ct-7rz"/>
-                            <constraint firstAttribute="trailing" secondItem="mMU-Cp-cwj" secondAttribute="trailing" id="plO-uV-uqJ"/>
-                            <constraint firstItem="NG3-UA-NdO" firstAttribute="centerY" secondItem="mMU-Cp-cwj" secondAttribute="centerY" id="qTc-H2-4a8"/>
-                            <constraint firstAttribute="bottom" secondItem="mMU-Cp-cwj" secondAttribute="bottom" id="vgL-vW-UDs"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="button" destination="NG3-UA-NdO" id="CeI-zT-4cT"/>
-                        <outlet property="input" destination="mMU-Cp-cwj" id="RIE-Kv-0Zg"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="CKq-PV-RqM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1040" y="479"/>
-        </scene>
     </scenes>
     <resources>
         <image name="bolt.circle.fill" catalog="system" width="128" height="123"/>
@@ -1441,7 +1355,6 @@
         <image name="chevron.up.chevron.down" catalog="system" width="109" height="128"/>
         <image name="face.dashed" catalog="system" width="128" height="123"/>
         <image name="lock.shield.fill" catalog="system" width="128" height="119"/>
-        <image name="ticket" catalog="system" width="128" height="86"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
         <image name="xmark.circle.fill" catalog="system" width="128" height="123"/>
         <namedColor name="Brand">
