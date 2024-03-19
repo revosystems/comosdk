@@ -566,7 +566,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pst-P5-6UI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="882.73381294964031" y="98.561151079136692"/>
+            <point key="canvasLocation" x="944" y="99"/>
         </scene>
         <!--Como Coupons Controller-->
         <scene sceneID="0hC-Nz-sFl">
@@ -654,7 +654,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i51-f4-vn4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="667" y="847"/>
+            <point key="canvasLocation" x="944" y="845"/>
         </scene>
         <!--Como Pay Controller-->
         <scene sceneID="aBV-C1-6mD">
@@ -808,7 +808,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qpN-OH-HGf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1294" y="845"/>
+            <point key="canvasLocation" x="1609" y="99"/>
         </scene>
         <!--Como Login By Phone Controller-->
         <scene sceneID="vUN-bd-2al">
@@ -893,7 +893,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vmd-r0-QqG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="253.86690647482015" y="656.11510791366914"/>
+            <point key="canvasLocation" x="464" y="655"/>
         </scene>
         <!--Como Login By Email Controller-->
         <scene sceneID="HeW-q5-r3R">
@@ -954,7 +954,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5kC-76-mJy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="61.780575539568346" y="655.39568345323744"/>
+            <point key="canvasLocation" x="62" y="655"/>
         </scene>
         <!--Como Controller LoginOTP Controller-->
         <scene sceneID="CRR-0d-KaM">
@@ -1021,7 +1021,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XIJ-Dn-HD1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="254" y="976"/>
+            <point key="canvasLocation" x="464" y="976"/>
         </scene>
         <!--Phone Country Controller-->
         <scene sceneID="h5j-87-Mfd">
@@ -1079,7 +1079,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pAW-ER-X0o" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="254" y="1253"/>
+            <point key="canvasLocation" x="267" y="978"/>
         </scene>
         <!--Como Login By Qr Code Controller-->
         <scene sceneID="mPR-hJ-mHo">
@@ -1134,7 +1134,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TT1-Vp-L9P" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-131.38489208633095" y="654.67625899280586"/>
+            <point key="canvasLocation" x="267" y="655"/>
         </scene>
         <!--Como Login Add Coupon Controller-->
         <scene sceneID="NR9-jM-vdc">
@@ -1183,7 +1183,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Ds-bs-xnE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-326" y="655"/>
+            <point key="canvasLocation" x="-144" y="655"/>
         </scene>
         <!--Como Register By Mail Controller-->
         <scene sceneID="kDK-EC-oBx">
@@ -1232,7 +1232,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uag-MM-vdw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="267" y="-1107"/>
+            <point key="canvasLocation" x="704" y="-738"/>
         </scene>
         <!--Como Register By Phone Controller-->
         <scene sceneID="uUh-TW-rfX">
@@ -1300,7 +1300,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fkc-FM-Qam" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="92" y="-1108"/>
+            <point key="canvasLocation" x="704" y="-467"/>
         </scene>
         <!--Como Controller LoginOTP Controller-->
         <scene sceneID="yiJ-Nr-gT5">
