@@ -28,7 +28,6 @@ class ComoMemberDetailsController : UIViewController, UITableViewDelegate {
     var details:Como.MemberDetailsResponse!
     let dataSource = MembershipDataSource()
     
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         UIView.animate(withDuration: 0.3) { [weak self] in
@@ -42,12 +41,12 @@ class ComoMemberDetailsController : UIViewController, UITableViewDelegate {
         redeemButton.isEnabled = false
         appearance()
         translate()
-
     }
     
-    
     @IBAction func onRedeemPressed(_ sender: Any) {
-        Como.shared.currentSale?.redeemAssets = selectedAssets.map { Como.RedeemAsset(key: $0.key, appliedAmount: nil, code:nil) }
+        Como.shared.currentSale?.redeemAssets = selectedAssets.map {
+            Como.RedeemAsset(key: $0.key, appliedAmount: nil, code:nil)
+        }
         dismiss(animated: true)
     }
     
@@ -84,22 +83,19 @@ class ComoMemberDetailsController : UIViewController, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if section == 0 && details.memberNotes?.count == 0 { return nil }
         let cell = tableView.dequeueReusableCell(withIdentifier: "header")!
-        (cell.viewWithTag(100) as! UILabel).text = (section == 0 ? Como.trans("como_memberNotes") : Como.trans("como_assets")).uppercased()
+        (cell.viewWithTag(100) as! UILabel).text = Como.trans("como_assets").uppercased()
         return cell
     }
     
     func updateRedeemButton(){
-        let benefitsCount = tableView.indexPathsForSelectedRows?.filter { $0.section == 1 }.count ?? 0
+        let benefitsCount = tableView.indexPathsForSelectedRows?.count ?? 0
         redeemButton.isEnabled = benefitsCount > 0
         redeemButton.setTitle(Como.trans("como_reedem") + " (\(benefitsCount))", for: .normal)
     }
     
     var selectedAssets:[Como.Asset]{
-        tableView.indexPathsForSelectedRows?.filter {
-            $0.section == 1
-        }.map({ (indexPath:IndexPath) in
+        tableView.indexPathsForSelectedRows?.map({ (indexPath:IndexPath) in
             details.membership.assets[indexPath.row]
         }) ?? []
     }

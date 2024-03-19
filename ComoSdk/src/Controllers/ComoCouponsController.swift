@@ -1,20 +1,18 @@
 import Foundation
 import UIKit
+import RevoUIComponents
 
 class ComoCouponsController : UIViewController {
     
     @IBOutlet weak var textField: UITextField!
-    @IBOutlet weak var loading: UIActivityIndicatorView!
     @IBOutlet weak var errorsLabel: UILabel!
     
-    @IBOutlet var headerImageView: UIView!
-    @IBOutlet var redeemButton: UIButton!
+    @IBOutlet var redeemButton: AsyncButton!
     
     @IBOutlet private weak var couponCodeTitle:UILabel!
     @IBOutlet private weak var couponCodeDescLabel:UILabel!
     
     override func viewDidLoad() {
-        loading.isHidden = true
         errorsLabel.text = nil
         appearance()
         translate()
@@ -26,7 +24,6 @@ class ComoCouponsController : UIViewController {
     }
     
     func appearance(){
-        headerImageView.circle()
         redeemButton.round(4)
     }
     
