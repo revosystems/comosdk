@@ -94,7 +94,11 @@ class ComoLoginByPhoneController : UIViewController, PhoneCountryControllerDeleg
         Task {
             do {
                 let customer = Como.Customer(phoneNumber: phone)
-                let details = try await Como.shared.getMemberDetails(customer: customer, purchase: Como.shared.currentSale!.purchase)
+                let details = try await Como.shared.getMemberDetails(
+                    customer: customer,
+                    purchase: Como.shared.currentSale!.purchase,
+                    code: code
+                )
                 Como.shared.currentSale?.customer = details.membership.customer
                 await MainActor.run {
                     searchButton.animateSuccess()
