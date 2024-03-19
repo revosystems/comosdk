@@ -68,7 +68,9 @@ class ComoLoginByPhoneController : UIViewController, PhoneCountryControllerDeleg
         Task {
             do {
                 searchButton.animateProgress()
-                try await Como.shared.sendIdentificationCode(phoneNumber: phone)
+                try await Como.shared.sendIdentificationCode(
+                    customer: Como.Customer(phoneNumber:phone)
+                )
                 await MainActor.run {
                     searchButton.animateSuccess()
                     onCodeSent()

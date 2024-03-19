@@ -161,14 +161,14 @@ public class Como {
     }
     
     @discardableResult
-    public func sendIdentificationCode(phoneNumber:String) async throws -> Como.Api.Response {
+    public func sendIdentificationCode(customer:Como.Customer) async throws -> Como.Api.Response {
         try validateInitialized()
         
         struct SendAuthCode : Codable {
             let customer:Customer
         }
         
-        let object = SendAuthCode(customer: Como.Customer(phoneNumber:phoneNumber))
+        let object = SendAuthCode(customer: customer)
         
         return try await api!.post("advanced/sendIdentificationCode", object:object)
     }

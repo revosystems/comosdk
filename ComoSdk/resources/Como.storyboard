@@ -944,19 +944,32 @@
                                 <color key="textColor" name="text-primary"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LH9-5t-jVY">
+                                <rect key="frame" x="0.0" y="0.0" width="331" height="306"/>
+                                <connections>
+                                    <segue destination="ark-S1-Q1X" kind="embed" id="R4i-d2-EUw"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="XCQ-HJ-smj"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="LH9-5t-jVY" firstAttribute="top" secondItem="aEQ-AP-0U0" secondAttribute="top" id="2Vn-Y7-hbJ"/>
+                            <constraint firstItem="LH9-5t-jVY" firstAttribute="leading" secondItem="XCQ-HJ-smj" secondAttribute="leading" id="3AM-3x-maC"/>
+                            <constraint firstItem="LH9-5t-jVY" firstAttribute="bottom" secondItem="XCQ-HJ-smj" secondAttribute="bottom" id="65y-yr-9KY"/>
+                            <constraint firstItem="LH9-5t-jVY" firstAttribute="trailing" secondItem="XCQ-HJ-smj" secondAttribute="trailing" id="kab-1l-b6O"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="errorLabel" destination="xNb-t7-Tno" id="iZS-1Y-Nul"/>
                         <outlet property="inputField" destination="v44-Wv-OOj" id="Z1d-ex-pN2"/>
+                        <outlet property="loginOtpView" destination="LH9-5t-jVY" id="6lN-JY-AdX"/>
                         <outlet property="searchButton" destination="oLL-ON-HWn" id="6CX-ou-IZN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5kC-76-mJy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="62" y="656"/>
+            <point key="canvasLocation" x="61.780575539568346" y="655.39568345323744"/>
         </scene>
         <!--Como Controller LoginOTP Controller-->
         <scene sceneID="CRR-0d-KaM">
@@ -1009,7 +1022,7 @@
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="olg-wX-hua"/>
-                        <color key="backgroundColor" red="0.96470588235294119" green="0.95686274509803915" blue="0.96078431372549022" alpha="0.0" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.96470588235294119" green="0.95686274509803915" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="uUH-1Z-ia0" firstAttribute="centerX" secondItem="CCf-SU-jZD" secondAttribute="centerX" id="4ep-1M-k3S"/>
                             <constraint firstItem="uUH-1Z-ia0" firstAttribute="top" secondItem="YiZ-0T-HpG" secondAttribute="bottom" constant="42" id="4gl-Vg-Ja8"/>
@@ -1081,7 +1094,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pAW-ER-X0o" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="74" y="955"/>
+            <point key="canvasLocation" x="254" y="1220"/>
         </scene>
         <!--Como Login By Qr Code Controller-->
         <scene sceneID="mPR-hJ-mHo">
@@ -1303,6 +1316,72 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fkc-FM-Qam" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="92" y="-1108"/>
+        </scene>
+        <!--Como Controller LoginOTP Controller-->
+        <scene sceneID="yiJ-Nr-gT5">
+            <objects>
+                <viewController id="ark-S1-Q1X" customClass="ComoControllerLoginOTPController" customModule="ComoSdk" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="oKV-mA-kiy">
+                        <rect key="frame" x="0.0" y="0.0" width="331" height="306"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lock.shield.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="aB6-Og-jlX">
+                                <rect key="frame" x="108.5" y="20.5" width="114" height="95"/>
+                                <color key="tintColor" red="0.87058823529999996" green="0.34509803919999998" blue="0.074509803920000006" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="114" id="0dF-9d-cOv"/>
+                                    <constraint firstAttribute="height" constant="96" id="gF7-ea-TrZ"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="eRZ-fz-0qh" customClass="OTPView" customModule="ComoSdk">
+                                <rect key="frame" x="5.5" y="158" width="320" height="80"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="teY-4H-rRO">
+                                        <rect key="frame" x="0.0" y="0.0" width="68" height="80"/>
+                                        <color key="textColor" name="text-primary"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" textContentType="one-time-code"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vf1-IW-Drx">
+                                        <rect key="frame" x="84" y="0.0" width="68" height="80"/>
+                                        <color key="textColor" name="text-primary"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" textContentType="one-time-code"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="z2O-Xx-lsN">
+                                        <rect key="frame" x="168" y="0.0" width="68" height="80"/>
+                                        <color key="textColor" name="text-primary"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" textContentType="one-time-code"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ky1-5P-mAn">
+                                        <rect key="frame" x="252" y="0.0" width="68" height="80"/>
+                                        <color key="textColor" name="text-primary"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" textContentType="one-time-code"/>
+                                    </textField>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="Ltf-dU-H7x"/>
+                                    <constraint firstAttribute="width" constant="320" id="Tds-ws-pLa"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.96470588235294119" green="0.95686274509803915" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="eRZ-fz-0qh" firstAttribute="centerX" secondItem="oKV-mA-kiy" secondAttribute="centerX" id="9CN-2C-uKv"/>
+                            <constraint firstItem="aB6-Og-jlX" firstAttribute="centerX" secondItem="oKV-mA-kiy" secondAttribute="centerX" id="JPN-jL-Xdv"/>
+                            <constraint firstItem="eRZ-fz-0qh" firstAttribute="top" secondItem="aB6-Og-jlX" secondAttribute="bottom" constant="42" id="Xqy-sv-JrE"/>
+                            <constraint firstItem="aB6-Og-jlX" firstAttribute="top" secondItem="oKV-mA-kiy" secondAttribute="top" constant="20" symbolic="YES" id="k1B-cD-1ka"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="pinCode" destination="eRZ-fz-0qh" id="ysp-Qz-pbg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Q8W-pA-79O" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="62" y="957"/>
         </scene>
     </scenes>
     <resources>
