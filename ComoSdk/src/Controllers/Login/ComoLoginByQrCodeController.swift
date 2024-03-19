@@ -14,6 +14,7 @@ class ComoLoginByQrCodeController : UIViewController, ScanQRCodeViewDelegate {
     override func viewDidLoad() {
         errorLabel.text = ""
         scanQrCodeView.round(8)
+        button.round(4)
     }
     
     override func viewDidAppear(_ animated: Bool) {

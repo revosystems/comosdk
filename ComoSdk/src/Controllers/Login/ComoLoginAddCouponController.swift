@@ -9,6 +9,7 @@ class ComoLoginAddCouponController : UIViewController {
     
     override func viewDidLoad() {
         errorLabel.text = ""
+        button.round(4)
     }
     
     @IBAction func onRedeemPressed(_ sender: Any) {
