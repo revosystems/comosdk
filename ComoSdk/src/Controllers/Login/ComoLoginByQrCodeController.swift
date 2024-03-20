@@ -19,7 +19,7 @@ class ComoLoginByQrCodeController : UIViewController, ScanQRCodeViewDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        //scanQrCodeView.setupCaptureSession(delegate:self)
+        scanQrCodeView.setupCaptureSession(delegate:self)
     }
     
     @IBAction func onSearchCustomerPressed(_ button:UIButton?){

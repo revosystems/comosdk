@@ -4,6 +4,10 @@ import RevoFoundation
 
 public class Como {
     
+    public enum Feature {
+        case coupons
+    }
+    
     public static var language:String = "es"
     
     public static var shared:Como = {

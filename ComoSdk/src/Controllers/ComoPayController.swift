@@ -105,7 +105,7 @@ class ComoPayController : UIViewController, OTPViewDelegate {
         statusIcon.image            = UIImage(systemName: "xmark.circle.fill")
         statusIcon.tintColor        = UIColor(hex: "#E44848")
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3.5) { [unowned self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) { [unowned self] in
             dismiss(animated: true) { [unowned self] in
                 self.delegate?.comoActionCanceled()
             }
