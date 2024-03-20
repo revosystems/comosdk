@@ -61,13 +61,14 @@ class ComoMemberDetailsController : UIViewController, UITableViewDelegate {
         phoneLabel.text    = details.membership.phoneNumber
         birthdayLabel.text = details.membership.birthday
         tagsLabel.text     = details.membership.tags?.implode(", ") ?? ""
-        image.circle().gravatar(email: details.membership.email, defaultImage:"https://thumbnailer.mixcloud.com/unsafe/600x600/defaults/users/2.png")
+        image.circle().gravatar(email: details.membership.email, defaultImage:"https://raw.githubusercontent.com/BadChoice/handesk/dev/public/images/default-avatar.png")
         
         creditLabel.text = str("%.2f €", (Double(details.membership.creditBalance.balance.monetary) / 100.0))
         pointsLabel.text = "\(details.membership.pointsBalance.balance.monetary / 100)"
         //TODO: gravatar
         
-        statusImageView.image =  UIImage(systemName: details.membership.status == .active ? "checkmark.circle.fill" : "xmark.circle.fill")
+        statusImageView.image =  UIImage(systemName: details.membership.status == .active ? "checkmark.seal.fill" : "xmark.circle.fill")
+        statusImageView.tintColor = details.membership.status == .active ? UIColor.systemGreen : UIColor.systemRed
                 
         tableView.dataSource = dataSource.reload(membershipDetails: details)
         tableView.reloadData()

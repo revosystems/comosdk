@@ -43,6 +43,14 @@ public class ComoController : UIViewController, ComoLoginDelegate {
         preferredContentSize = CGSize(width: 700, height: 670)
         
         onSegmentedChanged(segmented)
+        
+        if !Como.shared.hasFeature(.coupons){
+            segmented.removeSegment(at: 3, animated: false)
+        }
+
+        if let customer = Como.shared.currentSale?.customer {
+            autoLogin(customer)
+        }
     }
     
     @IBAction func onBackPressed(_ sender: Any) {
@@ -74,6 +82,22 @@ public class ComoController : UIViewController, ComoLoginDelegate {
         }
     }
     
+    private func autoLogin(_ customer:Como.Customer){
+        Task {
+            do {
+                let details = try await Como.shared.getMemberDetails(
+                    customer: customer,
+                    purchase: Como.shared.currentSale!.purchase
+                )
+                await MainActor.run {
+                    como(onLoggedIn: details)
+                }
+            } catch {
+                
+            }
+        }
+    }
+    
     func como(onLoggedIn details:Como.MemberDetailsResponse) {
         onMemberFetched(details: details)
     }
@@ -98,8 +122,6 @@ public class ComoController : UIViewController, ComoLoginDelegate {
         vc.delegate = delegate
         navigationController?.pushViewController(vc, animated: true)
     }
-    
-        
     
     //MARK: - Not used
     @IBAction func onVoidPurchasePressed(_ sender: Any) {

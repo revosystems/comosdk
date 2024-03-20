@@ -203,6 +203,10 @@ public class Como {
         api != nil
     }
     
+    public func hasFeature(_ feature:Como.Feature) -> Bool {
+        api?.url.contains("como") ?? false
+    }
+    
     static func trans(_ key:String) -> String{
         NSLocalizedString(key, tableName: Self.language, comment: "")
     }
