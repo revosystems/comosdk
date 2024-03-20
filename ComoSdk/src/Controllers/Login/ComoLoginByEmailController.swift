@@ -37,7 +37,7 @@ class ComoLoginByEmailController : UIViewController, OTPViewDelegate {
             do {
                 searchButton.animateProgress()
                 try await Como.shared.sendIdentificationCode(customer:
-                    Como.Customer(email: inputField.text!.lowercased())
+                    Como.Customer(email: inputField.text!.lowercased().trim())
                 )
                 await MainActor.run {
                     searchButton.animateSuccess()

@@ -13,6 +13,7 @@ class ComoMemberDetailsController : UIViewController, UITableViewDelegate {
     @IBOutlet weak var image:UIImageView!
     @IBOutlet weak var statusImageView:UIImageView!
     
+    @IBOutlet weak var registeredAtLabel:UILabel!
     @IBOutlet weak var creditLabel:UILabel!
     @IBOutlet weak var creditLabelTitle:UILabel!
     @IBOutlet weak var pointsLabel:UILabel!
@@ -58,13 +59,14 @@ class ComoMemberDetailsController : UIViewController, UITableViewDelegate {
     func showMemberDetails(){
         tableView.state    = .content
         nameLabel.text     = details.membership.fullName ?? "--"
-        phoneLabel.text    = details.membership.phoneNumber
+        phoneLabel.text    = details.membership.phoneNumber + " - " + (details.membership.email ?? "")
         birthdayLabel.text = details.membership.birthday
         tagsLabel.text     = details.membership.tags?.implode(", ") ?? ""
+        registeredAtLabel.text = "- " + Como.trans("como_from") + " " + (details.membership.createdOn?.toDeviceTimezone(.longDate) ?? "--")
         image.circle().gravatar(email: details.membership.email, defaultImage:"https://raw.githubusercontent.com/BadChoice/handesk/dev/public/images/default-avatar.png")
         
-        creditLabel.text = str("%.2f €", (Double(details.membership.creditBalance.balance.monetary) / 100.0))
-        pointsLabel.text = "\(details.membership.pointsBalance.balance.monetary / 100)"
+        creditLabel.text = str("%.2f €", (Double(details.membership.creditBalance?.balance.monetary ?? 0) / 100.0))
+        pointsLabel.text = "\((details.membership.pointsBalance?.balance.monetary ?? 0) / 100)"
         //TODO: gravatar
         
         statusImageView.image =  UIImage(systemName: details.membership.status == .active ? "checkmark.seal.fill" : "xmark.circle.fill")
@@ -97,7 +99,7 @@ class ComoMemberDetailsController : UIViewController, UITableViewDelegate {
     
     var selectedAssets:[Como.Asset]{
         tableView.indexPathsForSelectedRows?.map({ (indexPath:IndexPath) in
-            details.membership.assets[indexPath.row]
+            (details.membership.assets ?? [])[indexPath.row]
         }) ?? []
     }
     

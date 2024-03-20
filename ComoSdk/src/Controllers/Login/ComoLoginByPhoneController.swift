@@ -61,7 +61,7 @@ class ComoLoginByPhoneController : UIViewController, PhoneCountryControllerDeleg
     }
     
     var phone:String {
-        (phoneCountry.prefix + inputField.text!).replace("+", "")
+        (phoneCountry.prefix + inputField.text!).replace("+", "").trim()
     }
     
     func sendAuthCode(){
@@ -116,9 +116,27 @@ class ComoLoginByPhoneController : UIViewController, PhoneCountryControllerDeleg
     }
     
     private func onError(_ error:Error){
+        //if "\(error)".contains("4001012") { //Customer not found
+        //    return askToRegister()
+        //}
         errorLabel.text = Como.trans("como_\(error)")
-    }
+    }    
     
+    private func askToRegister(){
+        Task {
+            if case .ok = await Alert(Como.trans("como_wantToRegister"), message:Como.trans("como_wantToRegisterDesc"), cancelText: Como.trans("como_no")).show() {
+                do {
+                    searchButton.animateProgress()
+                    try await Como.shared.quickRegister(customer: Como.Customer(phoneNumber: phone))
+                    searchButton.animateSuccess()
+                    //TODO: Enter
+                } catch {
+                    searchButton.animateFailed()
+                    onError(error)
+                }
+            }
+        }
+    }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         (segue.destination as? ComoControllerLoginOTPController)?.delegate = self

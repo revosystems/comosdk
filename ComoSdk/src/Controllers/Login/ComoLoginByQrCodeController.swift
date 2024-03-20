@@ -45,7 +45,10 @@ class ComoLoginByQrCodeController : UIViewController, ScanQRCodeViewDelegate {
         button.animateProgress()
         Task {
             do {
-                let details = try await Como.shared.getMemberDetails(customer: customer, purchase: Como.shared.currentSale!.purchase)
+                let details = try await Como.shared.getMemberDetails(
+                    customer: customer,
+                    purchase: Como.shared.currentSale!.purchase
+                )
                 Como.shared.currentSale?.customer = details.membership.customer
                 await MainActor.run {
                     button.animateSuccess()
@@ -62,5 +65,6 @@ class ComoLoginByQrCodeController : UIViewController, ScanQRCodeViewDelegate {
     
     private func onError(_ error:Error){
         errorLabel.text = Como.trans("como_\(error)")
+        scanQrCodeView.start()
     }
 }

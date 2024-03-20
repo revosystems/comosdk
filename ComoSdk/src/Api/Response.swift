@@ -6,10 +6,15 @@ extension Como.Api {
         case ok, error
     }
 
+    public struct ResponseErrorCause:Codable{
+        public let code:String
+        public let message:String
+    }
+    
     public struct ResponseError:Codable {
         public let code:String
         public let message:String
-        public let cause:String?
+        public let cause:[ResponseErrorCause]?
     }
 
     public class Response:Codable, CustomStringConvertible {

@@ -44,7 +44,7 @@ class ComoRegisterByPhoneController : UIViewController, PhoneCountryControllerDe
     }
     
     var phone:String {
-        "\(phoneCountry.prefix)\(textField.text!)".replace("+", "")
+        "\(phoneCountry.prefix)\(textField.text!)".replace("+", "").trim()
     }
     
     

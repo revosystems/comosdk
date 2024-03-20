@@ -238,7 +238,7 @@
         <!--Como Member Details Controller-->
         <scene sceneID="DP3-v6-7Kg">
             <objects>
-                <viewController storyboardIdentifier="memberDetails" id="jFq-eJ-UDV" customClass="ComoMemberDetailsController" customModule="ComoSdk" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="memberDetails" id="jFq-eJ-UDV" customClass="ComoMemberDetailsController" customModule="ComoSdk" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="H5F-UK-gB6">
                         <rect key="frame" x="0.0" y="0.0" width="580" height="640"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -264,7 +264,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="123456" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FeQ-IN-IAi">
-                                        <rect key="frame" x="105" y="44" width="160" height="21"/>
+                                        <rect key="frame" x="105" y="44" width="284" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" red="0.96470588235294119" green="0.95686274509803915" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
@@ -428,7 +428,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="- desde 06 de Juny de 2023" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bga-ML-boM">
-                                        <rect key="frame" x="135" y="16" width="149" height="14"/>
+                                        <rect key="frame" x="135" y="16" width="206" height="14"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                         <color key="textColor" red="0.80000000000000004" green="0.77647058823529413" blue="0.76862745098039209" alpha="1" colorSpace="calibratedRGB"/>
@@ -538,6 +538,7 @@
                         <outlet property="pointsLabel" destination="NxB-pL-Uz7" id="Ka7-8S-ehx"/>
                         <outlet property="pointsLabelTitle" destination="xK5-oh-82L" id="aa7-cT-cEA"/>
                         <outlet property="redeemButton" destination="49z-Uf-2tE" id="Rln-ns-462"/>
+                        <outlet property="registeredAtLabel" destination="Bga-ML-boM" id="IGh-oB-cCJ"/>
                         <outlet property="statusImageView" destination="UTv-c4-pSW" id="4vz-vH-Jvk"/>
                         <outlet property="tableView" destination="s8y-QH-MU7" id="OCw-2K-jjc"/>
                         <outlet property="tagsLabel" destination="U5W-l5-CRQ" id="Lyy-Xo-GXo"/>
@@ -546,94 +547,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pst-P5-6UI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="943.70503597122308" y="98.561151079136692"/>
-        </scene>
-        <!--Como Coupons Controller-->
-        <scene sceneID="0hC-Nz-sFl">
-            <objects>
-                <viewController id="5Qo-sF-hG0" customClass="ComoCouponsController" customModule="ComoSdk" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="hDR-oM-HXW">
-                        <rect key="frame" x="0.0" y="0.0" width="1112" height="834"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coupon Codes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WVu-im-JIe">
-                                <rect key="frame" x="452.5" y="20" width="207.5" height="36"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m3c-fX-Vs1" customClass="AsyncButton" customModule="RevoUIComponents">
-                                <rect key="frame" x="456" y="228" width="200" height="31"/>
-                                <color key="backgroundColor" name="Brand"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="31" id="L4t-Ao-jEm"/>
-                                    <constraint firstAttribute="width" constant="200" id="eld-Ye-Zty"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="Redeem"/>
-                                <connections>
-                                    <action selector="onRedeemPressed:" destination="5Qo-sF-hG0" eventType="touchUpInside" id="0VT-vG-Ubz"/>
-                                    <action selector="onRedeemPressed:" destination="jFq-eJ-UDV" eventType="touchUpInside" id="jyT-UG-FMR"/>
-                                </connections>
-                            </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ww5-xE-ZcB">
-                                <rect key="frame" x="456" y="179" width="200" height="34"/>
-                                <color key="backgroundColor" red="0.2627450980392157" green="0.21568627450980393" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="VuO-Au-w91"/>
-                                </constraints>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Errors go here" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tp7-ea-dQf">
-                                <rect key="frame" x="456" y="277" width="200" height="14.5"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="WD4-gN-41D"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <color key="textColor" name="text-secondary"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Do you have any coupon code? You came to the right place!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oBS-f2-KWT">
-                                <rect key="frame" x="431" y="95" width="250" height="43"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="250" id="N54-A9-esQ"/>
-                                    <constraint firstAttribute="height" constant="43" id="x1e-40-Sjl"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="85s-LU-a9x"/>
-                        <color key="backgroundColor" red="0.12549019607843137" green="0.10980392156862745" blue="0.10588235294117647" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstItem="tp7-ea-dQf" firstAttribute="centerX" secondItem="85s-LU-a9x" secondAttribute="centerX" id="BEd-I1-31e"/>
-                            <constraint firstItem="oBS-f2-KWT" firstAttribute="centerX" secondItem="85s-LU-a9x" secondAttribute="centerX" id="Ccb-r5-9dJ"/>
-                            <constraint firstItem="WVu-im-JIe" firstAttribute="centerX" secondItem="85s-LU-a9x" secondAttribute="centerX" id="FtU-y0-3Nh"/>
-                            <constraint firstItem="ww5-xE-ZcB" firstAttribute="top" secondItem="oBS-f2-KWT" secondAttribute="bottom" constant="41" id="LBQ-MZ-yhm"/>
-                            <constraint firstItem="ww5-xE-ZcB" firstAttribute="centerX" secondItem="85s-LU-a9x" secondAttribute="centerX" id="Ljf-re-0SM"/>
-                            <constraint firstItem="m3c-fX-Vs1" firstAttribute="centerX" secondItem="85s-LU-a9x" secondAttribute="centerX" id="M8u-Dc-KAk"/>
-                            <constraint firstItem="m3c-fX-Vs1" firstAttribute="top" secondItem="ww5-xE-ZcB" secondAttribute="bottom" constant="15" id="Pw0-Ug-Hhl"/>
-                            <constraint firstItem="oBS-f2-KWT" firstAttribute="top" secondItem="WVu-im-JIe" secondAttribute="bottom" constant="39" id="Zth-qV-7kR"/>
-                            <constraint firstItem="WVu-im-JIe" firstAttribute="top" secondItem="85s-LU-a9x" secondAttribute="top" id="e7B-D6-xv3"/>
-                            <constraint firstItem="tp7-ea-dQf" firstAttribute="top" secondItem="m3c-fX-Vs1" secondAttribute="bottom" constant="18" id="wR1-UQ-dUl"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="6fL-cF-nsi"/>
-                    <connections>
-                        <outlet property="couponCodeDescLabel" destination="oBS-f2-KWT" id="do8-vC-mmu"/>
-                        <outlet property="couponCodeTitle" destination="WVu-im-JIe" id="PkC-Wm-0hw"/>
-                        <outlet property="errorsLabel" destination="tp7-ea-dQf" id="IkR-nc-7PW"/>
-                        <outlet property="redeemButton" destination="m3c-fX-Vs1" id="4bJ-rf-tuP"/>
-                        <outlet property="textField" destination="ww5-xE-ZcB" id="wmi-bu-fHc"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="i51-f4-vn4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="944" y="845"/>
         </scene>
         <!--Como Pay Controller-->
         <scene sceneID="aBV-C1-6mD">
@@ -807,7 +720,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="textColor" name="text-primary"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="phonePad" textContentType="tel"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hFf-sm-fFO" customClass="AsyncButton" customModule="RevoUIComponents">
                                 <rect key="frame" x="35" y="69" width="260" height="35"/>
@@ -872,7 +785,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vmd-r0-QqG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="464" y="655"/>
+            <point key="canvasLocation" x="463.75899280575538" y="654.67625899280586"/>
         </scene>
         <!--Como Login By Email Controller-->
         <scene sceneID="HeW-q5-r3R">
@@ -887,7 +800,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="textColor" name="text-primary"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oLL-ON-HWn" customClass="AsyncButton" customModule="RevoUIComponents">
                                 <rect key="frame" x="35" y="69" width="260" height="35"/>
@@ -933,7 +846,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5kC-76-mJy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="62" y="655"/>
+            <point key="canvasLocation" x="61.780575539568346" y="654.67625899280586"/>
         </scene>
         <!--Como Controller LoginOTP Controller-->
         <scene sceneID="CRR-0d-KaM">
@@ -944,15 +857,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lock.shield.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="YiZ-0T-HpG">
-                                <rect key="frame" x="108.5" y="20.5" width="114" height="95"/>
+                                <rect key="frame" x="108.5" y="10.5" width="114" height="79"/>
                                 <color key="tintColor" red="0.87058823529999996" green="0.34509803919999998" blue="0.074509803920000006" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="96" id="BmU-78-sk5"/>
+                                    <constraint firstAttribute="height" constant="80" id="BmU-78-sk5"/>
                                     <constraint firstAttribute="width" constant="114" id="ute-In-VbW"/>
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="uUH-1Z-ia0" customClass="OTPView" customModule="ComoSdk">
-                                <rect key="frame" x="5.5" y="158" width="320" height="80"/>
+                                <rect key="frame" x="5.5" y="100" width="320" height="80"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YVQ-jj-7Kq">
                                         <rect key="frame" x="0.0" y="0.0" width="68" height="80"/>
@@ -989,9 +902,9 @@
                         <color key="backgroundColor" red="0.96470588235294119" green="0.95686274509803915" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="uUH-1Z-ia0" firstAttribute="centerX" secondItem="CCf-SU-jZD" secondAttribute="centerX" id="4ep-1M-k3S"/>
-                            <constraint firstItem="uUH-1Z-ia0" firstAttribute="top" secondItem="YiZ-0T-HpG" secondAttribute="bottom" constant="42" id="4gl-Vg-Ja8"/>
+                            <constraint firstItem="uUH-1Z-ia0" firstAttribute="top" secondItem="YiZ-0T-HpG" secondAttribute="bottom" constant="10" id="4gl-Vg-Ja8"/>
                             <constraint firstItem="YiZ-0T-HpG" firstAttribute="centerX" secondItem="CCf-SU-jZD" secondAttribute="centerX" id="jkE-YC-dzM"/>
-                            <constraint firstItem="YiZ-0T-HpG" firstAttribute="top" secondItem="CCf-SU-jZD" secondAttribute="topMargin" id="kCS-Je-9SE"/>
+                            <constraint firstItem="YiZ-0T-HpG" firstAttribute="top" secondItem="CCf-SU-jZD" secondAttribute="topMargin" constant="-10" id="kCS-Je-9SE"/>
                         </constraints>
                     </view>
                     <connections>
@@ -1007,15 +920,15 @@
             <objects>
                 <tableViewController storyboardIdentifier="phoneCountry" id="Us7-L3-8WF" customClass="PhoneCountryController" customModule="ComoSdk" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="8EN-7K-Mhj">
-                        <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="324" height="300"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="IZe-7t-qgw">
-                                <rect key="frame" x="0.0" y="50" width="300" height="43.5"/>
+                                <rect key="frame" x="0.0" y="50" width="324" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="IZe-7t-qgw" id="C0Y-nL-MKv">
-                                    <rect key="frame" x="0.0" y="0.0" width="300" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="324" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="100" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🇯🇵 Country" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yYT-MN-iad">
@@ -1028,7 +941,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+34" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="01b-op-weM">
-                                            <rect key="frame" x="222.5" y="13.5" width="29.5" height="17"/>
+                                            <rect key="frame" x="246.5" y="13.5" width="29.5" height="17"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="17" id="WGH-CP-Dpl"/>
                                             </constraints>
@@ -1054,11 +967,11 @@
                         </connections>
                     </tableView>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="300" height="300"/>
+                    <size key="freeformSize" width="324" height="300"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pAW-ER-X0o" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="267" y="978"/>
+            <point key="canvasLocation" x="264" y="973"/>
         </scene>
         <!--Como Login By Qr Code Controller-->
         <scene sceneID="mPR-hJ-mHo">
@@ -1177,7 +1090,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="textColor" name="text-primary"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zdd-dC-NIc" customClass="AsyncButton" customModule="RevoUIComponents">
                                 <rect key="frame" x="12" y="69" width="260" height="35"/>
@@ -1226,7 +1139,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="textColor" name="text-primary"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="phonePad" textContentType="tel"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jef-gf-004" customClass="AsyncButton" customModule="RevoUIComponents">
                                 <rect key="frame" x="12" y="69" width="260" height="35"/>
@@ -1290,15 +1203,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lock.shield.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="aB6-Og-jlX">
-                                <rect key="frame" x="108.5" y="20.5" width="114" height="95"/>
+                                <rect key="frame" x="108.5" y="15.5" width="114" height="79"/>
                                 <color key="tintColor" red="0.87058823529999996" green="0.34509803919999998" blue="0.074509803920000006" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="114" id="0dF-9d-cOv"/>
-                                    <constraint firstAttribute="height" constant="96" id="gF7-ea-TrZ"/>
+                                    <constraint firstAttribute="height" constant="80" id="gF7-ea-TrZ"/>
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="eRZ-fz-0qh" customClass="OTPView" customModule="ComoSdk">
-                                <rect key="frame" x="5.5" y="158" width="320" height="80"/>
+                                <rect key="frame" x="5.5" y="107" width="320" height="80"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="teY-4H-rRO">
                                         <rect key="frame" x="0.0" y="0.0" width="68" height="80"/>
@@ -1336,8 +1249,8 @@
                         <constraints>
                             <constraint firstItem="eRZ-fz-0qh" firstAttribute="centerX" secondItem="oKV-mA-kiy" secondAttribute="centerX" id="9CN-2C-uKv"/>
                             <constraint firstItem="aB6-Og-jlX" firstAttribute="centerX" secondItem="oKV-mA-kiy" secondAttribute="centerX" id="JPN-jL-Xdv"/>
-                            <constraint firstItem="eRZ-fz-0qh" firstAttribute="top" secondItem="aB6-Og-jlX" secondAttribute="bottom" constant="42" id="Xqy-sv-JrE"/>
-                            <constraint firstItem="aB6-Og-jlX" firstAttribute="top" secondItem="oKV-mA-kiy" secondAttribute="top" constant="20" symbolic="YES" id="k1B-cD-1ka"/>
+                            <constraint firstItem="eRZ-fz-0qh" firstAttribute="top" secondItem="aB6-Og-jlX" secondAttribute="bottom" constant="12" id="Xqy-sv-JrE"/>
+                            <constraint firstItem="aB6-Og-jlX" firstAttribute="top" secondItem="oKV-mA-kiy" secondAttribute="top" constant="15" id="k1B-cD-1ka"/>
                         </constraints>
                     </view>
                     <connections>

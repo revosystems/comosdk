@@ -35,14 +35,14 @@ extension Como {
         let gender:String?
         let phoneNumber:String
         let status:MemberShipStatus
-        let createdOn:Date
+        let createdOn:Date?
         let allowSMS:Bool?
         let allowEmail:Bool?
         let commonExtId:String
-        let pointsBalance:Balance
-        let creditBalance:Balance
+        let pointsBalance:Balance?
+        let creditBalance:Balance?
         let tags:[String]?
-        let assets:[Asset]
+        let assets:[Asset]?
         
         public var fullName : String? {
             guard let firstName = firstName else {
