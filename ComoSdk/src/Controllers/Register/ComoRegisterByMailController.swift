@@ -14,7 +14,7 @@ class ComoRegisterByMailController : UIViewController {
         button.round(4)
     }
     
-    @IBAction func onButtonPressed(_ button:UIButton){
+    @IBAction func onButtonPressed(_ button:AsyncButton){
         errorLabel.text = ""
         
         guard (textField.text?.count ?? 0) > 0 else {
@@ -27,15 +27,15 @@ class ComoRegisterByMailController : UIViewController {
         
         Task {
             do {
-                //button.animateProgress()
+                button.animateProgress()
                 let details = try await Como.shared.quickRegister(customer: Como.Customer(email: textField.text!))
                 await MainActor.run {
-                    //button.animateSuccess()
+                    button.animateSuccess()
                     delegate?.como(registered: details)
                 }
             } catch {
                 await MainActor.run {
-                    //button.animateFailed()
+                    button.animateFailed()
                     errorLabel.text = Como.trans("como_\(error)")
                 }
             }
