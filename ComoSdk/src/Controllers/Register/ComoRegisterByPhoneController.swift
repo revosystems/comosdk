@@ -43,6 +43,10 @@ class ComoRegisterByPhoneController : UIViewController, PhoneCountryControllerDe
         phoneCountryInput.text = "\(phoneCountry.flag) \(phoneCountry.prefix)"
     }
     
+    var phone:String {
+        "\(phoneCountry.prefix)\(textField.text!)".replace("+", "")
+    }
+    
     
     @IBAction func onButtonPressed(_ sender: Any) {
         errorLabel.text = ""
@@ -55,8 +59,7 @@ class ComoRegisterByPhoneController : UIViewController, PhoneCountryControllerDe
             do {
                 button.animateProgress()
                 let details = try await Como.shared.quickRegister(customer:
-                    Como.Customer(phoneNumber:
-                    "\(phoneCountry.prefix)\(textField.text!)".replace("+", ""))
+                    Como.Customer(phoneNumber: phone)
                 )
                 await MainActor.run {
                     button.animateSuccess()

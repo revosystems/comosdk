@@ -17,6 +17,26 @@ struct PhoneCountry {
     static var france:PhoneCountry {
         PhoneCountry(flag: "🇫🇷", name: "France", prefix: "+33")
     }
+    
+    static var italy:PhoneCountry{
+        PhoneCountry(flag: "🇮🇹", name: "Italy", prefix: "+39")
+    }
+    
+    static var portugal:PhoneCountry {
+        PhoneCountry(flag: "🇵🇹", name: "Portugal", prefix: "+351")
+    }
+    
+    static var germany:PhoneCountry {
+        PhoneCountry(flag: "🇩🇪", name: "Germany", prefix: "+40")
+    }
+    
+    static var uk:PhoneCountry {
+        PhoneCountry(flag: "🇬🇧", name: "United Kingdom", prefix: "+44")
+    }
+    
+    static var belgium:PhoneCountry {
+        PhoneCountry(flag: "🇧🇪", name: "Belgium", prefix: "+32")
+    }
 }
 
 class PhoneCountryController : UITableViewController {
@@ -25,7 +45,13 @@ class PhoneCountryController : UITableViewController {
     var selectedCountry:PhoneCountry?
     
     let countries:[PhoneCountry] = [
-        PhoneCountry.spain, PhoneCountry.france        
+        PhoneCountry.belgium,
+        PhoneCountry.france,
+        PhoneCountry.portugal,
+        PhoneCountry.spain,
+        PhoneCountry.italy,
+        PhoneCountry.germany,
+        PhoneCountry.uk,
     ]
     
     override func viewDidLoad() {
