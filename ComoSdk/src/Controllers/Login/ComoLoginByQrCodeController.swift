@@ -23,16 +23,22 @@ class ComoLoginByQrCodeController : UIViewController, ScanQRCodeViewDelegate {
     }
     
     @IBAction func onSearchCustomerPressed(_ button:UIButton?){
-        
         guard (inputField.text?.count ?? 0) > 1 else {
             return inputField.shake()
         }
-                  
-        let customer = inputField.text?.count == 4 ?
-            Como.Customer(appClientId: inputField.text!) : 
-            Como.Customer(customIdentifier: inputField.text!)
+        searchCustomer(getCustomer(inputField.text ?? ""))
+    }
+    
+    func getCustomer(_ text:String) -> Como.Customer {
+        if text.count == 4 {
+            return Como.Customer(appClientId: text)
+        }
         
-        searchCustomer(customer)
+        if text.contains("@") {
+            return Como.Customer(email: text)
+        }
+        
+        return Como.Customer(customIdentifier: text)
     }
     
     func scanQrCode(found code:String){
