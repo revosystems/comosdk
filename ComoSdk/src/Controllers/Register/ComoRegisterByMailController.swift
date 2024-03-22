@@ -28,7 +28,12 @@ class ComoRegisterByMailController : UIViewController {
         Task {
             do {
                 button.animateProgress()
-                let details = try await Como.shared.quickRegister(customer: Como.Customer(email: textField.text!.trim()))
+                let customer = Como.Customer(email: textField.text!.trim())
+                let _        = try await Como.shared.quickRegister(customer: customer)
+                let details  = try await Como.shared.getMemberDetails(
+                    customer: customer,
+                    purchase: Como.shared.currentSale!.purchase
+                )
                 await MainActor.run {
                     button.animateSuccess()
                     delegate?.como(registered: details)

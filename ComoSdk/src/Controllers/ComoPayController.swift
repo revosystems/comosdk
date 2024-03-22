@@ -69,6 +69,7 @@ class ComoPayController : UIViewController, OTPViewDelegate {
         statusIcon.isHidden       = false
         pinCode.isHidden          = false
         resendCodeButton.isHidden = false
+        pinCode.becomeFirstResponder()
     }
     
     

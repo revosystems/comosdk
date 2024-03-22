@@ -56,6 +56,7 @@ class ComoLoginByEmailController : UIViewController, OTPViewDelegate {
         loginOtpView.isHidden = false
         searchButton.isHidden = true
         inputField.isHidden = true
+        loginOtpView.becomeFirstResponder()
     }
     
     func otp(codeEntered code: String) {

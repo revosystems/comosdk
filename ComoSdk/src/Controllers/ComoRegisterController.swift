@@ -35,7 +35,7 @@ class ComoRegisterController : UIViewController, ComoRegisterDelegate {
         (segue.destination as? ComoRegisterByPhoneController)?.delegate = self
     }
     
-    func como(registered: Como.MemberDetailsResponse) {        
+    func como(registered: Como.MemberDetailsResponse) {
         let vc:ComoMemberDetailsController = SBController("Como", "memberDetails")
         vc.details = registered
         navigationController?.pushViewController(vc, animated: true)

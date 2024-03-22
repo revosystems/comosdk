@@ -58,8 +58,11 @@ class ComoRegisterByPhoneController : UIViewController, PhoneCountryControllerDe
         Task {
             do {
                 button.animateProgress()
-                let details = try await Como.shared.quickRegister(customer:
-                    Como.Customer(phoneNumber: phone)
+                let customer = Como.Customer(phoneNumber: phone)
+                let _        = try await Como.shared.quickRegister(customer: customer)
+                let details  = try await Como.shared.getMemberDetails(
+                    customer: customer,
+                    purchase: Como.shared.currentSale!.purchase
                 )
                 await MainActor.run {
                     button.animateSuccess()
