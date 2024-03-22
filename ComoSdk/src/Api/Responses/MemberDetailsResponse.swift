@@ -33,11 +33,13 @@ extension Como {
         let birthday:String?
         let email:String?
         let gender:String?
-        let phoneNumber:String
+        let phoneNumber:String?
         let status:MemberShipStatus
         let createdOn:Date?
         let allowSMS:Bool?
         let allowEmail:Bool?
+        let termsOfUse:Bool?
+        let gdpr:Bool?
         let commonExtId:String
         let pointsBalance:Balance?
         let creditBalance:Balance?
@@ -52,7 +54,13 @@ extension Como {
         }
         
         public var customer:Como.Customer {
-            Como.Customer(phoneNumber: phoneNumber)
+            if let phoneNumber {
+                return Como.Customer(phoneNumber: phoneNumber)
+            }
+            if let email {
+                return Como.Customer(email: email)
+            }
+            return Como.Customer(phoneNumber: "")
         }
     }
 

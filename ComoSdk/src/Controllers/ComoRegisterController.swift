@@ -36,6 +36,7 @@ class ComoRegisterController : UIViewController, ComoRegisterDelegate {
     }
     
     func como(registered: Como.MemberDetailsResponse) {
+        Como.shared.currentSale?.customer  = registered.membership.customer
         let vc:ComoMemberDetailsController = SBController("Como", "memberDetails")
         vc.details = registered
         navigationController?.pushViewController(vc, animated: true)

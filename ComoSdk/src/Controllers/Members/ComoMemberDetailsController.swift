@@ -59,7 +59,7 @@ class ComoMemberDetailsController : UIViewController, UITableViewDelegate {
     func showMemberDetails(){
         tableView.state    = .content
         nameLabel.text     = details.membership.fullName ?? "--"
-        phoneLabel.text    = details.membership.phoneNumber + " - " + (details.membership.email ?? "")
+        phoneLabel.text    = (details.membership.phoneNumber ?? "--") + " - " + (details.membership.email ?? "")
         birthdayLabel.text = details.membership.birthday
         tagsLabel.text     = details.membership.tags?.implode(", ") ?? ""
         registeredAtLabel.text = "- " + Como.trans("como_from") + " " + (details.membership.createdOn?.toDeviceTimezone(.longDate) ?? "--")
