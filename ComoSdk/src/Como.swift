@@ -29,7 +29,12 @@ public class Como {
     //MARK:Controllers
     public static func controller(purchase:Como.Purchase, delegate:ComoDelegate) -> UINavigationController {
         let nav = ComoController.make(delegate:delegate)
-        Como.shared.currentSale = CurrentSale(purchase: purchase, customer:Como.shared.currentSale?.customer)
+        
+        Como.shared.currentSale = CurrentSale(
+            purchase: purchase,
+            customer: Como.shared.currentSale?.customer
+        )
+        
         nav.modalPresentationStyle = .formSheet
         return nav
     }

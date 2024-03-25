@@ -56,7 +56,9 @@ class ComoLoginByEmailController : UIViewController, OTPViewDelegate {
         loginOtpView.isHidden = false
         searchButton.isHidden = true
         inputField.isHidden = true
-        loginOtpView.becomeFirstResponder()
+        loginOtpView.subviews.first {
+            $0 is OTPView
+        }?.becomeFirstResponder()
     }
     
     func otp(codeEntered code: String) {
@@ -100,9 +102,12 @@ class ComoLoginByEmailController : UIViewController, OTPViewDelegate {
             if case .ok = await Alert(Como.trans("como_wantToRegister"), message:Como.trans("como_wantToRegisterDesc"), cancelText: Como.trans("como_no")).show() {
                 do {
                     searchButton.animateProgress()
-                    let customer = Como.Customer(inputField.text!.lowercased().trim())
+                    let customer = Como.Customer(email: inputField.text!.lowercased().trim())
                                   try await Como.shared.quickRegister(customer: customer)
-                    let details = try await Como.shared.getMemberDetails(customer: customer, purchase: Como.shared.currentSale!.purchase)
+                    let details = try await Como.shared.getMemberDetails(
+                        customer: customer,
+                        purchase: Como.shared.currentSale!.purchase
+                    )
                     searchButton.animateSuccess()
                     delegate?.como(onLoggedIn: details)
                 } catch {

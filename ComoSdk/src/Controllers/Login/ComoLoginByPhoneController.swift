@@ -90,7 +90,9 @@ class ComoLoginByPhoneController : UIViewController, PhoneCountryControllerDeleg
         phoneCountryTextInput.isHidden = true
         inputField.isHidden = true
         phoneCountryIcon.isHidden = true
-        loginOtpView.becomeFirstResponder()
+        loginOtpView.subviews.first?.subviews.first {
+            $0 is OTPView
+        }?.becomeFirstResponder()
     }
     
     func otp(codeEntered code: String) {

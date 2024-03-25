@@ -24,7 +24,9 @@ class OTPView : UIStackView, OTPTextFieldDelegate {
     
     @discardableResult
     override func becomeFirstResponder() -> Bool {
-        arrangedSubviews.first?.becomeFirstResponder() ?? false
+        arrangedSubviews.first {
+            $0 is UITextField
+        }?.becomeFirstResponder() ?? false
     }
     
     @objc func onPinTextFieldChanged(_ textField:UITextField){
