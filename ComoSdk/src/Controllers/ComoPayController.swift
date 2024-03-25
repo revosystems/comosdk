@@ -40,11 +40,11 @@ class ComoPayController : UIViewController, OTPViewDelegate {
         dismiss(animated: true)
     }
     
-    
     private func startPaymentProcess(code:String? = nil){
         hideAskCodeDetails()
         Task {
             do {
+                navigationItem.leftBarButtonItems?.first?.isEnabled = false
                 loading.startAnimating()
                 errorLabel.text = ""
                 let response = try await Como.shared.currentSale!.pay(amount: amount, code: code)
@@ -52,6 +52,7 @@ class ComoPayController : UIViewController, OTPViewDelegate {
                 showPaymentOk(response: response)
             }
             catch {
+                navigationItem.leftBarButtonItems?.first?.isEnabled = true
                 loading.stopAnimating()
                 if("\(error)".contains(ERROR_CODE_NEEDS_VERIFICATION)) {
                     return askVerificationCode()
@@ -87,7 +88,7 @@ class ComoPayController : UIViewController, OTPViewDelegate {
         statusIcon.isHidden         = false
         statusIcon.image            = UIImage(systemName: "checkmark.circle.fill")
         statusIcon.tintColor        = UIColor(hex: "#6BB637")
-                
+                        
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { [unowned self] in
             dismiss(animated: true) { [unowned self] in
                 self.delegate?.como(onPaid: response)
