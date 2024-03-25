@@ -89,7 +89,28 @@ class ComoLoginByEmailController : UIViewController, OTPViewDelegate {
     }
     
     private func onError(_ error:Error){
+        if "\(error)".contains("4001012") { //Customer not found
+            return askToRegister()
+        }
         errorLabel.text = Como.trans("como_\(error)")
+    }
+    
+    private func askToRegister(){
+        Task {
+            if case .ok = await Alert(Como.trans("como_wantToRegister"), message:Como.trans("como_wantToRegisterDesc"), cancelText: Como.trans("como_no")).show() {
+                do {
+                    searchButton.animateProgress()
+                    let customer = Como.Customer(inputField.text!.lowercased().trim())
+                                  try await Como.shared.quickRegister(customer: customer)
+                    let details = try await Como.shared.getMemberDetails(customer: customer, purchase: Como.shared.currentSale!.purchase)
+                    searchButton.animateSuccess()
+                    delegate?.como(onLoggedIn: details)
+                } catch {
+                    searchButton.animateFailed()
+                    onError(error)
+                }
+            }
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

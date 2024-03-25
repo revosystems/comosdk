@@ -3,7 +3,7 @@ import Foundation
 extension Como {
     
     public class CurrentSale {
-        var customer:Como.Customer?
+        public var customer:Como.Customer?
         var purchase:Como.Purchase
         var redeemAssets:[Como.RedeemAsset]?
         

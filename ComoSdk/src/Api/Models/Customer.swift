@@ -26,6 +26,10 @@ extension Como {
             email = nil; phoneNumber = nil;  appClientId = nil;
             self.customIdentifier = customIdentifier
         }
+        
+        public var display: String {
+            phoneNumber ?? email ?? appClientId ?? customIdentifier ?? "--"
+        }
     }
     
 }
