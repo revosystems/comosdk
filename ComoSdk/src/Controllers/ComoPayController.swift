@@ -37,7 +37,9 @@ class ComoPayController : UIViewController, OTPViewDelegate {
     }
     
     @IBAction func onCancelPressed(_ sender:Any){
-        dismiss(animated: true)
+        dismiss(animated: true) { [weak self] in
+            self?.delegate?.comoActionCanceled()
+        }
     }
     
     private func startPaymentProcess(code:String? = nil){
@@ -52,9 +54,9 @@ class ComoPayController : UIViewController, OTPViewDelegate {
                 showPaymentOk(response: response)
             }
             catch {
-                navigationItem.leftBarButtonItems?.first?.isEnabled = true
                 loading.stopAnimating()
                 if("\(error)".contains(ERROR_CODE_NEEDS_VERIFICATION)) {
+                    navigationItem.leftBarButtonItems?.first?.isEnabled = true
                     return askVerificationCode()
                 }
                 errorLabel.text = Como.trans("como_\(error)")
