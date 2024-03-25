@@ -94,7 +94,7 @@ class ComoMemberDetailsController : UIViewController, UITableViewDelegate {
     func updateRedeemButton(){
         let benefitsCount = tableView.indexPathsForSelectedRows?.count ?? 0
         redeemButton.isEnabled = benefitsCount > 0
-        redeemButton.setTitle(Como.trans("como_reedem") + " (\(benefitsCount))", for: .normal)
+        redeemButton.setTitle(Como.trans("como_redeem") + " (\(benefitsCount))", for: .normal)
     }
     
     var selectedAssets:[Como.Asset]{
