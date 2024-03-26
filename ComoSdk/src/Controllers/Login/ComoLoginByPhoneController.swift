@@ -95,6 +95,14 @@ class ComoLoginByPhoneController : UIViewController, PhoneCountryControllerDeleg
         }?.becomeFirstResponder()
     }
     
+    private func resetView(){
+        loginOtpView.isHidden = true
+        searchButton.isHidden = false
+        phoneCountryTextInput.isHidden = false
+        inputField.isHidden = false
+        phoneCountryIcon.isHidden = false
+    }
+    
     func otp(codeEntered code: String) {
         Task {
             do {
@@ -106,20 +114,21 @@ class ComoLoginByPhoneController : UIViewController, PhoneCountryControllerDeleg
                 Como.shared.currentSale?.customer = details.membership.customer
                 await MainActor.run {
                     searchButton.animateSuccess()
+                    resetView()
                     delegate?.como(onLoggedIn: details)
                 }
             } catch {
                 await MainActor.run {
                     loginOtpView.shake()
                     searchButton.animateFailed()
-                    onError(error)
+                    onError(error, asOtp: true)
                 }
             }
         }
     }
     
-    private func onError(_ error:Error){
-        if "\(error)".contains("4001012") { //Customer not found
+    private func onError(_ error:Error, asOtp:Bool = false){
+        if "\(error)".contains("4001012") && asOtp { //Customer not found
             return askToRegister()
         }
         errorLabel.text = Como.trans("como_\(error)")

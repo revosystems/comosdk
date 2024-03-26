@@ -61,6 +61,12 @@ class ComoLoginByEmailController : UIViewController, OTPViewDelegate {
         }?.becomeFirstResponder()
     }
     
+    private func resetView(){
+        loginOtpView.isHidden = true
+        searchButton.isHidden = false
+        inputField.isHidden = false
+    }
+    
     func otp(codeEntered code: String) {
         getMemberDetails(code)
     }
@@ -78,20 +84,21 @@ class ComoLoginByEmailController : UIViewController, OTPViewDelegate {
                 Como.shared.currentSale?.customer = details.membership.customer
                 await MainActor.run {
                     searchButton.animateSuccess()
+                    resetView()
                     delegate?.como(onLoggedIn: details)
                 }
             } catch {
                 await MainActor.run {
                     loginOtpView.shake()
                     searchButton.animateFailed()
-                    onError(error)
+                    onError(error, asOtp:true)
                 }
             }
         }
     }
     
-    private func onError(_ error:Error){
-        if "\(error)".contains("4001012") { //Customer not found
+    private func onError(_ error:Error, asOtp:Bool = false){
+        if "\(error)".contains("4001012") && asOtp { //Customer not found
             return askToRegister()
         }
         errorLabel.text = Como.trans("como_\(error)")

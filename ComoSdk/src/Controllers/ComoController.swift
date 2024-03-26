@@ -44,6 +44,8 @@ public class ComoController : UIViewController, ComoLoginDelegate {
         
         onSegmentedChanged(segmented)
         
+        navigationItem.backButtonTitle = Como.trans("como_logout")
+        
         if !Como.shared.hasFeature(.coupons){
             segmented.removeSegment(at: 3, animated: false)
         }
