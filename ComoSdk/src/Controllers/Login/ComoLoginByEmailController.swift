@@ -98,7 +98,7 @@ class ComoLoginByEmailController : UIViewController, OTPViewDelegate {
     }
     
     private func onError(_ error:Error, asOtp:Bool = false){
-        if "\(error)".contains("4001012") && asOtp { //Customer not found
+        if "\(error)".contains("4001012") && !asOtp { //Customer not found
             return askToRegister()
         }
         errorLabel.text = Como.trans("como_\(error)")
