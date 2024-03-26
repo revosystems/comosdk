@@ -101,6 +101,7 @@ class ComoLoginByPhoneController : UIViewController, PhoneCountryControllerDeleg
         phoneCountryTextInput.isHidden = false
         inputField.isHidden = false
         phoneCountryIcon.isHidden = false
+        searchButton.reset()
     }
     
     func otp(codeEntered code: String) {
@@ -113,7 +114,6 @@ class ComoLoginByPhoneController : UIViewController, PhoneCountryControllerDeleg
                 )
                 Como.shared.currentSale?.customer = details.membership.customer
                 await MainActor.run {
-                    searchButton.animateSuccess()
                     resetView()
                     delegate?.como(onLoggedIn: details)
                 }

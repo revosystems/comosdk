@@ -65,6 +65,7 @@ class ComoLoginByEmailController : UIViewController, OTPViewDelegate {
         loginOtpView.isHidden = true
         searchButton.isHidden = false
         inputField.isHidden = false
+        searchButton.reset()
     }
     
     func otp(codeEntered code: String) {
@@ -83,7 +84,6 @@ class ComoLoginByEmailController : UIViewController, OTPViewDelegate {
                 )
                 Como.shared.currentSale?.customer = details.membership.customer
                 await MainActor.run {
-                    searchButton.animateSuccess()
                     resetView()
                     delegate?.como(onLoggedIn: details)
                 }
