@@ -6,6 +6,7 @@ public class Como {
     
     public enum Feature {
         case coupons
+        case customIdentifier
     }
     
     public static var language:String = "es"

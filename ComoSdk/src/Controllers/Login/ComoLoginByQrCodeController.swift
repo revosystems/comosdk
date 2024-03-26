@@ -38,7 +38,10 @@ class ComoLoginByQrCodeController : UIViewController, ScanQRCodeViewDelegate {
             return Como.Customer(email: text)
         }
         
-        return Como.Customer(customIdentifier: text)
+        if (Como.shared.hasFeature(.customIdentifier)){
+            return Como.Customer(customIdentifier: text)
+        }
+        return Como.Customer(phoneNumber: text)
     }
     
     func scanQrCode(found code:String){
