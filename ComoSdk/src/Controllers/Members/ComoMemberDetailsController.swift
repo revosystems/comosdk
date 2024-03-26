@@ -62,7 +62,7 @@ class ComoMemberDetailsController : UIViewController, UITableViewDelegate {
         phoneLabel.text    = (details.membership.phoneNumber ?? "--") + " - " + (details.membership.email ?? "")
         birthdayLabel.text = details.membership.birthday
         tagsLabel.text     = details.membership.tags?.implode(", ") ?? ""
-        registeredAtLabel.text = "- " + Como.trans("como_from") + " " + (details.membership.createdOn?.toDeviceTimezone(.longDate) ?? "--")
+        registeredAtLabel.text = "- " + Como.trans("como_from") + " " + (details.membership.createdOn?.toDeviceTimezone(.niceDate) ?? "--")
         image.circle().gravatar(email: details.membership.email, defaultImage:"https://raw.githubusercontent.com/BadChoice/handesk/dev/public/images/default-avatar.png")
         
         creditLabel.text = str("%.2f €", (Double(details.membership.creditBalance?.balance.monetary ?? 0) / 100.0))
