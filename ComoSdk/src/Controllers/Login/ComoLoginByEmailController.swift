@@ -56,7 +56,7 @@ class ComoLoginByEmailController : UIViewController, OTPViewDelegate {
         loginOtpView.isHidden = false
         searchButton.isHidden = true
         inputField.isHidden = true
-        loginOtpView.subviews.first {
+        loginOtpView.subviews.first?.subviews.first {
             $0 is OTPView
         }?.becomeFirstResponder()
     }

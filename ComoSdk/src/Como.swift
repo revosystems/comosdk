@@ -19,6 +19,7 @@ public class Como {
     var transactionUuid:String = UUID().uuidString
     
     public var currentSale:CurrentSale?
+    public var memberDetails:MemberDetailsResponse?
     
     @discardableResult
     public func setup(key:String, branchId:String, posId:String, source:String, sourceVersion:String, language:String = "es", debug:Bool = false, url:String = "https://api.prod.bcomo.com/api/v4/") -> Self {

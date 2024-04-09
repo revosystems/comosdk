@@ -106,6 +106,9 @@ public class ComoController : UIViewController, ComoLoginDelegate {
 
     
     func onMemberFetched(details:Como.MemberDetailsResponse){
+        
+        Como.shared.memberDetails = details
+        
         switch nextAction {
         case .showDetails: showAssets(details: details)
         case .pay(let amount): showPay(amount: amount)
