@@ -18,6 +18,7 @@ class ComoMemberDetailsController : UIViewController, UITableViewDelegate {
     @IBOutlet weak var creditLabelTitle:UILabel!
     @IBOutlet weak var pointsLabel:UILabel!
     @IBOutlet weak var pointsLabelTitle:UILabel!
+    @IBOutlet weak var discountsWarningLabel:UILabel!
     
     @IBOutlet weak var tableView:ContentStatusTableView!
     
@@ -124,6 +125,7 @@ class ComoMemberDetailsController : UIViewController, UITableViewDelegate {
         redeemButton.setTitle(Como.trans("como_redeem"),        for: .normal)
         creditLabelTitle.text = Como.trans("como_credits")
         pointsLabelTitle.text = Como.trans("como_points")
+        discountsWarningLabel.text = Como.trans("como_discountsWarning")
     }
     
 }
