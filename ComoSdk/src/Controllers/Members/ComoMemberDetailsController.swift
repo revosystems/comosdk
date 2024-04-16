@@ -51,6 +51,16 @@ class ComoMemberDetailsController : UIViewController, UITableViewDelegate {
         dismiss(animated: true)
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        if isMovingFromParent, transitionCoordinator?.isInteractive == false {
+            // Back pressed
+            Como.shared.memberDetails = nil
+            Como.shared.currentSale = nil
+        }
+    }
+    
     @IBAction func onDonePressed(_ sender: Any) {
         Como.shared.currentSale?.redeemAssets = []
         dismiss(animated: true)
