@@ -498,7 +498,7 @@
                                     <action selector="onRedeemPressed:" destination="jFq-eJ-UDV" eventType="touchUpInside" id="EHb-xk-r2M"/>
                                 </connections>
                             </button>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="como_discountsWarning" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2jD-b2-XX3">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="como_discountsWarning" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2jD-b2-XX3">
                                 <rect key="frame" x="12" y="602" width="390" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="EzI-EY-QDm"/>
@@ -542,6 +542,7 @@
                         <outlet property="birthdayLabel" destination="uBe-oT-2Yu" id="B1m-r4-M0B"/>
                         <outlet property="creditLabel" destination="inO-bf-pGv" id="wzp-2Q-JAE"/>
                         <outlet property="creditLabelTitle" destination="ChT-Dk-17s" id="Acg-Rc-DhR"/>
+                        <outlet property="discountsWarningLabel" destination="2jD-b2-XX3" id="Dlj-XU-YBR"/>
                         <outlet property="doneButton" destination="sBP-n4-VOW" id="DRD-bN-V5g"/>
                         <outlet property="headerView" destination="tpT-mC-9J5" id="78b-Gv-8IS"/>
                         <outlet property="image" destination="XkI-6k-oc9" id="oYa-lM-rq5"/>
@@ -1152,6 +1153,9 @@
                                 <color key="textColor" name="text-primary"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits" keyboardType="phonePad" textContentType="tel"/>
+                                <connections>
+                                    <outlet property="delegate" destination="tam-Oo-Vf1" id="DkS-nH-wLr"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jef-gf-004" customClass="AsyncButton" customModule="RevoUIComponents">
                                 <rect key="frame" x="12" y="69" width="260" height="35"/>

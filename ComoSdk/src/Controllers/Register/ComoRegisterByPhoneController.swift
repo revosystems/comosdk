@@ -21,8 +21,16 @@ class ComoRegisterByPhoneController : UIViewController, PhoneCountryControllerDe
     }
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool{
-        onSelectCountryPressed()
-        return false
+        if textField === phoneCountryInput {
+            onSelectCountryPressed()
+            return false
+        }
+        return true
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if string.isEmpty { return true }
+        return string.rangeOfCharacter(from: NSCharacterSet.decimalDigits) != nil
     }
     
     @objc func onSelectCountryPressed(){
@@ -80,6 +88,8 @@ class ComoRegisterByPhoneController : UIViewController, PhoneCountryControllerDe
     func otp(codeEntered code: String) {
         
     }
+    
+
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         (segue.destination as? ComoControllerLoginOTPController)?.delegate = self

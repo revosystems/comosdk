@@ -1,6 +1,7 @@
 import UIKit
 import AVFoundation
 
+
 protocol ScanQRCodeViewDelegate{
     func scanQrCode(found code:String)
 }
@@ -25,7 +26,7 @@ protocol ScanQRCodeViewDelegate{
                 self?.captureSession.stopRunning()
             }
         }
-    }   
+    }
 
     
     func setupCaptureSession(delegate:ScanQRCodeViewDelegate? = nil){
@@ -59,15 +60,30 @@ protocol ScanQRCodeViewDelegate{
             failed()
             return
         }
-
+    }
+    
+    func setupPreviewLayer() {
         previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-        previewLayer.frame = layer.bounds
         previewLayer.videoGravity = .resizeAspectFill
-        layer.addSublayer(previewLayer)
-
-        DispatchQueue.global(qos: .default).async { [weak self] in
-            self?.captureSession.startRunning()
+        
+        if let interfaceOrientation = UIApplication.shared.windows.first?.windowScene?.interfaceOrientation {
+            let orientation: AVCaptureVideoOrientation
+            switch interfaceOrientation {
+                case .landscapeLeft:
+                    orientation = .landscapeLeft
+                case .landscapeRight:
+                    orientation = .landscapeRight
+                case .portraitUpsideDown:
+                    orientation = .portraitUpsideDown
+                default:
+                    orientation = .portrait
+            }
+            previewLayer.connection?.videoOrientation = orientation
         }
+        
+        previewLayer.frame = layer.bounds
+
+        layer.addSublayer(previewLayer)
     }
     
 
@@ -92,10 +108,7 @@ protocol ScanQRCodeViewDelegate{
 
     
     func found(code: String) {
-        DispatchQueue.main.async { [weak self] in
-            self?.delegate?.scanQrCode(found: code)
-        }
+        delegate?.scanQrCode(found: code)
     }
 
-    
 }

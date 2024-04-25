@@ -15,11 +15,22 @@ class ComoLoginByQrCodeController : UIViewController, ScanQRCodeViewDelegate {
         errorLabel.text = ""
         scanQrCodeView.round(8)
         button.round(4)
+        scanQrCodeView.setupCaptureSession(delegate: self)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        scanQrCodeView.setupCaptureSession(delegate:self)
+        scanQrCodeView.start()
+    }
+    
+    public override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        scanQrCodeView.setupPreviewLayer()
+    }
+    
+    public override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        scanQrCodeView.stop()
     }
     
     @IBAction func onSearchCustomerPressed(_ button:UIButton?){
@@ -46,7 +57,9 @@ class ComoLoginByQrCodeController : UIViewController, ScanQRCodeViewDelegate {
     
     func scanQrCode(found code:String){
         inputField.text = code
-        onSearchCustomerPressed(nil)
+        if button.isEnabled {
+            onSearchCustomerPressed(nil)
+        }
     }
     
     func searchCustomer(_ customer:Como.Customer) {
@@ -60,6 +73,7 @@ class ComoLoginByQrCodeController : UIViewController, ScanQRCodeViewDelegate {
                 )
                 Como.shared.currentSale?.customer = details.membership.customer
                 await MainActor.run {
+                    inputField.text = ""
                     button.animateSuccess()
                     delegate?.como(onLoggedIn: details)
                 }

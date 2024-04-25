@@ -58,7 +58,7 @@ class ComoMemberDetailsController : UIViewController, UITableViewDelegate {
         if isMovingFromParent, transitionCoordinator?.isInteractive == false {
             // Back pressed
             Como.shared.memberDetails = nil
-            Como.shared.currentSale = nil
+            //Como.shared.currentSale = nil
         }
     }
     
@@ -125,7 +125,7 @@ class ComoMemberDetailsController : UIViewController, UITableViewDelegate {
         redeemButton.setTitle(Como.trans("como_redeem"),        for: .normal)
         creditLabelTitle.text = Como.trans("como_credits")
         pointsLabelTitle.text = Como.trans("como_points")
-        //discountsWarningLabel.text = Como.trans("como_discountsWarning")
+        discountsWarningLabel.text = Como.trans("como_discountsWarning")
     }
     
 }

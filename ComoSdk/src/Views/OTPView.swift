@@ -3,8 +3,8 @@ import RevoFoundation
 
 protocol OTPViewDelegate : AnyObject {
     func otp(codeEntered code:String);
-    
 }
+
 class OTPView : UIStackView, OTPTextFieldDelegate {
     
     weak var delegate:OTPViewDelegate?
