@@ -142,6 +142,9 @@ class ComoLoginByPhoneController : UIViewController, PhoneCountryControllerDeleg
                     let customer = Como.Customer(phoneNumber: phone)
                                   try await Como.shared.quickRegister(customer: customer)
                     let details = try await Como.shared.getMemberDetails(customer: customer, purchase: Como.shared.currentSale!.purchase)
+                    
+                    Como.shared.currentSale?.customer = details.membership.customer
+                    
                     searchButton.animateSuccess()
                     delegate?.como(onLoggedIn: details)
                 } catch {

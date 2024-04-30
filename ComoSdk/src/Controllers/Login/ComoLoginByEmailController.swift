@@ -115,6 +115,9 @@ class ComoLoginByEmailController : UIViewController, OTPViewDelegate {
                         customer: customer,
                         purchase: Como.shared.currentSale!.purchase
                     )
+                    
+                    Como.shared.currentSale?.customer = details.membership.customer
+                    
                     searchButton.animateSuccess()
                     delegate?.como(onLoggedIn: details)
                 } catch {
