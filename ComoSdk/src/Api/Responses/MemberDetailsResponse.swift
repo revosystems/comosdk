@@ -54,10 +54,10 @@ extension Como {
         }
         
         public var customer:Como.Customer {
-            if let phoneNumber {
+            if let phoneNumber, !phoneNumber.isEmpty {
                 return Como.Customer(phoneNumber: phoneNumber)
             }
-            if let email {
+            if let email, !email.isEmpty {
                 return Como.Customer(email: email)
             }
             return Como.Customer(phoneNumber: "")
