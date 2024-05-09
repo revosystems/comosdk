@@ -39,7 +39,7 @@ public class ComoController : UIViewController, ComoLoginDelegate {
             
     public override func viewDidLoad() {
         isModalInPresentation = true
-        //translate()
+        translate()
         preferredContentSize = CGSize(width: 700, height: 670)
         
         onSegmentedChanged(segmented)
@@ -148,20 +148,21 @@ public class ComoController : UIViewController, ComoLoginDelegate {
     
     
     //MARK: - Appearance
-    /*
+    
     func translate(){
-        welcomeLabel.text     = Como.trans("como_welcome")
+        registerButton      .setTitle(Como.trans("como_register"),      for:.normal)
+        /*welcomeLabel.text     = Como.trans("como_welcome")
         backButton.title      = Como.trans("como_cancel")
         findMemberButton    .setTitle(Como.trans("como_findMember"),    for:.normal)
         sendAuthCodeButton  .setTitle(Como.trans("como_sendAuthCode"),  for:.normal)
         addCouponButton     .setTitle(Como.trans("como_addCouponCode"), for:.normal)
-        registerButton      .setTitle(Como.trans("como_register"),      for:.normal)
+        
         //scanCodeButton    .setTitle(Como.trans("como_"), for:.normal)
         inputField.placeholder = Como.trans("como_user_placeholder")
         #if DEBUG
             inputField.text = "jordi.p@revo.works"
-        #endif
-    }*/
+        #endif*/
+    }
     
     deinit {
         if let sale = Como.shared.currentSale {

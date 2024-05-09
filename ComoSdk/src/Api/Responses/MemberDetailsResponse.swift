@@ -3,8 +3,8 @@ import Foundation
 extension Como {
     
     public class MemberDetailsResponse : Como.Api.Response  {
-        let membership:Membership!
-        let memberNotes:[MemberNote]?
+        public let membership:Membership!
+        public let memberNotes:[MemberNote]?
         
         private enum CodingKeys: String, CodingKey {
             case membership, memberNotes
@@ -31,7 +31,7 @@ extension Como {
         let firstName:String?
         let lastName:String?
         let birthday:String?
-        let email:String?
+        public let email:String?
         let gender:String?
         let phoneNumber:String?
         let status:MemberShipStatus
@@ -41,8 +41,8 @@ extension Como {
         let termsOfUse:Bool?
         let gdpr:Bool?
         let commonExtId:String
-        let pointsBalance:Balance?
-        let creditBalance:Balance?
+        public let pointsBalance:Balance?
+        public let creditBalance:Balance?
         let tags:[String]?
         let assets:[Asset]?
         
@@ -66,12 +66,12 @@ extension Como {
 
     public struct Balance:Codable {
         let usedByPayment:Bool
-        let balance:Monetary
+        public let balance:Monetary
     }
     
     public struct Monetary:Codable {
-        let monetary:Int
-        let nonMonetary:Int
+        public let monetary:Int
+        public let nonMonetary:Int
     }
     
     public enum AssetStatus : String, Codable {
