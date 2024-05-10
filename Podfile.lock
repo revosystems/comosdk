@@ -1,8 +1,8 @@
 PODS:
-  - RevoFoundation (0.2.1)
+  - RevoFoundation (0.2.14)
   - RevoHttp (0.3.4):
     - RevoFoundation (~> 0.2.0)
-  - RevoUIComponents (0.0.33):
+  - RevoUIComponents (0.0.43):
     - RevoFoundation (~> 0.2.0)
 
 DEPENDENCIES:
@@ -17,10 +17,10 @@ SPEC REPOS:
     - RevoUIComponents
 
 SPEC CHECKSUMS:
-  RevoFoundation: 784fe935d6b19339194277839eabef3806da02f3
+  RevoFoundation: f1ec90a5269c660120d5ed6ca2bdcdd7de4dc132
   RevoHttp: 138c7f861fc5a29c5a2c2e8d7b25277b11196dd4
-  RevoUIComponents: e25d7c0de97a285f593ab08a6325deb693f5dee0
+  RevoUIComponents: cfc26907d2197444c8a9cd5d0e4860d3eddd3e8e
 
 PODFILE CHECKSUM: f2d3a3123fd017d0a344a00bf04f5d9ae68583d2
 
-COCOAPODS: 1.11.3
+COCOAPODS: 1.15.2

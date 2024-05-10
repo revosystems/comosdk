@@ -19,8 +19,8 @@ extension Como {
     }
 
     public struct MemberNote:Codable {
-        let content:String
-        let type:String
+        public let content:String
+        public let type:String
     }
     
     public enum MemberShipStatus : String, Codable {
@@ -28,23 +28,23 @@ extension Como {
     }
     
     public struct Membership : Codable {
-        let firstName:String?
-        let lastName:String?
-        let birthday:String?
+        public let firstName:String?
+        public let lastName:String?
+        public let birthday:String?
         public let email:String?
-        let gender:String?
-        let phoneNumber:String?
-        let status:MemberShipStatus
-        let createdOn:Date?
-        let allowSMS:Bool?
-        let allowEmail:Bool?
-        let termsOfUse:Bool?
-        let gdpr:Bool?
-        let commonExtId:String
+        public let gender:String?
+        public let phoneNumber:String?
+        public let status:MemberShipStatus
+        public let createdOn:Date?
+        public let allowSMS:Bool?
+        public let allowEmail:Bool?
+        public let termsOfUse:Bool?
+        public let gdpr:Bool?
+        public let commonExtId:String
         public let pointsBalance:Balance?
         public let creditBalance:Balance?
-        let tags:[String]?
-        let assets:[Asset]?
+        public let tags:[String]?
+        public let assets:[Asset]?
         
         public var fullName : String? {
             guard let firstName = firstName else {
@@ -65,7 +65,7 @@ extension Como {
     }
 
     public struct Balance:Codable {
-        let usedByPayment:Bool
+        public let usedByPayment:Bool
         public let balance:Monetary
     }
     
@@ -79,19 +79,19 @@ extension Como {
     }
     
     public struct Asset:Codable{
-        let key:String
-        let name:String
-        let description: String?
-        let status:AssetStatus
-        let image: String?
-        let validFrom:Date?
-        let validUntil:Date?
-        let redeemable:Bool
-        let nonRedeemableCause:NonRedeemableCause?
+        public let key:String
+        public let name:String
+        public let description: String?
+        public let status:AssetStatus
+        public let image: String?
+        public let validFrom:Date?
+        public let validUntil:Date?
+        public let redeemable:Bool
+        public let nonRedeemableCause:NonRedeemableCause?
     }
     
     public struct NonRedeemableCause:Codable {
-        let code:String
-        let message:String
+        public let code:String
+        public let message:String
     }
 }
