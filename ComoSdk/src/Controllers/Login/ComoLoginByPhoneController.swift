@@ -22,6 +22,7 @@ class ComoLoginByPhoneController : UIViewController, PhoneCountryControllerDeleg
         searchButton.round(4)
         errorLabel.text = ""
         loginOtpView.isHidden = true
+        inputField.delegate = self
         phoneCountrySelector(countrySelected: phoneCountry)
     }
     
@@ -38,8 +39,15 @@ class ComoLoginByPhoneController : UIViewController, PhoneCountryControllerDeleg
     
     //So the country text field can't be edited manually
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool{
+        if textField == inputField { return true }
         onSelectCountryPressed()
         return false
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField != inputField { return true }
+        if string.isEmpty { return true }
+        return string.rangeOfCharacter(from: NSCharacterSet.decimalDigits) != nil
     }
     
     @objc func onSelectCountryPressed(){
@@ -132,7 +140,7 @@ class ComoLoginByPhoneController : UIViewController, PhoneCountryControllerDeleg
             return askToRegister()
         }
         errorLabel.text = Como.trans("como_\(error)")
-    }    
+    }
     
     private func askToRegister(){
         Task {
