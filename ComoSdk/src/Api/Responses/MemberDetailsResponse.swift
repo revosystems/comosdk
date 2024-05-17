@@ -3,7 +3,7 @@ import Foundation
 extension Como {
     
     public class MemberDetailsResponse : Como.Api.Response  {
-        public let membership:Membership!
+        public var membership:Membership!
         public let memberNotes:[MemberNote]?
         
         private enum CodingKeys: String, CodingKey {
@@ -41,8 +41,8 @@ extension Como {
         public let termsOfUse:Bool?
         public let gdpr:Bool?
         public let commonExtId:String
-        public let pointsBalance:Balance?
-        public let creditBalance:Balance?
+        public var pointsBalance:Balance?
+        public var creditBalance:Balance?
         public let tags:[String]?
         public let assets:[Asset]?
         
@@ -65,8 +65,8 @@ extension Como {
     }
 
     public struct Balance:Codable {
-        public let usedByPayment:Bool
-        public let balance:Monetary
+        public var usedByPayment:Bool
+        public var balance:Monetary
     }
     
     public struct Monetary:Codable {
