@@ -2,7 +2,7 @@ import UIKit
 import RevoFoundation
 
 public protocol ComoDelegate {
-    func como(onCustomerSelected currentSale:Como.CurrentSale)
+    func como(onCustomerSelected currentSale:Como.CurrentSale, membership:Como.MemberDetailsResponse)
     func como(onPaid response:Como.PaymentResponse)
     func comoActionCanceled()
 }
@@ -165,8 +165,8 @@ public class ComoController : UIViewController, ComoLoginDelegate {
     }
     
     deinit {
-        if let sale = Como.shared.currentSale {
-            delegate?.como(onCustomerSelected: sale)
+        if let sale = Como.shared.currentSale, let membership = Como.shared.memberDetails {
+            delegate?.como(onCustomerSelected: sale, membership: membership)
         }
         delegate = nil
     }
