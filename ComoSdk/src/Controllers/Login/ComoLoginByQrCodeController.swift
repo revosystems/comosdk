@@ -50,7 +50,7 @@ class ComoLoginByQrCodeController : UIViewController, ScanQRCodeViewDelegate {
         }
         
         if (Como.shared.hasFeature(.customIdentifier)){
-            return Como.Customer(customIdentifier: text)
+            return Como.Customer(commonExtId: text)
         }
         return Como.Customer(phoneNumber: text)
     }

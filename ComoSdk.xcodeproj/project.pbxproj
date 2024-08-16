@@ -40,6 +40,8 @@
 		EAB9910728699131000C0CB5 /* Como.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAB9910628699131000C0CB5 /* Como.storyboard */; };
 		EAB99109286991BA000C0CB5 /* ComoMemberDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB99108286991BA000C0CB5 /* ComoMemberDetailsController.swift */; };
 		EAB9910B2869A00A000C0CB5 /* MembershipDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB9910A2869A00A000C0CB5 /* MembershipDataSource.swift */; };
+		EAC0DDB72C6CB2CD001E889B /* ComoMemberDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC0DDB52C6CB2CC001E889B /* ComoMemberDetailsController.swift */; };
+		EAC0DDB82C6CB2CD001E889B /* MembershipDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC0DDB62C6CB2CC001E889B /* MembershipDataSource.swift */; };
 		EAC72B812BF74EF900E96523 /* ComoRegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC72B752BF74EF900E96523 /* ComoRegisterController.swift */; };
 		EAC72B822BF74EF900E96523 /* ComoControllerLoginOTPController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC72B762BF74EF900E96523 /* ComoControllerLoginOTPController.swift */; };
 		EAC72B832BF74EF900E96523 /* ComoLoginAddCouponController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC72B772BF74EF900E96523 /* ComoLoginAddCouponController.swift */; };
@@ -108,6 +110,8 @@
 		EAB9910628699131000C0CB5 /* Como.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Como.storyboard; sourceTree = "<group>"; };
 		EAB99108286991BA000C0CB5 /* ComoMemberDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComoMemberDetailsController.swift; sourceTree = "<group>"; };
 		EAB9910A2869A00A000C0CB5 /* MembershipDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipDataSource.swift; sourceTree = "<group>"; };
+		EAC0DDB52C6CB2CC001E889B /* ComoMemberDetailsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ComoMemberDetailsController.swift; path = Members/ComoMemberDetailsController.swift; sourceTree = "<group>"; };
+		EAC0DDB62C6CB2CC001E889B /* MembershipDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MembershipDataSource.swift; path = Members/MembershipDataSource.swift; sourceTree = "<group>"; };
 		EAC72B752BF74EF900E96523 /* ComoRegisterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComoRegisterController.swift; sourceTree = "<group>"; };
 		EAC72B762BF74EF900E96523 /* ComoControllerLoginOTPController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComoControllerLoginOTPController.swift; sourceTree = "<group>"; };
 		EAC72B772BF74EF900E96523 /* ComoLoginAddCouponController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComoLoginAddCouponController.swift; sourceTree = "<group>"; };
@@ -296,6 +300,8 @@
 		EAB9910228699102000C0CB5 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				EAC0DDB52C6CB2CC001E889B /* ComoMemberDetailsController.swift */,
+				EAC0DDB62C6CB2CC001E889B /* MembershipDataSource.swift */,
 				EAC72B752BF74EF900E96523 /* ComoRegisterController.swift */,
 				EAC72B7B2BF74EF900E96523 /* Login */,
 				EAC72B802BF74EF900E96523 /* PhoneCountry */,
@@ -543,6 +549,7 @@
 				BB56B6C028673CC100512A34 /* PaymentResponse.swift in Sources */,
 				EAC72B872BF74EF900E96523 /* ComoRegisterByMailController.swift in Sources */,
 				EAC72B832BF74EF900E96523 /* ComoLoginAddCouponController.swift in Sources */,
+				EAC0DDB72C6CB2CD001E889B /* ComoMemberDetailsController.swift in Sources */,
 				EAB9910B2869A00A000C0CB5 /* MembershipDataSource.swift in Sources */,
 				BB56B6BE2867255800512A34 /* GetBenefitsResponse.swift in Sources */,
 				BB56B6CB286D7B4A00512A34 /* CurrentSale.swift in Sources */,
@@ -570,6 +577,7 @@
 				BB56B6BC2867252600512A34 /* RedeemAsset.swift in Sources */,
 				BB56B6B52864B85400512A34 /* Purchase.swift in Sources */,
 				EAB991052869911A000C0CB5 /* ComoController.swift in Sources */,
+				EAC0DDB82C6CB2CD001E889B /* MembershipDataSource.swift in Sources */,
 				BB56B67B2864A75100512A34 /* AppDelegate.swift in Sources */,
 				BB56B67D2864A75100512A34 /* SceneDelegate.swift in Sources */,
 			);
