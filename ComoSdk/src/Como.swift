@@ -67,13 +67,13 @@ public class Como {
     }
     
     //MARK: - Methods
-    public func getMemberDetails(customer:Customer, purchase:Purchase) async throws -> MemberDetailsResponse{
+    public func getMemberDetails(customer:Customer, purchase:Purchase?) async throws -> MemberDetailsResponse{
         try validateInitialized()
 
         
         struct MemberDetails : Codable {
             let customer:Customer
-            let purchase:Purchase
+            let purchase:Purchase?
         }
         
         let object = MemberDetails(customer: customer, purchase: purchase)

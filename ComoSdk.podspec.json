@@ -1,6 +1,6 @@
 {
   "name": "ComoSdk",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "summary": "Library to connect to como loyalty.",
   "description": "A library that handles the connection and flow to como loyalty",
   "homepage": "https://revo.works",
@@ -15,7 +15,7 @@
   },
   "source": {
     "git": "https://github.com/revosystems/comosdk.git",
-    "tag": "0.2.4"
+    "tag": "0.2.5"
   },
   "source_files": "ComoSdk/src/**/*.{swift}",
   "resources": "ComoSdk/resources/*.*",
