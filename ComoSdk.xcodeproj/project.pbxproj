@@ -71,6 +71,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5581AB712CE6406D00D4179A /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		5B7C1C409337C9FFB1C8DBBF /* Pods-ComoSdk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ComoSdk.release.xcconfig"; path = "Target Support Files/Pods-ComoSdk/Pods-ComoSdk.release.xcconfig"; sourceTree = "<group>"; };
 		75D725388EEAE84FA4704559 /* Pods_ComoSdk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ComoSdk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2638F8D895C60C68326BFEB /* Pods-ComoSdkTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ComoSdkTests.debug.xcconfig"; path = "Target Support Files/Pods-ComoSdkTests/Pods-ComoSdkTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -166,6 +167,7 @@
 		BB56B66E2864A75100512A34 = {
 			isa = PBXGroup;
 			children = (
+				5581AB712CE6406D00D4179A /* Package.swift */,
 				BB56B6792864A75100512A34 /* ComoSdk */,
 				BB56B6902864A75300512A34 /* ComoSdkTests */,
 				BB56B69A2864A75300512A34 /* ComoSdkUITests */,
