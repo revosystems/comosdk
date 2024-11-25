@@ -42,6 +42,10 @@ public class Como {
             customer: customer
         )
         
+        Task {
+            try? await Como.shared.currentSale?.fetchCustomerDetails()
+        }
+        
         nav.modalPresentationStyle = .formSheet
         return nav
     }

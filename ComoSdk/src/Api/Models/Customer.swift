@@ -9,13 +9,22 @@ extension Como {
         let appClientId:String?
         let commonExtId:String?
         
-        public init(phone:String?, email:String?, firstName:String?, lastName:String?){
+        public init(phone:String?, email:String?, firstName:String?, lastName:String?, appClientId:String? = nil, commmonExtId:String? = nil){
             self.phoneNumber = phone
             self.email = email
             self.firstName = firstName
             self.lastName = lastName
+            self.appClientId = appClientId
+            self.commonExtId = commmonExtId
+        }
+        
+        public init(membership:Membership){
+            self.phoneNumber = membership.phoneNumber
+            self.email = membership.email
+            self.firstName = membership.firstName
+            self.lastName = membership.lastName
+            self.commonExtId = membership.commonExtId
             self.appClientId = nil
-            self.commonExtId = nil
         }
         
         public init(phoneNumber:String){

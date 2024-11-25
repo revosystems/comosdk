@@ -62,5 +62,12 @@ extension Como {
             })
             return response
         }
+        
+        public func fetchCustomerDetails() async throws {
+            guard let customer else { return }
+            let details = try await Como.shared.getMemberDetails(customer: customer, purchase: purchase) 
+            self.customer = Customer(membership: details.membership)
+        }
     }
+    
 }
