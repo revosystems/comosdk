@@ -51,7 +51,9 @@ class ComoLoginByPhoneController : UIViewController, PhoneCountryControllerDeleg
     }
     
     @objc func onSelectCountryPressed(){
-        let vc:PhoneCountryController = SBController("Como", "phoneCountry")
+        let sb = UIStoryboard(name: "Como", bundle: Bundle.module)
+        let vc = sb.instantiateInitialViewController(withIdentifier: "phoneCountry") as! PhoneCountryController
+        
         vc.delegate = self
         vc.selectedCountry = phoneCountry
         

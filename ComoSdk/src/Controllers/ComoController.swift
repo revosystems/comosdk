@@ -32,7 +32,9 @@ public class ComoController : UIViewController, ComoLoginDelegate {
     var nextAction:NextController = .showDetails
     
     public static func make(delegate:ComoDelegate?) -> UINavigationController {
-        let nav:UINavigationController = SBController("Como", "nav")
+        let sb = UIStoryboard(name: "Como", bundle: Bundle.module)
+        let nav = sb.instantiateInitialViewController(withIdentifier: "nav") as! UINavigationController
+
         (nav.children.first as? ComoController)?.delegate = delegate
         return nav
     }
@@ -116,13 +118,17 @@ public class ComoController : UIViewController, ComoLoginDelegate {
     }
     
     private func showAssets(details:Como.MemberDetailsResponse){
-        let vc:ComoMemberDetailsController = SBController("Como", "memberDetails")
+        let sb = UIStoryboard(name: "Como", bundle: Bundle.module)
+        let vc = sb.instantiateInitialViewController(withIdentifier: "memberDetails") as! ComoMemberDetailsController
+        
         vc.details = details
         navigationController?.pushViewController(vc, animated: true)
     }
     
     private func showPay(amount:Int){
-        let vc:ComoPayController = SBController("Como", "pay")
+        let sb = UIStoryboard(name: "Como", bundle: Bundle.module)
+        let vc = sb.instantiateInitialViewController(withIdentifier: "pay") as! ComoPayController
+        
         vc.amount = amount
         vc.delegate = delegate
         navigationController?.pushViewController(vc, animated: true)

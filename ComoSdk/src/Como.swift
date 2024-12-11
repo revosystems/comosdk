@@ -58,7 +58,10 @@ public class Como {
             nav.modalPresentationStyle = .formSheet
             return nav
         }
-        let payVc:ComoPayController = SBController("Como", "pay")
+        
+        let sb = UIStoryboard(name: "Como", bundle: Bundle.module)
+        let payVc = sb.instantiateInitialViewController(withIdentifier: "pay") as! ComoPayController
+        
         payVc.amount = amount
         payVc.delegate = delegate
         let nav = UINavigationController(rootViewController: payVc)
