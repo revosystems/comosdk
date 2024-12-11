@@ -11,11 +11,12 @@ public struct BenefitsView : View {
     
     public var body: some View {
         VStack {
-            Text("Member since: \(membership?.createdOn ?? Date())")
-            Text("Credits: \(membership?.creditBalance?.balance.monetary ?? 0)")
-            Text("Level: \(membership?.pointsBalance?.balance.monetary ?? 0)")
+
+            if let membership {
+                MemberDetailsHeaderView(membership: membership)
+            }
             
-            Divider()
+            Divider().overlay(Dejavu.headerDark)
             
             Spacer().frame(height: 12)
             
@@ -26,7 +27,7 @@ public struct BenefitsView : View {
             }
             
             Spacer()
-            Divider()
+            Divider().overlay(Dejavu.headerDark)
             
             HStack {
                 Spacer()
@@ -40,6 +41,38 @@ public struct BenefitsView : View {
             }.padding()
         }
         .frame(maxWidth:.infinity)
+        .background(Dejavu.headerLighter)
+        .foregroundColor(.white)
+    }
+}
+
+private struct MemberDetailsHeaderView : View {
+    
+    let membership:Como.Membership
+    
+    var body: some View {
+        VStack {
+            //Text("Member since: \(membership.createdOn ?? Date())")
+            //Text("Level: \(membership.pointsBalance?.balance.monetary ?? 0)")
+          
+            HStack(spacing: 20) {
+                HStack (alignment: .center) {
+                    Text("\(membership.pointsBalance?.balance.monetary ?? 0)")
+                        .font(.title)
+                    Text("Puntos")
+                        .textCase(.uppercase)
+                        .font(.subheadline)
+                }
+                            
+                HStack (alignment: .center) {
+                    Text("\(membership.creditBalance?.balance.monetary ?? 0)")
+                        .font(.title)
+                    Text("Créditos")
+                        .textCase(.uppercase)
+                        .font(.subheadline)
+                }
+            }            
+        }
     }
 }
 
