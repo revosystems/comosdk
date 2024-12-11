@@ -25,7 +25,7 @@ let package = Package(
             ],
             path: "ComoSdk/src",
             resources: [
-                .process("ComoSdk/resources")
+                .process("resources")
             ]
         ),
     ],
