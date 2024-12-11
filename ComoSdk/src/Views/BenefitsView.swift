@@ -16,7 +16,7 @@ public struct BenefitsView : View {
                 MemberDetailsHeaderView(membership: membership)
             }
             
-            Divider().overlay(Dejavu.headerDark)
+            Divider().overlay(Dejavu.headerLighter)
             
             Spacer().frame(height: 12)
             
@@ -27,7 +27,7 @@ public struct BenefitsView : View {
             }
             
             Spacer()
-            Divider().overlay(Dejavu.headerDark)
+            Divider().overlay(Dejavu.headerLighter)
             
             HStack {
                 Spacer()
@@ -40,8 +40,7 @@ public struct BenefitsView : View {
                 .foregroundColor(.white)
             }.padding()
         }
-        .frame(maxWidth:.infinity)
-        .background(Dejavu.headerLighter)
+        .background(Dejavu.headerSemi)
         .foregroundColor(.white)
     }
 }
@@ -81,7 +80,7 @@ private struct AssetView : View {
     
     var body: some View {
         
-        HStack (alignment: .top, spacing: 12) {
+        HStack (alignment: .top, spacing: 18) {
             if #available(iOS 15.0, *) {
                 AsyncImage(url:URL(string: asset.image ?? "")) {
                     $0.image?.resizable()
@@ -115,13 +114,13 @@ private struct AssetView : View {
                 .font(.subheadline)
                 .opacity(0.8)
             }
+            Spacer().frame(maxWidth: .infinity)
             
         }
         .padding()
         .background(Dejavu.headerLighter)
         .cornerRadius(12)
         .frame(height:110)
-        .frame(maxWidth:.infinity)
         .foregroundColor(.white)
         
     }
