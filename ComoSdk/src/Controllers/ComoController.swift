@@ -33,9 +33,9 @@ public class ComoController : UIViewController, ComoLoginDelegate {
     
     public static func make(delegate:ComoDelegate?) -> UINavigationController {
         let sb = UIStoryboard(name: "Como", bundle: Bundle.module)
-        let nav = sb.instantiateViewController(withIdentifier: "nav") as! UINavigationController
-
+        let nav = sb.instantiateViewController(withIdentifier: "initialNav") as! UINavigationController
         (nav.children.first as? ComoController)?.delegate = delegate
+
         return nav
     }
             
