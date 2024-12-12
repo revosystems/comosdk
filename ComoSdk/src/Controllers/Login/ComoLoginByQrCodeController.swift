@@ -15,22 +15,22 @@ class ComoLoginByQrCodeController : UIViewController, ScanQRCodeViewDelegate {
         errorLabel.text = ""
         scanQrCodeView.round(8)
         button.round(4)
-        //scanQrCodeView.setupCaptureSession(delegate: self)
+        scanQrCodeView.setupCaptureSession(delegate: self)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        //scanQrCodeView.start()
+        scanQrCodeView.start()
     }
     
     public override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        //scanQrCodeView.setupPreviewLayer()
+        scanQrCodeView.setupPreviewLayer()
     }
     
     public override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        //scanQrCodeView.stop()
+        scanQrCodeView.stop()
     }
     
     @IBAction func onSearchCustomerPressed(_ button:UIButton?){
