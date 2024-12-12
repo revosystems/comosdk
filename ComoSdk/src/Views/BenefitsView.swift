@@ -5,12 +5,14 @@ public struct BenefitsView : View {
     
     let membership:Como.Membership?
     
+    @State private var selectedAssets = []
+    
     public init(membership: Como.Membership?){
         self.membership = membership
     }
     
     public var body: some View {
-        VStack {
+        VStack(spacing: 16) {
 
             if let membership {
                 MemberDetailsHeaderView(membership: membership)
@@ -18,7 +20,6 @@ public struct BenefitsView : View {
             
             Divider().overlay(Dejavu.headerLighter)
             
-            Spacer().frame(height: 12)
             
             if let assets = membership?.assets {
                 ForEach(assets, id: \.key) {
@@ -50,28 +51,61 @@ private struct MemberDetailsHeaderView : View {
     let membership:Como.Membership
     
     var body: some View {
-        VStack {
+        VStack(spacing: 20) {
             //Text("Member since: \(membership.createdOn ?? Date())")
             //Text("Level: \(membership.pointsBalance?.balance.monetary ?? 0)")
           
+            HStack(spacing: 4) {
+                ForEach(membership.tags ?? [], id: \.self) { tag in
+                    Text(tag)
+                        .padding(.horizontal, 8)
+                        .padding(.vertical, 2)
+                        .background(Dejavu.headerLighter)
+                        .cornerRadius(4)
+                        .font(.subheadline)
+                }
+            }
+            
             HStack(spacing: 20) {
-                HStack (alignment: .center) {
-                    Text("\(membership.pointsBalance?.balance.monetary ?? 0)")
-                        .font(.title)
-                    Text("Puntos")
-                        .textCase(.uppercase)
-                        .font(.subheadline)
-                }
-                            
-                HStack (alignment: .center) {
-                    Text("\(membership.creditBalance?.balance.monetary ?? 0)")
-                        .font(.title)
-                    Text("Créditos")
-                        .textCase(.uppercase)
-                        .font(.subheadline)
-                }
-            }            
+                HeaderStatsView(
+                    title: "Puntos",
+                    value: "\(membership.pointsBalance?.balance.monetary ?? 0)",
+                    icon: "star.fill"
+                )
+                
+                HeaderStatsView(
+                    title: "Créditos",
+                    value: "\(membership.creditBalance?.balance.monetary ?? 0)",
+                    icon: "eurosign.circle.fill"
+                )
+            }
         }
+    }
+}
+
+private struct HeaderStatsView : View {
+    
+    let title:String
+    let value:String
+    let icon:String
+    
+    var body: some View {
+        HStack (alignment: .center) {
+            Text(value)
+                .font(.title)
+            
+            Text(title)
+                .textCase(.uppercase)
+                .font(.subheadline)
+            
+            Image(systemName: icon)
+                .foregroundColor(.green)
+        }
+        .padding(.horizontal, 12)
+        .padding(.vertical, 4)
+        .background(Dejavu.headerLighter)
+        .cornerRadius(12)
+        
     }
 }
 
@@ -113,6 +147,7 @@ private struct AssetView : View {
                 }
                 .font(.subheadline)
                 .opacity(0.8)
+                
             }
             Spacer().frame(maxWidth: .infinity)
             
@@ -127,5 +162,49 @@ private struct AssetView : View {
 }
 
 #Preview {
-    BenefitsView(membership: nil)
+    BenefitsView(
+        membership: Como.Membership(
+            firstName: "Jordi",
+            lastName: "Puigdellivol",
+            birthday: "17-03-1984",
+            email: "jordi.p@revo.works",
+            gender: "male",
+            phoneNumber: "669686571",
+            status: .active,
+            createdOn: Date(),
+            allowSMS: true,
+            allowEmail: true,
+            termsOfUse: true,
+            gdpr: true,
+            commonExtId: "123456",
+            tags: ["Level 1", "Awesome", "Vip"],
+            assets: [
+                Como.Asset(
+                    key: "1234",
+                    name: "Regalo bienvenida",
+                    description: "5€ de descuento",
+                    status: .active,
+                    image: nil,
+                    validFrom: Date(),
+                    validUntil: nil,
+                    redeemable: true,
+                    nonRedeemableCause: nil
+                ),
+                Como.Asset(
+                    key: "1235",
+                    name: "Free item",
+                    description: "With any burger",
+                    status: .future,
+                    image: nil,
+                    validFrom: nil,
+                    validUntil: nil,
+                    redeemable: false,
+                    nonRedeemableCause: Como.NonRedeemableCause(
+                        code: "a",
+                        message:"Not a valid user"
+                    )
+                ),
+            ]
+        )
+    )
 }
