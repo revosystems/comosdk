@@ -5,7 +5,7 @@ public struct BenefitsView : View {
     
     let membership:Como.Membership?
     
-    @State private var selectedAssets = []
+    @State private var selectedAssets:[String] = []
     
     public init(membership: Como.Membership?){
         self.membership = membership
@@ -23,7 +23,7 @@ public struct BenefitsView : View {
             
             if let assets = membership?.assets {
                 ForEach(assets, id: \.key) {
-                    AssetView(asset: $0)
+                    AssetView(asset: $0, selectedAssets:$selectedAssets)
                 }
             }
             
@@ -43,6 +43,7 @@ public struct BenefitsView : View {
         }
         .background(Dejavu.headerSemi)
         .foregroundColor(.white)
+        .padding()
     }
 }
 
@@ -75,7 +76,7 @@ private struct MemberDetailsHeaderView : View {
                 
                 HeaderStatsView(
                     title: "Créditos",
-                    value: "\(membership.creditBalance?.balance.monetary ?? 0)",
+                    value: "\((membership.creditBalance?.balance.monetary ?? 0) / 100)",
                     icon: "eurosign.circle.fill"
                 )
             }
@@ -111,6 +112,7 @@ private struct HeaderStatsView : View {
 
 private struct AssetView : View {
     let asset:Como.Asset
+    @Binding var selectedAssets:[String]
     
     var body: some View {
         
@@ -124,7 +126,8 @@ private struct AssetView : View {
             }
             
             VStack (alignment: .leading){
-                Text(asset.name).font(.system(size: 16, weight: .bold))
+                Text(asset.name)
+                    .font(.system(size: 16, weight: .bold))
                 Text(asset.description ?? "--")
                     .font(.subheadline)
                     .opacity(0.8)
@@ -153,11 +156,13 @@ private struct AssetView : View {
             
         }
         .padding()
-        .background(Dejavu.headerLighter)
+        .background(selectedAssets.contains(asset.key) ? Dejavu.headerDark : Dejavu.headerLighter)
         .cornerRadius(12)
         .frame(height:110)
         .foregroundColor(.white)
-        
+        .onTapGesture {
+            selectedAssets.toggle(asset.key)
+        }
     }
 }
 
