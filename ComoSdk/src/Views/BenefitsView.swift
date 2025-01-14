@@ -32,18 +32,13 @@ public struct BenefitsView : View {
             
             HStack {
                 Spacer()
-                Button("Redeem") {
+                ButtonPrimary("Redeem") {
                     print("redeem")
-                }
-                .padding()
-                .cornerRadius(12)
-                .background(Dejavu.brand)
-                .foregroundColor(.white)
+                }                
             }.padding()
         }
-        .background(Dejavu.headerSemi)
-        .foregroundColor(.white)
-        .padding()
+        //.background(Dejavu.background)
+        .foregroundColor(Dejavu.textPrimary)
     }
 }
 
@@ -61,7 +56,7 @@ private struct MemberDetailsHeaderView : View {
                     Text(tag)
                         .padding(.horizontal, 8)
                         .padding(.vertical, 2)
-                        .background(Dejavu.headerLighter)
+                        .background(Color.white)
                         .cornerRadius(4)
                         .font(.subheadline)
                 }
@@ -104,7 +99,7 @@ private struct HeaderStatsView : View {
         }
         .padding(.horizontal, 12)
         .padding(.vertical, 4)
-        .background(Dejavu.headerLighter)
+        .background(Color.white)
         .cornerRadius(12)
         
     }
@@ -156,10 +151,9 @@ private struct AssetView : View {
             
         }
         .padding()
-        .background(selectedAssets.contains(asset.key) ? Dejavu.headerDark : Dejavu.headerLighter)
+        .background(selectedAssets.contains(asset.key) ? Dejavu.backgroundDarker : Color.white)
         .cornerRadius(12)
         .frame(height:110)
-        .foregroundColor(.white)
         .onTapGesture {
             selectedAssets.toggle(asset.key)
         }

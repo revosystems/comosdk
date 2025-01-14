@@ -4,11 +4,14 @@ import DejavuSwift
 public struct LoginView: View {
     
     @State private var email:String = ""
+    @State private var phoneNumber:String = ""
+    @State private var qrcode:String = ""
+    
     @State private var loading = false
     @State private var tab = 0
     @State private var errorMessage:String = ""
     @State private var membership:Como.Membership? = nil
-    
+        
     public init(){
         //89f6c22c-a7fc-41b2-b38e-6b763036e2e2
     }
@@ -18,6 +21,7 @@ public struct LoginView: View {
             VStack(spacing: 12) {
                 
                 if let membership {
+                //if false {
                     BenefitsView(membership: membership)
                 }
                 else{
@@ -31,29 +35,48 @@ public struct LoginView: View {
                     Spacer().frame(height:20)
                     
                     if tab == 0 {
-                        TextField(
-                            "User name (email address)",
-                            text: $email
-                        )
+                        TextField("Phone number", text: $phoneNumber)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
                         
-                        Button("Login") {
-                            loginWithEmail()
+                        if loading {
+                            ProgressView()
                         }
-                        .cornerRadius(8)
-                        .padding(.horizontal, 60)
-                        .padding(.vertical, 8)
-                        .background(Dejavu.brand)
-                        .foregroundColor(.white)
-                        .frame(maxWidth:.infinity)
+                        
+                        ButtonPrimary("Login") {
+                            fetchCustomerDetails(customer: Como.Customer(phoneNumber: phoneNumber))
+                        }
                         
                         Text(errorMessage)
                             .opacity(0.5)
-                        
                     }
                     else if tab == 1 {
-                        Text("Phone")
+                        TextField("Email", text: $email)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        
+                        if loading {
+                            ProgressView()
+                        }
+                        
+                        ButtonPrimary("Login") {
+                            fetchCustomerDetails(customer: Como.Customer(email: email))
+                        }
+                        
+                        Text(errorMessage)
+                            .opacity(0.5)
                     } else if tab == 2 {
-                        Text("QRCode")
+                        TextField("QRCode", text: $qrcode)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        
+                        if loading {
+                            ProgressView()
+                        }
+                        
+                        ButtonPrimary("Login") {
+                            fetchCustomerDetails(customer: Como.Customer(appClientId: qrcode))
+                        }
+                        
+                        Text(errorMessage)
+                            .opacity(0.5)
                     }
                     
                     Spacer()
@@ -66,62 +89,30 @@ public struct LoginView: View {
                 }
             }
             .padding()
+            .background(Dejavu.background)
             .task {
-                fetchCustomerDetails()
+                //fetchCustomerDetails(customer: Como.Customer(commonExtId: "89f6c22c-a7fc-41b2-b38e-6b763036e2e2"))
             }
         }
     }
     
-    private func fetchCustomerDetails(){
-        Como.shared.setup(
-            key: "Zg8Wpd76",
-            branchId: "1",
-            posId: "1",
-            source: "1",
-            sourceVersion: "1",
-            url: "https://pos-api.fidelizacion.app/api/v4/"
-        )
-        
+    private func fetchCustomerDetails(customer:Como.Customer){
         Task {
             do {
+                loading = true
                 membership = try await Como.shared.getMemberDetails(
-                    customer: Como.Customer(commonExtId: "89f6c22c-a7fc-41b2-b38e-6b763036e2e2"),
+                    customer: customer,
                     purchase:nil
                 ).membership
+                loading = false
             }catch{
+                loading = false
                 print(error)
                 errorMessage = "\(error)"
             }
         }
     }
-    
-    private func loginWithEmail(){
-        Task {
-            Como.shared.setup(
-                key: "Zg8Wpd76",
-                branchId: "1",
-                posId: "1",
-                source: "1",
-                sourceVersion: "1",
-                url: "https://pos-api.fidelizacion.app/api/v4/"
-            )
             
-            do {
-                let details = try await Como.shared.getMemberDetails(
-                    customer: Como.Customer(email: email),
-                    purchase: nil
-                )
-                print(details)
-            } catch {
-                if "\(error)".contains("4001012") {
-                    askToRegister()
-                }
-                print(error)
-                errorMessage = "\(error)"
-            }
-        }
-    }
-    
     private func askToRegister(){
         Task {
             do {
@@ -143,5 +134,14 @@ public struct LoginView: View {
 
 
 #Preview {
-    LoginView()
+    Como.shared.setup(
+        key: "Zg8Wpd76",
+        branchId: "1",
+        posId: "1",
+        source: "1",
+        sourceVersion: "1",
+        url: "https://pos-api.fidelizacion.app/api/v4/"
+    )
+    
+    return LoginView()
 }
