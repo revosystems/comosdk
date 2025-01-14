@@ -17,10 +17,8 @@ public struct BenefitsView : View {
             if let membership {
                 MemberDetailsHeaderView(membership: membership)
             }
-                        
-            
+                                    
             VStack(alignment: .leading) {
-                
                 HStack {
                     Image(systemName: "gift")
                     Text(Como.trans("rewards")).textCase(.uppercase)
@@ -35,8 +33,9 @@ public struct BenefitsView : View {
                     }
                 }
                 
-                Spacer()                
+                Spacer()
                 
+                Divider().overlay(Dejavu.backgroundDarker)
                 HStack {
                     Spacer()
                     ButtonPrimary("Redeem") {
@@ -44,20 +43,8 @@ public struct BenefitsView : View {
                     }
                 }.padding()
             }
-            
-            Spacer()
-            Divider().overlay(Dejavu.headerLighter)
-            
-            HStack {
-                Spacer()
-                ButtonPrimary("Redeem") {
-                    print("redeem")
-                }                
-            }.padding()
         }
-        //.background(Dejavu.background)
         .foregroundColor(Dejavu.textPrimary)
-
     }
 }
 
