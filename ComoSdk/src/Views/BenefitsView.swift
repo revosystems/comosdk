@@ -17,14 +17,32 @@ public struct BenefitsView : View {
             if let membership {
                 MemberDetailsHeaderView(membership: membership)
             }
+                        
             
-            Divider().overlay(Dejavu.headerLighter)
-            
-            
-            if let assets = membership?.assets {
-                ForEach(assets, id: \.key) {
-                    AssetView(asset: $0, selectedAssets:$selectedAssets)
+            VStack(alignment: .leading) {
+                
+                HStack {
+                    Image(systemName: "gift")
+                    Text(Como.trans("rewards")).textCase(.uppercase)
                 }
+                .foregroundColor(Dejavu.textSecondary)
+                .font(.subheadline)
+                
+                if let assets = membership?.assets {
+                    ForEach(assets, id: \.key) {
+                        AssetView(asset: $0, selectedAssets:$selectedAssets)
+                        Divider().overlay(Dejavu.backgroundDarker)
+                    }
+                }
+                
+                Spacer()                
+                
+                HStack {
+                    Spacer()
+                    ButtonPrimary("Redeem") {
+                        print("redeem")
+                    }
+                }.padding()
             }
             
             Spacer()
@@ -39,6 +57,7 @@ public struct BenefitsView : View {
         }
         //.background(Dejavu.background)
         .foregroundColor(Dejavu.textPrimary)
+
     }
 }
 
@@ -48,8 +67,6 @@ private struct MemberDetailsHeaderView : View {
     
     var body: some View {
         VStack(spacing: 20) {
-            //Text("Member since: \(membership.createdOn ?? Date())")
-            //Text("Level: \(membership.pointsBalance?.balance.monetary ?? 0)")
           
             HStack(spacing: 4) {
                 ForEach(membership.tags ?? [], id: \.self) { tag in
@@ -61,29 +78,77 @@ private struct MemberDetailsHeaderView : View {
                         .font(.subheadline)
                 }
             }
+
             
-            HStack(spacing: 20) {
+            HStack(spacing: 16) {
+
+                Image(systemName: "bolt.circle.fill")
+                    .foregroundColor(.orange)
+                
+                MemberTags(membership: membership)
+                
+                MemberSince(membership: membership)
+                
+                Spacer()
+                
                 HeaderStatsView(
-                    title: "Puntos",
-                    value: "\(membership.pointsBalance?.balance.monetary ?? 0)",
-                    icon: "star.fill"
+                    title: Como.trans("points"),
+                    value: "\(membership.pointsBalance?.balance.monetary ?? 0)"
                 )
                 
                 HeaderStatsView(
-                    title: "Créditos",
-                    value: "\((membership.creditBalance?.balance.monetary ?? 0) / 100)",
-                    icon: "eurosign.circle.fill"
+                    title: Como.trans("credits"),
+                    value: "\((membership.creditBalance?.balance.monetary ?? 0) / 100)"
                 )
+            }
+        }
+        .padding(.horizontal, 16)
+        .padding(.vertical, 4)
+        .frame(maxWidth: .infinity)
+        .background(Color.white)
+        .cornerRadius(8)
+        
+    }
+}
+
+private struct MemberTags : View {
+    let membership:Como.Membership
+    
+    var body: some View{
+        
+        HStack(spacing: 4) {
+            ForEach(membership.tags ?? [], id: \.self) { tag in
+                Text(tag)
+                    .padding(.horizontal, 8)
+                    .padding(.vertical, 4)
+                    .background(Dejavu.backgroundDarker)
+                    .cornerRadius(4)
+                    .font(.subheadline)
+            }
+        }
+    }
+}
+
+private struct MemberSince : View {
+    let membership:Como.Membership
+    
+    var body: some View {
+        if #available(iOS 15.0, *) {
+            if let memberSince = membership.createdOn {
+                HStack {
+                    Text(Como.trans("since"))
+                    Text(memberSince, format: .dateTime.day().month().year())
+                }
+                .font(.caption)
+                .foregroundColor(Dejavu.textSecondary)
             }
         }
     }
 }
 
 private struct HeaderStatsView : View {
-    
     let title:String
     let value:String
-    let icon:String
     
     var body: some View {
         HStack (alignment: .center) {
@@ -93,15 +158,11 @@ private struct HeaderStatsView : View {
             Text(title)
                 .textCase(.uppercase)
                 .font(.subheadline)
-            
-            Image(systemName: icon)
-                .foregroundColor(.green)
+                .foregroundColor(Dejavu.textSecondary)
         }
         .padding(.horizontal, 12)
         .padding(.vertical, 4)
-        .background(Color.white)
         .cornerRadius(12)
-        
     }
 }
 
@@ -151,8 +212,9 @@ private struct AssetView : View {
             
         }
         .padding()
-        .background(selectedAssets.contains(asset.key) ? Dejavu.backgroundDarker : Color.white)
-        .cornerRadius(12)
+
+        .background(selectedAssets.contains(asset.key) ? Dejavu.backgroundDarker : .white)
+        .cornerRadius(8)
         .frame(height:110)
         .onTapGesture {
             selectedAssets.toggle(asset.key)
@@ -205,5 +267,5 @@ private struct AssetView : View {
                 ),
             ]
         )
-    )
+    ).background(Dejavu.background)
 }
