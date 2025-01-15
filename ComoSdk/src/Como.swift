@@ -60,7 +60,7 @@ public class Como {
         }
         
         let sb = UIStoryboard(name: "Como", bundle: Bundle.module)
-        let payVc = sb.instantiateInitialViewController(withIdentifier: "pay") as! ComoPayController
+        let payVc = sb.instantiateViewController(withIdentifier: "pay") as! ComoPayController
         
         payVc.amount = amount
         payVc.delegate = delegate

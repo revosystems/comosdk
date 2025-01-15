@@ -39,7 +39,7 @@ class ComoRegisterController : UIViewController, ComoRegisterDelegate {
         Como.shared.currentSale?.customer  = registered.membership.customer
         
         let sb = UIStoryboard(name: "Como", bundle: Bundle.module)
-        let vc = sb.instantiateInitialViewController(withIdentifier: "memberDetails") as! ComoMemberDetailsController
+        let vc = sb.instantiateViewController(withIdentifier: "memberDetails") as! ComoMemberDetailsController
         
         vc.details = registered
         navigationController?.pushViewController(vc, animated: true)

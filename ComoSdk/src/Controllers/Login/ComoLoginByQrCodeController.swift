@@ -15,22 +15,30 @@ class ComoLoginByQrCodeController : UIViewController, ScanQRCodeViewDelegate {
         errorLabel.text = ""
         scanQrCodeView.round(8)
         button.round(4)
-        scanQrCodeView.setupCaptureSession(delegate: self)
+        if !isiOSAppOnMac(){
+            scanQrCodeView.setupCaptureSession(delegate: self)
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        scanQrCodeView.start()
+        if !isiOSAppOnMac(){
+            scanQrCodeView.start()
+        }
     }
     
     public override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        scanQrCodeView.setupPreviewLayer()
+        if !isiOSAppOnMac(){
+            scanQrCodeView.setupPreviewLayer()
+        }
     }
     
     public override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        scanQrCodeView.stop()
+        if !isiOSAppOnMac(){
+            scanQrCodeView.stop()
+        }
     }
     
     @IBAction func onSearchCustomerPressed(_ button:UIButton?){
@@ -89,5 +97,12 @@ class ComoLoginByQrCodeController : UIViewController, ScanQRCodeViewDelegate {
     private func onError(_ error:Error){
         errorLabel.text = Como.trans("como_\(error)")
         scanQrCodeView.start()
+    }
+    
+    private func isiOSAppOnMac() -> Bool {
+      if #available(iOS 14.0, *) {
+        return ProcessInfo.processInfo.isiOSAppOnMac
+      }
+      return false
     }
 }
