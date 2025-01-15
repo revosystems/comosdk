@@ -11,17 +11,12 @@ public struct LoginView: View {
     @State private var tab = 0
     @State private var errorMessage:String = ""
     @State private var membership:Como.Membership? = nil
-        
-    public init(){
-        //89f6c22c-a7fc-41b2-b38e-6b763036e2e2
-    }
-    
+            
     public var body: some View {
         if #available(iOS 15.0, *) {
             VStack(spacing: 12) {
                 
                 if let membership {
-                //if false {
                     BenefitsView(membership: membership)
                 }
                 else{
