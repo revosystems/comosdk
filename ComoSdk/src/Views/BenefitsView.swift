@@ -69,7 +69,7 @@ private struct MemberDetailsHeaderView : View {
     var body: some View {
         VStack(spacing: 20) {
           
-            HStack(spacing: 4) {
+            /*HStack(spacing: 4) {
                 ForEach(membership.tags ?? [], id: \.self) { tag in
                     Text(tag)
                         .padding(.horizontal, 8)
@@ -78,7 +78,7 @@ private struct MemberDetailsHeaderView : View {
                         .cornerRadius(4)
                         .font(.subheadline)
                 }
-            }
+            }*/
 
             
             HStack(spacing: 16) {
