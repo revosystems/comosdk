@@ -9,7 +9,7 @@ extension Como {
         
         var benefits:Como.GetBenefitsResponse?
      
-        init(purchase:Como.Purchase, customer:Como.Customer? = nil){
+        public init(purchase:Como.Purchase, customer:Como.Customer? = nil){
             self.purchase = purchase
             self.customer = customer
             self.purchase.transactionId = Como.shared.transactionUuid

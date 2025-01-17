@@ -1,14 +1,21 @@
 import SwiftUI
 import DejavuSwift
 
+public protocol BenefitsViewDelegate {
+    func benefitsViewOnRedeemPressed()
+}
+
+
 public struct BenefitsView : View {
     
     let membership:Como.Membership?
+    let delegate:BenefitsViewDelegate?
     
     @State private var selectedAssets:[String] = []
     
-    public init(membership: Como.Membership?){
+    public init(membership: Como.Membership?, delegate:BenefitsViewDelegate? = nil){
         self.membership = membership
+        self.delegate = delegate
     }
     
     public var body: some View {
@@ -39,12 +46,19 @@ public struct BenefitsView : View {
                 HStack {
                     Spacer()
                     ButtonPrimary("Redeem") {
-                        print("redeem")
+                        redeemSelectedAssets()
                     }
                 }.padding()
             }
         }
         .foregroundColor(Dejavu.textPrimary)
+    }
+    
+    private func redeemSelectedAssets(){
+        Como.shared.currentSale?.redeemAssets = selectedAssets.map {
+            Como.RedeemAsset(key: $0, appliedAmount: nil, code:nil)
+        }
+        delegate?.benefitsViewOnRedeemPressed()
     }
 }
 
@@ -178,7 +192,7 @@ private struct AssetView : View {
                 Spacer()
                 
                 HStack {
-                    if asset.redeemable {                        
+                    if !asset.redeemable {
                         Image(systemName: "lock.fill")
                             .foregroundColor(.orange)
                         Text(Como.trans("como_non_reedemable"))
@@ -204,6 +218,7 @@ private struct AssetView : View {
         .cornerRadius(8)
         .frame(height:110)
         .onTapGesture {
+            guard asset.redeemable, asset.status == .active else { return }
             selectedAssets.toggle(asset.key)
         }
     }
