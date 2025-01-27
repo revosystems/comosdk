@@ -48,7 +48,7 @@ extension Como {
         }
         
         public var display: String {
-            phoneNumber ?? email ?? appClientId ?? commonExtId ?? "--"
+            firstName ?? phoneNumber ?? email ?? appClientId ?? commonExtId ?? "--"
         }
     }
     

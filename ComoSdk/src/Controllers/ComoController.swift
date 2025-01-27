@@ -3,6 +3,7 @@ import RevoFoundation
 
 public protocol ComoDelegate {
     func como(onCustomerSelected currentSale:Como.CurrentSale, membership:Como.MemberDetailsResponse)
+    func como(onCustomerUnselected:Como.MemberDetailsResponse?)
     func como(onPaid response:Como.PaymentResponse)
     func comoActionCanceled()
 }
@@ -58,7 +59,6 @@ public class ComoController : UIViewController, ComoLoginDelegate {
     }
     
     @IBAction func onBackPressed(_ sender: Any) {
-        delegate = nil
         dismiss(animated: true)
     }
     
@@ -173,6 +173,8 @@ public class ComoController : UIViewController, ComoLoginDelegate {
     deinit {
         if let sale = Como.shared.currentSale, let membership = Como.shared.memberDetails {
             delegate?.como(onCustomerSelected: sale, membership: membership)
+        }else{
+            delegate?.como(onCustomerUnselected: nil)
         }
         delegate = nil
     }
