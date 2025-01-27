@@ -68,6 +68,10 @@ extension Como {
             let details = try await Como.shared.getMemberDetails(customer: customer, purchase: purchase) 
             self.customer = Customer(membership: details.membership)
         }
+        
+        public func clearAssets(){
+            redeemAssets = []
+            benefits = nil
+        }
     }
-    
 }
