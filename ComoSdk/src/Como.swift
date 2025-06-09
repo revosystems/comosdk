@@ -11,6 +11,9 @@ public class Como {
     
     public static var language:String = "es"
     
+    public static var pointsName: String?
+    public static var creditsName: String?
+    
     public static var shared:Como = {
         Como()
     }()
@@ -22,9 +25,11 @@ public class Como {
     public var memberDetails:MemberDetailsResponse?
     
     @discardableResult
-    public func setup(key:String, branchId:String, posId:String, source:String, sourceVersion:String, language:String = "es", debug:Bool = false, url:String = "https://api.prod.bcomo.com/api/v4/") -> Self {
+    public func setup(key:String, branchId:String, posId:String, source:String, sourceVersion:String, language:String = "es", pointsName:String? = nil, creditsName:String? = nil, debug:Bool = false, url:String = "https://api.prod.bcomo.com/api/v4/") -> Self {
         api = Api(key:key, branchId: branchId, posId: posId, source: source, sourceVersion: sourceVersion, debug: debug, url: url)
         Self.language = language
+        Self.pointsName = pointsName
+        Self.creditsName = creditsName
         return self
     }
     

@@ -45,7 +45,7 @@ public struct BenefitsView : View {
                 Divider().overlay(Dejavu.backgroundDarker)
                 HStack {
                     Spacer()
-                    ButtonPrimary("Redeem") {
+                    ButtonPrimary(Como.trans("como_redeem")) {
                         redeemSelectedAssets()
                     }
                 }.padding()
@@ -93,12 +93,12 @@ private struct MemberDetailsHeaderView : View {
                 Spacer()
                 
                 HeaderStatsView(
-                    title: Como.trans("points"),
+                    title: Como.pointsName ?? Como.trans("points"),
                     value: "\(membership.pointsBalance?.balance.monetary ?? 0)"
                 )
                 
                 HeaderStatsView(
-                    title: Como.trans("credits"),
+                    title: Como.creditsName ?? Como.trans("credits"),
                     value: "\((membership.creditBalance?.balance.monetary ?? 0) / 100)"
                 )
             }
