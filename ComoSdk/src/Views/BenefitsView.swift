@@ -93,12 +93,12 @@ private struct MemberDetailsHeaderView : View {
                 Spacer()
                 
                 HeaderStatsView(
-                    title: Como.pointsName ?? Como.trans("points"),
+                    title: Como.pointsName ?? Como.trans("como_points"),
                     value: "\(membership.pointsBalance?.balance.monetary ?? 0)"
                 )
                 
                 HeaderStatsView(
-                    title: Como.creditsName ?? Como.trans("credits"),
+                    title: Como.creditsName ?? Como.trans("como_credits"),
                     value: "\((membership.creditBalance?.balance.monetary ?? 0) / 100)"
                 )
             }
