@@ -12,7 +12,7 @@ class ComoRegisterByPhoneController : UIViewController, PhoneCountryControllerDe
     
     weak var delegate:ComoRegisterDelegate?
  
-    private var phoneCountry:PhoneCountry = PhoneCountry.spain
+    private var phoneCountry:PhoneCountry = PhoneCountryEnum.spain.country
     
     override func viewDidLoad() {
         errorLabel.text = ""

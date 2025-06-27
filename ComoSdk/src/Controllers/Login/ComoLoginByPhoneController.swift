@@ -15,7 +15,7 @@ class ComoLoginByPhoneController : UIViewController, PhoneCountryControllerDeleg
     
     weak var delegate:ComoLoginDelegate!
     
-    var phoneCountry = PhoneCountry.spain
+    var phoneCountry = PhoneCountryEnum.spain.country
     
     
     override func viewDidLoad() {
