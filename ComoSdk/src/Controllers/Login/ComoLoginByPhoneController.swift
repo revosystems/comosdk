@@ -1,15 +1,17 @@
 import UIKit
 import RevoUIComponents
 import RevoFoundation
+import PhoneNumberKit
 
 class ComoLoginByPhoneController : UIViewController, PhoneCountryControllerDelegate, UITextFieldDelegate, OTPViewDelegate {
     
+    enum PhoneValidationError: Error {
+        case InvalidPhoneNumber
+    }
 
     @IBOutlet var loginOtpView: UIView!
     @IBOutlet var searchButton: AsyncButton!
-    @IBOutlet var inputField: UITextField!
-    @IBOutlet var phoneCountryTextInput: UITextField!
-    @IBOutlet var phoneCountryIcon: UIImageView!
+    @IBOutlet var inputField: PhoneNumberTextField!
     
     @IBOutlet var errorLabel: UILabel!
     
@@ -17,12 +19,14 @@ class ComoLoginByPhoneController : UIViewController, PhoneCountryControllerDeleg
     
     var phoneCountry = PhoneCountryEnum.spain.country
     
-    
     override func viewDidLoad() {
         searchButton.round(4)
+        searchButton.isEnabled = false
         errorLabel.text = ""
         loginOtpView.isHidden = true
         inputField.delegate = self
+        inputField.withFlag = true
+        inputField.withDefaultPickerUI = true
         phoneCountrySelector(countrySelected: phoneCountry)
     }
     
@@ -30,44 +34,20 @@ class ComoLoginByPhoneController : UIViewController, PhoneCountryControllerDeleg
         
         errorLabel.text = ""
         
-        guard (inputField.text?.count ?? 0) > 0 else {
+        guard inputField.isValidNumber else {
+            searchButton.isEnabled = false
             return inputField.shake()
         }
                 
         sendAuthCode()
     }
     
-    //So the country text field can't be edited manually
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool{
-        if textField == inputField { return true }
-        onSelectCountryPressed()
-        return false
-    }
-    
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if textField != inputField { return true }
-        if string.isEmpty { return true }
-        return string.rangeOfCharacter(from: NSCharacterSet.decimalDigits) != nil
-    }
-    
-    @objc func onSelectCountryPressed(){
-        let sb = UIStoryboard(name: "Como", bundle: Bundle.module)
-        let vc = sb.instantiateViewController(withIdentifier: "phoneCountry") as! PhoneCountryController
-        
-        vc.delegate = self
-        vc.selectedCountry = phoneCountry
-        
-        modalPresentationStyle = .popover
-        popoverPresentationController?.permittedArrowDirections = .any
-        popoverPresentationController?.sourceView = phoneCountryTextInput
-        popoverPresentationController?.sourceRect = phoneCountryTextInput.bounds
-        
-        present(vc, animated:true)
+    @IBAction func textFieldDidChange(_ sender: Any) {
+        searchButton.isEnabled = inputField.isValidNumber
     }
     
     func phoneCountrySelector(countrySelected: PhoneCountry) {
         phoneCountry = countrySelected
-        phoneCountryTextInput.text = "\(phoneCountry.flag) \(phoneCountry.prefix)"
     }
     
     var phone:String {
@@ -78,8 +58,10 @@ class ComoLoginByPhoneController : UIViewController, PhoneCountryControllerDeleg
         Task {
             do {
                 searchButton.animateProgress()
+                guard let phone = inputField.phoneNumber else { throw PhoneValidationError.InvalidPhoneNumber }
+                let completePhone = "\(phone.countryCode)\(phone.nationalNumber)".replace("+", "").replace(" ", "").trim()
                 try await Como.shared.sendIdentificationCode(
-                    customer: Como.Customer(phoneNumber:phone)
+                    customer: Como.Customer(phoneNumber:completePhone)
                 )
                 await MainActor.run {
                     searchButton.animateSuccess()
@@ -97,9 +79,7 @@ class ComoLoginByPhoneController : UIViewController, PhoneCountryControllerDeleg
     private func onCodeSent(){
         loginOtpView.isHidden = false
         searchButton.isHidden = true
-        phoneCountryTextInput.isHidden = true
         inputField.isHidden = true
-        phoneCountryIcon.isHidden = true
         loginOtpView.subviews.first?.subviews.first {
             $0 is OTPView
         }?.becomeFirstResponder()
@@ -108,9 +88,7 @@ class ComoLoginByPhoneController : UIViewController, PhoneCountryControllerDeleg
     private func resetView(){
         loginOtpView.isHidden = true
         searchButton.isHidden = false
-        phoneCountryTextInput.isHidden = false
         inputField.isHidden = false
-        phoneCountryIcon.isHidden = false
         searchButton.reset()
     }
     
@@ -138,6 +116,9 @@ class ComoLoginByPhoneController : UIViewController, PhoneCountryControllerDeleg
     }
     
     private func onError(_ error:Error, asOtp:Bool = false){
+        if let error = error as? PhoneValidationError {
+            return errorLabel.text = "Número de teléfono inválido"
+        }
         if "\(error)".contains("4001012") && !asOtp { //Customer not found
             return askToRegister()
         }
