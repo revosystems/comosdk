@@ -914,75 +914,6 @@
             </objects>
             <point key="canvasLocation" x="992" y="975"/>
         </scene>
-        <!--Phone Country Controller-->
-        <scene sceneID="h5j-87-Mfd">
-            <objects>
-                <tableViewController storyboardIdentifier="phoneCountry" id="Us7-L3-8WF" customClass="PhoneCountryController" customModule="ComoSdk" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="8EN-7K-Mhj">
-                        <rect key="frame" x="0.0" y="0.0" width="324" height="300"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" id="TFO-Nb-vfA">
-                            <rect key="frame" x="0.0" y="0.0" width="324" height="44"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <textInputTraits key="textInputTraits"/>
-                            <connections>
-                                <outlet property="delegate" destination="Us7-L3-8WF" id="TJe-h1-UwM"/>
-                            </connections>
-                        </searchBar>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="IZe-7t-qgw">
-                                <rect key="frame" x="0.0" y="94" width="324" height="43.666667938232422"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="IZe-7t-qgw" id="C0Y-nL-MKv">
-                                    <rect key="frame" x="0.0" y="0.0" width="324" height="43.666667938232422"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="100" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🇯🇵 Country" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yYT-MN-iad">
-                                            <rect key="frame" x="27.000000000000007" y="13.333333333333336" width="85.666666666666686" height="17"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="17" id="BJX-tU-oO9"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" name="text-primary"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+34" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="01b-op-weM">
-                                            <rect key="frame" x="246.66666666666666" y="13.333333333333336" width="29.333333333333343" height="17"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="17" id="WGH-CP-Dpl"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" systemColor="secondaryLabelColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="yYT-MN-iad" firstAttribute="leading" secondItem="C0Y-nL-MKv" secondAttribute="leadingMargin" constant="7" id="BEI-dp-ifm"/>
-                                        <constraint firstItem="01b-op-weM" firstAttribute="centerY" secondItem="C0Y-nL-MKv" secondAttribute="centerY" id="cVF-2O-l58"/>
-                                        <constraint firstItem="yYT-MN-iad" firstAttribute="centerY" secondItem="C0Y-nL-MKv" secondAttribute="centerY" id="rDj-xc-LZ3"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="01b-op-weM" secondAttribute="trailing" constant="48" id="Eub-vA-5h0"/>
-                                </constraints>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="Us7-L3-8WF" id="Fdg-9e-rRc"/>
-                            <outlet property="delegate" destination="Us7-L3-8WF" id="y46-uY-gJi"/>
-                        </connections>
-                    </tableView>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="324" height="300"/>
-                    <connections>
-                        <outlet property="searchBar" destination="TFO-Nb-vfA" id="YFV-NG-Rbh"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="pAW-ER-X0o" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="389" y="967"/>
-        </scene>
         <!--Como Login By Qr Code Controller-->
         <scene sceneID="mPR-hJ-mHo">
             <objects>
@@ -1144,13 +1075,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="284" height="281"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Intruduce un teléfono" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ar2-K1-CrA">
-                                <rect key="frame" x="101" y="20" width="171" height="34"/>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Intruduce un teléfono" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ar2-K1-CrA" customClass="PhoneNumberTextField" customModule="PhoneNumberKit">
+                                <rect key="frame" x="12" y="20" width="260" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="textColor" name="text-primary"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits" keyboardType="phonePad" textContentType="tel"/>
                                 <connections>
+                                    <action selector="textFieldDidChange:" destination="tam-Oo-Vf1" eventType="editingChanged" id="pw9-4M-DcV"/>
                                     <outlet property="delegate" destination="tam-Oo-Vf1" id="DkS-nH-wLr"/>
                                 </connections>
                             </textField>
@@ -1175,22 +1107,6 @@
                                 <color key="textColor" name="text-primary"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="🇪🇸 +34" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Thx-se-YcM">
-                                <rect key="frame" x="12" y="20" width="81" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.92941176469999998" green="0.92156862750000001" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="textColor" name="text-primary"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="tam-Oo-Vf1" id="TRy-6U-fg3"/>
-                                </connections>
-                            </textField>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="chevron.up.chevron.down" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="q7B-ty-o53">
-                                <rect key="frame" x="74" y="31" width="13" height="13"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="tintColor" name="text-primary"/>
-                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="oea-WW-pBJ"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1198,14 +1114,12 @@
                     <connections>
                         <outlet property="button" destination="jef-gf-004" id="GFQ-ej-0ZC"/>
                         <outlet property="errorLabel" destination="GY5-sL-mo6" id="LsM-fw-jZm"/>
-                        <outlet property="phoneCountryIcon" destination="q7B-ty-o53" id="c2b-aa-se6"/>
-                        <outlet property="phoneCountryInput" destination="Thx-se-YcM" id="sWU-Tm-Cn8"/>
                         <outlet property="textField" destination="Ar2-K1-CrA" id="j6j-b7-UtM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fkc-FM-Qam" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="927" y="-761"/>
+            <point key="canvasLocation" x="926.71755725190837" y="-761.61971830985919"/>
         </scene>
         <!--Como Controller LoginOTP Controller-->
         <scene sceneID="yiJ-Nr-gT5">
@@ -1278,7 +1192,6 @@
     <resources>
         <image name="bolt.circle.fill" catalog="system" width="128" height="123"/>
         <image name="checkmark.circle.fill" catalog="system" width="128" height="123"/>
-        <image name="chevron.up.chevron.down" catalog="system" width="109" height="128"/>
         <image name="face.dashed" catalog="system" width="128" height="123"/>
         <image name="lock.shield.fill" catalog="system" width="121" height="128"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
@@ -1295,12 +1208,6 @@
         <namedColor name="text-secondary">
             <color red="0.44705882352941179" green="0.44705882352941179" blue="0.44705882352941179" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="secondaryLabelColor">
-            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="systemGreenColor">
             <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

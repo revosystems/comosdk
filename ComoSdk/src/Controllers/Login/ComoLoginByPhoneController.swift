@@ -3,7 +3,7 @@ import RevoUIComponents
 import RevoFoundation
 import PhoneNumberKit
 
-class ComoLoginByPhoneController : UIViewController, PhoneCountryControllerDelegate, UITextFieldDelegate, OTPViewDelegate {
+class ComoLoginByPhoneController : UIViewController, OTPViewDelegate {
     
     enum PhoneValidationError: Error {
         case InvalidPhoneNumber
@@ -17,17 +17,13 @@ class ComoLoginByPhoneController : UIViewController, PhoneCountryControllerDeleg
     
     weak var delegate:ComoLoginDelegate!
     
-    var phoneCountry = PhoneCountryEnum.spain.country
-    
     override func viewDidLoad() {
         searchButton.round(4)
         searchButton.isEnabled = false
         errorLabel.text = ""
         loginOtpView.isHidden = true
-        inputField.delegate = self
         inputField.withFlag = true
         inputField.withDefaultPickerUI = true
-        phoneCountrySelector(countrySelected: phoneCountry)
     }
     
     @IBAction func onSearchPressed(_ sender:Any){
@@ -46,22 +42,18 @@ class ComoLoginByPhoneController : UIViewController, PhoneCountryControllerDeleg
         searchButton.isEnabled = inputField.isValidNumber
     }
     
-    func phoneCountrySelector(countrySelected: PhoneCountry) {
-        phoneCountry = countrySelected
-    }
-    
-    var phone:String {
-        (phoneCountry.prefix + inputField.text!).replace("+", "").trim()
+    var phone:String? {
+        guard let validInputPhone = inputField.phoneNumber else { return nil }
+        return "\(validInputPhone.countryCode)\(validInputPhone.nationalNumber)".replace("+", "").replace(" ", "").trim()
     }
     
     func sendAuthCode(){
         Task {
             do {
                 searchButton.animateProgress()
-                guard let phone = inputField.phoneNumber else { throw PhoneValidationError.InvalidPhoneNumber }
-                let completePhone = "\(phone.countryCode)\(phone.nationalNumber)".replace("+", "").replace(" ", "").trim()
+                guard let phone else { throw PhoneValidationError.InvalidPhoneNumber }
                 try await Como.shared.sendIdentificationCode(
-                    customer: Como.Customer(phoneNumber:completePhone)
+                    customer: Como.Customer(phoneNumber:phone)
                 )
                 await MainActor.run {
                     searchButton.animateSuccess()
@@ -130,6 +122,7 @@ class ComoLoginByPhoneController : UIViewController, PhoneCountryControllerDeleg
             if case .ok = await Alert(Como.trans("como_wantToRegister"), message:Como.trans("como_wantToRegisterDesc"), cancelText: Como.trans("como_no")).show() {
                 do {
                     searchButton.animateProgress()
+                    guard let phone else { throw PhoneValidationError.InvalidPhoneNumber }
                     let customer = Como.Customer(phoneNumber: phone)
                                   try await Como.shared.quickRegister(customer: customer)
                     let details = try await Como.shared.getMemberDetails(customer: customer, purchase: Como.shared.currentSale!.purchase)
