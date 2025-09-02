@@ -2,75 +2,24 @@ import UIKit
 import RevoUIComponents
 import RevoFoundation
 
-class ComoRegisterByPhoneController : UIViewController, PhoneCountryControllerDelegate, UITextFieldDelegate, OTPViewDelegate {
-        
-    @IBOutlet var errorLabel: UILabel!
-    @IBOutlet var button: AsyncButton!
-    @IBOutlet var textField: UITextField!
-    @IBOutlet var phoneCountryInput: UITextField!
-    @IBOutlet var phoneCountryIcon: UIImageView!
+class ComoRegisterByPhoneController : ComoPhoneController {
     
-    weak var delegate:ComoRegisterDelegate?
- 
-    private var phoneCountry:PhoneCountry = PhoneCountry.spain
+    weak var delegate: ComoRegisterDelegate!
     
-    override func viewDidLoad() {
-        errorLabel.text = ""
-        button.round(4)
-        phoneCountrySelector(countrySelected: phoneCountry)
+    override var buttonTitleKey: String { "como_register_customer" }
+    
+    override func performAction() {
+        performRegistration()
     }
     
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool{
-        if textField === phoneCountryInput {
-            onSelectCountryPressed()
-            return false
-        }
-        return true
-    }
-    
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if string.isEmpty { return true }
-        return string.rangeOfCharacter(from: NSCharacterSet.decimalDigits) != nil
-    }
-    
-    @objc func onSelectCountryPressed(){
-        let sb = UIStoryboard(name: "Como", bundle: Bundle.module)
-        let vc = sb.instantiateViewController(withIdentifier: "phoneCountry") as! PhoneCountryController
-        
-        vc.delegate = self
-        vc.selectedCountry = phoneCountry
-        
-        modalPresentationStyle = .popover
-        popoverPresentationController?.permittedArrowDirections = .any
-        popoverPresentationController?.sourceView = phoneCountryInput
-        popoverPresentationController?.sourceRect = phoneCountryInput.bounds
-        
-        present(vc, animated:true)
-    }
-    
-    func phoneCountrySelector(countrySelected: PhoneCountry) {
-        phoneCountry = countrySelected
-        phoneCountryInput.text = "\(phoneCountry.flag) \(phoneCountry.prefix)"
-    }
-    
-    var phone:String {
-        "\(phoneCountry.prefix)\(textField.text!)".replace("+", "").trim()
-    }
-    
-    
-    @IBAction func onButtonPressed(_ sender: Any) {
-        errorLabel.text = ""
-        
-        guard (textField.text?.count ?? 0) > 4 else {
-            return textField.shake()
-        }
-        
+    private func performRegistration() {
         Task {
             do {
                 button.animateProgress()
+                guard let phone else { throw PhoneValidationError.InvalidPhoneNumber }
                 let customer = Como.Customer(phoneNumber: phone)
-                let _        = try await Como.shared.quickRegister(customer: customer)
-                let details  = try await Como.shared.getMemberDetails(
+                let _ = try await Como.shared.quickRegister(customer: customer)
+                let details = try await Como.shared.getMemberDetails(
                     customer: customer,
                     purchase: Como.shared.currentSale!.purchase
                 )
@@ -80,20 +29,11 @@ class ComoRegisterByPhoneController : UIViewController, PhoneCountryControllerDe
                 }
             } catch {
                 await MainActor.run {
+                    textField.shake()
                     button.animateFailed()
-                    errorLabel.text = Como.trans("como_\(error)")
+                    showError(Como.trans("como_\(error)"))
                 }
             }
         }
-    }
-    
-    func otp(codeEntered code: String) {
-        
-    }
-    
-
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        (segue.destination as? ComoControllerLoginOTPController)?.delegate = self
     }
 }
