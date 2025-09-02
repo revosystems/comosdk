@@ -1071,7 +1071,7 @@
             <objects>
                 <viewController id="tam-Oo-Vf1" customClass="ComoRegisterByPhoneController" customModule="ComoSdk" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lXk-qR-kdp">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="284" height="281"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Intruduce un teléfono" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ar2-K1-CrA" customClass="PhoneNumberTextField" customModule="PhoneNumberKit">
@@ -1080,6 +1080,9 @@
                                 <color key="textColor" name="text-primary"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits" keyboardType="phonePad" textContentType="tel"/>
+                                <connections>
+                                    <action selector="textFieldDidChange:" destination="tam-Oo-Vf1" eventType="editingChanged" id="aXz-VC-t6Y"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jef-gf-004" customClass="AsyncButton" customModule="RevoUIComponents">
                                 <rect key="frame" x="12" y="69" width="260" height="35"/>
@@ -1089,6 +1092,9 @@
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Registrar cliente"/>
+                                <connections>
+                                    <action selector="onButtonPressed:" destination="tam-Oo-Vf1" eventType="touchUpInside" id="Xyr-B6-Xdf"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GY5-sL-mo6">
                                 <rect key="frame" x="12" y="122" width="260" height="39"/>
@@ -1199,7 +1205,7 @@
             <color red="0.44705882352941179" green="0.44705882352941179" blue="0.44705882352941179" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemGreenColor">
-            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
