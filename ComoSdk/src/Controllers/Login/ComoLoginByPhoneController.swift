@@ -1,89 +1,61 @@
 import UIKit
 import RevoUIComponents
 import RevoFoundation
-import PhoneNumberKit
 
-class ComoLoginByPhoneController : UIViewController, OTPViewDelegate {
+class ComoLoginByPhoneController : ComoPhoneController, OTPViewDelegate {
     
-    enum PhoneValidationError: Error {
-        case InvalidPhoneNumber
-    }
-
     @IBOutlet var loginOtpView: UIView!
-    @IBOutlet var searchButton: AsyncButton!
-    @IBOutlet var inputField: PhoneNumberTextField!
     
-    @IBOutlet var errorLabel: UILabel!
+    weak var delegate: ComoLoginDelegate!
     
-    weak var delegate:ComoLoginDelegate!
+    override var buttonTitleKey: String { "como_search_customer" }
     
-    override func viewDidLoad() {
-        searchButton.round(4)
-        searchButton.isEnabled = false
-        errorLabel.text = ""
+    override func setupController() {
         loginOtpView.isHidden = true
-        inputField.withFlag = true
-        inputField.withDefaultPickerUI = true
     }
     
-    @IBAction func onSearchPressed(_ sender:Any){
-        
-        errorLabel.text = ""
-        
-        guard inputField.isValidNumber else {
-            searchButton.isEnabled = false
-            return inputField.shake()
-        }
-                
+    override func performAction() {
         sendAuthCode()
     }
     
-    @IBAction func textFieldDidChange(_ sender: Any) {
-        searchButton.isEnabled = inputField.isValidNumber
-    }
-    
-    var phone:String? {
-        guard let validInputPhone = inputField.phoneNumber else { return nil }
-        return "\(validInputPhone.countryCode)\(validInputPhone.nationalNumber)".replace("+", "").replace(" ", "").trim()
-    }
-    
-    func sendAuthCode(){
+    private func sendAuthCode() {
         Task {
             do {
-                searchButton.animateProgress()
+                button.animateProgress()
                 guard let phone else { throw PhoneValidationError.InvalidPhoneNumber }
                 try await Como.shared.sendIdentificationCode(
-                    customer: Como.Customer(phoneNumber:phone)
+                    customer: Como.Customer(phoneNumber: phone)
                 )
                 await MainActor.run {
-                    searchButton.animateSuccess()
+                    button.animateSuccess()
                     onCodeSent()
                 }
             } catch {
                 await MainActor.run {
-                    searchButton.animateFailed()
+                    button.animateFailed()
                     onError(error)
                 }
             }
         }
     }
     
-    private func onCodeSent(){
+    private func onCodeSent() {
         loginOtpView.isHidden = false
-        searchButton.isHidden = true
-        inputField.isHidden = true
+        button.isHidden = true
+        textField.isHidden = true
         loginOtpView.subviews.first?.subviews.first {
             $0 is OTPView
         }?.becomeFirstResponder()
     }
     
-    private func resetView(){
+    private func resetView() {
         loginOtpView.isHidden = true
-        searchButton.isHidden = false
-        inputField.isHidden = false
-        searchButton.reset()
+        button.isHidden = false
+        textField.isHidden = false
+        button.reset()
     }
     
+    // MARK: - OTP Delegate
     func otp(codeEntered code: String) {
         Task {
             do {
@@ -100,39 +72,40 @@ class ComoLoginByPhoneController : UIViewController, OTPViewDelegate {
             } catch {
                 await MainActor.run {
                     loginOtpView.shake()
-                    searchButton.animateFailed()
+                    button.animateFailed()
                     onError(error, asOtp: true)
                 }
             }
         }
     }
     
-    private func onError(_ error:Error, asOtp:Bool = false){
+    private func onError(_ error: Error, asOtp: Bool = false) {
         if let error = error as? PhoneValidationError {
             return errorLabel.text = "Número de teléfono inválido"
         }
         if "\(error)".contains("4001012") && !asOtp { //Customer not found
             return askToRegister()
         }
-        errorLabel.text = Como.trans("como_\(error)")
+        
+        showError(error)
     }
     
-    private func askToRegister(){
+    private func askToRegister() {
         Task {
             if case .ok = await Alert(Como.trans("como_wantToRegister"), message:Como.trans("como_wantToRegisterDesc"), cancelText: Como.trans("como_no")).show() {
                 do {
-                    searchButton.animateProgress()
+                    button.animateProgress()
                     guard let phone else { throw PhoneValidationError.InvalidPhoneNumber }
                     let customer = Como.Customer(phoneNumber: phone)
-                                  try await Como.shared.quickRegister(customer: customer)
+                    try await Como.shared.quickRegister(customer: customer)
                     let details = try await Como.shared.getMemberDetails(customer: customer, purchase: Como.shared.currentSale!.purchase)
                     
                     Como.shared.currentSale?.customer = details.membership.customer
                     
-                    searchButton.animateSuccess()
+                    button.animateSuccess()
                     delegate?.como(onLoggedIn: details)
                 } catch {
-                    searchButton.animateFailed()
+                    button.animateFailed()
                     onError(error)
                 }
             }

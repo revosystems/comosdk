@@ -748,8 +748,7 @@
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Buscar cliente"/>
                                 <connections>
-                                    <action selector="onSearchPressed:" destination="B59-vr-848" eventType="touchUpInside" id="2No-5E-lbW"/>
-                                    <action selector="onSearchPressed:" destination="Rsb-cV-Tv4" eventType="touchUpInside" id="7u1-ga-vMY"/>
+                                    <action selector="onButtonPressed:" destination="Rsb-cV-Tv4" eventType="touchUpInside" id="7u1-ga-vMY"/>
                                 </connections>
                             </button>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qWT-nW-lGe">
@@ -776,10 +775,10 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="button" destination="hFf-sm-fFO" id="c1a-ZK-Bxt"/>
                         <outlet property="errorLabel" destination="cxD-ae-KWp" id="osf-t6-bP4"/>
-                        <outlet property="inputField" destination="gcy-Jf-hiJ" id="Osn-sb-kc8"/>
                         <outlet property="loginOtpView" destination="qWT-nW-lGe" id="5Za-pO-CH2"/>
-                        <outlet property="searchButton" destination="hFf-sm-fFO" id="c1a-ZK-Bxt"/>
+                        <outlet property="textField" destination="gcy-Jf-hiJ" id="Osn-sb-kc8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vmd-r0-QqG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1072,7 +1071,7 @@
             <objects>
                 <viewController id="tam-Oo-Vf1" customClass="ComoRegisterByPhoneController" customModule="ComoSdk" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lXk-qR-kdp">
-                        <rect key="frame" x="0.0" y="0.0" width="284" height="281"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Intruduce un teléfono" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ar2-K1-CrA" customClass="PhoneNumberTextField" customModule="PhoneNumberKit">
@@ -1081,10 +1080,6 @@
                                 <color key="textColor" name="text-primary"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits" keyboardType="phonePad" textContentType="tel"/>
-                                <connections>
-                                    <action selector="textFieldDidChange:" destination="tam-Oo-Vf1" eventType="editingChanged" id="pw9-4M-DcV"/>
-                                    <outlet property="delegate" destination="tam-Oo-Vf1" id="DkS-nH-wLr"/>
-                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jef-gf-004" customClass="AsyncButton" customModule="RevoUIComponents">
                                 <rect key="frame" x="12" y="69" width="260" height="35"/>
@@ -1094,11 +1089,6 @@
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Registrar cliente"/>
-                                <connections>
-                                    <action selector="onButtonPressed:" destination="tam-Oo-Vf1" eventType="touchUpInside" id="qf9-rg-iFw"/>
-                                    <action selector="onSearchPressed:" destination="Rsb-cV-Tv4" eventType="touchUpInside" id="Dhg-pg-fNo"/>
-                                    <action selector="onSearchPressed:" destination="B59-vr-848" eventType="touchUpInside" id="Y4J-Gz-24y"/>
-                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GY5-sL-mo6">
                                 <rect key="frame" x="12" y="122" width="260" height="39"/>
