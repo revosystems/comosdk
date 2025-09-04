@@ -103,7 +103,11 @@ public class Como {
             let redeemAssets:[RedeemAsset]
         }
         
-        let object = GetBenefits(customers: customers, purchase: purchase, redeemAssets:redeemAssets)
+        let singleFieldCustomers = customers.compactMap {
+            $0.singleIdentified()
+        }
+        
+        let object = GetBenefits(customers: singleFieldCustomers, purchase: purchase, redeemAssets:redeemAssets)
                       
         return try await api!.post("getBenefits?expand=discountByDiscount", object:object)
     }
@@ -115,6 +119,10 @@ public class Como {
      */
     public func payment(customer:Customer, purchase:Purchase, amount:Int, code:String? = nil) async throws -> PaymentResponse {
         
+        guard let singleIdentifiedCustomer = customer.singleIdentified() else {
+            throw Api.ResponseErrorCode.needCustomer
+        }
+        
         try validateInitialized()
         
         struct Payment : Codable {
@@ -124,7 +132,7 @@ public class Como {
             let amount:Int
         }
         
-        let object = Payment(customer: customer, purchase: purchase, verificationCode:code, amount:amount)
+        let object = Payment(customer: singleIdentifiedCustomer, purchase: purchase, verificationCode:code, amount:amount)
                       
         return try await api!.post("payment", object:object)
     }

@@ -50,6 +50,19 @@ extension Como {
         public var display: String {
             firstName ?? phoneNumber ?? email ?? appClientId ?? commonExtId ?? "--"
         }
+        
+        public func singleIdentified() -> Customer?{
+            if let commonExtId {
+                return Customer(commonExtId: commonExtId)
+            }
+            if let phoneNumber {
+                return Customer(phoneNumber: phoneNumber)
+            }
+            if let email{
+                return Customer(email: email)
+            }
+            return nil
+        }
     }
     
 }
