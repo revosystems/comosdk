@@ -41,10 +41,3 @@ class PhoneInput: PhoneNumberTextField {
         return (responder as? UIViewController)
     }
 }
-
-extension PhoneInput: CountryPrefixPickerDelegate {
-    public func didPickCountry(_ country: CountryCodePickerViewController.Country) {
-        countryCodePickerViewControllerDidPickCountry(country)
-    }
-}
-

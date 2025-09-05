@@ -2,20 +2,15 @@ import PhoneNumberKit
 import UIKit
 import SwiftUI
 
-@MainActor
-protocol CountryPrefixPickerDelegate: AnyObject {
-    func didPickCountry(_ country: CountryCodePickerViewController.Country)
-}
-
 class CountryPickerViewController: UIViewController {
-    weak var delegate: CountryPrefixPickerDelegate?
+    weak var delegate: CountryCodePickerDelegate?
     private var selectedCountry: CountryCodePickerViewController.Country?
     
     private var hostingController: UIHostingController<CountryPickerView>?
     
     private var utility: PhoneNumberUtility
     
-    init(currentRegion: String, utility: PhoneNumberUtility, delegate: CountryPrefixPickerDelegate? = nil) {
+    init(currentRegion: String, utility: PhoneNumberUtility, delegate: CountryCodePickerDelegate? = nil) {
         self.delegate = delegate
         self.utility = utility
         self.selectedCountry = CountryCodePickerViewController.Country(for: currentRegion, with: self.utility)
@@ -37,12 +32,7 @@ class CountryPickerViewController: UIViewController {
             set: { newValue in
                 self.selectedCountry = newValue
                 if let country = newValue {
-                    self.delegate?.didPickCountry(country)
-                    if self.navigationController != nil {
-                        self.navigationController?.popViewController(animated: true)
-                    } else {
-                        self.dismiss(animated: true)
-                    }
+                    self.delegate?.countryCodePickerViewControllerDidPickCountry(country)
                 }
             }
         ), utility: utility)

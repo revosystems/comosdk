@@ -62,7 +62,6 @@ struct CountryPickerView: View {
                                     isSelected: selectedCountry?.code == country.code
                                 ) {
                                     selectedCountry = country
-                                    //dismiss()
                                 }
                             }
                         }
