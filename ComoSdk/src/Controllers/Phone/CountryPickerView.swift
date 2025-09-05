@@ -1,6 +1,7 @@
 import SwiftUI
 import PhoneNumberKit
 
+@available(iOS 16.0, *)
 struct CountryPickerView: View {
     @State private var searchText = ""
     @State private var countries: [CountryCodePickerViewController.Country] = []
@@ -22,10 +23,9 @@ struct CountryPickerView: View {
     }
     
     var groupedCountries: [(String, [CountryCodePickerViewController.Country])] {
-        let grouped = Dictionary(grouping: filteredCountries) { country in
+        Dictionary(grouping: filteredCountries) { country in
             String(country.name.prefix(1)).uppercased()
-        }
-        return grouped.sorted { $0.key < $1.key }
+        }.sorted { $0.key < $1.key }
     }
     
     var sectionHeaders: [String] {
@@ -33,23 +33,7 @@ struct CountryPickerView: View {
     }
     
     var body: some View {
-        VStack(spacing: 0) {
-            // Always visible search bar
-            HStack {
-                Image(systemName: "magnifyingglass")
-                    .foregroundColor(.gray)
-                
-                TextField("Search Country Codes", text: $searchText)
-                    .textFieldStyle(PlainTextFieldStyle())
-            }
-            .padding(.horizontal, 16)
-            .padding(.vertical, 12)
-            .background(Color(.systemGray6))
-            .cornerRadius(10)
-            .padding(.horizontal, 16)
-            .padding(.top, 8)
-            
-            // Countries list with sections
+        NavigationStack {
             List {
                 ForEach(groupedCountries, id: \.0) { section in
                     Section(header: Text(section.0)
@@ -67,6 +51,7 @@ struct CountryPickerView: View {
                         }
                 }
             }
+            .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
             .listStyle(PlainListStyle())
         }
         .navigationTitle("Choose your country")
@@ -130,8 +115,12 @@ struct CountryRowView: View {
 
 #Preview {
     let utility = PhoneNumberUtility()
-    CountryPickerView(
-        selectedCountry: .constant(CountryCodePickerViewController.Country(for: "AD", with: utility)),
-        utility: utility
-    )
+    if #available(iOS 16.0, *) {
+        CountryPickerView(
+            selectedCountry: .constant(CountryCodePickerViewController.Country(for: "AD", with: utility)),
+            utility: utility
+        )
+    } else {
+        // Fallback on earlier versions
+    }
 }

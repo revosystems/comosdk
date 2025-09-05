@@ -20,17 +20,21 @@ class PhoneInput: PhoneNumberTextField {
     
     @objc func didPressPickerButton() {
         guard withCustomPickerUI else { return }
-        let vc = CountryPickerViewController(currentRegion: currentRegion, utility: utility, delegate: self)
+        let vc = getAppropriateVC()
         
-        // Always try to push onto navigation stack first
         if let nav = parentVC?.navigationController {
-            nav.pushViewController(vc, animated: true)
-        } else {
-            // Fallback to modal only if no navigation controller
-            let nav = UINavigationController(rootViewController: vc)
-            nav.modalPresentationStyle = .fullScreen
-            parentVC?.present(nav, animated: true)
+            return nav.pushViewController(vc, animated: true)
         }
+        let nav = UINavigationController(rootViewController: vc)
+        nav.modalPresentationStyle = .fullScreen
+        parentVC?.present(nav, animated: true)
+    }
+    
+    private func getAppropriateVC() -> UIViewController {
+        if #available(iOS 16.0, *) {
+            return CountryPickerViewController(currentRegion: currentRegion, utility: utility, delegate: self)
+        }
+        return CountryCodePickerViewController(utility: utility, options: withDefaultPickerUIOptions)
     }
     
     var parentVC: UIViewController? {

@@ -2,6 +2,7 @@ import PhoneNumberKit
 import UIKit
 import SwiftUI
 
+@available(iOS 16.0, *)
 class CountryPickerViewController: UIViewController {
     weak var delegate: CountryCodePickerDelegate?
     private var selectedCountry: CountryCodePickerViewController.Country?
@@ -31,8 +32,8 @@ class CountryPickerViewController: UIViewController {
             get: { self.selectedCountry },
             set: { newValue in
                 self.selectedCountry = newValue
-                if let country = newValue {
-                    self.delegate?.countryCodePickerViewControllerDidPickCountry(country)
+                if let newValue {
+                    self.delegate?.countryCodePickerViewControllerDidPickCountry(newValue)
                 }
             }
         ), utility: utility)
