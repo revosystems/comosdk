@@ -44,9 +44,8 @@ struct CountryPickerView: View {
                                 CountryRowView(
                                     country: country,
                                     isSelected: selectedCountry?.code == country.code
-                                ) {
-                                    selectedCountry = country
-                                }
+                                )
+                                .onTapGesture { selectedCountry = country }
                             }
                         }
                 }
@@ -72,43 +71,33 @@ struct CountryPickerView: View {
 struct CountryRowView: View {
     let country: CountryCodePickerViewController.Country
     let isSelected: Bool
-    let onTap: () -> Void
     
     var body: some View {
-        Button(action: onTap) {
-            HStack(spacing: 0) {
-                // Phone prefix - fixed width for alignment
-                Text(country.prefix)
-                    .font(.caption)
-                    .foregroundColor(.primary)
-                    .fontWeight(.light)
-                    .frame(width: 50, alignment: .trailing)
-                
-                // Flag - fixed width for alignment
-                Text(country.flag)
-                    .font(.title2)
-                    .frame(width: 30, alignment: .center)
-                
-                // Country name - takes remaining space
-                Text(country.name)
+        HStack(spacing: 0) {
+            Text(country.prefix)
+                .font(.caption)
+                .foregroundColor(.primary)
+                .fontWeight(.light)
+                .frame(width: 50, alignment: .trailing)
+            
+            Text(country.flag)
+                .font(.title2)
+                .frame(width: 30, alignment: .center)
+            
+            Text(country.name)
+                .font(.body)
+                .foregroundColor(.primary)
+                .frame(maxWidth: .infinity, alignment: .leading)
+            
+            if isSelected {
+                Image(systemName: "checkmark")
                     .font(.body)
-                    .foregroundColor(.primary)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                
-                // Selection indicator
-                if isSelected {
-                    Image(systemName: "checkmark")
-                        .font(.body)
-                        .foregroundColor(.blue)
-                }
-                
-                Spacer()
+                    .foregroundColor(.blue)
             }
-            .padding(.vertical, 4)
-            .padding(.horizontal, 16)
-            .contentShape(Rectangle())
         }
-        .buttonStyle(PlainButtonStyle())
+        .padding(.vertical, 4)
+        .padding(.horizontal, 16)
+        .contentShape(Rectangle())
     }
 }
 
@@ -120,7 +109,5 @@ struct CountryRowView: View {
             selectedCountry: .constant(CountryCodePickerViewController.Country(for: "AD", with: utility)),
             utility: utility
         )
-    } else {
-        // Fallback on earlier versions
     }
 }
