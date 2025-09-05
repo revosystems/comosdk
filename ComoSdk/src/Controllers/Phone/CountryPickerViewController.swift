@@ -45,7 +45,7 @@ class CountryPickerViewController: UIViewController {
                     }
                 }
             }
-        ))
+        ), utility: utility)
         
         hostingController = UIHostingController(rootView: swiftUIView)
         guard let hostingController else { return }

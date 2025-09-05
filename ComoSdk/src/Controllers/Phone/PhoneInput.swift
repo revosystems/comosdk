@@ -44,11 +44,7 @@ class PhoneInput: PhoneNumberTextField {
 
 extension PhoneInput: CountryPrefixPickerDelegate {
     public func didPickCountry(_ country: CountryCodePickerViewController.Country) {
-        text = isEditing ? "+" + country.prefix : ""
-        defaultRegion = country.code
-        partialFormatter.defaultRegion = country.code
-        updateFlag()
-        updatePlaceholder()
+        countryCodePickerViewControllerDidPickCountry(country)
     }
 }
 

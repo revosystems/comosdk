@@ -6,21 +6,18 @@ struct CountryPickerView: View {
     @State private var countries: [CountryCodePickerViewController.Country] = []
     @Binding var selectedCountry: CountryCodePickerViewController.Country?
     
-    private let utility = PhoneNumberUtility()
+    private let utility: PhoneNumberUtility
     
-    init(selectedCountry: Binding<CountryCodePickerViewController.Country?>) {
+    init(selectedCountry: Binding<CountryCodePickerViewController.Country?>, utility: PhoneNumberUtility) {
         self._selectedCountry = selectedCountry
+        self.utility = utility
     }
     
     var filteredCountries: [CountryCodePickerViewController.Country] {
-        if searchText.isEmpty {
-            return countries
-        } else {
-            return countries.filter { country in
-                country.name.localizedCaseInsensitiveContains(searchText) ||
-                country.code.localizedCaseInsensitiveContains(searchText) ||
-                country.prefix.localizedCaseInsensitiveContains(searchText)
-            }
+        searchText.isEmpty ? countries : countries.filter { country in
+            country.name.localizedCaseInsensitiveContains(searchText) ||
+            country.code.localizedCaseInsensitiveContains(searchText) ||
+            country.prefix.localizedCaseInsensitiveContains(searchText)
         }
     }
     
@@ -81,8 +78,9 @@ struct CountryPickerView: View {
     }
     
     private func loadCountries() {
-        let countryCodes = utility.allCountries()
-        countries = countryCodes.compactMap { CountryCodePickerViewController.Country(for: $0, with: utility) }
+        countries = utility
+            .allCountries()
+            .compactMap { CountryCodePickerViewController.Country(for: $0, with: utility) }
             .sorted { $0.name < $1.name }
     }
 }
@@ -132,5 +130,9 @@ struct CountryRowView: View {
 
 
 #Preview {
-    CountryPickerView(selectedCountry: .constant(CountryCodePickerViewController.Country(for: "AD", with: PhoneNumberUtility())))
+    let utility = PhoneNumberUtility()
+    CountryPickerView(
+        selectedCountry: .constant(CountryCodePickerViewController.Country(for: "AD", with: utility)),
+        utility: utility
+    )
 }
