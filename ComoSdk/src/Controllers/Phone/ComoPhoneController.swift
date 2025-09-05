@@ -11,7 +11,7 @@ class ComoPhoneController : UIViewController {
     
     @IBOutlet var errorLabel: UILabel!
     @IBOutlet var button: AsyncButton!
-    @IBOutlet var textField: PhoneNumberTextField!
+    @IBOutlet var textField: PhoneInput!
     
     var buttonTitleKey: String { "search" }
     
@@ -22,8 +22,10 @@ class ComoPhoneController : UIViewController {
         button.isEnabled = false
         button.setTitle(Como.trans(buttonTitleKey), for: .normal)
         
+        textField.withExamplePlaceholder = true
         textField.withFlag = true
-        textField.withDefaultPickerUI = true
+        textField.withPrefix = true
+        textField.withCustomPickerUI = true
         
         setupController()
     }
