@@ -38,8 +38,7 @@ struct CountryPickerView: View {
                 ForEach(groupedCountries, id: \.0) { section in
                     Section(header: Text(section.0)
                         .font(.caption)
-                        .foregroundColor(.gray)
-                        .textCase(nil)) {
+                        .foregroundColor(.gray)) {
                             ForEach(section.1, id: \.code) { country in
                                 CountryRowView(
                                     country: country,
@@ -50,11 +49,12 @@ struct CountryPickerView: View {
                         }
                 }
             }
-            .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
+            // The row width, but adds the empty space of the navigation bar
+            //.searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
+            
+            .searchable(text: $searchText, placement: .automatic, prompt: Como.trans("search"))
             .listStyle(PlainListStyle())
         }
-        .navigationTitle("Choose your country")
-        .navigationBarTitleDisplayMode(.inline)
         .onAppear {
             loadCountries()
         }
@@ -63,7 +63,7 @@ struct CountryPickerView: View {
     private func loadCountries() {
         countries = utility
             .allCountries()
-            .compactMap { CountryCodePickerViewController.Country(for: $0, with: utility) }
+            .compactMap { CountryCodePickerViewController.Country(for: $0, with: utility, translated: true) }
             .sorted { $0.name < $1.name }
     }
 }
@@ -91,7 +91,7 @@ struct CountryRowView: View {
             
             if isSelected {
                 Image(systemName: "checkmark")
-                    .font(.body)
+                    .font(.headline)
                     .foregroundColor(.blue)
             }
         }
@@ -101,12 +101,22 @@ struct CountryRowView: View {
     }
 }
 
+extension CountryCodePickerViewController.Country {
+    init?(for countryCode: String, with utility: PhoneNumberUtility, translated: Bool) {
+        self.init(for: countryCode, with: utility)
+        if translated, case let locale = Locale(identifier: Como.language) as NSLocale,
+            let translatedName = locale.localizedString(forCountryCode: countryCode) as? String {
+            self.name = translatedName
+        }
+    }
+}
+
 
 #Preview {
     let utility = PhoneNumberUtility()
     if #available(iOS 16.0, *) {
         CountryPickerView(
-            selectedCountry: .constant(CountryCodePickerViewController.Country(for: "AD", with: utility)),
+            selectedCountry: .constant(CountryCodePickerViewController.Country(for: "AD", with: utility, translated: true)),
             utility: utility
         )
     }

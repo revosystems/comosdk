@@ -24,6 +24,7 @@ class CountryPickerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = Como.trans("como_select_phone_prefix")
         setupSwiftUIView()
     }
     

@@ -58,7 +58,7 @@ class ComoPhoneController : UIViewController {
     
     func showError(_ error: Error) {
         if let error = error as? PhoneValidationError {
-            errorLabel.text = "Número de teléfono inválido"
+            errorLabel.text = Como.trans("como_invalid_phone_number")
             return
         }
         

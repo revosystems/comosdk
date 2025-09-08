@@ -176,14 +176,17 @@
                                     <constraint firstAttribute="width" constant="240" id="eRK-vo-0rE"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¿Tu cliente no tiene cuenta?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3SP-AY-6oU">
-                                <rect key="frame" x="101" y="702" width="191" height="18"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Register label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3SP-AY-6oU">
+                                <rect key="frame" x="150" y="702" width="93" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" name="text-secondary"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="td8-tO-6wd">
-                                <rect key="frame" x="51" y="132.33333333333334" width="291" height="32"/>
+                                <rect key="frame" x="54.666666666666657" y="132.33333333333334" width="284" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="284" id="Rna-ml-IyF"/>
+                                </constraints>
                                 <segments>
                                     <segment title="Teléfono"/>
                                     <segment title="Email"/>
@@ -228,6 +231,7 @@
                         <outlet property="loginByQRCode" destination="JcV-qn-AnU" id="ZxI-eG-C0w"/>
                         <outlet property="loginOtpView" destination="qWT-nW-lGe" id="qZS-Fx-75A"/>
                         <outlet property="registerButton" destination="UVa-Ar-kZq" id="vuE-D4-TMa"/>
+                        <outlet property="registerLabel" destination="3SP-AY-6oU" id="i97-j8-2u1"/>
                         <outlet property="segmented" destination="td8-tO-6wd" id="eHN-gi-40x"/>
                         <outlet property="welcomeLabel" destination="Qog-5E-jRM" id="Xz9-CY-d2B"/>
                     </connections>
@@ -1205,7 +1209,7 @@
             <color red="0.44705882352941179" green="0.44705882352941179" blue="0.44705882352941179" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemGreenColor">
-            <color red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
