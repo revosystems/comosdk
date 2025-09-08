@@ -51,7 +51,7 @@ struct CountryPickerView: View {
                 }
             }
             .searchable(text: $searchText, placement: .automatic, prompt: Como.trans("search"))
-            .listStyle(PlainListStyle())
+            .listStyle(GroupedListStyle())
         }
         .onAppear {
             loadCountries()
