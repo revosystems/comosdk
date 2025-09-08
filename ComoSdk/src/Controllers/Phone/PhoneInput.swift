@@ -34,7 +34,9 @@ class PhoneInput: PhoneNumberTextField {
         if #available(iOS 16.0, *) {
             return CountryPickerViewController(currentRegion: currentRegion, utility: utility, delegate: self)
         }
-        return CountryCodePickerViewController(utility: utility, options: withDefaultPickerUIOptions)
+        let vc = CountryCodePickerViewController(utility: utility, options: withDefaultPickerUIOptions)
+        vc.delegate = self
+        return vc
     }
     
     var parentVC: UIViewController? {

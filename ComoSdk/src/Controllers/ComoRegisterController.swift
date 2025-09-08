@@ -48,6 +48,7 @@ class ComoRegisterController : UIViewController, ComoRegisterDelegate {
     
     func translate() {
         titleLabel.text = Como.trans("como_register_your_customer")
+        navigationItem.backButtonTitle = Como.trans("como_cancel")
         translateSegmented()
     }
     

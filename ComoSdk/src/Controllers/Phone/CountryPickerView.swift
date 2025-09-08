@@ -15,10 +15,11 @@ struct CountryPickerView: View {
     }
     
     var filteredCountries: [CountryCodePickerViewController.Country] {
-        searchText.isEmpty ? countries : countries.filter { country in
-            country.name.localizedCaseInsensitiveContains(searchText) ||
-            country.code.localizedCaseInsensitiveContains(searchText) ||
-            country.prefix.localizedCaseInsensitiveContains(searchText)
+        let search = searchText.simplified.trim()
+        return searchText.isEmpty ? countries : countries.filter { country in
+            country.name.matchesSearch(search) ||
+            country.code.matchesSearch(search) ||
+            country.prefix.matchesSearch(search)
         }
     }
     
@@ -49,9 +50,6 @@ struct CountryPickerView: View {
                         }
                 }
             }
-            // The row width, but adds the empty space of the navigation bar
-            //.searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
-            
             .searchable(text: $searchText, placement: .automatic, prompt: Como.trans("search"))
             .listStyle(PlainListStyle())
         }
@@ -111,6 +109,15 @@ extension CountryCodePickerViewController.Country {
     }
 }
 
+extension String {
+    var simplified: String {
+        folding(options: [.diacriticInsensitive, .widthInsensitive, .caseInsensitive], locale: nil)
+    }
+    
+    func matchesSearch(_ searchText: String) -> Bool {
+        simplified.contains(searchText)
+    }
+}
 
 #Preview {
     let utility = PhoneNumberUtility()
