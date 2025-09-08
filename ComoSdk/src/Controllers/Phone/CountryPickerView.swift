@@ -4,14 +4,15 @@ import PhoneNumberKit
 @available(iOS 16.0, *)
 struct CountryPickerView: View {
     @State private var searchText = ""
-    @State private var countries: [CountryCodePickerViewController.Country] = []
     @Binding var selectedCountry: CountryCodePickerViewController.Country?
     
-    private let utility: PhoneNumberUtility
+    private let countries: [CountryCodePickerViewController.Country]
     
     init(selectedCountry: Binding<CountryCodePickerViewController.Country?>, utility: PhoneNumberUtility) {
         self._selectedCountry = selectedCountry
-        self.utility = utility
+        self.countries = utility.allCountries()
+            .compactMap { CountryCodePickerViewController.Country(for: $0, with: utility, translated: true) }
+            .sorted { $0.name < $1.name }
     }
     
     var filteredCountries: [CountryCodePickerViewController.Country] {
@@ -53,16 +54,6 @@ struct CountryPickerView: View {
             .searchable(text: $searchText, placement: .automatic, prompt: Como.trans("search"))
             .listStyle(GroupedListStyle())
         }
-        .onAppear {
-            loadCountries()
-        }
-    }
-    
-    private func loadCountries() {
-        countries = utility
-            .allCountries()
-            .compactMap { CountryCodePickerViewController.Country(for: $0, with: utility, translated: true) }
-            .sorted { $0.name < $1.name }
     }
 }
 
