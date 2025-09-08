@@ -16,7 +16,7 @@ struct CountryPickerView: View {
     
     var filteredCountries: [CountryCodePickerViewController.Country] {
         let search = searchText.simplified.trim()
-        return searchText.isEmpty ? countries : countries.filter { country in
+        return search.isEmpty ? countries : countries.filter { country in
             country.name.matchesSearch(search) ||
             country.code.matchesSearch(search) ||
             country.prefix.matchesSearch(search)
