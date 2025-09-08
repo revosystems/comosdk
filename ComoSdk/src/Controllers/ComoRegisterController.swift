@@ -17,6 +17,7 @@ class ComoRegisterController : UIViewController, ComoRegisterDelegate {
     
     
     override func viewDidLoad() {
+        translate()
         onSegmentedChanged(segmented)
     }
     
@@ -43,6 +44,19 @@ class ComoRegisterController : UIViewController, ComoRegisterDelegate {
         
         vc.details = registered
         navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func translate() {
+        titleLabel.text = Como.trans("como_register_your_customer")
+        navigationItem.backButtonTitle = Como.trans("como_cancel")
+        translateSegmented()
+    }
+    
+    func translateSegmented() {
+        ["phone", "email"].eachWithIndex { key, index in
+            guard index < segmented.numberOfSegments else { return }
+            segmented.setTitle(" \(Como.trans("como_" + key)) ", forSegmentAt: index)
+        }
     }
     
 }

@@ -12,6 +12,8 @@ class ComoLoginByEmailController : UIViewController, OTPViewDelegate {
     weak var delegate:ComoLoginDelegate!
     
     override func viewDidLoad() {
+        inputField.placeholder = Como.trans("como_enter_your_email")
+        searchButton.setTitle(Como.trans("como_search_customer"), for: .normal)
         searchButton.round(4)
         errorLabel.text = ""
         loginOtpView.isHidden = true

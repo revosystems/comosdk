@@ -12,9 +12,11 @@ class ComoLoginByQrCodeController : UIViewController, ScanQRCodeViewDelegate {
     weak var delegate:ComoLoginDelegate!
     
     override func viewDidLoad() {
+        inputField.placeholder = Como.trans("como_enter_your_code")
         errorLabel.text = ""
         scanQrCodeView.round(8)
         button.round(4)
+        button.setTitle(Como.trans("como_search_customer"), for: .normal)
         if !isiOSAppOnMac(){
             scanQrCodeView.setupCaptureSession(delegate: self)
         }
