@@ -81,7 +81,7 @@ struct CountryRowView: View {
             if isSelected {
                 Image(systemName: "checkmark")
                     .font(.headline)
-                    .foregroundColor(.blue)
+                    .foregroundColor(Color(UIColor(named: "Brand")!))
             }
         }
         .padding(.vertical, 4)
