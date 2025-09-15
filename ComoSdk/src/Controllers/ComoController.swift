@@ -19,6 +19,7 @@ public class ComoController : UIViewController, ComoLoginDelegate {
         case pay(amount:Int)
     }
      
+    @IBOutlet weak var registerLabel: UILabel!
     @IBOutlet weak var registerButton: UIButton!
     @IBOutlet weak var backButton: UIBarButtonItem!
     @IBOutlet weak var welcomeLabel: UILabel!
@@ -47,7 +48,7 @@ public class ComoController : UIViewController, ComoLoginDelegate {
         
         onSegmentedChanged(segmented)
         
-        navigationItem.backButtonTitle = Como.trans("como_logout")
+        navigationItem.backButtonTitle = Como.trans("como_cancel")
         
         if !Como.shared.hasFeature(.coupons){
             segmented.removeSegment(at: 3, animated: false)
@@ -63,26 +64,9 @@ public class ComoController : UIViewController, ComoLoginDelegate {
     }
     
     @IBAction func onSegmentedChanged(_ sender: UISegmentedControl) {
-        if sender.selectedSegmentIndex == 0 {
-            loginByPhoneView.isHidden = false
-            loginByEmailView.isHidden = true
-            loginByQRCode.isHidden    = true
-            addCoupon.isHidden        = true
-        } else if sender.selectedSegmentIndex == 1 {
-            loginByPhoneView.isHidden = true
-            loginByEmailView.isHidden = false
-            loginByQRCode.isHidden    = true
-            addCoupon.isHidden        = true
-        } else if sender.selectedSegmentIndex == 2 {
-            loginByPhoneView.isHidden = true
-            loginByEmailView.isHidden = true
-            loginByQRCode.isHidden    = false
-            addCoupon.isHidden        = true
-        } else {
-            loginByPhoneView.isHidden = true
-            loginByEmailView.isHidden = true
-            loginByQRCode.isHidden    = true
-            addCoupon.isHidden        = false
+        let segmentViews = [loginByPhoneView, loginByEmailView, loginByQRCode, addCoupon]
+        segmentViews.eachWithIndex { view, index in
+            view?.isHidden = sender.selectedSegmentIndex == index ? false : true
         }
     }
     
@@ -110,6 +94,7 @@ public class ComoController : UIViewController, ComoLoginDelegate {
     func onMemberFetched(details:Como.MemberDetailsResponse){
         
         Como.shared.memberDetails = details
+        navigationItem.backButtonTitle = Como.trans("como_logout")
         
         switch nextAction {
         case .showDetails: showAssets(details: details)
@@ -156,18 +141,18 @@ public class ComoController : UIViewController, ComoLoginDelegate {
     //MARK: - Appearance
     
     func translate(){
+        registerLabel.text = Como.trans("como_customer_doesnt_have_account")
         registerButton      .setTitle(Como.trans("como_register"),      for:.normal)
-        /*welcomeLabel.text     = Como.trans("como_welcome")
+        welcomeLabel.text     = Como.trans("como_identify_your_customer")
         backButton.title      = Como.trans("como_cancel")
-        findMemberButton    .setTitle(Como.trans("como_findMember"),    for:.normal)
-        sendAuthCodeButton  .setTitle(Como.trans("como_sendAuthCode"),  for:.normal)
-        addCouponButton     .setTitle(Como.trans("como_addCouponCode"), for:.normal)
-        
-        //scanCodeButton    .setTitle(Como.trans("como_"), for:.normal)
-        inputField.placeholder = Como.trans("como_user_placeholder")
-        #if DEBUG
-            inputField.text = "jordi.p@revo.works"
-        #endif*/
+        translateSegmented()
+    }
+    
+    private func translateSegmented() {
+        ["phone", "email", "qrcode"].eachWithIndex { key, index in
+            guard index < segmented.numberOfSegments else { return }
+            segmented.setTitle(" \(Como.trans("como_" + key)) ", forSegmentAt: index)
+        }
     }
     
     deinit {
@@ -177,14 +162,5 @@ public class ComoController : UIViewController, ComoLoginDelegate {
             delegate?.como(onCustomerUnselected: nil)
         }
         delegate = nil
-    }
-}
-
-extension String {
-    var isPhoneNumber: Bool {
-        let detector = try? NSDataDetector(types: NSTextCheckingResult.CheckingType.phoneNumber.rawValue)
-        let matches = detector?.matches(in: self, range: NSRange(location: 0, length: utf16.count))
-
-        return (matches?.count ?? 0) > 0
     }
 }
