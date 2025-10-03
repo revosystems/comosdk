@@ -78,6 +78,20 @@ public class Como {
         transactionUuid = UUID().uuidString
     }
     
+    //MARK: - Login user
+    public func login(_ externalId:String, purchase:Purchase? = nil) async throws  {
+        let customer = Como.Customer(commonExtId: externalId)
+        let details = try await Como.shared.getMemberDetails(
+            customer: customer,
+            purchase: purchase
+        )
+        Como.shared.memberDetails = details
+    }
+    
+    public func logout() {
+        Como.shared.memberDetails = nil
+    }
+    
     //MARK: - Methods
     public func getMemberDetails(customer:Customer, purchase:Purchase?) async throws -> MemberDetailsResponse{
         try validateInitialized()
