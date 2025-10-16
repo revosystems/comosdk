@@ -10,8 +10,10 @@ class ComoRegisterByMailController : UIViewController {
     weak var delegate:ComoRegisterDelegate?
     
     override func viewDidLoad() {
+        textField.placeholder = Como.trans("como_enter_your_email")
         errorLabel.text = ""
         button.round(4)
+        button.setTitle(Como.trans("como_register_customer"), for: .normal)
     }
     
     @IBAction func onButtonPressed(_ button:AsyncButton){

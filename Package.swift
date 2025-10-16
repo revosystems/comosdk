@@ -15,7 +15,8 @@ let package = Package(
     dependencies: [
         .package(url: "https://github.com/revosystems/RevoHttp", .upToNextMinor(from: "0.3.9")),
         .package(url: "https://github.com/revosystems/RevoUIComponents.git", .upToNextMinor(from: "0.1.0")),
-        .package(url: "https://github.com/revosystems/DejavuSwift.git", .upToNextMinor(from: "0.1.0"))
+        .package(url: "https://github.com/revosystems/DejavuSwift.git", .upToNextMinor(from: "0.1.0")),
+        .package(url: "https://github.com/marmelroy/PhoneNumberKit.git", .upToNextMinor(from: "4.1.4"))
     ],
     targets: [
         .target(
@@ -23,7 +24,8 @@ let package = Package(
             dependencies: [
                 "RevoHttp",
                 "RevoUIComponents",
-                "DejavuSwift"
+                "DejavuSwift",
+                "PhoneNumberKit"
             ],
             path: "ComoSdk/src",
             resources: [

@@ -8,7 +8,9 @@ class ComoLoginAddCouponController : UIViewController {
     @IBOutlet private weak var errorLabel: UILabel!
     
     override func viewDidLoad() {
+        textField.placeholder = Como.trans("como_coupon_placeholder")
         errorLabel.text = ""
+        button.setTitle(Como.trans("como_search_customer"), for: .normal)
         button.round(4)
     }
     
