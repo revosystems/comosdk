@@ -76,7 +76,7 @@ class ComoMemberDetailsController : UIViewController, UITableViewDelegate {
         registeredAtLabel.text = isIpad() ? "- " + Como.trans("como_from") + " " + (details.membership.createdOn?.toDeviceTimezone(.niceDate) ?? "--") : ""
         image.circle().gravatar(email: details.membership.email, defaultImage:"https://raw.githubusercontent.com/BadChoice/handesk/dev/public/images/default-avatar.png")
         
-        creditLabel.text = str("%.2f €", (Double(details.membership.creditBalance?.balance.monetary ?? 0) / 100.0))
+        creditLabel.text = str("%.2f €", (details.membership.creditBalance?.balance.monetary ?? 0.0) / 100.0)
         pointsLabel.text = "\((details.membership.pointsBalance?.balance.monetary ?? 0) / 100)"
         //TODO: gravatar
         

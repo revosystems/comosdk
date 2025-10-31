@@ -70,7 +70,7 @@ extension Como {
     }
     
     public struct Monetary:Codable {
-        public let monetary:Int
+        public let monetary:Double
         public let nonMonetary:Int
     }
     
