@@ -73,5 +73,13 @@ extension Como {
             redeemAssets = []
             benefits = nil
         }
+        
+        public func clearBenefits() {
+            benefits = nil
+        }
+        
+        public func clearRedeemAssets() {
+            redeemAssets = []
+        }
     }
 }
