@@ -4,7 +4,7 @@ extension Como {
     
     public class CurrentSale {
         public var customer:Como.Customer?
-        var purchase:Como.Purchase
+        public var purchase:Como.Purchase
         var redeemAssets:[Como.RedeemAsset]?
         
         var benefits:Como.GetBenefitsResponse?
